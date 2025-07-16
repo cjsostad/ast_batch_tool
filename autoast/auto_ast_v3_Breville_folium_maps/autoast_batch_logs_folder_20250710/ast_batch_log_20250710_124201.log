@@ -1,0 +1,2 @@
+2025-07-10 12:42:01,376 - logging_setup - INFO - Logging set up
+2025-07-10 12:42:01,478 - logging_setup - ERROR - Unable to find the toolbox. Check the path in .env file

@@ -1,0 +1,30 @@
+2025-07-11 09:44:52,986 - logging_setup - INFO - Logging set up
+2025-07-11 09:44:54,019 - logging_setup - INFO - AST Toolbox imported successfully.
+2025-07-11 09:44:54,040 - logging_setup - INFO - Secret file H:\secrets\bcgw.env found
+2025-07-11 09:44:54,041 - logging_setup - INFO - Database user csostad and password found
+2025-07-11 09:44:54,216 - root - INFO - Logger initialized
+2025-07-11 09:44:55,270 - root - ERROR - Failed to import tools
+Traceback (most recent call last):
+  File "P:\corp\central_clones\python_geospatial\lib\site-packages\XTools Pro\esri\toolboxes\XTools Pro.pyt", line 95, in <module>
+    from Tools.FeaturesToPointsTool import *
+  File "E:\sw_nt\XTools\XTools AGP\Python\Tools\FeaturesToPointsTool.py", line 1, in <module>
+    from Tools.BaseTool import BaseTool
+  File "E:\sw_nt\XTools\XTools AGP\Python\Tools\BaseTool.py", line 7, in <module>
+    from Scripts.Base.PythonCancelTracker import PythonCancelTracker
+  File "E:\sw_nt\XTools\XTools AGP\Python\Scripts\Base\PythonCancelTracker.py", line 20, in <module>
+    from XTools.XToolsAGP.Core import ICancelTracker
+ModuleNotFoundError: No module named 'XTools'
+2025-07-11 09:44:55,284 - root - ERROR - No module named 'XTools'
+Traceback (most recent call last):
+  File "P:\corp\central_clones\python_geospatial\lib\site-packages\XTools Pro\esri\toolboxes\XTools Pro.pyt", line 95, in <module>
+    from Tools.FeaturesToPointsTool import *
+  File "E:\sw_nt\XTools\XTools AGP\Python\Tools\FeaturesToPointsTool.py", line 1, in <module>
+    from Tools.BaseTool import BaseTool
+  File "E:\sw_nt\XTools\XTools AGP\Python\Tools\BaseTool.py", line 7, in <module>
+    from Scripts.Base.PythonCancelTracker import PythonCancelTracker
+  File "E:\sw_nt\XTools\XTools AGP\Python\Scripts\Base\PythonCancelTracker.py", line 20, in <module>
+    from XTools.XToolsAGP.Core import ICancelTracker
+ModuleNotFoundError: No module named 'XTools'
+2025-07-11 09:45:11,119 - logging_setup - INFO - new db connection created
+2025-07-11 09:45:11,545 - logging_setup - INFO - workspace set to bcgw connection
+2025-07-11 09:45:11,546 - logging_setup - INFO - SDE Connection established at: \\spatialfiles.bcgov\work\srm\nel\Local\Geomatics\Workarea\csostad\GitHubAutoAST\gss_authorizations\autoast\auto_ast_v3_Breville_folium_maps\connection\bcgw.sde

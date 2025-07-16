@@ -1,0 +1,1091 @@
+2025-06-30 09:57:29,214 - Process Job Mp: worker_2 - INFO - Process Job Mp: AST Toolbox imported successfully in worker.
+2025-06-30 09:57:29,215 - Process Job Mp: worker_2 - DEBUG - Process Job Mp: Job Parameters: ['West_Coast', '//spatialfiles.bcgov/work/srm/nel/Local/Geomatics/Workarea/csostad/Statusing/Jade Statuses/Powel River\\635\\635.shp', '', '', '', '//spatialfiles.bcgov/work/srm/nel/Local/Geomatics/Workarea/csostad/Statusing/Jade Statuses/Powel River\\outputs\\635', False, False, False, False, False, True]
+2025-06-30 09:57:29,216 - Process Job Mp: worker_2 - INFO - Process Job Mp: Running MakeAutomatedStatusSpreadsheet_ast...
+2025-06-30 09:57:29,823 - root - INFO - Logger initialized
+2025-06-30 09:57:30,667 - root - ERROR - Failed to import tools
+Traceback (most recent call last):
+  File "E:\sw_nt\ArcGIS\Pro\bin\Python\envs\arcgispro-py3\lib\site-packages\XTools Pro\esri\toolboxes\XTools Pro.pyt", line 95, in <module>
+    from Tools.FeaturesToPointsTool import *
+  File "E:\sw_nt\XTools\XTools AGP\Python\Tools\FeaturesToPointsTool.py", line 1, in <module>
+    from Tools.BaseTool import BaseTool
+  File "E:\sw_nt\XTools\XTools AGP\Python\Tools\BaseTool.py", line 7, in <module>
+    from Scripts.Base.PythonCancelTracker import PythonCancelTracker
+  File "E:\sw_nt\XTools\XTools AGP\Python\Scripts\Base\PythonCancelTracker.py", line 20, in <module>
+    from XTools.XToolsAGP.Core import ICancelTracker
+ModuleNotFoundError: No module named 'XTools'
+2025-06-30 09:57:30,671 - root - ERROR - No module named 'XTools'
+Traceback (most recent call last):
+  File "E:\sw_nt\ArcGIS\Pro\bin\Python\envs\arcgispro-py3\lib\site-packages\XTools Pro\esri\toolboxes\XTools Pro.pyt", line 95, in <module>
+    from Tools.FeaturesToPointsTool import *
+  File "E:\sw_nt\XTools\XTools AGP\Python\Tools\FeaturesToPointsTool.py", line 1, in <module>
+    from Tools.BaseTool import BaseTool
+  File "E:\sw_nt\XTools\XTools AGP\Python\Tools\BaseTool.py", line 7, in <module>
+    from Scripts.Base.PythonCancelTracker import PythonCancelTracker
+  File "E:\sw_nt\XTools\XTools AGP\Python\Scripts\Base\PythonCancelTracker.py", line 20, in <module>
+    from XTools.XToolsAGP.Core import ICancelTracker
+ModuleNotFoundError: No module named 'XTools'
+2025-06-30 10:31:15,712 - Process Job Mp: worker_2 - INFO - Process Job Mp: MakeAutomatedStatusSpreadsheet_ast completed successfully.
+2025-06-30 10:31:15,713 - logging_setup - INFO - 
+
+2025-06-30 10:31:15,714 - logging_setup - INFO - ##########################################################################################################################
+2025-06-30 10:31:15,714 - logging_setup - INFO - #
+2025-06-30 10:31:15,715 - logging_setup - INFO - Running Add Job Results from Load Jobs Function
+2025-06-30 10:31:15,715 - logging_setup - INFO - #
+2025-06-30 10:31:15,715 - logging_setup - INFO - ##########################################################################################################################
+2025-06-30 10:31:15,716 - logging_setup - INFO - 
+
+2025-06-30 10:31:15,727 - logging_setup - INFO - Add Job Result - Workbook loaded
+2025-06-30 10:31:15,727 - logging_setup - INFO - Add Job Result - 'ast_condition' column found in the spreadsheet.
+2025-06-30 10:31:15,728 - logging_setup - INFO - Add Job Result - Calculated Excel row index as 4 for job index 2
+2025-06-30 10:31:15,728 - logging_setup - INFO - Add Job Result - Updated Job 2 with condition 'COMPLETE'.
+2025-06-30 10:31:15,743 - logging_setup - INFO - Add Job Result - Saving Workbook with updated condition
+2025-06-30 10:31:15,744 - Process Job Mp: worker_2 - INFO - Process Job Mp: Capturing arcpy messages...
+2025-06-30 10:31:15,746 - Process Job Mp: worker_2 - INFO - arcpy messages: Start Time: June 30, 2025 9:57:29 AM
+======================================================================
+Batch Ast V2 -  Checking for ArcGIS Pro Advanced license
+======================================================================
+Batch Ast V2 - Now Running \\spatialfiles.bcgov\work\srm\nel\Local\Geomatics\Workarea\csostad\GitHubAutoAST\gss_authorizations\autoast\auto_ast_V2_Cuisinart_MultiP_PdfMaps\automated_status_sheet_call_routine_arcpro.py
+======================================================================
+
+Reading Arguments
+======================================================================
+Batch Ast V2 -    Checking existence of GDB
+Full_Path: //spatialfiles.bcgov/work/srm/nel/Local/Geomatics/Workarea/csostad/Statusing/Jade Statuses/Powel River\outputs\635\aoi_boundary.gdb
+creating //spatialfiles.bcgov/work/srm/nel/Local/Geomatics/Workarea/csostad/Statusing/Jade Statuses/Powel River\outputs\635\aoi_boundary.gdb
+======================================================================
+Batch Ast V2 - Checking BCGW Credentials - may take a minute to process...
+======================================================================
+Batch Ast V2 - Running Validation
+The analysis will be run on all 1 feature(s), since no features were selected.
+======================================================================
+PASSED ARGUMENTS:
+region                              west_coast                                                                                                                                                                                                                                                     
+output_dir_same_as_input            false                                                                                                                                                                                                                                                          
+output_directory                    //spatialfiles.bcgov/work/srm/nel/Local/Geomatics/Workarea/csostad/Statusing/Jade Statuses/Powel River\outputs\635                                                                                                                                             
+crown_file_number                                                                                                                                                                                                                                                                                  
+disposition_number                                                                                                                                                                                                                                                                                 
+parcel_number                                                                                                                                                                                                                                                                                      
+dont_overwrite_outputs              false                                                                                                                                                                                                                                                          
+skip_conflicts_and_constraints      false                                                                                                                                                                                                                                                          
+debug_version                       false                                                                                                                                                                                                                                                          
+suppress_map_creation               false                                                                                                                                                                                                                                                          
+======================================================================
+Setting hard-coded variables
+======================================================================
+Checking AOI
+   getting AOI boundary from feature layer -- copying to GDB
+======================================================================
+Checking for possible errors in AOI shape
+   is this shape multipart ?     no
+   are there multiple polygons ?     no
+   are there lots of vertices ?     no
+   are there possible problems with you input FC ?     no
+======================================================================
+Preparing to pass variables
+Passing variables
+======================================================================
+*** Running Universal Overlap Tool ***
+======================================================================
+Deleting fields from AOI to avoid conflicts...
+======================================================================
+Assigning English names to list positions
+======================================================================
+Splitting the arguments into individual variables
+The input criteria are:
+    analyize_this_featureclass = //spatialfiles.bcgov/work/srm/nel/Local/Geomatics/Workarea/csostad/Statusing/Jade Statuses/Powel River\outputs\635\aoi_boundary.gdb\aoi
+    create_subreports_on_this_field = 
+    what_type_of_overlap_to_run = 
+    xls_file_for_analysis_input = \\giswhse.env.gov.bc.ca\whse_np\corp\script_whse\python\Utility_Misc\Ready\statusing_tools_arcpro\statusing_input_spreadsheets\one_status_common_datasets.xlsx
+    report_header1 = 
+    report_header2 = 
+    report_header3 = 
+    report_header4 = 
+    subreports_on_seperate_sheets = 
+    directory_to_store_output = //spatialfiles.bcgov/work/srm/nel/Local/Geomatics/Workarea/csostad/Statusing/Jade Statuses/Powel River\outputs\635
+    summary_fields_on_seperate_lines = 
+    dont_overwrite_data_and_maps = false
+    xls_file_for_analysis_input2 = \\giswhse.env.gov.bc.ca\whse_np\corp\script_whse\python\Utility_Misc\Ready\statusing_tools_arcpro\statusing_input_spreadsheets\one_status_west_coast_specific.xlsx
+    disclaimer = INTERNAL PROVINCIAL GOVERNMENT USE ONLY
+    suppress_map_creation = false
+    region = west_coast
+    crown_file_number = 
+    disposition_number = 
+    parcel_number = 
+    run_as_fcbc = true
+    add_maps_to_current = false
+======================================================================
+Writing log file 
+Set Environment Time is 0
+======================================================================
+Creating working directories, geodatabases, variables
+======================================================================
+Batch Ast V2 - Copying the AOI into the working .GDB
+    Creating the raw AOI 
+    Creating the final AOI 
+Create GDB Time is 13
+======================================================================
+Reading the input XLS files
+    Reading input spreadsheet #1 - 
+\\giswhse.env.gov.bc.ca\whse_np\corp\script_whse\python\Utility_Misc\Ready\statusing_tools_arcpro\statusing_input_spreadsheets\one_status_common_datasets.xlsx
+    Reading input spreadsheet #2 - 
+\\giswhse.env.gov.bc.ca\whse_np\corp\script_whse\python\Utility_Misc\Ready\statusing_tools_arcpro\statusing_input_spreadsheets\one_status_west_coast_specific.xlsx
+    Merging Spreadsheets
+    Creating Master Control List
+Read Inputs Time is 0
+======================================================================
+Clipping the input datasets to the AOI
+Workspace set to: \\spatialfiles.bcgov\work\srm\nel\Local\Geomatics\Workarea\csostad\GitHubAutoAST\gss_authorizations\autoast\auto_ast_V2_Cuisinart_MultiP_PdfMaps\connection\bcgw.sde
+    Creating the buffered AOI's
+    Buffering the AOI at 38 meters
+    Buffering the AOI at 5 meters
+    Buffering the AOI at 50 meters
+    Buffering the AOI at 35 meters
+    Buffering the AOI at 2000 meters
+    Buffering the AOI at 500 meters
+    Buffering the AOI at 5000 meters
+    Buffering the AOI at 1000 meters
+    Buffering the AOI at 250 meters
+    Buffering the AOI at 200 meters
+    Buffering the AOI at 150 meters
+    Buffering the AOI at 100 meters
+    Buffering the AOI at 501 meters
+    SDE = \\spatialfiles.bcgov\work\srm\nel\Local\Geomatics\Workarea\csostad\GitHubAutoAST\gss_authorizations\autoast\auto_ast_V2_Cuisinart_MultiP_PdfMaps\connection\bcgw.sde
+    Intersecting the input featuresets
+    intersecting 1 of 267     bcgw.sde\WHSE_BASEMAPPING.FWA_STREAM_NETWORKS_SP
+    intersecting 2 of 267     bcgw.sde\WHSE_BASEMAPPING.TRIM_WATER_LINES
+    intersecting 3 of 267     bcgw.sde\WHSE_BASEMAPPING.DRA_DGTL_ROAD_ATLAS_MPAR_SP
+    intersecting 4 of 267     bcgw.sde\WHSE_FOREST_TENURE.FTEN_ROAD_SECTION_LINES_SVW
+    intersecting 5 of 267     bcgw.sde\WHSE_FOREST_TENURE.FTEN_ROAD_SECTION_LINES_SVW
+    intersecting 6 of 267     bcgw.sde\WHSE_TANTALIS.TA_SURVEYED_ROW_PARCELS_SVW
+    intersecting 7 of 267     bcgw.sde\WHSE_TANTALIS.TA_CROWN_RIGHTS_OF_WAY_SVW
+    intersecting 8 of 267     bcgw.sde\WHSE_BASEMAPPING.GBA_RAILWAY_TRACKS_SP
+    intersecting 9 of 267     bcgw.sde\WHSE_BASEMAPPING.GBA_RAILWAY_CROSSINGS_SP
+    intersecting 10 of 267     bcgw.sde\WHSE_BASEMAPPING.FWA_STREAM_NETWORKS_SP
+    intersecting 11 of 267     bcgw.sde\WHSE_BASEMAPPING.TRIM_WATER_LINES
+    intersecting 12 of 267     bcgw.sde\WHSE_BASEMAPPING.DRA_DGTL_ROAD_ATLAS_MPAR_SP
+    intersecting 13 of 267     bcgw.sde\WHSE_BASEMAPPING.DRA_DGTL_ROAD_ATLAS_MPAR_SP
+    intersecting 14 of 267     bcgw.sde\WHSE_FOREST_TENURE.FTEN_ROAD_SECTION_LINES_SVW
+    intersecting 15 of 267     bcgw.sde\WHSE_TANTALIS.TA_SURVEYED_ROW_PARCELS_SVW
+    intersecting 16 of 267     bcgw.sde\WHSE_TANTALIS.TA_CROWN_RIGHTS_OF_WAY_SVW
+    intersecting 17 of 267     bcgw.sde\WHSE_TANTALIS.TEMP_TRANSPORT
+    intersecting 18 of 267     bcgw.sde\WHSE_BASEMAPPING.GBA_RAILWAY_TRACKS_SP
+    intersecting 19 of 267     bcgw.sde\WHSE_BASEMAPPING.GBA_RAILWAY_CROSSINGS_SP
+    intersecting 20 of 267     bcgw.sde\WHSE_ADMIN_BOUNDARIES.CLAB_INDIAN_RESERVES
+    intersecting 21 of 267     bcgw.sde\WHSE_ADMIN_BOUNDARIES.ADM_INDIAN_RESERVES_BANDS_SP
+    intersecting 22 of 267     bcgw.sde\WHSE_ADMIN_BOUNDARIES.CLAB_NATIONAL_PARKS
+    intersecting 23 of 267     bcgw.sde\WHSE_TANTALIS.TA_PARK_ECORES_PA_SVW
+    intersecting 24 of 267     bcgw.sde\WHSE_TANTALIS.TA_CONSERVANCY_AREAS_SVW
+    intersecting 25 of 267     bcgw.sde\WHSE_LEGAL_ADMIN_BOUNDARIES.WCL_CONSERVATION_LANDS_SP
+    intersecting 26 of 267     bcgw.sde\WHSE_LEGAL_ADMIN_BOUNDARIES.WCL_CONSERVATION_AREAS_NGO_SP
+    intersecting 27 of 267     bcgw.sde\WHSE_ADMIN_BOUNDARIES.PIP_CONSULTATION_AREAS_SP
+    intersecting 28 of 267     bcgw.sde\REG_LEGAL_AND_ADMIN_BOUNDARIES.QSOI_BC_REGIONS
+    intersecting 29 of 267     bcgw.sde\WHSE_HUMAN_CULTURAL_ECONOMIC.FNIRS_AGREEMENT_BOUNDARY_SVW
+    intersecting 30 of 267     bcgw.sde\WHSE_HUMAN_CULTURAL_ECONOMIC.TUS_TRAD_USE_STUDY_POLY_MVW
+    intersecting 31 of 267     bcgw.sde\WHSE_HUMAN_CULTURAL_ECONOMIC.TUS_TRD_USE_STD_SITE_POINT_MVW
+    intersecting 32 of 267     bcgw.sde\WHSE_HUMAN_CULTURAL_ECONOMIC.TUS_TRD_USE_STD_SITE_LINE_MVW
+    intersecting 33 of 267     bcgw.sde\WHSE_HUMAN_CULTURAL_ECONOMIC.TUS_TRD_USE_STD_SITE_POLY_MVW
+    intersecting 34 of 267     bcgw.sde\WHSE_ADMIN_BOUNDARIES.FADM_TSA
+    intersecting 35 of 267     bcgw.sde\WHSE_TANTALIS.TA_SURVEY_PARCELS_SVW
+    intersecting 36 of 267     bcgw.sde\WHSE_TANTALIS.TA_SURVEY_PARCELS_SVW
+    intersecting 37 of 267     bcgw.sde\WHSE_CADASTRE.PMBC_PARCEL_FABRIC_POLY_FA_SVW
+    intersecting 38 of 267     bcgw.sde\WHSE_MINERAL_TENURE.MTA_CROWN_GRANT_MIN_CLAIM_SVW
+    intersecting 39 of 267     bcgw.sde\WHSE_TANTALIS.TA_CROWN_TENURES_SVW
+    intersecting 40 of 267     bcgw.sde\WHSE_TANTALIS.TA_CROWN_TENURES_SVW
+    intersecting 41 of 267     bcgw.sde\WHSE_TANTALIS.TA_CROWN_TENURES_SVW
+    intersecting 42 of 267     bcgw.sde\WHSE_TANTALIS.TA_CROWN_TENURES_SVW
+    intersecting 43 of 267     bcgw.sde\WHSE_TANTALIS.TA_CROWN_LEASES_SVW
+    intersecting 44 of 267     bcgw.sde\WHSE_TANTALIS.TA_ACQUISITIONS_SVW
+    intersecting 45 of 267     bcgw.sde\WHSE_TANTALIS.TA_REVERSIONS_SVW
+    intersecting 46 of 267     bcgw.sde\WHSE_LEGAL_ADMIN_BOUNDARIES.ILRR_LAND_ACT_TRNSFR_CNTRL_SVW
+    intersecting 47 of 267     bcgw.sde\WHSE_WILDLIFE_MANAGEMENT.WAA_GUIDE_OUTFITTER_AREA_SVW
+    intersecting 48 of 267     bcgw.sde\WHSE_WILDLIFE_MANAGEMENT.WAA_TRAPLINE_AREAS_SP
+    intersecting 49 of 267     bcgw.sde\WHSE_FOREST_TENURE.FTEN_ROAD_SECTION_LINES_SVW
+    intersecting 50 of 267     bcgw.sde\WHSE_FOREST_TENURE.FTEN_ROAD_SECTION_LINES_SVW
+    intersecting 51 of 267     bcgw.sde\WHSE_FOREST_TENURE.FTEN_SPEC_ACCESS_RD_LINES_SVW
+    intersecting 52 of 267     bcgw.sde\WHSE_FOREST_TENURE.FTEN_SPEC_ACCESS_RD_POLY_SVW
+    intersecting 53 of 267     bcgw.sde\WHSE_FOREST_TENURE.FTEN_RANGE_POLY_SVW
+    intersecting 54 of 267     bcgw.sde\WHSE_FOREST_TENURE.FTEN_HARVEST_AUTH_POLY_SVW 
+    intersecting 55 of 267     bcgw.sde\WHSE_FOREST_TENURE.FTEN_CUT_BLOCK_POLY_SVW
+    intersecting 56 of 267     bcgw.sde\WHSE_FOREST_TENURE.FTEN_COMM_SITE_POLY_SVW
+    intersecting 57 of 267     bcgw.sde\WHSE_FOREST_TENURE.FTEN_REAL_PROPERTY_POLY_SVW
+    intersecting 58 of 267     bcgw.sde\WHSE_FOREST_TENURE.FTEN_SPEC_USE_PERMIT_POLY_SVW
+    intersecting 59 of 267     bcgw.sde\WHSE_FOREST_TENURE.FTEN_TIMBER_LICENCE_POLY_SVW
+    intersecting 60 of 267     bcgw.sde\WHSE_FOREST_TENURE.FTEN_TL_REMAINING_POLY_SVW
+    intersecting 61 of 267     bcgw.sde\WHSE_FOREST_TENURE.FTEN_TL_ELIMINATION_POLY_SVW
+    intersecting 62 of 267     bcgw.sde\WHSE_FOREST_TENURE.FTEN_MANAGED_LICENCE_POLY_SVW
+    intersecting 63 of 267     bcgw.sde\WHSE_FOREST_TENURE.FTEN_FREE_USE_PERMIT_POLY_SVW
+    intersecting 64 of 267     bcgw.sde\WHSE_FOREST_TENURE.FTEN_MAP_NOTATN_LINES_SVW
+    intersecting 65 of 267     bcgw.sde\WHSE_FOREST_TENURE.FTEN_MAP_NOTATN_POLY_SVW
+    intersecting 66 of 267     bcgw.sde\WHSE_FOREST_TENURE.FTEN_MAP_NOTATN_POINTS_SVW
+    intersecting 67 of 267     bcgw.sde\WHSE_ADMIN_BOUNDARIES.FADM_TFL
+    intersecting 68 of 267     bcgw.sde\WHSE_ADMIN_BOUNDARIES.FADM_TFL_ADDITION
+    intersecting 69 of 267     bcgw.sde\WHSE_ADMIN_BOUNDARIES.FADM_TFL_DELETION
+    intersecting 70 of 267     bcgw.sde\WHSE_ADMIN_BOUNDARIES.FADM_TFL_SCHED_A
+    intersecting 71 of 267     bcgw.sde\WHSE_FOREST_VEGETATION.RESPROJ_RSRCH_INSTLTNS_GOV_SVW
+    intersecting 72 of 267     bcgw.sde\WHSE_FOREST_VEGETATION.ISMC_PSP_ACTIVE_SITES_SP
+    intersecting 73 of 267     bcgw.sde\WHSE_FOREST_TENURE.FTEN_RECREATION_POLY_SVW
+    intersecting 74 of 267     bcgw.sde\WHSE_FOREST_TENURE.FTEN_RECREATION_LINES_SVW
+    intersecting 75 of 267     bcgw.sde\WHSE_HUMAN_CULTURAL_ECONOMIC.RST_SECTION_58_ORDERS_POINT
+    intersecting 76 of 267     bcgw.sde\WHSE_HUMAN_CULTURAL_ECONOMIC.RST_SECTION_58_ORDERS_LINE
+    intersecting 77 of 267     bcgw.sde\WHSE_HUMAN_CULTURAL_ECONOMIC.RST_SECTION_58_ORDERS_POLY
+    intersecting 78 of 267     bcgw.sde\WHSE_FOREST_VEGETATION.RSLT_OPENING_SVW
+    intersecting 79 of 267     bcgw.sde\WHSE_FOREST_VEGETATION.RSLT_FOREST_COVER_RESERVE_SVW
+    intersecting 80 of 267     bcgw.sde\WHSE_BASEMAPPING.GBA_METEOROLOGICAL_LOCS_SP
+    intersecting 81 of 267     bcgw.sde\WHSE_ENVIRONMENTAL_MONITORING.ENVCAN_HYDROMETRIC_STN_SP
+    intersecting 82 of 267     bcgw.sde\WHSE_WATER_MANAGEMENT.WLS_WATER_NOTATION_STREAMS_SP
+    intersecting 83 of 267     bcgw.sde\WHSE_WATER_MANAGEMENT.WLS_WATER_NOTATION_AQUIFERS_SP
+    intersecting 84 of 267     bcgw.sde\WHSE_WATER_MANAGEMENT.WLS_WATER_RIGHTS_LICENCES_SP
+    intersecting 85 of 267     bcgw.sde\WHSE_WATER_MANAGEMENT.WLS_WATER_RIGHTS_APPLICTNS_SP
+    intersecting 86 of 267     bcgw.sde\WHSE_WATER_MANAGEMENT.WLS_WATER_LICENCED_WRK_LINE_SP
+    intersecting 87 of 267     bcgw.sde\WHSE_WATER_MANAGEMENT.WLS_WATER_LICENCED_WRK_LOC_SP
+    intersecting 88 of 267     bcgw.sde\WHSE_WATER_MANAGEMENT.WLS_LICENCE_WITH_PARCELS_ISP
+    intersecting 89 of 267     bcgw.sde\WHSE_WATER_MANAGEMENT.WLS_WATER_APPROVALS_GOV_SVW
+    intersecting 90 of 267     bcgw.sde\WHSE_WATER_MANAGEMENT.WLS_RESERVOIR_PMT_LICENSEE_SP
+    intersecting 91 of 267     bcgw.sde\WHSE_WATER_MANAGEMENT.WRIS_DAMS_PUBLIC_SVW
+    intersecting 92 of 267     bcgw.sde\WHSE_MINERAL_TENURE.MTA_ACQUIRED_TENURE_SVW
+    intersecting 93 of 267     bcgw.sde\WHSE_MINERAL_TENURE.MTA_ACQUIRED_TENURE_SVW
+    intersecting 94 of 267     bcgw.sde\WHSE_MINERAL_TENURE.MTA_ACQUIRED_TENURE_SVW
+    intersecting 95 of 267     bcgw.sde\WHSE_MINERAL_TENURE.HSP_MJR_MINES_PERMTTD_AREAS_SP
+    intersecting 96 of 267     bcgw.sde\WHSE_MINERAL_TENURE.HSP_NOTICE_OF_WORK_PA_POINT_SV
+    intersecting 97 of 267     bcgw.sde\WHSE_MINERAL_TENURE.HSP_NOTICE_OF_WORK_PA_POINT_SV
+    intersecting 98 of 267     bcgw.sde\WHSE_MINERAL_TENURE.MTA_ACQUIRED_TENURE_SVW
+    intersecting 99 of 267     bcgw.sde\WHSE_MINERAL_TENURE.PTSA_PETROLEUM_TITLE_POLY
+    intersecting 100 of 267     bcgw.sde\WHSE_LAND_AND_NATURAL_RESOURCE.FOSS_IMPORTANT_FOSSIL_AREAS_SP
+    intersecting 101 of 267     bcgw.sde\WHSE_WASTE.SITE_ENV_RMDTN_SITES_GOV_SVW
+    intersecting 102 of 267     bcgw.sde\WHSE_WASTE.BC_ENV_MONITOR_LOCNS
+    intersecting 103 of 267     bcgw.sde\WHSE_ARCHAEOLOGY.RAAD_TFM_SITES_SVW
+    intersecting 104 of 267     bcgw.sde\WHSE_ARCHAEOLOGY.RAAD_TFM_SITES_SVW
+    intersecting 105 of 267     bcgw.sde\WHSE_HUMAN_CULTURAL_ECONOMIC.HIST_HISTORIC_ENVIRONMNT_FA_SP
+    intersecting 106 of 267     bcgw.sde\WHSE_HUMAN_CULTURAL_ECONOMIC.HIST_HISTORIC_ENVIRONMNT_FA_SP
+    intersecting 107 of 267     bcgw.sde\WHSE_LEGAL_ADMIN_BOUNDARIES.OATS_ALR_POLYS
+    intersecting 108 of 267     bcgw.sde\WHSE_TANTALIS.TEMP_TRANSPORT
+    intersecting 109 of 267     bcgw.sde\REG_LEGAL_AND_ADMIN_BOUNDARIES.REC_TENURE_ALPINE_SKI_AREAS_SP
+    intersecting 110 of 267     bcgw.sde\WHSE_WILDLIFE_INVENTORY.AMA_SNOWMOBILE_MGMT_AREAS_SP
+    intersecting 111 of 267     bcgw.sde\WHSE_MINERAL_TENURE.MTA_SITE_SP
+    intersecting 112 of 267     bcgw.sde\WHSE_MINERAL_TENURE.MTA_SITE_SP
+    intersecting 113 of 267     bcgw.sde\WHSE_TERRESTRIAL_ECOLOGY.BIOT_OCCR_NON_SENS_AREA_SVW
+    intersecting 114 of 267     bcgw.sde\WHSE_TERRESTRIAL_ECOLOGY.BIOT_OCCR_MASKED_SENS_AREA_SP
+    intersecting 115 of 267     bcgw.sde\WHSE_WATER_MANAGEMENT.WLS_COMMUNITY_WS_PUB_SVW
+    intersecting 116 of 267     bcgw.sde\WHSE_BASEMAPPING.CWB_FLOODPLAINS_BC_AREA_SVW
+    intersecting 117 of 267     bcgw.sde\WHSE_WATER_MANAGEMENT.GW_WATER_WELLS_WRBC_SVW
+    intersecting 118 of 267     bcgw.sde\WHSE_WATER_MANAGEMENT.GW_AQUIFERS_CLASSIFICATION_SVW
+    intersecting 119 of 267     bcgw.sde\WHSE_WATER_MANAGEMENT.WLS_WATER_RESERVATION_SV
+    intersecting 120 of 267     bcgw.sde\WHSE_WATER_MANAGEMENT.WLS_WATER_NOTATION_SV
+    intersecting 121 of 267     bcgw.sde\WHSE_WATER_MANAGEMENT.WLS_NON_TRIM_HYDRGRPH_LINE_SVW
+    intersecting 122 of 267     bcgw.sde\WHSE_WATER_MANAGEMENT.FPW_APPURTENANT_STRUCTURE_SVW
+    intersecting 123 of 267     bcgw.sde\WHSE_WATER_MANAGEMENT.SSL_SNOW_MSS_LOCS_SP
+    intersecting 124 of 267     bcgw.sde\WHSE_WATER_MANAGEMENT.SSL_SNOW_ASWS_STNS_SP
+    intersecting 125 of 267     bcgw.sde\WHSE_WILDLIFE_MANAGEMENT.WCP_WILDLIFE_HABITAT_AREA_POLY
+    intersecting 126 of 267     bcgw.sde\WHSE_WILDLIFE_MANAGEMENT.WCP_WHA_PROPOSED_SP
+    intersecting 127 of 267     bcgw.sde\WHSE_WILDLIFE_MANAGEMENT.WCP_UNGULATE_WINTER_RANGE_SP
+    intersecting 128 of 267     bcgw.sde\WHSE_WILDLIFE_MANAGEMENT.WCP_UNGULATE_WINTER_RANGE_SP
+    intersecting 129 of 267     bcgw.sde\WHSE_WILDLIFE_MANAGEMENT.WCP_UNG_WNTR_RNG_PROPOSED_SP
+    intersecting 130 of 267     bcgw.sde\WHSE_WILDLIFE_MANAGEMENT.WCP_WILDLIFE_HABITAT_AREA_POLY
+    intersecting 131 of 267     bcgw.sde\WHSE_WILDLIFE_MANAGEMENT.WCP_UNGULATE_WINTER_RANGE_SP
+    intersecting 132 of 267     bcgw.sde\WHSE_WILDLIFE_MANAGEMENT.WCP_FISH_SENS_WS_PROPOSED_SP
+    intersecting 133 of 267     bcgw.sde\WHSE_WILDLIFE_MANAGEMENT.WCP_FISH_SENSITIVE_WS_POLY
+    intersecting 134 of 267     bcgw.sde\WHSE_WILDLIFE_MANAGEMENT.WCP_CRITICAL_HABITAT_SP
+    intersecting 135 of 267     bcgw.sde\WHSE_WILDLIFE_MANAGEMENT.CRIMS_EELGRASSES
+    intersecting 136 of 267     bcgw.sde\WHSE_WILDLIFE_MANAGEMENT.CRIMS_KELP_BEDS
+    intersecting 137 of 267     bcgw.sde\WHSE_TANTALIS.TA_WILDLIFE_MGMT_AREAS_SVW
+    intersecting 138 of 267     bcgw.sde\WHSE_WILDLIFE_MANAGEMENT.WAA_WILDLIFE_MGMT_UNITS_SVW
+    intersecting 139 of 267     bcgw.sde\WHSE_ADMIN_BOUNDARIES.FADM_PROV_FOREST
+    intersecting 140 of 267     bcgw.sde\WHSE_ADMIN_BOUNDARIES.FADM_PROV_FOREST_ADDITION
+    intersecting 141 of 267     bcgw.sde\WHSE_ADMIN_BOUNDARIES.FADM_PROV_FOREST_DELETION
+    intersecting 142 of 267     bcgw.sde\WHSE_ADMIN_BOUNDARIES.FADM_PROV_FOREST_EXCLUSION
+    intersecting 143 of 267     bcgw.sde\WHSE_TERRESTRIAL_ECOLOGY.STE_TER_PROJECT_BOUNDARIES_SVW
+    intersecting 144 of 267     bcgw.sde\WHSE_LAND_USE_PLANNING.RMP_LANDSCAPE_UNIT_SVW
+    intersecting 145 of 267     bcgw.sde\WHSE_LAND_USE_PLANNING.RMP_STRGC_LAND_RSRCE_PLAN_SVW
+    intersecting 146 of 267     bcgw.sde\WHSE_LAND_USE_PLANNING.RMP_OGMA_LEGAL_CURRENT_SVW
+    intersecting 147 of 267     bcgw.sde\WHSE_LAND_USE_PLANNING.RMP_OGMA_NON_LEGAL_CURRENT_SVW
+    intersecting 148 of 267     bcgw.sde\WHSE_FOREST_VEGETATION.OGSR_PRIORITY_DEF_AREA_CUR_SP
+    intersecting 149 of 267     bcgw.sde\WHSE_LAND_USE_PLANNING.RMP_PLAN_LEGAL_POLY_SVW
+    intersecting 150 of 267     bcgw.sde\WHSE_LAND_USE_PLANNING.RMP_PLAN_LEGAL_POINT_SVW
+    intersecting 151 of 267     bcgw.sde\WHSE_LAND_USE_PLANNING.RMP_PLAN_LEGAL_LINE_SVW
+    intersecting 152 of 267     bcgw.sde\WHSE_LAND_USE_PLANNING.RMP_PLAN_NON_LEGAL_POLY_SVW
+    intersecting 153 of 267     bcgw.sde\WHSE_LAND_USE_PLANNING.RMP_PLAN_NON_LEGAL_POINT_SVW
+    intersecting 154 of 267     bcgw.sde\WHSE_LAND_USE_PLANNING.RMP_PLAN_NON_LEGAL_LINE_SVW
+    intersecting 155 of 267     bcgw.sde\WHSE_ARCHAEOLOGY.RAAD_AOA_PROVINCIAL
+    intersecting 156 of 267     bcgw.sde\WHSE_ARCHAEOLOGY.RAAD_INFORMED_CONTRIBUTORS_SV
+    intersecting 157 of 267     bcgw.sde\WHSE_FISH.FISS_FISH_OBSRVTN_PNT_SP
+    intersecting 158 of 267     bcgw.sde\WHSE_FISH.FISS_FISH_OBSRVTN_PNT_SP
+    intersecting 159 of 267     bcgw.sde\WHSE_FISH.FISS_HIST_FISH_DST_PNT_PUB_SVW
+    intersecting 160 of 267     bcgw.sde\WHSE_FISH.FISS_HIST_FISH_DST_PNT_PUB_SVW
+    intersecting 161 of 267     bcgw.sde\WHSE_FOREST_VEGETATION.BEC_BIOGEOCLIMATIC_20K_SPG
+    intersecting 162 of 267     bcgw.sde\WHSE_TANTALIS.TA_CROWN_TENURES_SVW
+    intersecting 163 of 267     bcgw.sde\WHSE_MINERAL_TENURE.OG_ROAD_AREA_PERMIT_SP
+    intersecting 164 of 267     bcgw.sde\WHSE_MINERAL_TENURE.OG_ROAD_AREA_APPL_SP
+    intersecting 165 of 267     bcgw.sde\WHSE_MINERAL_TENURE.OG_WELL_FACILITY_PERMIT_SP
+    intersecting 166 of 267     bcgw.sde\WHSE_MINERAL_TENURE.OG_WELL_FACILITY_APPL_SP
+    intersecting 167 of 267     bcgw.sde\WHSE_MINERAL_TENURE.OG_PIPELINE_AREA_PERMIT_SP
+    intersecting 168 of 267     bcgw.sde\WHSE_MINERAL_TENURE.OG_PIPELINE_AREA_APPL_SP
+    intersecting 169 of 267     bcgw.sde\WHSE_MINERAL_TENURE.OG_PIPELINE_AREA_PERMIT_SP
+    intersecting 170 of 267     bcgw.sde\WHSE_MINERAL_TENURE.OG_PIPELINE_AREA_APPL_SP
+    intersecting 171 of 267     bcgw.sde\WHSE_MINERAL_TENURE.OG_CONSTR_CORRIDOR_APPL_SP
+    intersecting 172 of 267     bcgw.sde\WHSE_MINERAL_TENURE.OG_GEOPHYSICAL_PERMIT_SP
+    intersecting 173 of 267     bcgw.sde\WHSE_MINERAL_TENURE.OG_GEOPHYSICAL_APPL_SP
+    intersecting 174 of 267     bcgw.sde\WHSE_MINERAL_TENURE.OG_FACILITY_LOCATNS_PERMIT_SP
+    intersecting 175 of 267     bcgw.sde\WHSE_MINERAL_TENURE.OG_ASSOC_ANCILLARY_PERMIT_SP
+    intersecting 176 of 267     bcgw.sde\WHSE_MINERAL_TENURE.OG_ASSOC_ANCILLARY_APPL_SP
+    intersecting 177 of 267     bcgw.sde\WHSE_MINERAL_TENURE.OG_SUMP_LOCATIONS_SP
+    intersecting 178 of 267     bcgw.sde\WHSE_MINERAL_TENURE.OG_WASTE_DISP_SITES_PRE2016_SP
+    intersecting 179 of 267     bcgw.sde\WHSE_MINERAL_TENURE.OG_WATER_SOURCE_PERMIT_SP
+    intersecting 180 of 267     bcgw.sde\WHSE_MINERAL_TENURE.OG_WATER_SOURCE_APPL_SP
+    intersecting 181 of 267     bcgw.sde\WHSE_MINERAL_TENURE.OG_PETRLM_DEV_RDS_PRE06_GOV_SP
+    intersecting 182 of 267     bcgw.sde\WHSE_MINERAL_TENURE.OG_FACILITY_LOCATNS_PRE2016_SP
+    intersecting 183 of 267     bcgw.sde\WHSE_HUMAN_CULTURAL_ECONOMIC.FNT_AREAS_OF_INTEREST_SP
+    intersecting 184 of 267     bcgw.sde\WHSE_ADMIN_BOUNDARIES.TADM_MOT_DISTRICT_BNDRY_POLY
+    intersecting 185 of 267     bcgw.sde\WHSE_ADMIN_BOUNDARIES.EADM_WLAP_REGION_BND_AREA_SVW
+    intersecting 186 of 267     bcgw.sde\WHSE_ADMIN_BOUNDARIES.BCHA_HEALTH_AUTHORITY_BNDRY_SP
+    intersecting 187 of 267     bcgw.sde\WHSE_TANTALIS.TA_LAND_DISTRICTS_SVW
+    intersecting 188 of 267     bcgw.sde\WHSE_LEGAL_ADMIN_BOUNDARIES.ABMS_REGIONAL_DISTRICTS_SP
+    intersecting 189 of 267     bcgw.sde\WHSE_TANTALIS.TA_MGMT_AREAS_SPATIAL_SVW
+    intersecting 190 of 267     bcgw.sde\WHSE_ADMIN_BOUNDARIES.ADM_NR_DISTRICTS_SP
+    intersecting 191 of 267     bcgw.sde\WHSE_ADMIN_BOUNDARIES.ADM_NR_REGIONS_SP
+    intersecting 192 of 267     bcgw.sde\WHSE_ADMIN_BOUNDARIES.ADM_NR_AREAS_SP 
+    intersecting 193 of 267     bcgw.sde\WHSE_ADMIN_BOUNDARIES.LWADM_WATMGMT_DIST_AREA_SVW
+    intersecting 194 of 267     bcgw.sde\WHSE_ADMIN_BOUNDARIES.LWADM_WATMGMT_PREC_AREA_SVW
+    intersecting 195 of 267     bcgw.sde\WHSE_LEGAL_ADMIN_BOUNDARIES.ABMS_MUNICIPALITIES_SP
+    intersecting 196 of 267     bcgw.sde\WHSE_HUMAN_CULTURAL_ECONOMIC.FNT_NANWAKOLAS_MATRIX_SP
+    intersecting 197 of 267     bcgw.sde\WHSE_LEGAL_ADMIN_BOUNDARIES.FNT_TREATY_LAND_SP
+    intersecting 198 of 267     bcgw.sde\WHSE_LEGAL_ADMIN_BOUNDARIES.FNT_TREATY_RELATED_LAND_SP
+    intersecting 199 of 267     bcgw.sde\WHSE_LEGAL_ADMIN_BOUNDARIES.FNT_TREATY_AREA_SP
+    intersecting 200 of 267     bcgw.sde\WHSE_TANTALIS.TA_LAND_CLAIM_STLMNT_AREAS_SVW
+    intersecting 201 of 267     bcgw.sde\WHSE_LEGAL_ADMIN_BOUNDARIES.ABMS_LGL_ADMIN_AREAS_SVW
+    intersecting 202 of 267     bcgw.sde\WHSE_TANTALIS.TA_PARK_ECORES_PA_SVW
+    intersecting 203 of 267     bcgw.sde\WHSE_TANTALIS.TA_PARK_ECORES_PA_SVW
+    intersecting 204 of 267     bcgw.sde\WHSE_TANTALIS.TA_CONSERVANCY_AREAS_SVW
+    intersecting 205 of 267     bcgw.sde\WHSE_TANTALIS.TA_WILDLIFE_MGMT_AREAS_SVW
+    intersecting 206 of 267     \\spatialfiles.bcgov\work\lwbc\visr\Workarea\FCBC_VISR\Regional_Datasets\CFN_Consolidated_Bdy\CFN_Boundary_Jul_2012.shp
+    intersecting 207 of 267     bcgw.sde\WHSE_ADMIN_BOUNDARIES.CLAB_INDIAN_RESERVES
+    intersecting 208 of 267     \\spatialfiles.bcgov\work\lwbc\visr\Workarea\FCBC_VISR\Regional_Datasets\Harbour_Authorities\BC_Small_Harbour_Authorities_50m_buffer_BCAlbers.shp
+    intersecting 209 of 267     bcgw.sde\WHSE_LEGAL_ADMIN_BOUNDARIES.FNT_TREATY_SIDE_AGREEMENTS_SP
+    intersecting 210 of 267     \\spatialfiles.bcgov\work\lwbc\visr\Workarea\FCBC_VISR\Regional_Datasets\Nuchatlaht_Claim_Area\Nuchatlaht_Claim_Area_as_of_Feb2018.shp
+    intersecting 211 of 267     \\spatialfiles.bcgov\work\lwbc\visr\Workarea\FCBC_VISR\Regional_Datasets\Nuchatlaht_Claim_Area_1K_Buffer\Nuchatlaht_Claim_Area_1km_Buffer_as_of_Feb2018.shp
+    intersecting 212 of 267     \\spatialfiles.bcgov\work\lwbc\visr\Workarea\FCBC_VISR\Regional_Datasets\MIRR_NOI_Namgis_Tlowitsis\Namgis_Tlowitsis_NOIs_Oct2019_Final.shp
+    intersecting 213 of 267     \\spatialfiles.bcgov\work\lwbc\visr\Workarea\FCBC_VISR\Regional_Datasets\MIRR_NOI_Wei_Wai_Kum_ITA_Oct2019\Wei_Wai_Kum_ITA_Oct2019.shp
+    intersecting 214 of 267     \\spatialfiles.bcgov\Work\lwbc\visr\Workarea\FCBC_VISR\Regional_Datasets\MIRR_NOI_GNN\GNN_Offer_Lands.shp
+    intersecting 215 of 267     \\spatialfiles.bcgov\Work\lwbc\visr\Workarea\FCBC_VISR\Regional_Datasets\MIRR_NOI_Wuikinuxv_Jun2020\Wuikinuxv_LAT_2020-06-11.shp
+    intersecting 216 of 267     bcgw.sde\WHSE_HUMAN_CULTURAL_ECONOMIC.FNT_AREAS_OF_INTEREST_SP
+    intersecting 217 of 267     bcgw.sde\WHSE_ADMIN_BOUNDARIES.FADM_DESIGNATED_AREAS
+    intersecting 218 of 267     bcgw.sde\WHSE_ARCHAEOLOGY.RAAD_TFM_SITES_SVW
+    intersecting 219 of 267     bcgw.sde\WHSE_ARCHAEOLOGY.RAAD_TFM_SITES_SVW
+    intersecting 220 of 267     bcgw.sde\WHSE_ARCHAEOLOGY.RAAD_TFM_SITES_SVW
+    intersecting 221 of 267     bcgw.sde\WHSE_ARCHAEOLOGY.RAAD_TFM_SITES_SVW
+    intersecting 222 of 267     bcgw.sde\WHSE_ARCHAEOLOGY.RAAD_TFM_SITES_SVW
+    intersecting 223 of 267     bcgw.sde\WHSE_ARCHAEOLOGY.RAAD_TFM_SITES_SVW
+    intersecting 224 of 267     bcgw.sde\WHSE_ARCHAEOLOGY.RAAD_AOA_PROVINCIAL
+    intersecting 225 of 267     bcgw.sde\REG_HUMAN_CULTURAL_ECONOMIC.RAAD_AOA_CULT_MOD_TREE_SP
+    intersecting 226 of 267     \\spatialfiles.bcgov\work\lwbc\visr\Workarea\FCBC_VISR\Regional_Datasets\MM_Reserves\MM_Reserve.shp
+    intersecting 227 of 267     bcgw.sde\WHSE_WILDLIFE_MANAGEMENT.CRIMS_KELP_BEDS
+    intersecting 228 of 267     bcgw.sde\WHSE_WILDLIFE_MANAGEMENT.CRIMS_KELP_BEDS
+    intersecting 229 of 267     \\spatialfiles.bcgov\Work\lwbc\visr\Workarea\FCBC_VISR\Regional_Datasets\Eelgrass_Inventory_within_IslandsTrust_Areas\BullKelp_islandTrust_2022.shp
+    intersecting 230 of 267     \\spatialfiles.bcgov\Work\lwbc\visr\Workarea\FCBC_VISR\Regional_Datasets\Eelgrass_Inventory_within_IslandsTrust_Areas\BullKelp_islandTrust_2022.shp
+    intersecting 231 of 267     bcgw.sde\WHSE_WILDLIFE_MANAGEMENT.CRIMS_EELGRASSES
+    intersecting 232 of 267     bcgw.sde\WHSE_WILDLIFE_MANAGEMENT.CRIMS_EELGRASSES
+    intersecting 233 of 267     \\spatialfiles.bcgov\work\lwbc\visr\Workarea\FCBC_VISR\Regional_Datasets\Eelgrass_Inventory_within_IslandsTrust_Areas\Eelgrass_islandTrust_2022.shp
+    intersecting 234 of 267     \\spatialfiles.bcgov\work\lwbc\visr\Workarea\FCBC_VISR\Regional_Datasets\Eelgrass_Inventory_within_IslandsTrust_Areas\Eelgrass_islandTrust_2022.shp
+    intersecting 235 of 267     \\spatialfiles.bcgov\work\lwbc\visr\Workarea\FCBC_VISR\Regional_Datasets\Killer_Whale_EBSA\DFO_BC_RES_KILLER_WHALE_IA_SOG.shp
+    intersecting 236 of 267     \\spatialfiles.bcgov\work\lwbc\visr\Workarea\FCBC_VISR\Regional_Datasets\Killer_Whale_EBSA\DFO_BC_IA_RES_KILERWHAL_PNCIMA.shp
+    intersecting 237 of 267     \\spatialfiles.bcgov\Work\lwbc\visr\Workarea\FCBC_VISR\Regional_Datasets\DFO\DFO_SARA_CritHab_2022_KillerWhale.shp
+    intersecting 238 of 267     bcgw.sde\WHSE_WILDLIFE_MANAGEMENT.CRIMS_CLAM_BEDS
+    intersecting 239 of 267     bcgw.sde\WHSE_WILDLIFE_MANAGEMENT.CRIMS_HERRING_SPAWN
+    intersecting 240 of 267     bcgw.sde\WHSE_WATER_MANAGEMENT.WLS_WATER_RIGHTS_LICENCES_SP
+    intersecting 241 of 267     bcgw.sde\WHSE_TANTALIS.TA_CROWN_TENURES_SVW
+    intersecting 242 of 267     bcgw.sde\WHSE_TANTALIS.TA_CROWN_TENURES_SVW
+    intersecting 243 of 267     bcgw.sde\WHSE_TANTALIS.TA_CROWN_TENURES_SVW
+    intersecting 244 of 267     bcgw.sde\WHSE_TANTALIS.TA_CROWN_TENURES_SVW
+    intersecting 245 of 267     bcgw.sde\WHSE_TANTALIS.TA_CROWN_TENURES_SVW
+    intersecting 246 of 267     bcgw.sde\WHSE_TANTALIS.TA_CROWN_TENURES_SVW
+    intersecting 247 of 267     bcgw.sde\WHSE_ADMIN_BOUNDARIES.CLP_UTILITY_PRICING_ZONES_SP
+    intersecting 248 of 267     bcgw.sde\WHSE_LEGAL_ADMIN_BOUNDARIES.LUAA_LOG_HNDLNG_PTNTL_SITES_SP
+    intersecting 249 of 267     bcgw.sde\WHSE_FOREST_TENURE.FTEN_RECREATION_POLY_SVW
+    intersecting 250 of 267     bcgw.sde\WHSE_LAND_USE_PLANNING.RMP_PLAN_NON_LEGAL_POLY_SVW
+    intersecting 251 of 267     bcgw.sde\WHSE_LAND_USE_PLANNING.RMP_PLAN_NON_LEGAL_POLY_SVW
+    intersecting 252 of 267     bcgw.sde\WHSE_LAND_USE_PLANNING.RMP_PLAN_NON_LEGAL_POLY_SVW
+    intersecting 253 of 267     bcgw.sde\WHSE_LAND_USE_PLANNING.RMP_PLAN_NON_LEGAL_POLY_SVW
+    intersecting 254 of 267     \\spatialfiles.bcgov\Work\lwbc\visr\Workarea\FCBC_VISR\DFO_Data\Classification\commondata\shapefiles\ECCC_Classification_20171116.shp
+    intersecting 255 of 267     \\spatialfiles.bcgov\Work\lwbc\visr\Workarea\FCBC_VISR\Regional_Datasets\Gwani_project_area\Gwani_prj_area.shp
+    intersecting 256 of 267     \\spatialfiles.bcgov\Work\lwbc\visr\Workarea\Shared_Data\MAMU\Spatial Data\MAMU_LUOR.gdb\MAMU_LUOR_SuitableHabitat_NonCorporate
+    intersecting 257 of 267     \\spatialfiles.bcgov\work\srm\nan\Workarea\Aquaculture\data\Outgoing\HarvestAreas_20201216_final\HarvestAreas_20201216_final.shp
+    intersecting 258 of 267     bcgw.sde\WHSE_LAND_USE_PLANNING.RMP_PLAN_LEGAL_POLY_SVW
+    intersecting 259 of 267     bcgw.sde\WHSE_LAND_USE_PLANNING.RMP_PLAN_LEGAL_POLY_SVW
+    intersecting 260 of 267     bcgw.sde\WHSE_LAND_USE_PLANNING.RMP_PLAN_LEGAL_POLY_SVW
+    intersecting 261 of 267     bcgw.sde\WHSE_LAND_USE_PLANNING.RMP_PLAN_LEGAL_POLY_SVW
+    intersecting 262 of 267     bcgw.sde\WHSE_LAND_USE_PLANNING.RMP_PLAN_LEGAL_POLY_SVW
+    intersecting 263 of 267     bcgw.sde\WHSE_LAND_USE_PLANNING.RMP_PLAN_LEGAL_POLY_SVW
+    intersecting 264 of 267     bcgw.sde\WHSE_FOREST_TENURE.BCTS_OPERATING_AREAS_SP
+    intersecting 265 of 267     bcgw.sde\WHSE_FOREST_VEGETATION.REC_KARST_INV_SVW
+    intersecting 266 of 267     \\spatialfiles.bcgov\work\srm\nan\Local\Data\HaidaGwaii\DevelopmentAreas\DevelopmentAreaBaseData.shp
+    intersecting 267 of 267     bcgw.sde\WHSE_BASEMAPPING.FWA_COASTLINES_SP
+Clip Data Time is 1312
+Generating PDF maps
+======================================================================
+Creating the overview maps
+======================================================================
+Making overview maps
+MAPX file created for: Overview_Map
+Overview Map was NOT added to the project
+======================================================================
+======================================================================
+Creating the maps
+======================================================================
+Making map 1 of 267  Crossed_by_River_or_Creek_FWA.pdf
+Making map 2 of 267  Crossed_by_River_or_Creek_TRIM.pdf
+Making map 3 of 267  Crossed_by_Road_or_Highway_DRA.pdf
+Making map 4 of 267  Crossed_by_FSR_or_Permit_Roads.pdf
+Making map 5 of 267  Crossed_by_FSR_or_Permit_Roads_within_right_of_way_allowance.pdf
+Making map 6 of 267  Crossed_by_Surveyed_Right_of_way.pdf
+Making map 7 of 267  Crossed_by_Right_of_way.pdf
+Making map 8 of 267  Crossed_by_Railway_Tracks.pdf
+Making map 9 of 267  Crossed_by_Railway_Crossings.pdf
+Making map 10 of 267  Adjoined_by_River_or_Creek_FWA.pdf
+Making map 11 of 267  Adjoined_by_River_or_Creek_TRIM.pdf
+Making map 12 of 267  Adjoined_by_Highway_DRA.pdf
+Making map 13 of 267  Adjoined_by_Road_DRA.pdf
+Making map 14 of 267  Adjoined_by_FSR_or_Permit_Roads.pdf
+Making map 15 of 267  Adjoined_by_Surveyed_Right_of_way.pdf
+Making map 16 of 267  Adjoined_by_Right_of_way.pdf
+Making map 17 of 267  Adjoined_by_Transportation_Corridors.pdf
+Making map 18 of 267  Adjoined_by_Railway_Tracks.pdf
+Making map 19 of 267  Adjoined_by_Railway_Crossings.pdf
+Making map 20 of 267  Indian_Reserves.pdf
+Making map 21 of 267  IR_within_2_km.pdf
+Making map 22 of 267  National_Park.pdf
+Making map 23 of 267  Park_and_Protected_Areas.pdf
+Making map 24 of 267  Conservancy_Areas.pdf
+Making map 25 of 267  Conservation_Lands_including_Wildlife_Managment_Areas.pdf
+Making map 26 of 267  NGO_Conservation_Areas.pdf
+Making map 27 of 267  Consultative_Areas.pdf
+Making map 28 of 267  First_Nation_Statement_of_Intent_Boundaries_.pdf
+Making map 29 of 267  MFR_First_Nation_Agreement_Boundaries.pdf
+Making map 30 of 267  First_Nation_Traditional_Use_Study_Area.pdf
+Making map 31 of 267  Traditional_Use_Points.pdf
+Making map 32 of 267  Traditional_Use_Lines.pdf
+Making map 33 of 267  Traditional_Use_Polygons.pdf
+Making map 34 of 267  Timber_Supply_Area_and_Blocks.pdf
+Making map 35 of 267  Primary_Survey_Parcels_Tantalis.pdf
+Making map 36 of 267  Land_Act_Subdivisions_Tantalis.pdf
+Making map 37 of 267  ParcelMap_BC.pdf
+Making map 38 of 267  Crown_Granted_Mineral_Claims.pdf
+Making map 39 of 267  Crown_Tenure_Tantalis_Application.pdf
+Making map 40 of 267  Crown_Tenure_Tantalis_Tenure.pdf
+Making map 41 of 267  Crown_Tenure_Inventory.pdf
+Making map 42 of 267  Crown_Tenure_PreTantalis.pdf
+Making map 43 of 267  Grazing_Leases_Tantalis_.pdf
+Making map 44 of 267  Crown_Acquisitions.pdf
+Making map 45 of 267  Crown_Reversions.pdf
+Making map 46 of 267  Transfers_of_Admin_and_Control.pdf
+Making map 47 of 267  Guide_Outfitter.pdf
+Making map 48 of 267  Trapline.pdf
+Making map 49 of 267  FTEN_Roads.pdf
+Making map 50 of 267  FTEN_Roads_within_right_of_way_allowance.pdf
+Making map 51 of 267  FTEN_Special_Access_Roads_Line.pdf
+Making map 52 of 267  FTEN_Special_Access_Roads_Poly.pdf
+Making map 53 of 267  FTEN_Range_Tenure_.pdf
+Making map 54 of 267  FTEN_Harvest_Authority.pdf
+Making map 55 of 267  FTEN_Cut_Blocks_Current_and_Application.pdf
+Making map 56 of 267  FTEN_Communication_Sites.pdf
+Making map 57 of 267  FTEN_Real_Property_Projects.pdf
+Making map 58 of 267  FTEN_Special_Use_Permits.pdf
+Making map 59 of 267  FTEN_Timber_Licence_Polygons.pdf
+Making map 60 of 267  FTEN_Timber_Licence_Remaining_Polygons.pdf
+Making map 61 of 267  FTEN_Timber_Licence_Elimination_Polygons.pdf
+Making map 62 of 267  FTEN_Managed_Licenses.pdf
+Making map 63 of 267  FTEN_Free_Use_Permits.pdf
+Making map 64 of 267  FTEN_Map_Notation_Lines.pdf
+Making map 65 of 267  FTEN_Map_Notation_Polys.pdf
+Making map 66 of 267  FTEN_Map_Notation_Points.pdf
+Making map 67 of 267  TFL.pdf
+Making map 68 of 267  TFL_Additions.pdf
+Making map 69 of 267  TFL_Deletions.pdf
+Making map 70 of 267  TFL_Schedule_A.pdf
+Making map 71 of 267  Research_Plots.pdf
+Making map 72 of 267  Growth_and_Yield_Plots.pdf
+Making map 73 of 267  FTEN_Recreation_Tenure_Polys.pdf
+Making map 74 of 267  FTEN_Recreation_Tenure_Lines.pdf
+Making map 75 of 267  Section_58_Recreation_Order_Points.pdf
+Making map 76 of 267  Section_58_Recreation_Order_Lines.pdf
+Making map 77 of 267  Section_58_Recreation_Order_Polygons.pdf
+Making map 78 of 267  RESULTS_Openings.pdf
+Making map 79 of 267  RESULTS_Reserves.pdf
+Making map 80 of 267  Climate_Stations.pdf
+Making map 81 of 267  Hydrometric_Stations.pdf
+Making map 82 of 267  Streams_with_Water_Allocation_Notations.pdf
+Making map 83 of 267  Aquifers_with_Water_Allocation_Notations.pdf
+Making map 84 of 267  Water_Rights_Licences.pdf
+Making map 85 of 267  Water_Rights_Applications.pdf
+Making map 86 of 267  Water_Licenced_Work_Linear_Features_within_50m.pdf
+Making map 87 of 267  Water_Licenced_Work_Point_Features_within_50m.pdf
+Making map 88 of 267  Land_Parcels_with_Water_Licences.pdf
+Making map 89 of 267  Water_Approvals.pdf
+Making map 90 of 267  Reservoir_Permits_over_Crown_Land.pdf
+Making map 91 of 267  BC_Dams.pdf
+Making map 92 of 267  Coal_Application.pdf
+Making map 93 of 267  Coal_Lease.pdf
+Making map 94 of 267  Coal_Licence.pdf
+Making map 95 of 267  Permitted_Mine_Area_for_Major_Mines.pdf
+Making map 96 of 267  NOW_Centre_Points_within_area_of_interest.pdf
+Making map 97 of 267  NOW_Centre_Points_within_500_metres.pdf
+Making map 98 of 267  Mineral_and_Placer_Tenures.pdf
+Making map 99 of 267  Petroleum_Tenures.pdf
+Making map 100 of 267  Important_Fossil_Areas.pdf
+Making map 101 of 267  Environmental_Remediation_Sites.pdf
+Making map 102 of 267  Environmental_Monitoring_Stations.pdf
+Making map 103 of 267  Archaeology_Sites.pdf
+Making map 104 of 267  Archaeology_Sites_within_50_metres.pdf
+Making map 105 of 267  Heritage_Sites_.pdf
+Making map 106 of 267  Heritage_Sites_within_50_metres.pdf
+Making map 107 of 267  Agriculture_Land_Reserve.pdf
+Making map 108 of 267  Transportation_Corridors.pdf
+Making map 109 of 267  Alpine_Ski_Areas.pdf
+Making map 110 of 267  Snowmobile_Management_Areas.pdf
+Making map 111 of 267  Reserve_Mineral_Sites.pdf
+Making map 112 of 267  Placer_Reserve_Sites.pdf
+Making map 113 of 267  Species_and_Ecosystems_at_Risk_Public_Occurrences.pdf
+Making map 114 of 267  Species_and_Ecosystems_at_Risk_Masked_Secured_Occurrences.pdf
+Making map 115 of 267  Community_Watersheds.pdf
+Making map 116 of 267  Flood_Plains_in_BC.pdf
+Making map 117 of 267  Water_Wells.pdf
+Making map 118 of 267  Ground_Water_Aquifers.pdf
+Making map 119 of 267  Water_Reservations_Points.pdf
+Making map 120 of 267  Water_Allocation_Notation_Points.pdf
+Making map 121 of 267  Non_Trim_Hydrography.pdf
+Making map 122 of 267  Flood_Protection_Works_Appurtenant_Structures.pdf
+Making map 123 of 267  Active_Snow_Course_Locations.pdf
+Making map 124 of 267  Active_Snow_Pillow_Locations.pdf
+Making map 125 of 267  Wildlife_Habitat_Area_Legal.pdf
+Making map 126 of 267  Wildlife_Habitat_Proposed.pdf
+Making map 127 of 267  Ungulate_Winter_Range_Legal.pdf
+Making map 128 of 267  Ungulate_Winter_Range_Legal_with_5_km_buffer.pdf
+Making map 129 of 267  Ungulate_Winter_Range_Proposed.pdf
+Making map 130 of 267  Caribou_Habitat_Areas_WHA_GAR_order.pdf
+Making map 131 of 267  Caribou_Habitat_Areas_UWR_GAR_order.pdf
+Making map 132 of 267  Proposed_Fisheries_Sensitive_Watersheds.pdf
+Making map 133 of 267  Approved_Fisheries_Sensitive_Watersheds.pdf
+Making map 134 of 267  Critical_Habitat_for_Federally_listed_Species_at_Risk.pdf
+Making map 135 of 267  Eelgrass_Areas.pdf
+Making map 136 of 267  Kelp_Beds.pdf
+Making map 137 of 267  Wildlife_Management_Areas.pdf
+Making map 138 of 267  Wildlife_Management_Units.pdf
+Making map 139 of 267  Provincial_Forest.pdf
+Making map 140 of 267  Provincial_Forest_Additions.pdf
+Making map 141 of 267  Provincial_Forest_Deletions.pdf
+Making map 142 of 267  Provincial_Forest_Exclusions.pdf
+Making map 143 of 267  Terrain_Mapping_Project_Boundaries.pdf
+Making map 144 of 267  Landscape_Units.pdf
+Making map 145 of 267  Strategic_Land_Resource_Plans.pdf
+Making map 146 of 267  Legal_OGMA.pdf
+Making map 147 of 267  Non_Legal_OGMA.pdf
+Making map 148 of 267  Old_Growth_Recommended_Harvest_Deferral_Areas.pdf
+Making map 149 of 267  Legal_Strategic_Land_and_Resource_Planning_Objectives_polygons.pdf
+Making map 150 of 267  Legal_Strategic_Land_and_Resource_Planning_Objectives_point.pdf
+Making map 151 of 267  Legal_Strategic_Land_and_Resource_Planning_Objectives_line.pdf
+Making map 152 of 267  Non_Legal_Strategic_Land_and_Resource_Planning_Features_polygon.pdf
+Making map 153 of 267  Non_Legal_Strategic_Land_and_Resource_Planning_Features_point.pdf
+Making map 154 of 267  Non_Legal_Strategic_Land_and_Resource_Planning_Features_line.pdf
+Making map 155 of 267  Archaeological_Potential.pdf
+Making map 156 of 267  Arch_Potential_Informed_Contributors_Layer.pdf
+Making map 157 of 267  Known_Fish_Observations.pdf
+Making map 158 of 267  Known_Fish_Observations_within_5km.pdf
+Making map 159 of 267  Historic_Known_Fish_Distribution_Points_with_Spawning_and_Rearing.pdf
+Making map 160 of 267  Historic_Known_Fish_Dist_Points_with_Spawning_and_Rearing_5km_buffer.pdf
+Making map 161 of 267  Biogeoclimatic_Zone.pdf
+Making map 162 of 267  Energy_Production_Tenures_Tantalis.pdf
+Making map 163 of 267  BCER_Road_Permit_Areas.pdf
+Making map 164 of 267  BCER_Road_Application_Areas.pdf
+Making map 165 of 267  BCER_Well_Facility_Permits.pdf
+Making map 166 of 267  BCER_Well_Facility_Applications.pdf
+Making map 167 of 267  BCER_Pipeline_Area_Permits.pdf
+Making map 168 of 267  BCER_Pipeline_Area_Applications.pdf
+Making map 169 of 267  BCER_Pipeline_Area_Permits_within_50m.pdf
+Making map 170 of 267  BCER_Pipeline_Area_Applications_within_50m.pdf
+Making map 171 of 267  BCER_Construction_Corridor.pdf
+Making map 172 of 267  BCER_Seismic_Permits.pdf
+Making map 173 of 267  BCER_Seismic_Applications.pdf
+Making map 174 of 267  BCER_Facility_Location_Permits.pdf
+Making map 175 of 267  BCER_Ancillary_Permits.pdf
+Making map 176 of 267  BCER_Ancillary_Applications.pdf
+Making map 177 of 267  BCER_Sump_Locations.pdf
+Making map 178 of 267  BCER_Waste_Disposal_Sites.pdf
+Making map 179 of 267  BCER_Water_Source_Permits.pdf
+Making map 180 of 267  BCER_Water_Source_Applications.pdf
+Making map 181 of 267  LEGACY_BCER_Petroleum_Development_Roads_Pre_2006_within_50m.pdf
+Making map 182 of 267  LEGACY_BCER_Facility_Locations_Pre_2016.pdf
+Making map 183 of 267  AOI_of_First_Nations_Reconciliation_Initiatives.pdf
+Making map 184 of 267  MOT_District_Boundaries.pdf
+Making map 185 of 267  MOE_District_Boundaries.pdf
+Making map 186 of 267  Health_Authority_Boundaries.pdf
+Making map 187 of 267  Land_Districts.pdf
+Making map 188 of 267  Regional_Districts.pdf
+Making map 189 of 267  Muskwa_Kechika_Management_Area.pdf
+Making map 190 of 267  Natural_Resource_District.pdf
+Making map 191 of 267  Natural_Resource_Regions.pdf
+Making map 192 of 267  Natural_Resource_ADM_Areas.pdf
+Making map 193 of 267  Water_Management_Districts.pdf
+Making map 194 of 267  Water_Management_Precincts.pdf
+Making map 195 of 267  Municipalities.pdf
+Making map 196 of 267  Nanwakolas_Area_Significance.pdf
+Making map 197 of 267  First_Nation_Treaty_Lands.pdf
+Making map 198 of 267  First_Nation_Treaty_Related_Lands.pdf
+Making map 199 of 267  First_Nation_Treaty_Areas.pdf
+Making map 200 of 267  Land_Claim_Settlement_Areas.pdf
+Making map 201 of 267  Islands_Trust_Local_Committee_Areas.pdf
+Making map 202 of 267  Prov_Parks_and_Eco_Reserves_within_1_km_Radius.pdf
+Making map 203 of 267  Protected_Areas_and_Recreation_Areas_within_1_km_Radius.pdf
+Making map 204 of 267  Conservancy_Areas_within_1_km_Radius.pdf
+Making map 205 of 267  Wildlife_Management_Areas_within_1_km_Radius.pdf
+Making map 206 of 267  Coastal_First_Nation_Consolidated_Boundary.pdf
+Making map 207 of 267  Indian_Reserves_within_5_km_Radius.pdf
+Making map 208 of 267  Approx_Small_Craft_Harbour_Authority_Locations_1_Km_Radius.pdf
+Making map 209 of 267  Maanulth_Important_Harvest_Areas.pdf
+Making map 210 of 267  Nuchatlaht_Claim_Area_Feb2018.pdf
+Making map 211 of 267  Nuchatlaht_Claim_Area_with_1_km_buffer_Feb2018.pdf
+Making map 212 of 267  MIRR_NOIs_for_Namgis_FN_and_Tlowitsis_Nation.pdf
+Making map 213 of 267  MIRR_NOI_for_Wei_Wai_Kum_First_Nation.pdf
+Making map 214 of 267  MIRR_NOI_for_Gwasalanakwaxdaxw_FN__July_2020.pdf
+Making map 215 of 267  MIRR_NOI_for_Wuikinuxv_FN_Sept_2020.pdf
+Making map 216 of 267  AOI_FN_Reconciliation_Initiatives.pdf
+Making map 217 of 267  Big_Trees_within_Forest_Administration_Designated_Area_.pdf
+Making map 218 of 267  Archaeological_Sites_within_1_km_Radius.pdf
+Making map 219 of 267  Archaeological_Sites_within_500_m_Radius.pdf
+Making map 220 of 267  Archaeological_Sites_within_250_m_Radius.pdf
+Making map 221 of 267  Archaeological_Sites_within_200_m_Radius.pdf
+Making map 222 of 267  Archaeological_Sites_within_150_m_Radius.pdf
+Making map 223 of 267  Archaeological_Sites_within_100_m_Radius.pdf
+Making map 224 of 267  Archaeology_Overview_Assessment_Areas_within_1_km_Radius.pdf
+Making map 225 of 267  Campbell_River_NRD_Archaeology_Overview_Assseement_CMT_Potential_.pdf
+Making map 226 of 267  Marble_Murrelet_Reserve_Pre_2000.pdf
+Making map 227 of 267  Kelp_Beds_from_CRIMS_within_100_m_Radius.pdf
+Making map 228 of 267  Kelp_Beds_from_CRIMS_within_1_km_Radius.pdf
+Making map 229 of 267  Kelp_Beds_mapped_by_Islands_Trust_within_100m_Radius_update_2022.pdf
+Making map 230 of 267  Kelp_Beds_mapped_by_Islands_Trust_within_1_km_Radius_update_2022.pdf
+Making map 231 of 267  Eel_Grass_Beds_from_CRIMS_within_100m_Radius.pdf
+Making map 232 of 267  Eel_Grass_Beds_from_CRIMS_within_1_km_Radius.pdf
+Making map 233 of 267  Eel_Grass_Beds_mapped_by_Islands_Trust_within_100m_Radius_update_2022.pdf
+Making map 234 of 267  Eel_Grass_Beds_mapped_by_Islands_Trust_within_1_km_Radius_update_2022.pdf
+Making map 235 of 267  Killer_Whale_Significant_Areas_within_WCVI_and_SOG.pdf
+Making map 236 of 267  Killer_Whale_Significant_Areas_within_PNCIMA.pdf
+Making map 237 of 267  DFO_Critical_Habitat_of_Species_at_Risk_Southern_and_Northern_Resident_Killer_whales.pdf
+Making map 238 of 267  Clam_Beds_from_CRIMS.pdf
+Making map 239 of 267  Herring_Spawn_from_CRIMS.pdf
+Making map 240 of 267  Drinking_Water_within_500_meters.pdf
+Making map 241 of 267  Crown_Land_Tenure_Tantalis_within_150_meters.pdf
+Making map 242 of 267  Crown_Land_Application_Tantalis_within_150_meters.pdf
+Making map 243 of 267  Commercial_Land_Act_Tenures_of_Interest_within_1_km_radius.pdf
+Making map 244 of 267  Commercial_Land_Act_Applications_of_Interest_within_1_km_radius_.pdf
+Making map 245 of 267  Section_15_to_17_Land_Act_Reserve_Tenures_within_1_km_radius_.pdf
+Making map 246 of 267  Section_15_to_17_Land_Act_Reserve_Applications_within_1_km_radius.pdf
+Making map 247 of 267  Utility_Pricing_Zones.pdf
+Making map 248 of 267  Potential_Log_Handling_BC_Coast.pdf
+Making map 249 of 267  Recreation_Sites_and_Reserves_within_One_Kilometer_Radius.pdf
+Making map 250 of 267  MaPPs_Central_Coast_Marine_Plan.pdf
+Making map 251 of 267  MaPPs_Haida_Gwaii_Marine_Plan.pdf
+Making map 252 of 267  MaPPs_North_Coast_Marine_Plan.pdf
+Making map 253 of 267  MaPPs_North_Vancouver_Island_Marine_Plan.pdf
+Making map 254 of 267  Federal_Classified_Shellfish_Harvest_Areas_Nov_2017.pdf
+Making map 255 of 267  Gwani_Project_Area.pdf
+Making map 256 of 267  MAMU_Suitable_habitat.pdf
+Making map 257 of 267  Aquaculture_Plant_Harvesting_Areas.pdf
+Making map 258 of 267  Marbled_Murrelet_Reserves.pdf
+Making map 259 of 267  Northern_Goshawk_Reserves.pdf
+Making map 260 of 267  Northern_Saw_Whet_Owl_Reserves.pdf
+Making map 261 of 267  Sensitive_Watersheds.pdf
+Making map 262 of 267  Cedar_Stewardship_Areas.pdf
+Making map 263 of 267  Forest_Reserves.pdf
+Making map 264 of 267  BCTS_Operating_Areas.pdf
+Making map 265 of 267  Potential_Karst_Sites.pdf
+Making map 266 of 267  Development_Areas.pdf
+Making map 267 of 267  Coastline.pdf
+MAPX file created for: Status_Map
+Status Map was NOT added to the project
+Make Maps Time is 351
+======================================================================
+Creating the final output spreadsheet
+    writing spreadsheet row 1 of 267      Crossed by River or Creek FWA
+    writing spreadsheet row 2 of 267      Crossed by River or Creek TRIM
+    writing spreadsheet row 3 of 267      Crossed by Road or Highway DRA
+    writing spreadsheet row 4 of 267      Crossed by FSR or Permit Roads
+    writing spreadsheet row 5 of 267      Crossed by FSR or Permit Roads within right of way allowance
+    writing spreadsheet row 6 of 267      Crossed by Surveyed Right of way
+    writing spreadsheet row 7 of 267      Crossed by Right of way
+    writing spreadsheet row 8 of 267      Crossed by Railway Tracks
+    writing spreadsheet row 9 of 267      Crossed by Railway Crossings
+    writing spreadsheet row 10 of 267      Adjoined by River or Creek FWA
+    writing spreadsheet row 11 of 267      Adjoined by River or Creek TRIM
+    writing spreadsheet row 12 of 267      Adjoined by Highway DRA
+    writing spreadsheet row 13 of 267      Adjoined by Road DRA
+    writing spreadsheet row 14 of 267      Adjoined by FSR or Permit Roads
+    writing spreadsheet row 15 of 267      Adjoined by Surveyed Right of way
+    writing spreadsheet row 16 of 267      Adjoined by Right of way
+    writing spreadsheet row 17 of 267      Adjoined by Transportation Corridors
+    writing spreadsheet row 18 of 267      Adjoined by Railway Tracks
+    writing spreadsheet row 19 of 267      Adjoined by Railway Crossings
+    writing spreadsheet row 20 of 267      Indian Reserves
+    writing spreadsheet row 21 of 267      IR within 2 km
+    writing spreadsheet row 22 of 267      National Park
+    writing spreadsheet row 23 of 267      Park and Protected Areas
+    writing spreadsheet row 24 of 267      Conservancy Areas
+    writing spreadsheet row 25 of 267      Conservation Lands including Wildlife Managment Areas
+    writing spreadsheet row 26 of 267      NGO Conservation Areas
+    writing spreadsheet row 27 of 267      Consultative Areas
+    writing spreadsheet row 28 of 267      First Nation Statement of Intent Boundaries 
+    writing spreadsheet row 29 of 267      MFR First Nation Agreement Boundaries
+    writing spreadsheet row 30 of 267      First Nation Traditional Use Study Area
+    writing spreadsheet row 31 of 267      Traditional Use Points
+    writing spreadsheet row 32 of 267      Traditional Use Lines
+    writing spreadsheet row 33 of 267      Traditional Use Polygons
+    writing spreadsheet row 34 of 267      Timber Supply Area and Blocks
+    writing spreadsheet row 35 of 267      Primary Survey Parcels Tantalis
+    writing spreadsheet row 36 of 267      Land Act Subdivisions Tantalis
+    writing spreadsheet row 37 of 267      ParcelMap BC
+    writing spreadsheet row 38 of 267      Crown Granted Mineral Claims
+    writing spreadsheet row 39 of 267      Crown Tenure Tantalis Application
+    writing spreadsheet row 40 of 267      Crown Tenure Tantalis Tenure
+    writing spreadsheet row 41 of 267      Crown Tenure Inventory
+    writing spreadsheet row 42 of 267      Crown Tenure PreTantalis
+    writing spreadsheet row 43 of 267      Grazing Leases Tantalis 
+    writing spreadsheet row 44 of 267      Crown Acquisitions
+    writing spreadsheet row 45 of 267      Crown Reversions
+    writing spreadsheet row 46 of 267      Transfers of Admin and Control
+    writing spreadsheet row 47 of 267      Guide Outfitter
+    writing spreadsheet row 48 of 267      Trapline
+    writing spreadsheet row 49 of 267      FTEN Roads
+    writing spreadsheet row 50 of 267      FTEN Roads within right of way allowance
+    writing spreadsheet row 51 of 267      FTEN Special Access Roads Line
+    writing spreadsheet row 52 of 267      FTEN Special Access Roads Poly
+    writing spreadsheet row 53 of 267      FTEN Range Tenure 
+    writing spreadsheet row 54 of 267      FTEN Harvest Authority
+    writing spreadsheet row 55 of 267      FTEN Cut Blocks Current and Application
+    writing spreadsheet row 56 of 267      FTEN Communication Sites
+    writing spreadsheet row 57 of 267      FTEN Real Property Projects
+    writing spreadsheet row 58 of 267      FTEN Special Use Permits
+    writing spreadsheet row 59 of 267      FTEN Timber Licence Polygons
+    writing spreadsheet row 60 of 267      FTEN Timber Licence Remaining Polygons
+    writing spreadsheet row 61 of 267      FTEN Timber Licence Elimination Polygons
+    writing spreadsheet row 62 of 267      FTEN Managed Licenses
+    writing spreadsheet row 63 of 267      FTEN Free Use Permits
+    writing spreadsheet row 64 of 267      FTEN Map Notation Lines
+    writing spreadsheet row 65 of 267      FTEN Map Notation Polys
+    writing spreadsheet row 66 of 267      FTEN Map Notation Points
+    writing spreadsheet row 67 of 267      TFL
+    writing spreadsheet row 68 of 267      TFL Additions
+    writing spreadsheet row 69 of 267      TFL Deletions
+    writing spreadsheet row 70 of 267      TFL Schedule A
+    writing spreadsheet row 71 of 267      Research Plots
+    writing spreadsheet row 72 of 267      Growth and Yield Plots
+    writing spreadsheet row 73 of 267      FTEN Recreation Tenure Polys
+    writing spreadsheet row 74 of 267      FTEN Recreation Tenure Lines
+    writing spreadsheet row 75 of 267      Section 58 Recreation Order Points
+    writing spreadsheet row 76 of 267      Section 58 Recreation Order Lines
+    writing spreadsheet row 77 of 267      Section 58 Recreation Order Polygons
+    writing spreadsheet row 78 of 267      RESULTS Openings
+    writing spreadsheet row 79 of 267      RESULTS Reserves
+    writing spreadsheet row 80 of 267      Climate Stations
+    writing spreadsheet row 81 of 267      Hydrometric Stations
+    writing spreadsheet row 82 of 267      Streams with Water Allocation Notations
+    writing spreadsheet row 83 of 267      Aquifers with Water Allocation Notations
+    writing spreadsheet row 84 of 267      Water Rights Licences
+    writing spreadsheet row 85 of 267      Water Rights Applications
+    writing spreadsheet row 86 of 267      Water Licenced Work Linear Features within 50m
+    writing spreadsheet row 87 of 267      Water Licenced Work Point Features within 50m
+    writing spreadsheet row 88 of 267      Land Parcels with Water Licences
+    writing spreadsheet row 89 of 267      Water Approvals
+    writing spreadsheet row 90 of 267      Reservoir Permits over Crown Land
+    writing spreadsheet row 91 of 267      BC Dams
+    writing spreadsheet row 92 of 267      Coal Application
+    writing spreadsheet row 93 of 267      Coal Lease
+    writing spreadsheet row 94 of 267      Coal Licence
+    writing spreadsheet row 95 of 267      Permitted Mine Area for Major Mines
+    writing spreadsheet row 96 of 267      NOW Centre Points within area of interest
+    writing spreadsheet row 97 of 267      NOW Centre Points within 500 metres
+    writing spreadsheet row 98 of 267      Mineral and Placer Tenures
+    writing spreadsheet row 99 of 267      Petroleum Tenures
+    writing spreadsheet row 100 of 267      Important Fossil Areas
+    writing spreadsheet row 101 of 267      Environmental Remediation Sites
+    writing spreadsheet row 102 of 267      Environmental Monitoring Stations
+    writing spreadsheet row 103 of 267      Archaeology Sites
+    writing spreadsheet row 104 of 267      Archaeology Sites within 50 metres
+    writing spreadsheet row 105 of 267      Heritage Sites 
+    writing spreadsheet row 106 of 267      Heritage Sites within 50 metres
+    writing spreadsheet row 107 of 267      Agriculture Land Reserve
+    writing spreadsheet row 108 of 267      Transportation Corridors
+    writing spreadsheet row 109 of 267      Alpine Ski Areas
+    writing spreadsheet row 110 of 267      Snowmobile Management Areas
+    writing spreadsheet row 111 of 267      Reserve Mineral Sites
+    writing spreadsheet row 112 of 267      Placer Reserve Sites
+    writing spreadsheet row 113 of 267      Species and Ecosystems at Risk Public Occurrences
+    writing spreadsheet row 114 of 267      Species and Ecosystems at Risk Masked Secured Occurrences
+    writing spreadsheet row 115 of 267      Community Watersheds
+    writing spreadsheet row 116 of 267      Flood Plains in BC
+    writing spreadsheet row 117 of 267      Water Wells
+    writing spreadsheet row 118 of 267      Ground Water Aquifers
+    writing spreadsheet row 119 of 267      Water Reservations Points
+    writing spreadsheet row 120 of 267      Water Allocation Notation Points
+    writing spreadsheet row 121 of 267      Non Trim Hydrography
+    writing spreadsheet row 122 of 267      Flood Protection Works Appurtenant Structures
+    writing spreadsheet row 123 of 267      Active Snow Course Locations
+    writing spreadsheet row 124 of 267      Active Snow Pillow Locations
+    writing spreadsheet row 125 of 267      Wildlife Habitat Area Legal
+    writing spreadsheet row 126 of 267      Wildlife Habitat Proposed
+    writing spreadsheet row 127 of 267      Ungulate Winter Range Legal
+    writing spreadsheet row 128 of 267      Ungulate Winter Range Legal with 5 km buffer
+    writing spreadsheet row 129 of 267      Ungulate Winter Range Proposed
+    writing spreadsheet row 130 of 267      Caribou Habitat Areas WHA GAR order
+    writing spreadsheet row 131 of 267      Caribou Habitat Areas UWR GAR order
+    writing spreadsheet row 132 of 267      Proposed Fisheries Sensitive Watersheds
+    writing spreadsheet row 133 of 267      Approved Fisheries Sensitive Watersheds
+    writing spreadsheet row 134 of 267      Critical Habitat for Federally listed Species at Risk
+    writing spreadsheet row 135 of 267      Eelgrass Areas
+    writing spreadsheet row 136 of 267      Kelp Beds
+    writing spreadsheet row 137 of 267      Wildlife Management Areas
+    writing spreadsheet row 138 of 267      Wildlife Management Units
+    writing spreadsheet row 139 of 267      Provincial Forest
+    writing spreadsheet row 140 of 267      Provincial Forest Additions
+    writing spreadsheet row 141 of 267      Provincial Forest Deletions
+    writing spreadsheet row 142 of 267      Provincial Forest Exclusions
+    writing spreadsheet row 143 of 267      Terrain Mapping Project Boundaries
+    writing spreadsheet row 144 of 267      Landscape Units
+    writing spreadsheet row 145 of 267      Strategic Land Resource Plans
+    writing spreadsheet row 146 of 267      Legal OGMA
+    writing spreadsheet row 147 of 267      Non Legal OGMA
+    writing spreadsheet row 148 of 267      Old Growth Recommended Harvest Deferral Areas
+    writing spreadsheet row 149 of 267      Legal Strategic Land and Resource Planning Objectives polygons
+    writing spreadsheet row 150 of 267      Legal Strategic Land and Resource Planning Objectives point
+    writing spreadsheet row 151 of 267      Legal Strategic Land and Resource Planning Objectives line
+    writing spreadsheet row 152 of 267      Non Legal Strategic Land and Resource Planning Features polygon
+    writing spreadsheet row 153 of 267      Non Legal Strategic Land and Resource Planning Features point
+    writing spreadsheet row 154 of 267      Non Legal Strategic Land and Resource Planning Features line
+    writing spreadsheet row 155 of 267      Archaeological Potential
+    writing spreadsheet row 156 of 267      Arch Potential Informed Contributors Layer
+    writing spreadsheet row 157 of 267      Known Fish Observations
+    writing spreadsheet row 158 of 267      Known Fish Observations within 5km
+    writing spreadsheet row 159 of 267      Historic Known Fish Distribution Points with Spawning and Rearing
+    writing spreadsheet row 160 of 267      Historic Known Fish Dist Points with Spawning and Rearing 5km buffer
+    writing spreadsheet row 161 of 267      Biogeoclimatic Zone
+    writing spreadsheet row 162 of 267      Energy Production Tenures Tantalis
+    writing spreadsheet row 163 of 267      BCER Road Permit Areas
+    writing spreadsheet row 164 of 267      BCER Road Application Areas
+    writing spreadsheet row 165 of 267      BCER Well Facility Permits
+    writing spreadsheet row 166 of 267      BCER Well Facility Applications
+    writing spreadsheet row 167 of 267      BCER Pipeline Area Permits
+    writing spreadsheet row 168 of 267      BCER Pipeline Area Applications
+    writing spreadsheet row 169 of 267      BCER Pipeline Area Permits within 50m
+    writing spreadsheet row 170 of 267      BCER Pipeline Area Applications within 50m
+    writing spreadsheet row 171 of 267      BCER Construction Corridor
+    writing spreadsheet row 172 of 267      BCER Seismic Permits
+    writing spreadsheet row 173 of 267      BCER Seismic Applications
+    writing spreadsheet row 174 of 267      BCER Facility Location Permits
+    writing spreadsheet row 175 of 267      BCER Ancillary Permits
+    writing spreadsheet row 176 of 267      BCER Ancillary Applications
+    writing spreadsheet row 177 of 267      BCER Sump Locations
+    writing spreadsheet row 178 of 267      BCER Waste Disposal Sites
+    writing spreadsheet row 179 of 267      BCER Water Source Permits
+    writing spreadsheet row 180 of 267      BCER Water Source Applications
+    writing spreadsheet row 181 of 267      LEGACY BCER Petroleum Development Roads Pre 2006 within 50m
+    writing spreadsheet row 182 of 267      LEGACY BCER Facility Locations Pre 2016
+    writing spreadsheet row 183 of 267      AOI of First Nations Reconciliation Initiatives
+    writing spreadsheet row 184 of 267      MOT District Boundaries
+    writing spreadsheet row 185 of 267      MOE District Boundaries
+    writing spreadsheet row 186 of 267      Health Authority Boundaries
+    writing spreadsheet row 187 of 267      Land Districts
+    writing spreadsheet row 188 of 267      Regional Districts
+    writing spreadsheet row 189 of 267      Muskwa Kechika Management Area
+    writing spreadsheet row 190 of 267      Natural Resource District
+    writing spreadsheet row 191 of 267      Natural Resource Regions
+    writing spreadsheet row 192 of 267      Natural Resource ADM Areas
+    writing spreadsheet row 193 of 267      Water Management Districts
+    writing spreadsheet row 194 of 267      Water Management Precincts
+    writing spreadsheet row 195 of 267      Municipalities
+    writing spreadsheet row 196 of 267      Nanwakolas Area Significance
+    writing spreadsheet row 197 of 267      First Nation Treaty Lands
+    writing spreadsheet row 198 of 267      First Nation Treaty Related Lands
+    writing spreadsheet row 199 of 267      First Nation Treaty Areas
+    writing spreadsheet row 200 of 267      Land Claim Settlement Areas
+    writing spreadsheet row 201 of 267      Islands Trust Local Committee Areas
+    writing spreadsheet row 202 of 267      Prov Parks and Eco Reserves within 1 km Radius
+    writing spreadsheet row 203 of 267      Protected Areas and Recreation Areas within 1 km Radius
+    writing spreadsheet row 204 of 267      Conservancy Areas within 1 km Radius
+    writing spreadsheet row 205 of 267      Wildlife Management Areas within 1 km Radius
+    writing spreadsheet row 206 of 267      Coastal First Nation Consolidated Boundary
+    writing spreadsheet row 207 of 267      Indian Reserves within 5 km Radius
+    writing spreadsheet row 208 of 267      Approx Small Craft Harbour Authority Locations 1 Km Radius
+    writing spreadsheet row 209 of 267      Maanulth Important Harvest Areas
+    writing spreadsheet row 210 of 267      Nuchatlaht Claim Area Feb2018
+    writing spreadsheet row 211 of 267      Nuchatlaht Claim Area with 1 km buffer Feb2018
+    writing spreadsheet row 212 of 267      MIRR NOIs for Namgis FN and Tlowitsis Nation
+    writing spreadsheet row 213 of 267      MIRR NOI for Wei Wai Kum First Nation
+    writing spreadsheet row 214 of 267      MIRR NOI for Gwasalanakwaxdaxw FN  July 2020
+    writing spreadsheet row 215 of 267      MIRR NOI for Wuikinuxv FN Sept 2020
+    writing spreadsheet row 216 of 267      AOI FN Reconciliation Initiatives
+    writing spreadsheet row 217 of 267      Big Trees within Forest Administration Designated Area 
+    writing spreadsheet row 218 of 267      Archaeological Sites within 1 km Radius
+    writing spreadsheet row 219 of 267      Archaeological Sites within 500 m Radius
+    writing spreadsheet row 220 of 267      Archaeological Sites within 250 m Radius
+    writing spreadsheet row 221 of 267      Archaeological Sites within 200 m Radius
+    writing spreadsheet row 222 of 267      Archaeological Sites within 150 m Radius
+    writing spreadsheet row 223 of 267      Archaeological Sites within 100 m Radius
+    writing spreadsheet row 224 of 267      Archaeology Overview Assessment Areas within 1 km Radius
+    writing spreadsheet row 225 of 267      Campbell River NRD Archaeology Overview Assseement CMT Potential 
+    writing spreadsheet row 226 of 267      Marble Murrelet Reserve Pre 2000
+    writing spreadsheet row 227 of 267      Kelp Beds from CRIMS within 100 m Radius
+    writing spreadsheet row 228 of 267      Kelp Beds from CRIMS within 1 km Radius
+    writing spreadsheet row 229 of 267      Kelp Beds mapped by Islands Trust within 100m Radius update 2022
+    writing spreadsheet row 230 of 267      Kelp Beds mapped by Islands Trust within 1 km Radius update 2022
+    writing spreadsheet row 231 of 267      Eel Grass Beds from CRIMS within 100m Radius
+    writing spreadsheet row 232 of 267      Eel Grass Beds from CRIMS within 1 km Radius
+    writing spreadsheet row 233 of 267      Eel Grass Beds mapped by Islands Trust within 100m Radius update 2022
+    writing spreadsheet row 234 of 267      Eel Grass Beds mapped by Islands Trust within 1 km Radius update 2022
+    writing spreadsheet row 235 of 267      Killer Whale Significant Areas within WCVI and SOG
+    writing spreadsheet row 236 of 267      Killer Whale Significant Areas within PNCIMA
+    writing spreadsheet row 237 of 267      DFO Critical Habitat of Species at Risk Southern and Northern Resident Killer whales
+    writing spreadsheet row 238 of 267      Clam Beds from CRIMS
+    writing spreadsheet row 239 of 267      Herring Spawn from CRIMS
+    writing spreadsheet row 240 of 267      Drinking Water within 500 meters
+    writing spreadsheet row 241 of 267      Crown Land Tenure Tantalis within 150 meters
+    writing spreadsheet row 242 of 267      Crown Land Application Tantalis within 150 meters
+    writing spreadsheet row 243 of 267      Commercial Land Act Tenures of Interest within 1 km radius
+    writing spreadsheet row 244 of 267      Commercial Land Act Applications of Interest within 1 km radius 
+    writing spreadsheet row 245 of 267      Section 15 to 17 Land Act Reserve Tenures within 1 km radius 
+    writing spreadsheet row 246 of 267      Section 15 to 17 Land Act Reserve Applications within 1 km radius
+    writing spreadsheet row 247 of 267      Utility Pricing Zones
+    writing spreadsheet row 248 of 267      Potential Log Handling BC Coast
+    writing spreadsheet row 249 of 267      Recreation Sites and Reserves within One Kilometer Radius
+    writing spreadsheet row 250 of 267      MaPPs Central Coast Marine Plan
+    writing spreadsheet row 251 of 267      MaPPs Haida Gwaii Marine Plan
+    writing spreadsheet row 252 of 267      MaPPs North Coast Marine Plan
+    writing spreadsheet row 253 of 267      MaPPs North Vancouver Island Marine Plan
+    writing spreadsheet row 254 of 267      Federal Classified Shellfish Harvest Areas Nov 2017
+    writing spreadsheet row 255 of 267      Gwani Project Area
+    writing spreadsheet row 256 of 267      MAMU Suitable habitat
+    writing spreadsheet row 257 of 267      Aquaculture Plant Harvesting Areas
+    writing spreadsheet row 258 of 267      Marbled Murrelet Reserves
+    writing spreadsheet row 259 of 267      Northern Goshawk Reserves
+    writing spreadsheet row 260 of 267      Northern Saw Whet Owl Reserves
+    writing spreadsheet row 261 of 267      Sensitive Watersheds
+    writing spreadsheet row 262 of 267      Cedar Stewardship Areas
+    writing spreadsheet row 263 of 267      Forest Reserves
+    writing spreadsheet row 264 of 267      BCTS Operating Areas
+    writing spreadsheet row 265 of 267      Potential Karst Sites
+    writing spreadsheet row 266 of 267      Development Areas
+    writing spreadsheet row 267 of 267      Coastline
+Make Spreadsheet Time is 181
+======================================================================
+======================================================================
+======================================================================
+Batch Ast V2 - Universal Overlap Tool finished running
+Set Environment Time is 0
+Create GDB Time is 13
+Read Inputs Time is 0
+Clip Data Time is 1312
+Make Maps Time is 351
+Make Spreadsheet Time is 181
+Total Run Time is 1860
+======================================================================
+*** Running Automated Status Tool ***
+======================================================================
+======================================================================
+Batch Ast V2 - running the one status part 2 tool
+======================================================================
+Passed Inputs:
+0: //spatialfiles.bcgov/work/srm/nel/Local/Geomatics/Workarea/csostad/Statusing/Jade Statuses/Powel River\outputs\635
+1: false
+2: west_coast
+3: 
+4: 
+5: 
+6: //spatialfiles.bcgov/work/srm/nel/Local/Geomatics/Workarea/csostad/Statusing/Jade Statuses/Powel River\outputs\635\aoi_boundary.gdb\aoi
+======================================================================
+======================================================================
+The input criteria are:
+data_path = //spatialfiles.bcgov/work/srm/nel/Local/Geomatics/Workarea/csostad/Statusing/Jade Statuses/Powel River\outputs\635
+analyize_this_featureclass = //spatialfiles.bcgov/work/srm/nel/Local/Geomatics/Workarea/csostad/Statusing/Jade Statuses/Powel River\outputs\635\aoi_boundary.gdb\aoi
+working_directory = //spatialfiles.bcgov/work/srm/nel/Local/Geomatics/Workarea/csostad/Statusing/Jade Statuses/Powel River\outputs\635
+dont_overwrite_outputs = false
+region = west_coast
+crown_lands_file = 
+disposition_transaction = 
+parcel_number = 
+======================================================================
+Batch Ast V2 - Creating working directories, geodatabases, variables
+======================================================================
+Batch Ast V2 - Copying the AOI into the working .GDB
+.   Creating the raw AOI 
+.   Creating the final AOI 
+======================================================================
+Buffering parcel boundary 
+.  5m
+.  25km
+======================================================================
+Gathering data needed to run tool
+.  Parcel centroid
+.  TA_DISPOSITION_TRANSACTIONS 
+.  Getting input_of_raw_data\bc_arch_potential
+.  Getting input_of_raw_data\bc_arch_sites
+.     Calculating nearest input_of_raw_data\bc_arch_sites
+.     performing join
+.     Calculating necessary fields
+.      Adding nears fields to parcel dataset
+.  Getting input_of_raw_data\bc_indian_res
+.     Calculating nearest input_of_raw_data\bc_indian_res
+.     performing join
+.     Calculating necessary fields
+.      Adding nears fields to parcel dataset
+.  Getting parcel mapsheet polys
+.  Identitying for parcel_mapsheet_polys
+.  Getting parcel for district
+.  Identitying for parcel_for_district
+.  Getting parcel municipality
+.  Identitying for parcel_municipality
+.  Getting parcel prov forest
+.  Identitying for parcel_prov_forest
+.  Getting parcel prov forest addition
+.  Identitying for parcel_prov_forest_addition
+.  Getting parcel prov forest deletion
+.  Identitying for parcel_prov_forest_deletion
+.  Getting parcel prov forest exclusion
+.  Identitying for parcel_prov_forest_exclusion
+.  Getting parcel assessment area
+.  Identitying for parcel_assessment_area
+.  Getting parcel land title district
+.  Identitying for parcel_land_title_district
+.  Getting parcel electoral district
+.  Identitying for parcel_electoral_district
+.  Getting parcel regional district
+.  Identitying for parcel_regional_district
+.  Getting parcel pins
+.  Clipping for parcel_pins
+.  Getting parcel pins adjacent
+.  Clipping for parcel_pins_adjacent
+.  Getting parcel pins right of way
+.  Clipping for parcel_pins_right_of_way
+.  Getting parcel alr
+.  Clipping for parcel_alr
+======================================================================
+Creating the excel variables
+   self.xl_nearest_ir:
+      b'14.5', 14.5
+      b'SECHELT BAND LANDS (COKQUENEETS) NO 23 - shish\xc3\xa1lh Nation', SECHELT BAND LANDS (COKQUENEETS) NO 23 - shishálh Nation
+======================================================================
+Creating the final output spreadsheet
+.  Creating FILES section of the spreadsheet
+.  Creating Applicant's section of the spreadsheet
+.  Creating the LANDS section of the spreadsheet
+.  Creating the ADJUDICATION section of the spreadsheet
+.  Creating the MINES section of the spreadsheet
+.  Creating the FORESTS section of the spreadsheet
+.  Creating the WATER section of the spreadsheet
+.  Creating the COMMENTS section of the spreadsheet
+.  Creating the STATUS OF CONFLICT tab
+
+Spreadsheet Created:
+   //spatialfiles.bcgov/work/srm/nel/Local/Geomatics/Workarea/csostad/Statusing/Jade Statuses/Powel River\outputs\635\one_status_tabs_1_and_2.xlsx
+Starting the merge of two XLS files
+.  loading the workbooks
+.
+.
+Automated_status_sheet.xlsx is ready for you to use
+//spatialfiles.bcgov/work/srm/nel/Local/Geomatics/Workarea/csostad/Statusing/Jade Statuses/Powel River\outputs\635\automated_status_sheet.xlsx
+.
+.
+Succeeded at June 30, 2025 10:31:15 AM (Elapsed Time: 33 minutes 46 seconds)

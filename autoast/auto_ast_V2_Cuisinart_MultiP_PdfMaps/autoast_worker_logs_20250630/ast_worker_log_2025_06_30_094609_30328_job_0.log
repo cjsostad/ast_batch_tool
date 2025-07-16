@@ -1,0 +1,26 @@
+2025-06-30 09:46:10,443 - Process Job Mp: worker_0 - INFO - Process Job Mp: AST Toolbox imported successfully in worker.
+2025-06-30 09:46:10,445 - Process Job Mp: worker_0 - DEBUG - Process Job Mp: Job Parameters: ['West_Coast', '//spatialfiles.bcgov/work/srm/nel/Local/Geomatics/Workarea/csostad/Statusing/Jade Statuses/Powel River\\632\\632.shp', '', '', '', '//spatialfiles.bcgov/work/srm/nel/Local/Geomatics/Workarea/csostad/Statusing/Jade Statuses/Powel River\\outputs\\632', False, False, False, False, False, True]
+2025-06-30 09:46:10,446 - Process Job Mp: worker_0 - INFO - Process Job Mp: Running MakeAutomatedStatusSpreadsheet_ast...
+2025-06-30 09:46:11,269 - root - INFO - Logger initialized
+2025-06-30 09:46:12,118 - root - ERROR - Failed to import tools
+Traceback (most recent call last):
+  File "E:\sw_nt\ArcGIS\Pro\bin\Python\envs\arcgispro-py3\lib\site-packages\XTools Pro\esri\toolboxes\XTools Pro.pyt", line 95, in <module>
+    from Tools.FeaturesToPointsTool import *
+  File "E:\sw_nt\XTools\XTools AGP\Python\Tools\FeaturesToPointsTool.py", line 1, in <module>
+    from Tools.BaseTool import BaseTool
+  File "E:\sw_nt\XTools\XTools AGP\Python\Tools\BaseTool.py", line 7, in <module>
+    from Scripts.Base.PythonCancelTracker import PythonCancelTracker
+  File "E:\sw_nt\XTools\XTools AGP\Python\Scripts\Base\PythonCancelTracker.py", line 20, in <module>
+    from XTools.XToolsAGP.Core import ICancelTracker
+ModuleNotFoundError: No module named 'XTools'
+2025-06-30 09:46:12,121 - root - ERROR - No module named 'XTools'
+Traceback (most recent call last):
+  File "E:\sw_nt\ArcGIS\Pro\bin\Python\envs\arcgispro-py3\lib\site-packages\XTools Pro\esri\toolboxes\XTools Pro.pyt", line 95, in <module>
+    from Tools.FeaturesToPointsTool import *
+  File "E:\sw_nt\XTools\XTools AGP\Python\Tools\FeaturesToPointsTool.py", line 1, in <module>
+    from Tools.BaseTool import BaseTool
+  File "E:\sw_nt\XTools\XTools AGP\Python\Tools\BaseTool.py", line 7, in <module>
+    from Scripts.Base.PythonCancelTracker import PythonCancelTracker
+  File "E:\sw_nt\XTools\XTools AGP\Python\Scripts\Base\PythonCancelTracker.py", line 20, in <module>
+    from XTools.XToolsAGP.Core import ICancelTracker
+ModuleNotFoundError: No module named 'XTools'
