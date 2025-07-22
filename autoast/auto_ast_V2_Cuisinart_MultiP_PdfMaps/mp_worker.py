@@ -23,7 +23,7 @@ def process_job_mp(ast_instance, job, job_index, current_path, sde_path, return_
     logger.info("##########################################################################################################################")
 
     print(f"Process Job Mp: Processing job {job_index}: {job}")
-
+    arcpy.AddMessage("Inside Process Job MP")
     #EDIT This is where the SDE path is set.
     # Set arcpy workspace to existing SDE path directly passed in. This is to avoid multiple connections to the SDE. SDE connections
     # have been removed from the AST Tool

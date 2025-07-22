@@ -17,6 +17,7 @@
 
 
 import os
+import sys
 from dotenv import load_dotenv
 from logging_setup import setup_logging
 from database_connection import setup_bcgw
@@ -38,10 +39,11 @@ from ast_factory import AST_FACTORY
 
 arcpy.AddMessage("Inside Main V2")
 
+sys.path.append(r'\\spatialfiles.bcgov\work\srm\nel\Local\Geomatics\Workarea\csostad\GitHubAutoAST\gss_authorizations\autoast\auto_ast_V2_Cuisinart_MultiP_PdfMaps')
 
 # *** INPUT YOUR EXCEL FILE NAME HERE ***
 excel_files = [
-    'july_7.xlsx'
+    'july_22.xlsx'
 ]
 
 
@@ -96,43 +98,51 @@ def process_excel_file(excel_file, secrets, logger, current_path):
         logger.error(f"Error processing {excel_file}: {e}")
 
 #################################################################################################################################################################################
-if __name__ == '__main__':
+# if __name__ == '__main__':
     
 
-    # Call the setup_logging function to log the messages
-    logger = setup_logging()
+# Call the setup_logging function to log the messages
+arcpy.AddMessage("Setting up Logging")
+logger = setup_logging()
 
-    # Load the default environment
-    load_dotenv()
+# Load the default environment
+arcpy.AddMessage("Loading Environment")
+load_dotenv()
 
-    # Call the import_ast function to import the AST toolbox
-    template = import_ast(logger)
-    
-    current_path = os.path.dirname(os.path.realpath(__file__))
+# Call the import_ast function to import the AST toolbox
+arcpy.AddMessage("Importing Ast Tool")
+template = import_ast(logger)
 
-    # Call the setup_bcgw function to set up the database connection
-    # secrets = setup_bcgw(logger)
-    secrets, sde_connection, sde_path = setup_bcgw(logger)
-    # username, password = secrets[0], secrets[1]
-    
-    # Set the SDE path environment variable for easy access by workers
-    os.environ["SDE_FILE_PATH"] = sde_path
-    logger.info(f"SDE Connection established at: {sde_path}")
-    
-    
-    
-    
-    # Uncomment the following lines to create job excel files if needed
-    
-    
-    # print("Main: Running 'Create job excel files'")
-    # excel_files = create_job_excel_files()
-    # print(f"List of excel file paths is: {excel_files}")
-    # logger.info(f"List of excel file paths is: {excel_files}")          
-    
-    
-    # Process each  of the  Excel files listed at the top of this scrip
-    for excel_file in excel_files:
-        process_excel_file(excel_file, secrets, logger, current_path)
+current_path = os.path.dirname(os.path.realpath(__file__))
+
+# Call the setup_bcgw function to set up the database connection
+# secrets = setup_bcgw(logger)
+arcpy.AddMessage("Setting up BCGW")
+secrets, sde_connection, sde_path = setup_bcgw(logger)
+# username, password = secrets[0], secrets[1]
+
+# Set the SDE path environment variable for easy access by workers
+os.environ["SDE_FILE_PATH"] = sde_path
+arcpy.AddMessage("Connecting to BCGW")
+logger.info(f"SDE Connection established at: {sde_path}")
+
+
+
+
+# Uncomment the following lines to create job excel files if needed
+
+
+# print("Main: Running 'Create job excel files'")
+# excel_files = create_job_excel_files()
+# print(f"List of excel file paths is: {excel_files}")
+# logger.info(f"List of excel file paths is: {excel_files}")          
+
+
+# Process each  of the  Excel files listed at the top of this scrip
+arcpy.AddMessage("Processing Excel Files")
+for excel_file in excel_files:
+    process_excel_file(excel_file, secrets, logger, current_path)
+
+arcpy.AddMessage("Script Complete")
     
     

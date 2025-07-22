@@ -8,6 +8,7 @@ import logging
 
 def setup_logging():
     ''' Set up logging for the script '''
+    arcpy.AddMessage("Setting up Logging")
     
     # Create the current path to hold the log folder
     current_path = os.path.dirname(os.path.realpath(__file__))
