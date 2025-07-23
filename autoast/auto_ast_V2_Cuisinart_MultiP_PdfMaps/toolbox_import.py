@@ -1,5 +1,6 @@
 import os
 import arcpy
+import sys
 
 #NOTE - Need to remove the template portion in the future
 
@@ -12,11 +13,11 @@ def import_ast(logger):
     if ast_toolbox is None:
         print("Unable to find the toolbox. Check the path in .env file")
         logger.error("Unable to find the toolbox. Check the path in .env file")
-        exit() 
+        sys.exit() 
 
     # Import the toolbox
     try:
-        # print(arcpy.ListTools("*"))
+        arcpy.AddMessage("Importing Ast Tool")
         arcpy.ImportToolbox(ast_toolbox, ast_tool_alias)
  
  
@@ -24,7 +25,7 @@ def import_ast(logger):
     except Exception as e:
         print(f"Error importing toolbox: {e}")
         logger.error(f"Error importing toolbox: {e}")
-        exit()
+        sys.exit()
 
     # Assign the shapefile template for FW Setup to a variable
     template = os.getenv('TEMPLATE') # File path in .env

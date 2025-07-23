@@ -10,7 +10,7 @@ import arcpy
 def setup_bcgw(logger):
     # Get the secret file containing the database credentials
     SECRET_FILE = os.getenv('SECRET_FILE')
-
+    arcpy.AddMessage("Loading Database Connection")
     # If secret file found, load the secret file and display a print message, if not found display an error message
     if SECRET_FILE:
         load_dotenv(SECRET_FILE)

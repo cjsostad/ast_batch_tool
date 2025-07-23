@@ -71,7 +71,7 @@ class AST_FACTORY:
                 # Open the Excel workbook and select the correct sheet
                 wb = load_workbook(filename=self.queuefile)
                 ws = wb[self.XLSX_SHEET_NAME]
-
+                arcpy.AddMessage("Loading Workbook")
                 # Get the header (column names) from the first row of the sheet
                 header = list([row for row in ws.iter_rows(min_row=1, max_col=None, values_only=True)][0])
                 
@@ -229,6 +229,7 @@ class AST_FACTORY:
 
         try:
             # Load the workbook
+            arcpy.AddMessage("Inside Ast Factory - Inside add job result")
             wb = load_workbook(filename=self.queuefile)
             self.logger.info(f"Add Job Result - Workbook loaded")
             

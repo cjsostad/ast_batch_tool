@@ -17,6 +17,7 @@
 
 
 import os
+import arcpy
 import sys
 from dotenv import load_dotenv
 from logging_setup import setup_logging
@@ -39,7 +40,7 @@ from ast_factory import AST_FACTORY
 
 arcpy.AddMessage("Inside Main V2")
 
-sys.path.append(r'\\spatialfiles.bcgov\work\srm\nel\Local\Geomatics\Workarea\csostad\GitHubAutoAST\gss_authorizations\autoast\auto_ast_V2_Cuisinart_MultiP_PdfMaps')
+sys.path.append(r'\\spatialfiles.bcgov\work\srm\nel\Local\Geomatics\Workarea\csostad\GitHub_Repositories\ast_batch_tool\autoast\auto_ast_V2_Cuisinart_MultiP_PdfMaps')
 
 # *** INPUT YOUR EXCEL FILE NAME HERE ***
 excel_files = [
@@ -62,6 +63,7 @@ def process_excel_file(excel_file, secrets, logger, current_path):
         qf = os.path.join(current_path, excel_file)
 
         # Create an instance of the AST_FACTORY class
+        arcpy.AddMessage("Inside Process Excel File.....Creating AST Factoroy Instance")
         ast = AST_FACTORY(qf, secrets[0], secrets[1], logger, current_path)
 
         if not os.path.exists(qf):
@@ -77,6 +79,7 @@ def process_excel_file(excel_file, secrets, logger, current_path):
         # Batch jobs
         print(f"Main: Batching jobs for {excel_file}")
         logger.info(f"Main: Batching jobs for {excel_file}")
+        arcpy.AddMessage("Inside Process Excel File - Batching Jobs")
         ast.batch_ast()
 
         # Reload failed jobs
@@ -112,12 +115,12 @@ load_dotenv()
 # Call the import_ast function to import the AST toolbox
 arcpy.AddMessage("Importing Ast Tool")
 template = import_ast(logger)
-
+#test
 current_path = os.path.dirname(os.path.realpath(__file__))
 
 # Call the setup_bcgw function to set up the database connection
 # secrets = setup_bcgw(logger)
-arcpy.AddMessage("Setting up BCGW")
+# arcpy.AddMessage("Setting up BCGW")
 secrets, sde_connection, sde_path = setup_bcgw(logger)
 # username, password = secrets[0], secrets[1]
 

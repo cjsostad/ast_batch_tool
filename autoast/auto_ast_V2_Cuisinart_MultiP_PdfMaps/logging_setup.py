@@ -2,6 +2,7 @@
 # Set up logging
 
 import os
+import arcpy
 import datetime
 import logging
 

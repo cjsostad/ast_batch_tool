@@ -22,6 +22,7 @@ from logging_setup import setup_logging
 from database_connection import setup_bcgw
 from toolbox_import import import_ast
 from ast_factory import AST_FACTORY
+import arcpy    
 # from multi_excel_setup import create_job_excel_files
 
 # snippet to run multiple terminal windows & "P:\corp\python_ast\python.exe" "W:\srm\nel\Local\Geomatics\Workarea\csostad\GitHubAutoAST\gss_authorizations\autoast\auto_ast_v3_Breville_folium_maps\main.py"
@@ -41,7 +42,7 @@ arcpy.AddMessage("Inside Main V2")
 
 # *** INPUT YOUR EXCEL FILE NAME HERE ***
 excel_files = [
-    'july_7.xlsx'
+    'july_22.xlsx'
 ]
 
 
