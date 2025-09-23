@@ -121,7 +121,10 @@ def process_job_mp(ast_instance, job, job_index, current_path, sde_path, return_
 
         # Run the ast tool
         logger.info("Process Job Mp: Running MakeAutomatedStatusSpreadsheet_ast...")
-        arcpy.alphaast.MakeAutomatedStatusSpreadsheet(*params)
+        # arcpy.alphaast.MakeAutomatedStatusSpreadsheet(*params)
+        
+        #NOTE can we put TOOBOX ALIAS in here instead of 
+        arcpy.AlphaStatusingToolsArcPRO.MakeAutomatedStatusSpreadsheet(*params)
         logger.info("Process Job Mp: MakeAutomatedStatusSpreadsheet_ast completed successfully.")
         ast_instance.add_job_result(job_index, 'COMPLETE')
 
