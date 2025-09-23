@@ -89,10 +89,10 @@ if __name__ == '__main__':
 
     # Call the setup_logging function to log the messages
     logger = setup_logging()
-
+    print("Logging is set up")
     # Load the default environment
     load_dotenv()
-
+    print("Environment variables loaded")
     # Call the import_ast function to import the AST toolbox
     template = import_ast(logger)
     
