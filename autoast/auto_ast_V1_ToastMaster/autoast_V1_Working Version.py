@@ -26,7 +26,7 @@ import logging
 
 
 ## *** INPUT YOUR EXCEL FILE NAME HERE ***
-excel_file = 'gr_2025_26_4_jobs.xlsx'
+excel_file = '636.xlsx'
 # Spreadsheet cannot be open in any other window or you will get an access denied error
 
 
@@ -34,11 +34,12 @@ excel_file = 'gr_2025_26_4_jobs.xlsx'
 ###############################################################################################################################################################################
 # Set up logging
 #SETUPLOGGING
+arcpy.AddMessage("")
 def setup_logging():
     ''' Set up logging for the script '''
     # Create the log folder filename
     log_folder = f'autoast_logs_{datetime.datetime.now().strftime("%Y%m%d")}'
-
+    arcpy.AddMessage("Setting up Logging")
     # Create the log folder in the current directory if it doesn't exits
     if not os.path.exists(log_folder):
         os.mkdir(log_folder)
@@ -79,7 +80,7 @@ def import_ast():
         print("Unable to find the toolbox. Check the path in .env file")
         logger.error("Unable to find the toolbox. Check the path in .env file")
         exit() 
-
+    arcpy.AddMessage("Import ast")
     # Import the toolbox
     try:
         arcpy.ImportToolbox(ast_toolbox)
@@ -120,7 +121,7 @@ def setup_bcgw():
     # Assign secret file data to variables    
     DB_USER = os.getenv('BCGW_USER')
     DB_PASS = os.getenv('BCGW_PASS')
-
+    arcpy.AddMessage("Set up BCGW")
     # If DB_USER and DB_PASS found display a print message, if not found display an error message
     if DB_USER and DB_PASS:
         print(f"Database user {DB_USER} and password found")
@@ -213,6 +214,7 @@ class AST_FACTORY:
         global job_index
 
         print("Loading jobs")
+        arcpy.AddMessage("Loading jobs")
         logger.info("Loading jobs")
 
         # Initialize the jobs list to store jobs
@@ -319,7 +321,7 @@ class AST_FACTORY:
 
         # input_type = None
         # file_name, extension = os.path.basename(input).split()
-
+        arcpy.AddMessage("Classifying Input type")
         
         for job in self.jobs:                # Check if there is a file path in Feature Layer
             if job.get('feature_layer'):
@@ -360,14 +362,14 @@ class AST_FACTORY:
         try:
             print("Starting AST Toolbox")
             logging.info("Starting AST Toolbox")
-
+            arcpy.AddMessage("Starting AST Toolbox")
             #DELETE the batch function should loop the spreadsheet and run the start_ast_tb function on each row of the excel sheet
             # Loop over the jobs in the spreadsheet#
             for job in jobs:
                 params = []
                 
                 # Apply a separator line between each job in the log file
-                
+                arcpy.AddMessage("Starting Job number")
                 logger.info(f"===================================================================")
                 logger.info(f"======================= Starting Job #: {job} ======================")
                 logger.info(f"====================================================================")
@@ -434,7 +436,7 @@ class AST_FACTORY:
 
         print("Adding job result...")
         logger.info("Adding job result...")
-
+        arcpy.AddMessage("Add Job Result")
         try:
             # Load the workbook
             wb = load_workbook(filename=self.queuefile)
@@ -487,7 +489,7 @@ class AST_FACTORY:
     def batch_ast(self):
         global counter, job_index 
         ''' Executes the loaded jobs'''
-
+        arcpy.AddMessage("Batch ast")
         counter = 1
         print("Batching AST")
         
@@ -531,7 +533,7 @@ class AST_FACTORY:
 
         counter = 1
         print("Re Batching AST")
-        
+        arcpy.AddMessage("Batching Ast")
         logger.info("***************************************************************************************************************************")
         logger.info("Re Batching Failed AST")        
         logger.info("***************************************************************************************************************************")
@@ -565,7 +567,7 @@ class AST_FACTORY:
 
         print("Loading Failed jobs")
         logger.info("Loading Failed jobs")
-
+        arcpy.AddMessage("Reload failed jobs")
         # Initialize the jobs list to store jobs
         self.jobs = []
     
@@ -665,6 +667,7 @@ class AST_FACTORY:
         '''write a new queuefile with preset header'''
         print("Creating new queuefile")
         logger.info("Creating new queuefile")
+        arcpy.AddMessage("Creating new quefile")
         wb = Workbook()
         ws = wb.active
         ws.title = self.XLSX_SHEET_NAME
@@ -703,6 +706,7 @@ class AST_FACTORY:
         return out_name + '/' + fc
 
     def build_aoi_from_shp(self, job, feature_layer_path):
+        arcpy.AddMessage("Build Aoi from Shape")
         """This is snippets of Mike Eastwoods FW Setup Script, if run FW Setup is set to true **Not sure if we need this
         as an option or just make it standard.
         This function will take the raw un-appended shapefile and run it through the FW Setup Script"""
@@ -832,6 +836,7 @@ if __name__ == '__main__':
     qf = os.path.join(current_path, excel_file)
 
     # Create and instance of the Ast Factory class, assign the quefile path and the bcgw username and passwords to the instance
+    arcpy.AddMessage("Creating an instance of AST Factory")
     ast = AST_FACTORY(qf, secrets[0], secrets[1])
 
 
@@ -854,3 +859,4 @@ if __name__ == '__main__':
 
     print("AST Factory COMPLETE")
     logger.info("AST Factory COMPLETE")
+    arcpy.AddMessage("AST Complete")

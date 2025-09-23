@@ -1,0 +1,136 @@
+2025-07-24 12:02:11,581 - __main__ - INFO - Logging set up
+2025-07-24 12:02:11,581 - __main__ - INFO - Starting Script
+2025-07-24 12:02:11,968 - __main__ - INFO - AST Toolbox imported successfully.
+2025-07-24 12:02:12,099 - __main__ - INFO - Secret file H:\secrets\bcgw.env found
+2025-07-24 12:02:12,099 - __main__ - INFO - Database user csostad and password found
+2025-07-24 12:02:12,300 - root - INFO - Logger initialized
+2025-07-24 12:02:15,377 - root - INFO - Enter method Features to Points '__init__'
+2025-07-24 12:02:15,379 - root - INFO - Exit method Features to Points '__init__'
+2025-07-24 12:02:15,381 - root - INFO - Enter method Features to Equidistant Points (Fixed Number) '__init__'
+2025-07-24 12:02:15,382 - root - INFO - Exit method Features to Equidistant Points (Fixed Number) '__init__'
+2025-07-24 12:02:15,384 - root - INFO - Enter method Features to Equidistant Points (Fixed Interval) '__init__'
+2025-07-24 12:02:15,385 - root - INFO - Exit method Features to Equidistant Points (Fixed Interval) '__init__'
+2025-07-24 12:02:15,428 - root - INFO - Enter method Convex Hull '__init__'
+2025-07-24 12:02:15,429 - root - INFO - Exit method Convex Hull '__init__'
+2025-07-24 12:02:15,434 - root - INFO - Enter method Split Polylines '__init__'
+2025-07-24 12:02:15,435 - root - INFO - Exit method Split Polylines '__init__'
+2025-07-24 12:02:15,439 - root - INFO - Enter method Split Polygons '__init__'
+2025-07-24 12:02:15,439 - root - INFO - Exit method Split Polygons '__init__'
+2025-07-24 12:02:15,442 - root - INFO - Enter method Divide Overlapping Areas '__init__'
+2025-07-24 12:02:15,443 - root - INFO - Exit method Divide Overlapping Areas '__init__'
+2025-07-24 12:02:15,446 - root - INFO - Enter method Polygons to Polylines '__init__'
+2025-07-24 12:02:15,447 - root - INFO - Exit method Polygons to Polylines '__init__'
+2025-07-24 12:02:15,449 - root - INFO - Enter method Concave Hull '__init__'
+2025-07-24 12:02:15,450 - root - INFO - Exit method Concave Hull '__init__'
+2025-07-24 12:02:15,453 - root - INFO - Enter method Table to Text '__init__'
+2025-07-24 12:02:15,454 - root - INFO - Exit method Table to Text '__init__'
+2025-07-24 12:02:15,456 - root - INFO - Enter method Polylines from Points '__init__'
+2025-07-24 12:02:15,456 - root - INFO - Exit method Polylines from Points '__init__'
+2025-07-24 12:02:15,458 - root - INFO - Enter method Polygons from Points '__init__'
+2025-07-24 12:02:15,458 - root - INFO - Exit method Polygons from Points '__init__'
+2025-07-24 12:02:15,460 - root - INFO - Enter method Table to Excel '__init__'
+2025-07-24 12:02:15,461 - root - INFO - Exit method Table to Excel '__init__'
+2025-07-24 12:02:15,462 - root - INFO - Enter method Polygons from Polylines '__init__'
+2025-07-24 12:02:15,463 - root - INFO - Exit method Polygons from Polylines '__init__'
+2025-07-24 12:02:15,465 - root - INFO - Enter method Identity '__init__'
+2025-07-24 12:02:15,466 - root - INFO - Exit method Identity '__init__'
+2025-07-24 12:02:15,467 - root - INFO - Enter method Erase Features '__init__'
+2025-07-24 12:02:15,467 - root - INFO - Exit method Erase Features '__init__'
+2025-07-24 12:02:15,468 - root - INFO - Enter method Update Polygon Layer '__init__'
+2025-07-24 12:02:15,469 - root - INFO - Exit method Update Polygon Layer '__init__'
+2025-07-24 12:02:15,471 - root - INFO - Enter method Attract Features '__init__'
+2025-07-24 12:02:15,471 - root - INFO - Exit method Attract Features '__init__'
+2025-07-24 12:02:15,473 - root - INFO - Enter method Table to Excel (Multiple) '__init__'
+2025-07-24 12:02:15,474 - root - INFO - Exit method Table to Excel (Multiple) '__init__'
+2025-07-24 12:02:15,477 - root - INFO - Enter method Export to KML '__init__'
+2025-07-24 12:02:15,478 - root - INFO - Exit method Export to KML '__init__'
+2025-07-24 12:02:15,480 - root - INFO - Enter method Import from KML '__init__'
+2025-07-24 12:02:15,480 - root - INFO - Exit method Import from KML '__init__'
+2025-07-24 12:02:15,483 - root - INFO - Enter method Calculate Geometry '__init__'
+2025-07-24 12:02:15,484 - root - INFO - Exit method Calculate Geometry '__init__'
+2025-07-24 12:02:15,487 - root - INFO - Enter method Add XYZ Coordinates '__init__'
+2025-07-24 12:02:15,487 - root - INFO - Exit method Add XYZ Coordinates '__init__'
+2025-07-24 12:02:33,304 - __main__ - INFO - new db connection created
+2025-07-24 12:02:33,742 - __main__ - INFO - workspace set to bcgw connection
+2025-07-24 12:02:33,743 - __main__ - INFO - Loading jobs
+2025-07-24 12:02:33,762 - __main__ - INFO - Job 1 is Queued
+2025-07-24 12:02:33,763 - __main__ - INFO - Adding job result...
+2025-07-24 12:02:33,772 - __main__ - INFO - Row 3 is blank, not updating.
+2025-07-24 12:02:33,772 - __main__ - INFO - Added job condition 'Queued' for job 1 to jobs list
+2025-07-24 12:02:33,773 - __main__ - INFO - Classifying input type for job 1
+2025-07-24 12:02:33,773 - __main__ - INFO - Job Condition is not Complete (Queued), adding job: 1 to jobs list
+2025-07-24 12:02:33,774 - __main__ - INFO - Job dictionary is {'region': 'West_Coast', 'feature_layer': '\\\\spatialfiles.bcgov\\work\\srm\\nel\\Local\\Geomatics\\Workarea\\csostad\\Statusing\\v1 GUI 07_24\\636\\636.shp', 'crown_file_number': '', 'disposition_number': '', 'parcel_number': '', 'output_directory': '', 'output_directory_same_as_input': True, 'dont_overwrite_outputs': 'false', 'skip_conflicts_and_constraints': 'false', 'suppress_map_creation': 'false', 'add_maps_to_current': 'false', 'run_as_fcbc': 'true', 'ast_condition': 'Queued', 'file_number': ''}
+2025-07-24 12:02:33,774 - __main__ - INFO - ***************************************************************************************************************************
+2025-07-24 12:02:33,775 - __main__ - INFO - Batching AST
+2025-07-24 12:02:33,775 - __main__ - INFO - ***************************************************************************************************************************
+2025-07-24 12:02:33,776 - __main__ - INFO - Number of jobs: 1
+2025-07-24 12:02:33,776 - __main__ - INFO - Starting job 1 of 1
+2025-07-24 12:02:33,777 - root - INFO - Starting AST Toolbox
+2025-07-24 12:02:33,777 - __main__ - INFO - ===================================================================
+2025-07-24 12:02:33,778 - __main__ - INFO - ======================= Starting Job #: {'region': 'West_Coast', 'feature_layer': '\\\\spatialfiles.bcgov\\work\\srm\\nel\\Local\\Geomatics\\Workarea\\csostad\\Statusing\\v1 GUI 07_24\\636\\636.shp', 'crown_file_number': '', 'disposition_number': '', 'parcel_number': '', 'output_directory': '', 'output_directory_same_as_input': True, 'dont_overwrite_outputs': 'false', 'skip_conflicts_and_constraints': 'false', 'suppress_map_creation': 'false', 'add_maps_to_current': 'false', 'run_as_fcbc': 'true', 'ast_condition': 'Queued', 'file_number': ''} ======================
+2025-07-24 12:02:33,778 - __main__ - INFO - ====================================================================
+2025-07-24 12:02:33,778 - __main__ - INFO - Job Parameters are: ['West_Coast', '\\\\spatialfiles.bcgov\\work\\srm\\nel\\Local\\Geomatics\\Workarea\\csostad\\Statusing\\v1 GUI 07_24\\636\\636.shp', '', '', '', '', True, False, False, False, False, True]
+2025-07-24 12:02:34,569 - __main__ - ERROR - Arcpy error: Traceback (most recent call last):
+\ufeff  File "\\spatialfiles.bcgov\work\srm\nel\Local\Geomatics\Workarea\csostad\GitHubAutoAST\gss_authorizations\autoast\auto_ast_V1_ToastMaster\ast.atbx\MakeAutomatedStatusSpreadsheet.tool\tool.script.execute.py", line 89, in <module>
+\ufeffModuleNotFoundError: No module named 'universal_overlap_tool_arcpro'
+\ufeff
+If you suspect this is an IPython 8.18.1 bug, please report it at:
+    https://github.com/ipython/ipython/issues
+or send an email to the mailing list at ipython-dev@python.org
+
+You can print a more detailed traceback right now with "%tb", or use "%debug"
+to interactively debug it.
+
+Extra-detailed tracebacks for bug-reporting purposes can be enabled via:
+    %config Application.verbose_crash=True
+
+
+Failed to execute (MakeAutomatedStatusSpreadsheet).
+
+2025-07-24 12:02:34,570 - __main__ - INFO - AST Factory COMPLETE
+2025-07-25 09:05:45,177 - root - INFO - Enter method Features to Points '__init__'
+2025-07-25 09:05:45,180 - root - INFO - Exit method Features to Points '__init__'
+2025-07-25 09:05:45,180 - root - INFO - Enter method Features to Equidistant Points (Fixed Number) '__init__'
+2025-07-25 09:05:45,181 - root - INFO - Exit method Features to Equidistant Points (Fixed Number) '__init__'
+2025-07-25 09:05:45,181 - root - INFO - Enter method Features to Equidistant Points (Fixed Interval) '__init__'
+2025-07-25 09:05:45,182 - root - INFO - Exit method Features to Equidistant Points (Fixed Interval) '__init__'
+2025-07-25 09:05:45,182 - root - INFO - Enter method Convex Hull '__init__'
+2025-07-25 09:05:45,183 - root - INFO - Exit method Convex Hull '__init__'
+2025-07-25 09:05:45,183 - root - INFO - Enter method Split Polylines '__init__'
+2025-07-25 09:05:45,184 - root - INFO - Exit method Split Polylines '__init__'
+2025-07-25 09:05:45,184 - root - INFO - Enter method Split Polygons '__init__'
+2025-07-25 09:05:45,184 - root - INFO - Exit method Split Polygons '__init__'
+2025-07-25 09:05:45,185 - root - INFO - Enter method Divide Overlapping Areas '__init__'
+2025-07-25 09:05:45,185 - root - INFO - Exit method Divide Overlapping Areas '__init__'
+2025-07-25 09:05:45,186 - root - INFO - Enter method Polygons to Polylines '__init__'
+2025-07-25 09:05:45,187 - root - INFO - Exit method Polygons to Polylines '__init__'
+2025-07-25 09:05:45,187 - root - INFO - Enter method Concave Hull '__init__'
+2025-07-25 09:05:45,188 - root - INFO - Exit method Concave Hull '__init__'
+2025-07-25 09:05:45,189 - root - INFO - Enter method Table to Text '__init__'
+2025-07-25 09:05:45,189 - root - INFO - Exit method Table to Text '__init__'
+2025-07-25 09:05:45,190 - root - INFO - Enter method Polylines from Points '__init__'
+2025-07-25 09:05:45,190 - root - INFO - Exit method Polylines from Points '__init__'
+2025-07-25 09:05:45,191 - root - INFO - Enter method Polygons from Points '__init__'
+2025-07-25 09:05:45,192 - root - INFO - Exit method Polygons from Points '__init__'
+2025-07-25 09:05:45,193 - root - INFO - Enter method Table to Excel '__init__'
+2025-07-25 09:05:45,194 - root - INFO - Exit method Table to Excel '__init__'
+2025-07-25 09:05:45,194 - root - INFO - Enter method Polygons from Polylines '__init__'
+2025-07-25 09:05:45,195 - root - INFO - Exit method Polygons from Polylines '__init__'
+2025-07-25 09:05:45,196 - root - INFO - Enter method Identity '__init__'
+2025-07-25 09:05:45,196 - root - INFO - Exit method Identity '__init__'
+2025-07-25 09:05:45,197 - root - INFO - Enter method Erase Features '__init__'
+2025-07-25 09:05:45,197 - root - INFO - Exit method Erase Features '__init__'
+2025-07-25 09:05:45,198 - root - INFO - Enter method Update Polygon Layer '__init__'
+2025-07-25 09:05:45,199 - root - INFO - Exit method Update Polygon Layer '__init__'
+2025-07-25 09:05:45,199 - root - INFO - Enter method Attract Features '__init__'
+2025-07-25 09:05:45,200 - root - INFO - Exit method Attract Features '__init__'
+2025-07-25 09:05:45,200 - root - INFO - Enter method Table to Excel (Multiple) '__init__'
+2025-07-25 09:05:45,201 - root - INFO - Exit method Table to Excel (Multiple) '__init__'
+2025-07-25 09:05:45,201 - root - INFO - Enter method Export to KML '__init__'
+2025-07-25 09:05:45,202 - root - INFO - Exit method Export to KML '__init__'
+2025-07-25 09:05:45,202 - root - INFO - Enter method Import from KML '__init__'
+2025-07-25 09:05:45,203 - root - INFO - Exit method Import from KML '__init__'
+2025-07-25 09:05:45,203 - root - INFO - Enter method Calculate Geometry '__init__'
+2025-07-25 09:05:45,204 - root - INFO - Exit method Calculate Geometry '__init__'
+2025-07-25 09:05:45,204 - root - INFO - Enter method Add XYZ Coordinates '__init__'
+2025-07-25 09:05:45,205 - root - INFO - Exit method Add XYZ Coordinates '__init__'

@@ -1,0 +1,125 @@
+2025-09-23 13:28:28,111 - logging_setup - INFO - Logging set up
+2025-09-23 13:28:29,233 - logging_setup - INFO - AST Toolbox imported successfully.
+2025-09-23 13:28:29,252 - logging_setup - INFO - Secret file H:\secrets\bcgw.env found
+2025-09-23 13:28:29,252 - logging_setup - INFO - Database user csostad and password found
+2025-09-23 13:28:29,445 - root - INFO - Logger initialized
+2025-09-23 13:28:31,025 - root - ERROR - Failed to import tools
+Traceback (most recent call last):
+  File "P:\corp\central_clones\python_geopandas\lib\site-packages\XTools Pro\esri\toolboxes\XTools Pro.pyt", line 95, in <module>
+    from Tools.FeaturesToPointsTool import *
+  File "E:\sw_nt\XTools\XTools AGP\Python\Tools\FeaturesToPointsTool.py", line 1, in <module>
+    from Tools.BaseTool import BaseTool
+  File "E:\sw_nt\XTools\XTools AGP\Python\Tools\BaseTool.py", line 7, in <module>
+    from Scripts.Base.PythonCancelTracker import PythonCancelTracker
+  File "E:\sw_nt\XTools\XTools AGP\Python\Scripts\Base\PythonCancelTracker.py", line 20, in <module>
+    from XTools.XToolsAGP.Core import ICancelTracker
+ModuleNotFoundError: No module named 'XTools'
+2025-09-23 13:28:31,031 - root - ERROR - No module named 'XTools'
+Traceback (most recent call last):
+  File "P:\corp\central_clones\python_geopandas\lib\site-packages\XTools Pro\esri\toolboxes\XTools Pro.pyt", line 95, in <module>
+    from Tools.FeaturesToPointsTool import *
+  File "E:\sw_nt\XTools\XTools AGP\Python\Tools\FeaturesToPointsTool.py", line 1, in <module>
+    from Tools.BaseTool import BaseTool
+  File "E:\sw_nt\XTools\XTools AGP\Python\Tools\BaseTool.py", line 7, in <module>
+    from Scripts.Base.PythonCancelTracker import PythonCancelTracker
+  File "E:\sw_nt\XTools\XTools AGP\Python\Scripts\Base\PythonCancelTracker.py", line 20, in <module>
+    from XTools.XToolsAGP.Core import ICancelTracker
+ModuleNotFoundError: No module named 'XTools'
+2025-09-23 13:28:48,438 - logging_setup - INFO - new db connection created
+2025-09-23 13:28:48,473 - logging_setup - INFO - workspace set to bcgw connection
+2025-09-23 13:28:48,474 - logging_setup - INFO - SDE Connection established at: \\spatialfiles.bcgov\work\srm\nel\Local\Geomatics\Workarea\csostad\GitHub_Repositories\ast_batch_tool\autoast\auto_ast_alpha\connection\bcgw.sde
+2025-09-23 13:29:09,035 - logging_setup - INFO - List of excel file paths is: ['\\\\spatialfiles.bcgov\\work\\srm\\nel\\Local\\Geomatics\\Workarea\\csostad\\Statusing\\v1 GUI 07_24\\outputs\\jobs_1.xlsx']
+2025-09-23 13:29:09,035 - logging_setup - INFO - Main: Creating queuefile path for \\spatialfiles.bcgov\work\srm\nel\Local\Geomatics\Workarea\csostad\Statusing\v1 GUI 07_24\outputs\jobs_1.xlsx
+2025-09-23 13:29:09,037 - logging_setup - INFO - Main: Loading jobs from \\spatialfiles.bcgov\work\srm\nel\Local\Geomatics\Workarea\csostad\Statusing\v1 GUI 07_24\outputs\jobs_1.xlsx
+2025-09-23 13:29:09,037 - logging_setup - INFO - ##########################################################################################################################
+2025-09-23 13:29:09,038 - logging_setup - INFO - #
+2025-09-23 13:29:09,038 - logging_setup - INFO - Loading Jobs...
+2025-09-23 13:29:09,039 - logging_setup - INFO - #
+2025-09-23 13:29:09,039 - logging_setup - INFO - ##########################################################################################################################
+2025-09-23 13:29:09,058 - logging_setup - INFO - 
+
+2025-09-23 13:29:09,059 - logging_setup - INFO - -------------------------------------------------------------------------------
+2025-09-23 13:29:09,059 - logging_setup - INFO - -                        Load Jobs: Start of Job 0                               -
+2025-09-23 13:29:09,060 - logging_setup - INFO - -------------------------------------------------------------------------------
+2025-09-23 13:29:09,060 - logging_setup - INFO - 
+
+2025-09-23 13:29:09,060 - logging_setup - INFO - Load Jobs - Creating empty dictionary
+2025-09-23 13:29:09,061 - logging_setup - INFO - Load Jobs - (Queued assigned to Job (0) is (Queued)
+2025-09-23 13:29:09,061 - logging_setup - INFO - 
+
+2025-09-23 13:29:09,062 - logging_setup - INFO - ##########################################################################################################################
+2025-09-23 13:29:09,062 - logging_setup - INFO - #
+2025-09-23 13:29:09,062 - logging_setup - INFO - Running Add Job Results from Load Jobs Function
+2025-09-23 13:29:09,063 - logging_setup - INFO - #
+2025-09-23 13:29:09,063 - logging_setup - INFO - ##########################################################################################################################
+2025-09-23 13:29:09,063 - logging_setup - INFO - 
+
+2025-09-23 13:29:09,072 - logging_setup - INFO - Add Job Result - Workbook loaded
+2025-09-23 13:29:09,072 - logging_setup - INFO - Add Job Result - 'ast_condition' column found in the spreadsheet.
+2025-09-23 13:29:09,073 - logging_setup - INFO - Add Job Result - Calculated Excel row index as 2 for job index 0
+2025-09-23 13:29:09,073 - logging_setup - INFO - Add Job Result - Updated Job 0 with condition 'Queued'.
+2025-09-23 13:29:09,090 - logging_setup - INFO - Add Job Result - Saving Workbook with updated condition
+2025-09-23 13:29:09,090 - logging_setup - INFO - Load Jobs - Added job condition 'Queued' for job 0 to jobs list
+2025-09-23 13:29:09,091 - logging_setup - INFO - Classifying input type for job 0
+2025-09-23 13:29:09,092 - logging_setup - INFO - Classifying Input Type - Feature layer found: \\spatialfiles.bcgov\work\srm\nel\Local\Geomatics\Workarea\csostad\Statusing\v1 GUI 07_24\636\636.shp
+2025-09-23 13:29:09,092 - logging_setup - INFO - Classifying Input Type - Processing feature layer: \\spatialfiles.bcgov\work\srm\nel\Local\Geomatics\Workarea\csostad\Statusing\v1 GUI 07_24\636\636.shp
+2025-09-23 13:29:09,093 - logging_setup - INFO - Classifying Input Type - No FW File Number provided, using original shapefile path
+2025-09-23 13:29:09,093 - logging_setup - INFO - Load Jobs - Job Condition is not Complete (Queued), adding job: 0 to jobs list
+2025-09-23 13:29:09,094 - logging_setup - INFO - 
+
+2025-09-23 13:29:09,094 - logging_setup - INFO - -------------------------------------------------------------------------------
+2025-09-23 13:29:09,095 - logging_setup - INFO - -                        End of Job 0                                -
+2025-09-23 13:29:09,095 - logging_setup - INFO - -------------------------------------------------------------------------------
+2025-09-23 13:29:09,095 - logging_setup - INFO - 
+
+2025-09-23 13:29:09,096 - logging_setup - INFO - 
+
+2025-09-23 13:29:09,096 - logging_setup - INFO - -------------------------------------------------------------------------------
+2025-09-23 13:29:09,096 - logging_setup - INFO - -                        Load Jobs: Start of Job 1                               -
+2025-09-23 13:29:09,097 - logging_setup - INFO - -------------------------------------------------------------------------------
+2025-09-23 13:29:09,097 - logging_setup - INFO - 
+
+2025-09-23 13:29:09,097 - logging_setup - INFO - Load Jobs - Creating empty dictionary
+2025-09-23 13:29:09,098 - logging_setup - INFO - Load Jobs - (Queued assigned to Job (1) is (Queued)
+2025-09-23 13:29:09,098 - logging_setup - INFO - 
+
+2025-09-23 13:29:09,099 - logging_setup - INFO - ##########################################################################################################################
+2025-09-23 13:29:09,099 - logging_setup - INFO - #
+2025-09-23 13:29:09,100 - logging_setup - INFO - Running Add Job Results from Load Jobs Function
+2025-09-23 13:29:09,100 - logging_setup - INFO - #
+2025-09-23 13:29:09,100 - logging_setup - INFO - ##########################################################################################################################
+2025-09-23 13:29:09,101 - logging_setup - INFO - 
+
+2025-09-23 13:29:09,112 - logging_setup - INFO - Add Job Result - Workbook loaded
+2025-09-23 13:29:09,112 - logging_setup - INFO - Add Job Result - 'ast_condition' column found in the spreadsheet.
+2025-09-23 13:29:09,113 - logging_setup - INFO - Add Job Result - Calculated Excel row index as 3 for job index 1
+2025-09-23 13:29:09,113 - logging_setup - INFO - Add Job Result - Updated Job 1 with condition 'Queued'.
+2025-09-23 13:29:09,129 - logging_setup - INFO - Add Job Result - Saving Workbook with updated condition
+2025-09-23 13:29:09,129 - logging_setup - INFO - Load Jobs - Added job condition 'Queued' for job 1 to jobs list
+2025-09-23 13:29:09,130 - logging_setup - INFO - Classifying input type for job 1
+2025-09-23 13:29:09,133 - logging_setup - INFO - Classifying Input Type - Feature layer found: \\spatialfiles.bcgov\work\srm\nel\Local\Geomatics\Workarea\csostad\Statusing\v1 GUI 07_24\637\637.shp
+2025-09-23 13:29:09,134 - logging_setup - INFO - Classifying Input Type - Processing feature layer: \\spatialfiles.bcgov\work\srm\nel\Local\Geomatics\Workarea\csostad\Statusing\v1 GUI 07_24\637\637.shp
+2025-09-23 13:29:09,135 - logging_setup - INFO - Classifying Input Type - No FW File Number provided, using original shapefile path
+2025-09-23 13:29:09,135 - logging_setup - INFO - Load Jobs - Job Condition is not Complete (Queued), adding job: 1 to jobs list
+2025-09-23 13:29:09,135 - logging_setup - INFO - 
+
+2025-09-23 13:29:09,136 - logging_setup - INFO - -------------------------------------------------------------------------------
+2025-09-23 13:29:09,136 - logging_setup - INFO - -                        End of Job 1                                -
+2025-09-23 13:29:09,136 - logging_setup - INFO - -------------------------------------------------------------------------------
+2025-09-23 13:29:09,137 - logging_setup - INFO - 
+
+2025-09-23 13:29:09,137 - logging_setup - INFO - Main: Batching jobs for \\spatialfiles.bcgov\work\srm\nel\Local\Geomatics\Workarea\csostad\Statusing\v1 GUI 07_24\outputs\jobs_1.xlsx
+2025-09-23 13:29:09,138 - logging_setup - INFO - 
+
+2025-09-23 13:29:09,138 - logging_setup - INFO - ##########################################################################################################################
+2025-09-23 13:29:09,138 - logging_setup - INFO - #
+2025-09-23 13:29:09,139 - logging_setup - INFO - Batch AST: Batching Jobs with Multiprocessing...
+2025-09-23 13:29:09,139 - logging_setup - INFO - #
+2025-09-23 13:29:09,139 - logging_setup - INFO - ##########################################################################################################################
+2025-09-23 13:29:09,140 - logging_setup - INFO - 
+
+2025-09-23 13:29:09,140 - logging_setup - INFO - Batch Ast: Job Timeout set to 21600 seconds
+2025-09-23 13:29:19,841 - logging_setup - INFO - Batch Ast: Starting job 0
+2025-09-23 13:29:19,869 - logging_setup - INFO - Batch Ast: Queued Job 0.....Multiproccessing started......
+2025-09-23 13:29:19,870 - logging_setup - INFO - Batch Ast: Starting job 1
+2025-09-23 13:29:19,893 - logging_setup - INFO - Batch Ast: Queued Job 1.....Multiproccessing started......
