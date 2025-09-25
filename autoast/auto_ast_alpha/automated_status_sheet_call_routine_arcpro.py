@@ -97,6 +97,10 @@ from logging_setup import setup_logging
 
 print("Getting SDE File Path from os.getenv")
 
+# Load the default environment
+load_dotenv()
+
+
 #EDIT - get the SDE file path from the environment variable
 sde = os.getenv("SDE_FILE_PATH")
 
