@@ -4,7 +4,7 @@
 import os
 import datetime
 import logging
-
+import arcpy
 
 def setup_logging():
     ''' Set up logging for the script '''
