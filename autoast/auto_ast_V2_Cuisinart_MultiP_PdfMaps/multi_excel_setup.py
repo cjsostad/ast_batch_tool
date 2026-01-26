@@ -21,7 +21,7 @@ Each Excel file is saved in a folder called outputs within the selected main dir
 import os
 from pathlib import Path
 from openpyxl import Workbook
-from tkinter import Tk, filedialog, Label, Button, StringVar, OptionMenu
+from tkinter import Tk, filedialog, Label, Button, StringVar, OptionMenu, Entry
 
 def create_job_excel_files():
     '''
@@ -48,6 +48,7 @@ def create_job_excel_files():
     root.deiconify()
     print("Creating a dropdown menu for region selection...")
     root.title("Select Region")
+    root.geometry("600x300")  # Make window twice as wide
     region_var = StringVar(root)
     region_var.set("Northeast")  # Default region
 
@@ -60,6 +61,11 @@ def create_job_excel_files():
 
     OptionMenu(root, region_var, *regions).pack(pady=10)
 
+    Label(root, text="Please enter a file path for your log files\nLeave the path field blank to write logs in the default location\nMake sure you have write access to the file path").pack(pady=10)
+    
+    log_path_var = StringVar(root)
+    Entry(root, textvariable=log_path_var, width=70).pack(pady=5)
+
     def confirm_selection():
         root.quit()
         root.destroy()
@@ -67,7 +73,9 @@ def create_job_excel_files():
     Button(root, text="Confirm", command=confirm_selection).pack(pady=10)
     root.mainloop()
     region = region_var.get()
+    log_path = log_path_var.get()
     print("Selected region:", region)
+    print("Log path:", log_path if log_path else "Default location")
 
     # Define paths for the output directory
     output_dir = main_dir / "outputs"

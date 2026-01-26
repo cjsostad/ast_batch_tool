@@ -8,19 +8,15 @@ from dotenv import load_dotenv
 
 import config
 
-print("Getting SDE File Path from os.getenv")
+# NOTE: These module-level variables are deprecated and kept for backwards compatibility only
+# The preferred approach is to pass sde_connection to execute_process() 
+# This avoids import-time validation that can fail in testing/setup scenarios
 
-#EDIT - get the SDE file path from the environment variable
+# Get SDE path if available (may not exist during initial import)
 sde = os.getenv("SDE_FILE_PATH")
 
-if not sde or not os.path.exists(sde):
-    arcpy.AddError("SDE connection file not found or not accessible. Check environment variable 'SDE_FILE_PATH'.")
-    sys.exit()
-# Verify it works
-print("Database User Found")
-
-# connection = sde
-# print(f"Inside inactive_dispositions.py - Connection: {connection}")
+# Only validate if actually being used in legacy mode (will be checked in connect_to_DB if needed)
+# Don't exit on import - let the calling code handle missing SDE gracefully
 
 # Assign secret file data to variables    
 username = os.getenv('BCGW_USER')
@@ -137,33 +133,120 @@ def get_oracle_driver():
         arcpy.AddWarning("TAB2 could not be generated. Oracle drivers do not exist on the GTS. Please contact geospatialservices.waterland@gov.bc.ca for support")
         return
 
-#EDIT Execute Process Function
-def execute_process(parcel_list,bcgw_user,bcgw_pwd,oracle_driv):
-    """Generates a csv of inactive Lands dispositions"""
+#EDIT Execute Process Function - Modified to use SDE connection instead of creating new pyodbc connection
+def execute_process(parcel_list, bcgw_user, bcgw_pwd, oracle_driv, sde_connection=None):
+    """Generates a csv of inactive Lands dispositions
     
-    print('Connecting to BCGW.')
-    driver = oracle_driv #'Oracle in OraClient12Home2'
-    server = config.CONNSERVER
-    port = config.CONNPORT
-    dbq = config.CONNDBQ
-    hostname = config.CONNINSTANCE
-
-    connection = connect_to_DB(driver,server,port,dbq,bcgw_user,bcgw_pwd)
+    Args:
+        parcel_list: List of parcel IDs to query
+        bcgw_user: BCGW username (kept for backwards compatibility, not used with SDE)
+        bcgw_pwd: BCGW password (kept for backwards compatibility, not used with SDE)  
+        oracle_driv: Oracle driver (kept for backwards compatibility, not used with SDE)
+        sde_connection: Path to existing SDE connection file (preferred method)
+    """
     
-    print ('Loading SQL queries.')
-    sql = load_sql()
-    
-    print ('Execute the query.')
-    parcels_q_str = format_parcels_list(parcel_list)
+    # Use SDE connection if provided, otherwise fall back to creating pyodbc connection
+    if sde_connection:
+        print('Using existing SDE connection (avoiding session limit issues)')
+        arcpy.AddMessage('Using existing SDE connection for inactive dispositions query')
+        
+        print ('Loading SQL queries.')
+        sql = load_sql()
+        
+        print ('Execute the query.')
+        parcels_q_str = format_parcels_list(parcel_list)
+        query = sql['inactive_lands'].format(prcl=parcels_q_str)
+        
+        # Use arcpy to execute query against SDE connection instead of pyodbc
+        df_inact_lands = read_query_sde(sde_connection, query)
+        
+    else:
+        # Legacy fallback - creates new connection (can cause ORA-02391 errors in multiprocessing)
+        print('WARNING: Creating new pyodbc connection (may exceed session limits)')
+        arcpy.AddWarning('Creating new database connection - may cause session limit issues with concurrent jobs')
+        
+        print('Connecting to BCGW.')
+        driver = oracle_driv
+        server = config.CONNSERVER
+        port = config.CONNPORT
+        dbq = config.CONNDBQ
+        hostname = config.CONNINSTANCE
 
-    query = sql['inactive_lands'].format(prcl=parcels_q_str)# add the parcels list to the SQL query
-
-    df_inact_lands = read_query(connection,query) #execute the query and store results in a dataframe
+        connection = connect_to_DB(driver,server,port,dbq,bcgw_user,bcgw_pwd)
+        
+        print ('Loading SQL queries.')
+        sql = load_sql()
+        
+        print ('Execute the query.')
+        parcels_q_str = format_parcels_list(parcel_list)
+        query = sql['inactive_lands'].format(prcl=parcels_q_str)
+        df_inact_lands = read_query(connection,query)
 
     print ('Retrieve Inactive info.')
     ilrr_info = get_inact_info(df_inact_lands)
 
     return ilrr_info
+
+
+def read_query_sde(sde_path, query):
+    """Execute SQL query using existing SDE connection via arcpy (no new session created)
+    
+    Args:
+        sde_path: Path to SDE connection file
+        query: SQL query string to execute
+        
+    Returns:
+        pandas DataFrame with query results
+    """
+    import pandas as pd
+    
+    # Use arcpy's ArcSDESQLExecute to run SQL without creating new connection session
+    # This reuses the existing SDE connection instead of opening a new one
+    try:
+        sde_conn = arcpy.ArcSDESQLExecute(sde_path)
+        sde_return = sde_conn.execute(query)
+        
+        if isinstance(sde_return, bool):
+            if sde_return == False:
+                arcpy.AddError(f"SQL execution failed: {sde_conn.error}")
+                raise Exception(f"SQL query failed: {sde_conn.error}")
+            else:
+                # Query succeeded but returned no data - return empty DataFrame with correct columns
+                cols = [
+                    'INTRID_SID', 'DISPOSITION_TRANSACTION_SID', 'FILE_CHR',
+                    'STAGE_NME', 'DTS_ACTIVATION_CDE', 'STATUS_NME', 'EFFECTIVE_DAT',
+                    'PURPOSE_NME', 'SUBPURPOSE_NME', 'TYPE_NME', 'SUBTYPE_NME',
+                    'LOCATION_DSC', 'HOLDER_ORGANNSATION_NAME', 'HOLDER_INDIVIDUAL_NAME'
+                ]
+                return pd.DataFrame(columns=cols)
+        else:
+            # sde_return is a list of tuples (rows)
+            # Column names must match the SELECT order in tantalis_bigQuery.py sql['inactive_lands']
+            cols = [
+                'INTRID_SID',
+                'DISPOSITION_TRANSACTION_SID', 
+                'FILE_CHR',
+                'STAGE_NME',
+                'DTS_ACTIVATION_CDE',
+                'STATUS_NME',
+                'EFFECTIVE_DAT',
+                'PURPOSE_NME',
+                'SUBPURPOSE_NME',
+                'TYPE_NME',
+                'SUBTYPE_NME',
+                'LOCATION_DSC',
+                'HOLDER_ORGANNSATION_NAME',
+                'HOLDER_INDIVIDUAL_NAME'
+            ]
+            
+            df = pd.DataFrame.from_records(sde_return, columns=cols)
+            return df
+            
+    except Exception as e:
+        arcpy.AddError(f"Error executing SQL query via SDE: {str(e)}")
+        import traceback
+        traceback.print_exc()
+        raise
 
 
 if __name__=="__main__":

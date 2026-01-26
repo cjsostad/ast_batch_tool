@@ -324,8 +324,8 @@ class AST_FACTORY:
         
         import time
         
-        # Set job timeout to 6 hours
-        JOB_TIMEOUT = 21600  # 6 hours in seconds
+        # Set job timeout to 24 hours
+        JOB_TIMEOUT = 86400  # 24 hours in seconds
         self.logger.info(f"Batch Ast: Job Timeout set to {JOB_TIMEOUT} seconds")
         print(f"Batch Ast: Job Timeout set to {JOB_TIMEOUT} seconds")
 

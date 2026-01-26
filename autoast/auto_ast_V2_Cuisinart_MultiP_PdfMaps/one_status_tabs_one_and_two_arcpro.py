@@ -340,7 +340,8 @@ class one_status_part2_tool(object):
 
             oracle_driver = inactives.get_oracle_driver()
             if oracle_driver:
-                inactive_list = inactives.execute_process(parcel_list,username,password,oracle_driver)
+                # Pass SDE connection to avoid creating new DB sessions (prevents ORA-02391 errors)
+                inactive_list = inactives.execute_process(parcel_list, username, password, oracle_driver, self.sde_connection)
                 self.interest_status = inactive_list['interest_status']
                 self.interest_type = inactive_list['interest_type']
                 self.dpr_registry_name = inactive_list['dpr_registry_name']

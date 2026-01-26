@@ -15,7 +15,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-
+import arcpy
 import os
 from dotenv import load_dotenv
 from logging_setup import setup_logging
@@ -41,7 +41,23 @@ arcpy.AddMessage("Inside Main V2")
 
 # *** INPUT YOUR EXCEL FILE NAME HERE ***
 excel_files = [
-    'july_7.xlsx'
+    'jobs_9.xlsx',
+    'jobs_10.xlsx',
+    'jobs_11.xlsx',
+    'jobs_12.xlsx',
+    'jobs_13.xlsx',
+    'jobs_14.xlsx',
+    'jobs_15.xlsx',
+    'jobs_16.xlsx',
+    'jobs_17.xlsx',
+    'jobs_18.xlsx',
+    'jobs_19.xlsx',
+    'jobs_20.xlsx',
+    'jobs_21.xlsx',
+    'jobs_22.xlsx',
+    'jobs_23.xlsx',
+    'jobs_24.xlsx',
+    'jobs_25.xlsx',
 ]
 
 
@@ -98,23 +114,23 @@ def process_excel_file(excel_file, secrets, logger, current_path):
 #################################################################################################################################################################################
 if __name__ == '__main__':
     
-
+    print("Main: Starting AutoAST V2 Main Processor")
     # Call the setup_logging function to log the messages
     logger = setup_logging()
 
     # Load the default environment
     load_dotenv()
-
+    print("Main: Environment loaded")
     # Call the import_ast function to import the AST toolbox
     template = import_ast(logger)
     
     current_path = os.path.dirname(os.path.realpath(__file__))
-
+    print(f"Main: Current path is {current_path}")
     # Call the setup_bcgw function to set up the database connection
     # secrets = setup_bcgw(logger)
     secrets, sde_connection, sde_path = setup_bcgw(logger)
     # username, password = secrets[0], secrets[1]
-    
+    print("Main: BCGW Connection established")
     # Set the SDE path environment variable for easy access by workers
     os.environ["SDE_FILE_PATH"] = sde_path
     logger.info(f"SDE Connection established at: {sde_path}")
