@@ -15,7 +15,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import arcpy
 import os
 from dotenv import load_dotenv
 from logging_setup import setup_logging
@@ -36,28 +35,12 @@ from ast_factory import AST_FACTORY
 #
 ###################################################################################
 
-arcpy.AddMessage("Inside Main V2")
+print("Inside Main V2")
 
 
 # *** INPUT YOUR EXCEL FILE NAME HERE ***
 excel_files = [
-    'jobs_9.xlsx',
-    'jobs_10.xlsx',
-    'jobs_11.xlsx',
-    'jobs_12.xlsx',
-    'jobs_13.xlsx',
-    'jobs_14.xlsx',
-    'jobs_15.xlsx',
-    'jobs_16.xlsx',
-    'jobs_17.xlsx',
-    'jobs_18.xlsx',
-    'jobs_19.xlsx',
-    'jobs_20.xlsx',
-    'jobs_21.xlsx',
-    'jobs_22.xlsx',
-    'jobs_23.xlsx',
-    'jobs_24.xlsx',
-    'jobs_25.xlsx',
+"jobs.xlsx"
 ]
 
 

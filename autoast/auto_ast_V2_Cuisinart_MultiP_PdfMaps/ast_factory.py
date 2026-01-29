@@ -324,17 +324,21 @@ class AST_FACTORY:
         
         import time
         
+        # Jan 29, 2026: TIMEOUT DISABLED - Jobs can take hours each, let them complete naturally
         # Set job timeout to 3 hours (Jan 27, 2026: reduced from 24 hours)
-        JOB_TIMEOUT = 10800  # 3 hours in seconds (was 86400 for 24 hours)
-        self.logger.info(f"Batch Ast: Job Timeout set to {JOB_TIMEOUT} seconds (3 hours)")
-        print(f"Batch Ast: Job Timeout set to {JOB_TIMEOUT} seconds (3 hours)")
+        # JOB_TIMEOUT = 10800  # 3 hours in seconds (was 86400 for 24 hours)
+        # self.logger.info(f"Batch Ast: Job Timeout set to {JOB_TIMEOUT} seconds (3 hours)")
+        # print(f"Batch Ast: Job Timeout set to {JOB_TIMEOUT} seconds (3 hours)")
         
         # Jan 27, 2026: Fixed timeout logic to monitor all jobs in parallel
         # Previous version waited sequentially which caused delays
-        print("Batch Ast: Using parallel timeout monitoring (fixed Jan 27, 2026)")
+        # print("Batch Ast: Using parallel timeout monitoring (fixed Jan 27, 2026)")
+        
+        print("Batch Ast: Timeout monitoring DISABLED - jobs will run to completion")
+        self.logger.info("Batch Ast: Timeout monitoring DISABLED - jobs will run to completion")
 
         processes = []
-        process_start_times = {}  # Track when each job actually started
+        # process_start_times = {}  # Track when each job actually started - DISABLED for no timeout
         manager = mp.Manager()
         return_dict = manager.dict()
 
@@ -354,17 +358,18 @@ class AST_FACTORY:
                 # Start method is called on the process object p. This begins the execution of the job in a separate process.
                 p.start()
                 
-                # Record the actual start time for this job (Jan 27, 2026 fix)
-                process_start_times[job_index] = time.time()
+                # Record the actual start time for this job (Jan 27, 2026 fix) - DISABLED Jan 29, 2026
+                # process_start_times[job_index] = time.time()
                 
                 self.logger.info(f"Batch Ast: {job.get(self.AST_CONDITION_COLUMN)} Job {job_index}.....Multiproccessing started......")
                 print(f"Batch Ast: Queued Job...Multiproccessing started......")
                 
 
         # Monitor and enforce timeouts (Jan 27, 2026: Now monitors all jobs in parallel)
+        # Jan 29, 2026: TIMEOUT MONITORING DISABLED - Let jobs complete naturally
         # Each job gets its own 24-hour window from when it started
-        print(f"Batch Ast: Monitoring {len(processes)} jobs in parallel with individual 24-hour timeouts")
-        self.logger.info(f"Batch Ast: Monitoring {len(processes)} jobs in parallel with individual timeouts")
+        print(f"Batch Ast: Monitoring {len(processes)} jobs in parallel (NO timeout)")
+        self.logger.info(f"Batch Ast: Monitoring {len(processes)} jobs in parallel (NO timeout)")
         
         timeout_failed_counter = 0
         success_counter = 0
@@ -377,31 +382,32 @@ class AST_FACTORY:
         while active_processes:
             for process, job_index in active_processes[:]:  # Use slice to safely modify during iteration
                 
-                # Calculate how long this specific job has been running
-                elapsed_time = time.time() - process_start_times[job_index]
-                
-                # Check if this job exceeded its individual timeout
-                if elapsed_time > JOB_TIMEOUT:
-                    if process.is_alive():
-                        print(f"Batch Ast: Job {job_index} exceeded {JOB_TIMEOUT}s timeout after {elapsed_time:.1f}s. Terminating.")
-                        self.logger.warning(f"Batch Ast: Job {job_index} exceeded timeout after {elapsed_time:.1f}s. Terminating process.")
-                        
-                        # End the hung up job
-                        process.terminate()
-                        process.join()
-                        
-                        # Call add job result and update the job as failed
-                        self.add_job_result(job_index, 'Failed') 
-                        
-                        # Increase the job timeout counter
-                        timeout_failed_counter += 1
-                        self.logger.error(f"Batch Ast: Job {job_index} exceeded timeout. Marking as Failed. Failed counter is {timeout_failed_counter}")
-                    
-                    # Remove from active list
-                    active_processes.remove((process, job_index))
+                # Jan 29, 2026: TIMEOUT CHECK DISABLED - jobs can take as long as needed
+                # # Calculate how long this specific job has been running
+                # elapsed_time = time.time() - process_start_times[job_index]
+                # 
+                # # Check if this job exceeded its individual timeout
+                # if elapsed_time > JOB_TIMEOUT:
+                #     if process.is_alive():
+                #         print(f"Batch Ast: Job {job_index} exceeded {JOB_TIMEOUT}s timeout after {elapsed_time:.1f}s. Terminating.")
+                #         self.logger.warning(f"Batch Ast: Job {job_index} exceeded timeout after {elapsed_time:.1f}s. Terminating process.")
+                #         
+                #         # End the hung up job
+                #         process.terminate()
+                #         process.join()
+                #         
+                #         # Call add job result and update the job as failed
+                #         self.add_job_result(job_index, 'Failed') 
+                #         
+                #         # Increase the job timeout counter
+                #         timeout_failed_counter += 1
+                #         self.logger.error(f"Batch Ast: Job {job_index} exceeded timeout. Marking as Failed. Failed counter is {timeout_failed_counter}")
+                #     
+                #     # Remove from active list
+                #     active_processes.remove((process, job_index))
                 
                 # Check if the process has finished
-                elif not process.is_alive():
+                if not process.is_alive():
                     # Process finished - clean up and get result
                     process.join()
                     
@@ -409,21 +415,21 @@ class AST_FACTORY:
                     if result == 'Success':
                         success_counter += 1
                         self.add_job_result(job_index, 'COMPLETE')
-                        print(f"Batch Ast: Job {job_index} completed successfully after {elapsed_time:.1f}s.")
+                        print(f"Batch Ast: Job {job_index} completed successfully.")
                         self.logger.info(f"Batch Ast: Job {job_index} completed successfully. Success counter is {success_counter}")
                     
                     elif result == 'Failed':
                         # Job failed due to an exception in the worker
                         self.add_job_result(job_index, 'Failed')
                         worker_failed_counter += 1
-                        print(f"Batch Ast: Job {job_index} failed due to an exception after {elapsed_time:.1f}s.")
+                        print(f"Batch Ast: Job {job_index} failed due to an exception.")
                         self.logger.error(f"Batch AST: Job {job_index} failed due to an exception in the Worker. Other exception failed counter is {worker_failed_counter}")
                     
                     else:
                         # Handle unexpected cases where worker didn't set return_dict (e.g., crashed)
                         self.add_job_result(job_index, 'Failed')
                         other_exception_failed_counter += 1
-                        print(f"Batch Ast: Job {job_index} failed with unknown status (worker may have crashed) after {elapsed_time:.1f}s.")
+                        print(f"Batch Ast: Job {job_index} failed with unknown status (worker may have crashed).")
                         self.logger.error(f"Batch AST: Job {job_index} failed with unknown status. Other Exception failed counter is {other_exception_failed_counter}")
                     
                     # Remove from active list

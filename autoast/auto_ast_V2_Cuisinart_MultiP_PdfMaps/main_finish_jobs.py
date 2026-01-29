@@ -99,13 +99,14 @@ def has_incomplete_jobs(excel_file_path, logger):
 
 
 # Mandatory function that feeds the list of excel files into the Toaster
-def process_excel_file(excel_file_path, secrets, logger, current_path, max_retry_attempts=2):
+def process_excel_file(excel_file_path, secrets, logger, current_path, max_retry_attempts=0):
     '''
     This function takes a list of excel files and iterates over that list, applying the Batch AST Class (and hence the ast tool)
     to each row in each excel file. This is a workaround for multiprocessing issue with the BCGW sees too many db connections
     in batches of 8
     
     Jan 27, 2026: Enhanced with retry logic for failed jobs (up to 2 additional attempts)
+    Jan 29, 2026: Changed max_retry_attempts default to 0 (no retries) - jobs run once only
     '''
     try:
         excel_file_name = os.path.basename(excel_file_path)
@@ -166,8 +167,12 @@ def process_excel_file(excel_file_path, secrets, logger, current_path, max_retry
             print(f"Main: [{excel_file_name}] Retry attempt {retry_num} complete")
             logger.info(f"Main: [{excel_file_name}] Retry attempt {retry_num} complete")
 
-        print(f"Main: [{excel_file_name}] AST Factory for {excel_file_path} COMPLETE")
-        logger.info(f"Main: [{excel_file_name}] AST Factory for {excel_file_path} COMPLETE")
+        print(f"\n{'='*100}")
+        print(f"  >>> COMPLETED SPREADSHEET: {excel_file_name} <<<")
+        print(f"{'='*100}\n")
+        logger.info(f"\n{'='*100}")
+        logger.info(f"  >>> COMPLETED SPREADSHEET: {excel_file_name} <<<")
+        logger.info(f"{'='*100}\n")
     
     
     except Exception as e:
@@ -240,12 +245,16 @@ if __name__ == '__main__':
     # Process each Excel file
     for excel_file in excel_files:
         excel_file_path = os.path.join(excel_directory, excel_file)
-        print(f"\n{'='*80}")
-        print(f"Main: Processing {excel_file}")
-        print(f"{'='*80}\n")
-        logger.info(f"\n{'='*80}")
-        logger.info(f"Main: Processing {excel_file}")
-        logger.info(f"{'='*80}\n")
+        print(f"\n{'='*100}")
+        print(f"{'='*100}")
+        print(f"  >>> PROCESSING SPREADSHEET: {excel_file} <<<")
+        print(f"{'='*100}")
+        print(f"{'='*100}\n")
+        logger.info(f"\n{'='*100}")
+        logger.info(f"{'='*100}")
+        logger.info(f"  >>> PROCESSING SPREADSHEET: {excel_file} <<<")
+        logger.info(f"{'='*100}")
+        logger.info(f"{'='*100}\n")
         
         # Check if file needs processing before creating AST instance
         has_incomplete, total, incomplete = has_incomplete_jobs(excel_file_path, logger)

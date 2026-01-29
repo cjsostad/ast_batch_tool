@@ -25,6 +25,8 @@ from ast_factory import AST_FACTORY
 from multi_excel_setup import create_job_excel_files
 
 # snippet to run multiple terminal windows & "P:\corp\python_ast\python.exe" "W:\srm\nel\Local\Geomatics\Workarea\csostad\GitHubAutoAST\gss_authorizations\autoast\auto_ast_v3_Breville_folium_maps\main.py"
+# & "P:\corp\python_ast\python.exe" "\\spatialfiles.bcgov\work\srm\nel\Local\Geomatics\Workarea\csostad\GitHub_Repositories\ast_batch_tool\autoast\auto_ast_V2_Cuisinart_MultiP_PdfMaps\main_auto_setup.py"
+
 
 
 # Automatically creates the excel files in groups of 8 with a common region......
@@ -75,8 +77,12 @@ def process_excel_file(excel_file, secrets, logger, current_path):
         logger.info(f"Main: Re-batching failed jobs for {excel_file}")
         ast.batch_ast()
 
-        print(f"Main: AST Factory for {excel_file} COMPLETE")
-        logger.info(f"Main: AST Factory for {excel_file} COMPLETE")
+        print(f"\n{'='*100}")
+        print(f"  >>> COMPLETED SPREADSHEET: {excel_file} <<<")
+        print(f"{'='*100}\n")
+        logger.info(f"\n{'='*100}")
+        logger.info(f"  >>> COMPLETED SPREADSHEET: {excel_file} <<<")
+        logger.info(f"{'='*100}\n")
     
     
     except Exception as e:
@@ -128,6 +134,16 @@ if __name__ == '__main__':
         logger.info(f"Processing {len(excel_files)} Excel file(s)...")
         
         for excel_file in excel_files:
+            print(f"\n{'='*100}")
+            print(f"{'='*100}")
+            print(f"  >>> PROCESSING SPREADSHEET: {excel_file} <<<")
+            print(f"{'='*100}")
+            print(f"{'='*100}\n")
+            logger.info(f"\n{'='*100}")
+            logger.info(f"{'='*100}")
+            logger.info(f"  >>> PROCESSING SPREADSHEET: {excel_file} <<<")
+            logger.info(f"{'='*100}")
+            logger.info(f"{'='*100}\n")
             process_excel_file(excel_file, secrets, logger, current_path)
         
         print("\nAll Excel files processed successfully!")
