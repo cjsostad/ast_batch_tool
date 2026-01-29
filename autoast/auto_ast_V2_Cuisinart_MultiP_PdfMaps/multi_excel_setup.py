@@ -21,7 +21,7 @@ Each Excel file is saved in a folder called outputs within the selected main dir
 import os
 from pathlib import Path
 from openpyxl import Workbook
-from tkinter import Tk, filedialog, Label, Button, StringVar, OptionMenu, Entry
+from tkinter import Tk, filedialog, Label, Button, StringVar, OptionMenu, Entry, Frame
 
 def create_job_excel_files():
     '''
@@ -47,8 +47,8 @@ def create_job_excel_files():
     # Create a dropdown menu for region selection
     root.deiconify()
     print("Creating a dropdown menu for region selection...")
-    root.title("Select Region")
-    root.geometry("600x300")  # Make window twice as wide
+    root.title("Select Region and Log Path")
+    root.geometry("650x350")  # Make window larger to fit all elements
     region_var = StringVar(root)
     region_var.set("Northeast")  # Default region
 
@@ -61,16 +61,29 @@ def create_job_excel_files():
 
     OptionMenu(root, region_var, *regions).pack(pady=10)
 
-    Label(root, text="Please enter a file path for your log files\nLeave the path field blank to write logs in the default location\nMake sure you have write access to the file path").pack(pady=10)
+    Label(root, text="Please select a directory for your log files\nLeave blank to write logs in the default location (script directory)\nMake sure you have write access to the selected path").pack(pady=10)
+    
+    # Create a frame for log path entry and browse button
+    log_frame = Frame(root)
+    log_frame.pack(pady=5)
     
     log_path_var = StringVar(root)
-    Entry(root, textvariable=log_path_var, width=70).pack(pady=5)
+    Entry(log_frame, textvariable=log_path_var, width=60).pack(side="left", padx=5)
+    
+    def browse_log_path():
+        """Open a directory browser dialog to select log path"""
+        selected_dir = filedialog.askdirectory(title="Select directory for log files")
+        if selected_dir:
+            log_path_var.set(selected_dir)
+            print(f"Selected log path: {selected_dir}")
+    
+    Button(log_frame, text="Browse...", command=browse_log_path).pack(side="left")
 
     def confirm_selection():
         root.quit()
         root.destroy()
 
-    Button(root, text="Confirm", command=confirm_selection).pack(pady=10)
+    Button(root, text="Confirm", command=confirm_selection).pack(pady=20)
     root.mainloop()
     region = region_var.get()
     log_path = log_path_var.get()
@@ -103,13 +116,24 @@ def create_job_excel_files():
     print("Headers added to the workbook.")
 
     # Iterate through subfolders in the main directory looking for shapefiles
+    print(f"\nSearching for shapefiles in subfolders of: {main_dir}")
+    subfolders_found = 0
+    shapefiles_found = 0
+    
     for subfolder in os.listdir(main_dir):
         subfolder_path = main_dir / subfolder
 
+        # Skip the outputs folder (created by this script)
+        if subfolder == "outputs":
+            print(f"Skipping outputs folder: {subfolder_path}")
+            continue
+
         if subfolder_path.is_dir():
+            subfolders_found += 1
             print(f"Processing subfolder: {subfolder_path}")
             shapefile = next((f for f in os.listdir(subfolder_path) if f.endswith(".shp")), None)
             if shapefile:
+                shapefiles_found += 1
                 shapefile_path = subfolder_path / shapefile
                 print(f"Found shapefile: {shapefile_path}")
 
@@ -151,15 +175,82 @@ def create_job_excel_files():
                     ws.title = "ast_config"
                     ws.append(headers)
                     print("New workbook created.")
+            else:
+                print(f"No shapefile found in: {subfolder_path}")
+    
+    print(f"\nSummary: Found {subfolders_found} subfolder(s), {shapefiles_found} shapefile(s)")
+    
+    # If no shapefiles found in subfolders, check the main directory itself
+    if shapefiles_found == 0:
+        print(f"\nNo shapefiles found in subfolders. Checking main directory: {main_dir}")
+        main_dir_shapefiles = [f for f in os.listdir(main_dir) if f.endswith(".shp")]
+        
+        if main_dir_shapefiles:
+            print(f"Found {len(main_dir_shapefiles)} shapefile(s) in main directory")
+            for shapefile in main_dir_shapefiles:
+                shapefiles_found += 1
+                shapefile_path = main_dir / shapefile
+                print(f"Found shapefile: {shapefile_path}")
+                
+                # Use the main directory name for output subfolder
+                main_dir_name = main_dir.name
+                output_subfolder = output_dir / main_dir_name
+                os.makedirs(output_subfolder, exist_ok=True)
+                print(f"Output subfolder created: {output_subfolder}")
+                
+                # Append job details to the worksheet
+                ws.append([
+                    region,
+                    str(shapefile_path),
+                    "",
+                    "",
+                    "",
+                    str(output_subfolder),
+                    "false",
+                    "false",
+                    "false",
+                    "false",
+                    "false",
+                    "true",
+                    "",
+                    ""
+                ])
+                
+                job_counter += 1
+                print(f"Job added from main directory. Current job counter: {job_counter}")
+                
+                if job_counter == 8:
+                    batch_excel_path = output_dir / f"jobs_{workbook_counter}.xlsx"
+                    wb.save(batch_excel_path)
+                    excel_files.append(str(batch_excel_path))
+                    print(f"Batch jobs template saved to: {batch_excel_path}")
+                    workbook_counter += 1
+                    job_counter = 0
+
+                    wb = Workbook()
+                    ws = wb.active
+                    ws.title = "ast_config"
+                    ws.append(headers)
+                    print("New workbook created.")
+        else:
+            print("\nWARNING: No shapefiles found in subfolders OR main directory!")
+            print("Make sure:")
+            print("  1. Your directory contains .shp files (either in subfolders or directly)")
+            print("  2. You selected the correct directory")
+            print(f"\nSelected directory was: {main_dir}")
 
     if job_counter > 0:
         batch_excel_path = output_dir / f"jobs_{workbook_counter}.xlsx"
         wb.save(batch_excel_path)
         excel_files.append(str(batch_excel_path))
         print(f"Batch jobs template saved to: {batch_excel_path}")
+    
+    print(f"\nTotal shapefiles processed: {shapefiles_found}")
+    print(f"Total Excel files created: {len(excel_files)}")
 
-    return excel_files
+    return excel_files, log_path
 
 if __name__ == "__main__":
-    excel_files = create_job_excel_files()
+    excel_files, log_path = create_job_excel_files()
     print(f"List of excel file paths is: {excel_files}")
+    print(f"Log path: {log_path if log_path else 'Default location'}")

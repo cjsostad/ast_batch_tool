@@ -86,9 +86,17 @@ def process_excel_file(excel_file, secrets, logger, current_path):
 #################################################################################################################################################################################
 if __name__ == '__main__':
     
-
-    # Call the setup_logging function to log the messages
-    logger = setup_logging()
+    # First, run the Tkinter dialog to get excel files and log path from user
+    # This must happen BEFORE setting up logging so the user can choose where logs go
+    print("Main: Running 'Create job excel files'")
+    excel_files, custom_log_path = create_job_excel_files()
+    print(f"List of excel file paths is: {excel_files}")
+    print(f"Custom log path: {custom_log_path if custom_log_path else 'Default location'}")
+    
+    # Now set up logging with the custom path provided by the user
+    logger = setup_logging(custom_log_path)
+    logger.info(f"List of excel file paths is: {excel_files}")
+    logger.info(f"Custom log path: {custom_log_path if custom_log_path else 'Default location'}")
 
     # Load the default environment
     load_dotenv()
@@ -105,22 +113,22 @@ if __name__ == '__main__':
     
     # Set the SDE path environment variable for easy access by workers
     os.environ["SDE_FILE_PATH"] = sde_path
-    logger.info(f"SDE Connection established at: {sde_path}")
-    
-    
-    
-    
-    # Uncomment the following lines to create job excel files if needed
-    
-    
-    print("Main: Running 'Create job excel files'")
-    excel_files = create_job_excel_files()
-    print(f"List of excel file paths is: {excel_files}")
-    logger.info(f"List of excel file paths is: {excel_files}")          
+    logger.info(f"SDE Connection established at: {sde_path}")          
     
     
     # Process each Excel file
-    for excel_file in excel_files:
-        process_excel_file(excel_file, secrets, logger, current_path)
-    
-    
+    if not excel_files or len(excel_files) == 0:
+        error_msg = "No Excel files were created. This usually means no shapefiles were found in subfolders of the selected directory."
+        print(f"ERROR: {error_msg}")
+        logger.error(error_msg)
+        logger.error("Make sure your directory structure has shapefiles in subfolders, not directly in the main folder.")
+        print("\nScript completed with no files to process.")
+    else:
+        print(f"\nProcessing {len(excel_files)} Excel file(s)...")
+        logger.info(f"Processing {len(excel_files)} Excel file(s)...")
+        
+        for excel_file in excel_files:
+            process_excel_file(excel_file, secrets, logger, current_path)
+        
+        print("\nAll Excel files processed successfully!")
+        logger.info("All Excel files processed successfully!")

@@ -101,9 +101,27 @@ def process_excel_file(excel_file, secrets, logger, current_path):
 # if __name__ == '__main__':
     
 
-# Call the setup_logging function to log the messages
+# ========================================
+# OPTION 1: Using default log location (script directory)
+# ========================================
+# Uncomment the following lines to use the default log location
 arcpy.AddMessage("Setting up Logging")
-logger = setup_logging()
+logger = setup_logging()  # Uses default location (script directory)
+
+# ========================================
+# OPTION 2: Using custom log location from Tkinter dialog
+# ========================================
+# If you want to use create_job_excel_files() which prompts for a custom log path:
+# 1. Comment out the logger = setup_logging() line above
+# 2. Uncomment the following lines:
+#
+# from multi_excel_setup import create_job_excel_files
+# arcpy.AddMessage("Running 'Create job excel files'")
+# excel_files, custom_log_path = create_job_excel_files()
+# arcpy.AddMessage("Setting up Logging with custom path")
+# logger = setup_logging(custom_log_path)  # Uses custom path from dialog
+# arcpy.AddMessage(f"List of excel file paths is: {excel_files}")
+# logger.info(f"List of excel file paths is: {excel_files}")
 
 # Load the default environment
 arcpy.AddMessage("Loading Environment")
@@ -124,18 +142,7 @@ secrets, sde_connection, sde_path = setup_bcgw(logger)
 # Set the SDE path environment variable for easy access by workers
 os.environ["SDE_FILE_PATH"] = sde_path
 arcpy.AddMessage("Connecting to BCGW")
-logger.info(f"SDE Connection established at: {sde_path}")
-
-
-
-
-# Uncomment the following lines to create job excel files if needed
-
-
-# print("Main: Running 'Create job excel files'")
-# excel_files = create_job_excel_files()
-# print(f"List of excel file paths is: {excel_files}")
-# logger.info(f"List of excel file paths is: {excel_files}")          
+logger.info(f"SDE Connection established at: {sde_path}")          
 
 
 # Process each  of the  Excel files listed at the top of this scrip

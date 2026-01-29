@@ -83,11 +83,17 @@ import sys, os, openpyxl, arcpy, runpy, shutil, subprocess
 from openpyxl.styles import Alignment, Font, PatternFill #,Border
 from openpyxl.styles.borders import Border, Side
 from dotenv import load_dotenv
+from pathlib import Path
 
 # import both the statusing tools which create tabs 1, 2, 3
 
+# import both the statusing tools which create tabs 1, 2, 3
+current_dir = Path(__file__).resolve().parent
+sys.path.append(str(current_dir))
+
+
 # sys.path.append(r'\\spatialfiles.bcgov\work\srm\nel\Local\Geomatics\Workarea\csostad\GitHubAutoAST\statusing_tools_arcpro\Ready')
-sys.path.append(r'\\spatialfiles.bcgov\work\srm\nel\Local\Geomatics\Workarea\csostad\GitHubAutoAST\gss_authorizations\autoast\auto_ast_V2_Cuisinart_MultiP_PdfMaps')
+# sys.path.append(r'\\spatialfiles.bcgov\work\srm\nel\Local\Geomatics\Workarea\csostad\GitHubAutoAST\gss_authorizations\autoast\auto_ast_V2_Cuisinart_MultiP_PdfMaps')
 
 import universal_overlap_tool_arcpro as revolt #@UnresolvedImport
 import one_status_tabs_one_and_two_arcpro as one_status_part2

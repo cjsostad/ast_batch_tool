@@ -48,15 +48,20 @@ Modification:
 #===============================================================================
 #import sys, string, os, time,win32com.client,datetime,win32api,arcpy, csv
 import sys, string, os, time, datetime, arcpy, csv, subprocess, keyring
-
+from pathlib import Path
 
 #stop
 message = "Now Running " + str(sys.argv[0])
 #EDIT changed the path to the statusing tool to the new location
 
+# Get local dir
+current_dir = Path(__file__).resolve().parent
+sys.path.append(str(current_dir))
+
+
 # import the statusing tool
 # sys.path.append(r'\\GISWHSE.ENV.GOV.BC.CA\WHSE_NP\corp\script_whse\python\Utility_Misc\Ready\statusing_tools_arcpro\beta')
-sys.path.append(r'\\spatialfiles.bcgov\work\srm\nel\Local\Geomatics\Workarea\csostad\GitHubAutoAST\gss_authorizations\autoast\auto_ast_V2_Cuisinart_MultiP_PdfMaps')
+# sys.path.append(r'\\spatialfiles.bcgov\work\srm\nel\Local\Geomatics\Workarea\csostad\GitHubAutoAST\gss_authorizations\autoast\auto_ast_V2_Cuisinart_MultiP_PdfMaps')
 import universal_overlap_tool_arcpro as revolt
 # import create_bcgw_sde_connection as connect_bcgw
 import config
