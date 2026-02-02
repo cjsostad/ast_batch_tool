@@ -1,0 +1,53 @@
+2026-01-29 23:28:31,405 - Process Job Mp: worker_0 - INFO - Process Job Mp: AST Toolbox imported successfully in worker.
+2026-01-29 23:28:31,825 - Process Job Mp: worker_0 - DEBUG - Process Job Mp: Job Parameters: ['Skeena', '\\\\spatialfiles.bcgov\\srm\\gss\\sandbox\\csostad\\Skeena 2026-2028 Shapefiles\\shapefile\\6406870\\6406870.shp', '', '', '', '\\\\spatialfiles.bcgov\\srm\\gss\\sandbox\\csostad\\Skeena 2026-2028 Shapefiles\\shapefile\\outputs\\6406870', False, False, False, False, False, True]
+2026-01-29 23:28:31,833 - Process Job Mp: worker_0 - INFO - Process Job Mp: Running MakeAutomatedStatusSpreadsheet_ast...
+2026-01-29 23:28:44,665 - root - INFO - Logger initialized
+2026-01-29 23:28:49,408 - root - ERROR - Failed to import tools
+Traceback (most recent call last):
+  File "P:\corp\central_clones\python_geospatial\lib\site-packages\XTools Pro\esri\toolboxes\XTools Pro.pyt", line 95, in <module>
+    from Tools.FeaturesToPointsTool import *
+  File "E:\sw_nt\XTools\XTools AGP\Python\Tools\FeaturesToPointsTool.py", line 1, in <module>
+    from Tools.BaseTool import BaseTool
+  File "E:\sw_nt\XTools\XTools AGP\Python\Tools\BaseTool.py", line 7, in <module>
+    from Scripts.Base.PythonCancelTracker import PythonCancelTracker
+  File "E:\sw_nt\XTools\XTools AGP\Python\Scripts\Base\PythonCancelTracker.py", line 20, in <module>
+    from XTools.XToolsAGP.Core import ICancelTracker
+ModuleNotFoundError: No module named 'XTools'
+2026-01-29 23:28:49,457 - root - ERROR - No module named 'XTools'
+Traceback (most recent call last):
+  File "P:\corp\central_clones\python_geospatial\lib\site-packages\XTools Pro\esri\toolboxes\XTools Pro.pyt", line 95, in <module>
+    from Tools.FeaturesToPointsTool import *
+  File "E:\sw_nt\XTools\XTools AGP\Python\Tools\FeaturesToPointsTool.py", line 1, in <module>
+    from Tools.BaseTool import BaseTool
+  File "E:\sw_nt\XTools\XTools AGP\Python\Tools\BaseTool.py", line 7, in <module>
+    from Scripts.Base.PythonCancelTracker import PythonCancelTracker
+  File "E:\sw_nt\XTools\XTools AGP\Python\Scripts\Base\PythonCancelTracker.py", line 20, in <module>
+    from XTools.XToolsAGP.Core import ICancelTracker
+ModuleNotFoundError: No module named 'XTools'
+2026-01-30 04:00:33,693 - Process Job Mp: worker_0 - ERROR - Process Job Mp: Job 0 failed with error: ERROR 000582: Error occurred during execution.
+
+2026-01-30 04:00:33,894 - Process Job Mp: worker_0 - DEBUG - Traceback (most recent call last):
+  File "\\spatialfiles.bcgov\work\srm\nel\Local\Geomatics\Workarea\csostad\GitHub_Repositories\ast_batch_tool\autoast\auto_ast_V2_Cuisinart_MultiP_PdfMaps\mp_worker.py", line 124, in process_job_mp
+    arcpy.alphaast.MakeAutomatedStatusSpreadsheet(*params)
+  File "\\spatialfiles.bcgov\work\srm\nel\Local\Geomatics\Workarea\csostad\GitHubAutoAST\gss_authorizations\autoast\auto_ast_V2_Cuisinart_MultiP_PdfMaps\ast.atbx", line 59, in MakeAutomatedStatusSpreadsheet
+  File "\\spatialfiles.bcgov\work\srm\nel\Local\Geomatics\Workarea\csostad\GitHubAutoAST\gss_authorizations\autoast\auto_ast_V2_Cuisinart_MultiP_PdfMaps\ast.atbx", line 56, in MakeAutomatedStatusSpreadsheet
+  File "E:\sw_nt\ArcGIS\Pro\Resources\ArcPy\arcpy\geoprocessing\_base.py", line 532, in <lambda>
+    return lambda *args: val(*gp_fixargs(args, True))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+arcgisscripting.ExecuteError: ERROR 000582: Error occurred during execution.
+
+
+2026-01-30 04:00:33,917 - Process Job Mp: worker_0 - ERROR - Process Job Mp: Job 0 failed with error: ERROR 000582: Error occurred during execution.
+
+2026-01-30 04:00:33,925 - Process Job Mp: worker_0 - ERROR - Process Job Mp: Traceback:
+Traceback (most recent call last):
+  File "\\spatialfiles.bcgov\work\srm\nel\Local\Geomatics\Workarea\csostad\GitHub_Repositories\ast_batch_tool\autoast\auto_ast_V2_Cuisinart_MultiP_PdfMaps\mp_worker.py", line 124, in process_job_mp
+    arcpy.alphaast.MakeAutomatedStatusSpreadsheet(*params)
+  File "\\spatialfiles.bcgov\work\srm\nel\Local\Geomatics\Workarea\csostad\GitHubAutoAST\gss_authorizations\autoast\auto_ast_V2_Cuisinart_MultiP_PdfMaps\ast.atbx", line 59, in MakeAutomatedStatusSpreadsheet
+  File "\\spatialfiles.bcgov\work\srm\nel\Local\Geomatics\Workarea\csostad\GitHubAutoAST\gss_authorizations\autoast\auto_ast_V2_Cuisinart_MultiP_PdfMaps\ast.atbx", line 56, in MakeAutomatedStatusSpreadsheet
+  File "E:\sw_nt\ArcGIS\Pro\Resources\ArcPy\arcpy\geoprocessing\_base.py", line 532, in <lambda>
+    return lambda *args: val(*gp_fixargs(args, True))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+arcgisscripting.ExecuteError: ERROR 000582: Error occurred during execution.
+
+
