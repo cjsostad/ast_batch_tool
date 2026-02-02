@@ -8,6 +8,7 @@ import multiprocessing as mp
 from mp_worker import process_job_mp
 from aoi_utilities import build_aoi_from_shp
 from aoi_utilities import build_aoi_from_kml
+from failed_job_tracker import FailedJobTracker
 
 
 class AST_FACTORY:
@@ -39,13 +40,14 @@ class AST_FACTORY:
     AST_SCRIPT = ''
     job_index = None  # Initialize job_index as a global variable
     
-    def __init__(self, queuefile, db_user, db_pass, logger=None, current_path=None) -> None:
+    def __init__(self, queuefile, db_user, db_pass, logger=None, current_path=None, failed_job_tracker=None) -> None:
             self.user = db_user
             self.user_cred = db_pass
             self.queuefile = queuefile
             self.jobs = []
             self.logger = logger or logging.getLogger(__name__)
-            self.current_path = current_path  
+            self.current_path = current_path
+            self.failed_job_tracker = failed_job_tracker  # Store the failed job tracker instance
 #LOAD JOBS
     def load_jobs(self):
         '''
@@ -324,21 +326,18 @@ class AST_FACTORY:
         
         import time
         
-        # Jan 29, 2026: TIMEOUT DISABLED - Jobs can take hours each, let them complete naturally
-        # Set job timeout to 3 hours (Jan 27, 2026: reduced from 24 hours)
-        # JOB_TIMEOUT = 10800  # 3 hours in seconds (was 86400 for 24 hours)
-        # self.logger.info(f"Batch Ast: Job Timeout set to {JOB_TIMEOUT} seconds (3 hours)")
-        # print(f"Batch Ast: Job Timeout set to {JOB_TIMEOUT} seconds (3 hours)")
+        # Feb 2, 2026: RE-ENABLED timeout with process health checks
+        # Set job timeout to 6 hours (21600 seconds) - reasonable for most jobs
+        JOB_TIMEOUT = 21600  # 6 hours in seconds
+        HEALTH_CHECK_INTERVAL = 60  # Check process health every 60 seconds
         
-        # Jan 27, 2026: Fixed timeout logic to monitor all jobs in parallel
-        # Previous version waited sequentially which caused delays
-        # print("Batch Ast: Using parallel timeout monitoring (fixed Jan 27, 2026)")
-        
-        print("Batch Ast: Timeout monitoring DISABLED - jobs will run to completion")
-        self.logger.info("Batch Ast: Timeout monitoring DISABLED - jobs will run to completion")
+        self.logger.info(f"Batch Ast: Job Timeout set to {JOB_TIMEOUT} seconds (6 hours)")
+        print(f"Batch Ast: Job Timeout set to {JOB_TIMEOUT} seconds (6 hours)")
+        print(f"Batch Ast: Process health checks enabled (every {HEALTH_CHECK_INTERVAL}s)")
+        self.logger.info(f"Batch Ast: Process health checks enabled (every {HEALTH_CHECK_INTERVAL}s)")
 
         processes = []
-        # process_start_times = {}  # Track when each job actually started - DISABLED for no timeout
+        process_start_times = {}  # Track when each job actually started
         manager = mp.Manager()
         return_dict = manager.dict()
 
@@ -353,60 +352,96 @@ class AST_FACTORY:
                 p = mp.Process(target=process_job_mp, args=(self, job, job_index, self.current_path, os.getenv("SDE_FILE_PATH"), return_dict))
                 
                 # Append the process object to the processes list and job_index. This list keeps track of all the processes and their corresponding job indices.
-                processes.append((p, job_index))
+                processes.append((p, job_index, job))  # Also store job data for failed job tracking
                 
                 # Start method is called on the process object p. This begins the execution of the job in a separate process.
                 p.start()
                 
-                # Record the actual start time for this job (Jan 27, 2026 fix) - DISABLED Jan 29, 2026
-                # process_start_times[job_index] = time.time()
+                # Record the actual start time for this job
+                process_start_times[job_index] = time.time()
                 
                 self.logger.info(f"Batch Ast: {job.get(self.AST_CONDITION_COLUMN)} Job {job_index}.....Multiproccessing started......")
                 print(f"Batch Ast: Queued Job...Multiproccessing started......")
                 
 
-        # Monitor and enforce timeouts (Jan 27, 2026: Now monitors all jobs in parallel)
-        # Jan 29, 2026: TIMEOUT MONITORING DISABLED - Let jobs complete naturally
-        # Each job gets its own 24-hour window from when it started
-        print(f"Batch Ast: Monitoring {len(processes)} jobs in parallel (NO timeout)")
-        self.logger.info(f"Batch Ast: Monitoring {len(processes)} jobs in parallel (NO timeout)")
+        # Feb 2, 2026: Monitor jobs with timeout and process health checks
+        print(f"Batch Ast: Monitoring {len(processes)} jobs with 6-hour timeout and health checks")
+        self.logger.info(f"Batch Ast: Monitoring {len(processes)} jobs with 6-hour timeout and health checks")
+        
+        # Get the spreadsheet name for failed job tracking
+        spreadsheet_name = os.path.basename(self.queuefile) if self.queuefile else "unknown"
         
         timeout_failed_counter = 0
         success_counter = 0
         worker_failed_counter = 0
-        other_exception_failed_counter = 0
+        crash_failed_counter = 0
         
         active_processes = list(processes)  # Create a working copy of the processes list
+        last_health_check = time.time()
         
         # Check all processes repeatedly until all are done
         while active_processes:
-            for process, job_index in active_processes[:]:  # Use slice to safely modify during iteration
+            current_time = time.time()
+            
+            for process, job_index, job_data in active_processes[:]:  # Use slice to safely modify during iteration
                 
-                # Jan 29, 2026: TIMEOUT CHECK DISABLED - jobs can take as long as needed
-                # # Calculate how long this specific job has been running
-                # elapsed_time = time.time() - process_start_times[job_index]
-                # 
-                # # Check if this job exceeded its individual timeout
-                # if elapsed_time > JOB_TIMEOUT:
-                #     if process.is_alive():
-                #         print(f"Batch Ast: Job {job_index} exceeded {JOB_TIMEOUT}s timeout after {elapsed_time:.1f}s. Terminating.")
-                #         self.logger.warning(f"Batch Ast: Job {job_index} exceeded timeout after {elapsed_time:.1f}s. Terminating process.")
-                #         
-                #         # End the hung up job
-                #         process.terminate()
-                #         process.join()
-                #         
-                #         # Call add job result and update the job as failed
-                #         self.add_job_result(job_index, 'Failed') 
-                #         
-                #         # Increase the job timeout counter
-                #         timeout_failed_counter += 1
-                #         self.logger.error(f"Batch Ast: Job {job_index} exceeded timeout. Marking as Failed. Failed counter is {timeout_failed_counter}")
-                #     
-                #     # Remove from active list
-                #     active_processes.remove((process, job_index))
+                # Calculate how long this specific job has been running
+                elapsed_time = current_time - process_start_times[job_index]
                 
-                # Check if the process has finished
+                # HEALTH CHECK: Periodically verify process is still alive
+                if current_time - last_health_check >= HEALTH_CHECK_INTERVAL:
+                    if not process.is_alive():
+                        # Process died without reporting - check if it completed or crashed
+                        result = return_dict.get(job_index)
+                        if result is None:
+                            # Process crashed without setting return_dict
+                            print(f"Batch Ast: HEALTH CHECK - Job {job_index} process crashed (not alive, no result)")
+                            self.logger.error(f"Batch Ast: HEALTH CHECK - Job {job_index} process crashed")
+                            
+                            self.add_job_result(job_index, 'Failed')
+                            crash_failed_counter += 1
+                            
+                            # Log to failed job tracker
+                            if self.failed_job_tracker:
+                                self.failed_job_tracker.log_failed_job(
+                                    spreadsheet_name, job_index, job_data, 
+                                    'crash', f'Process crashed after {elapsed_time:.1f}s without reporting'
+                                )
+                            
+                            active_processes.remove((process, job_index, job_data))
+                            continue
+                
+                # TIMEOUT CHECK: Check if this job exceeded its individual timeout
+                if elapsed_time > JOB_TIMEOUT:
+                    if process.is_alive():
+                        print(f"Batch Ast: Job {job_index} exceeded {JOB_TIMEOUT}s timeout after {elapsed_time:.1f}s. Terminating.")
+                        self.logger.warning(f"Batch Ast: Job {job_index} exceeded timeout after {elapsed_time:.1f}s. Terminating process.")
+                        
+                        # End the hung up job
+                        process.terminate()
+                        process.join(timeout=10)  # Wait up to 10 seconds for graceful termination
+                        if process.is_alive():
+                            process.kill()  # Force kill if still alive
+                        
+                        # Call add job result and update the job as failed
+                        self.add_job_result(job_index, 'Failed') 
+                        
+                        # Increase the job timeout counter
+                        timeout_failed_counter += 1
+                        self.logger.error(f"Batch Ast: Job {job_index} exceeded timeout. Marking as Failed. Timeout counter is {timeout_failed_counter}")
+                        
+                        # Log to failed job tracker
+                        if self.failed_job_tracker:
+                            self.failed_job_tracker.log_failed_job(
+                                spreadsheet_name, job_index, job_data, 
+                                'timeout', f'Exceeded {JOB_TIMEOUT}s timeout'
+                            )
+                    
+                    # Remove from active list
+                    active_processes.remove((process, job_index, job_data))
+                    continue
+                
+                # Check if the process has finished normally
                 if not process.is_alive():
                     # Process finished - clean up and get result
                     process.join()
@@ -423,24 +458,42 @@ class AST_FACTORY:
                         self.add_job_result(job_index, 'Failed')
                         worker_failed_counter += 1
                         print(f"Batch Ast: Job {job_index} failed due to an exception.")
-                        self.logger.error(f"Batch AST: Job {job_index} failed due to an exception in the Worker. Other exception failed counter is {worker_failed_counter}")
+                        self.logger.error(f"Batch AST: Job {job_index} failed due to an exception in the Worker. Worker failed counter is {worker_failed_counter}")
+                        
+                        # Log to failed job tracker
+                        if self.failed_job_tracker:
+                            self.failed_job_tracker.log_failed_job(
+                                spreadsheet_name, job_index, job_data, 
+                                'worker_error', 'Worker reported failure'
+                            )
                     
                     else:
                         # Handle unexpected cases where worker didn't set return_dict (e.g., crashed)
                         self.add_job_result(job_index, 'Failed')
-                        other_exception_failed_counter += 1
+                        crash_failed_counter += 1
                         print(f"Batch Ast: Job {job_index} failed with unknown status (worker may have crashed).")
-                        self.logger.error(f"Batch AST: Job {job_index} failed with unknown status. Other Exception failed counter is {other_exception_failed_counter}")
+                        self.logger.error(f"Batch AST: Job {job_index} failed with unknown status. Crash counter is {crash_failed_counter}")
+                        
+                        # Log to failed job tracker
+                        if self.failed_job_tracker:
+                            self.failed_job_tracker.log_failed_job(
+                                spreadsheet_name, job_index, job_data, 
+                                'unknown', 'Process ended without setting result'
+                            )
                     
                     # Remove from active list
-                    active_processes.remove((process, job_index))
+                    active_processes.remove((process, job_index, job_data))
+            
+            # Update last health check time after checking all processes
+            if current_time - last_health_check >= HEALTH_CHECK_INTERVAL:
+                last_health_check = current_time
             
             # If there are still active processes, wait a bit before checking again
             if active_processes:
                 time.sleep(2)  # Check every 2 seconds to avoid busy waiting
         
-        print(f"Batch Ast: All jobs completed. Success: {success_counter}, Worker Failed: {worker_failed_counter}, Timeout Failed: {timeout_failed_counter}, Unknown: {other_exception_failed_counter}")
-        self.logger.info(f"Batch Ast: Summary - Success: {success_counter}, Worker Failed: {worker_failed_counter}, Timeout Failed: {timeout_failed_counter}, Unknown: {other_exception_failed_counter}")
+        print(f"Batch Ast: All jobs completed. Success: {success_counter}, Worker Failed: {worker_failed_counter}, Timeout Failed: {timeout_failed_counter}, Crashed: {crash_failed_counter}")
+        self.logger.info(f"Batch Ast: Summary - Success: {success_counter}, Worker Failed: {worker_failed_counter}, Timeout Failed: {timeout_failed_counter}, Crashed: {crash_failed_counter}")
          
         self.logger.info('\n')    
         self.logger.info("Batch Ast Complete - Check separate worker log file for more details")

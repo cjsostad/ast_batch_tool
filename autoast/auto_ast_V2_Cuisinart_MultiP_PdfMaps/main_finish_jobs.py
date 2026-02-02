@@ -22,6 +22,7 @@ from database_connection import setup_bcgw
 from toolbox_import import import_ast
 from ast_factory import AST_FACTORY
 from openpyxl import load_workbook
+from failed_job_tracker import FailedJobTracker
 
 
 # Jan 27, 2026: Helper function to check if workbook has any incomplete jobs
@@ -99,7 +100,7 @@ def has_incomplete_jobs(excel_file_path, logger):
 
 
 # Mandatory function that feeds the list of excel files into the Toaster
-def process_excel_file(excel_file_path, secrets, logger, current_path, max_retry_attempts=0):
+def process_excel_file(excel_file_path, secrets, logger, current_path, failed_job_tracker, max_retry_attempts=0):
     '''
     This function takes a list of excel files and iterates over that list, applying the Batch AST Class (and hence the ast tool)
     to each row in each excel file. This is a workaround for multiprocessing issue with the BCGW sees too many db connections
@@ -107,6 +108,7 @@ def process_excel_file(excel_file_path, secrets, logger, current_path, max_retry
     
     Jan 27, 2026: Enhanced with retry logic for failed jobs (up to 2 additional attempts)
     Jan 29, 2026: Changed max_retry_attempts default to 0 (no retries) - jobs run once only
+    Feb 2, 2026: Added failed_job_tracker parameter to track failures
     '''
     try:
         excel_file_name = os.path.basename(excel_file_path)
@@ -122,8 +124,8 @@ def process_excel_file(excel_file_path, secrets, logger, current_path, max_retry
         print(f"Main: [{excel_file_name}] Creating queuefile path for {excel_file_path}")
         logger.info(f"Main: [{excel_file_name}] Creating queuefile path for {excel_file_path}")
 
-        # Create an instance of the AST_FACTORY class
-        ast = AST_FACTORY(excel_file_path, secrets[0], secrets[1], logger, current_path)
+        # Create an instance of the AST_FACTORY class with failed job tracker
+        ast = AST_FACTORY(excel_file_path, secrets[0], secrets[1], logger, current_path, failed_job_tracker)
 
         if not os.path.exists(excel_file_path):
             print(f"Main: [{excel_file_name}] ERROR - Queuefile {excel_file_path} not found!")
@@ -186,6 +188,7 @@ if __name__ == '__main__':
     print("="*80)
     print("Main: Starting AutoAST V2 - Finish Remaining Jobs")
     print("Jan 27, 2026: Updated with 3-hour timeout and smart reprocessing")
+    print("Feb 2, 2026: Updated with 6-hour timeout, process health checks, and failed job tracking")
     print("="*80)
     
     # Call the setup_logging function to log the messages
@@ -213,30 +216,31 @@ if __name__ == '__main__':
     # Define the directory where the excel files are located
     excel_directory = r"\\spatialfiles.bcgov\srm\gss\sandbox\csostad\Skeena 2026-2028 Shapefiles\shapefile\outputs"
     
-    # List of Excel files to process (jobs_9.xlsx through jobs_25.xlsx)
-    # Jan 27, 2026: Script will check each file and skip those already complete
-    excel_files = [
-        'jobs_9.xlsx',
-        'jobs_10.xlsx',
-        'jobs_11.xlsx',
-        'jobs_12.xlsx',
-        'jobs_13.xlsx',
-        'jobs_14.xlsx',
-        'jobs_15.xlsx',
-        'jobs_16.xlsx',
-        'jobs_17.xlsx',
-        'jobs_18.xlsx',
-        'jobs_19.xlsx',
-        'jobs_20.xlsx',
-        'jobs_21.xlsx',
-        'jobs_22.xlsx',
-        'jobs_23.xlsx',
-        'jobs_24.xlsx',
-        'jobs_25.xlsx',
-    ]
+    # Feb 2, 2026: Initialize Failed Job Tracker
+    failed_job_tracker = FailedJobTracker(excel_directory, logger)
+    print(f"Main: Failed Job Tracker initialized")
+    logger.info(f"Main: Failed Job Tracker initialized")
     
+    # Feb 2, 2026: Dynamically discover all jobs_*.xlsx files in the directory
+    # This replaces the hardcoded list to be more flexible
     print(f"Main: Excel files directory: {excel_directory}")
     logger.info(f"Main: Excel files directory: {excel_directory}")
+    
+    print(f"Main: Scanning for jobs_*.xlsx files...")
+    logger.info(f"Main: Scanning for jobs_*.xlsx files...")
+    
+    all_files = os.listdir(excel_directory)
+    excel_files = []
+    
+    for filename in all_files:
+        if filename.startswith('jobs_') and filename.endswith('.xlsx'):
+            excel_files.append(filename)
+    
+    # Sort the files numerically (jobs_9.xlsx, jobs_10.xlsx, etc.)
+    excel_files.sort(key=lambda x: int(x.replace('jobs_', '').replace('.xlsx', '')))
+    
+    print(f"Main: Found {len(excel_files)} Excel files: {', '.join(excel_files)}")
+    logger.info(f"Main: Found {len(excel_files)} Excel files: {', '.join(excel_files)}")
     
     # Jan 27, 2026: Track processing statistics
     processed_count = 0
@@ -260,10 +264,15 @@ if __name__ == '__main__':
         has_incomplete, total, incomplete = has_incomplete_jobs(excel_file_path, logger)
         
         if has_incomplete:
-            process_excel_file(excel_file_path, secrets, logger, current_path)
+            process_excel_file(excel_file_path, secrets, logger, current_path, failed_job_tracker)
             processed_count += 1
         else:
             skipped_count += 1
+    
+    # Feb 2, 2026: Print failed job tracker summary
+    print("\n" + "="*80)
+    failed_job_tracker.print_summary()
+    print("="*80)
     
     print("\n" + "="*80)
     print(f"Main: All remaining jobs processing COMPLETE")
