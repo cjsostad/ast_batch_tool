@@ -129,6 +129,8 @@ class FailedJobTracker:
             fill_color = "FFDDAA"  # Light orange
         elif failure_type == 'worker_error':
             fill_color = "FFFFCC"  # Light yellow
+        elif failure_type == 'missing_outputs':
+            fill_color = "E6CCFF"  # Light purple
         else:
             fill_color = "DDDDDD"  # Light gray
         
@@ -178,6 +180,7 @@ class FailedJobTracker:
         timeout_count = sum(1 for j in self.failed_jobs if j['failure_type'] == 'timeout')
         crash_count = sum(1 for j in self.failed_jobs if j['failure_type'] == 'crash')
         worker_error_count = sum(1 for j in self.failed_jobs if j['failure_type'] == 'worker_error')
+        missing_outputs_count = sum(1 for j in self.failed_jobs if j['failure_type'] == 'missing_outputs')
         unknown_count = sum(1 for j in self.failed_jobs if j['failure_type'] == 'unknown')
         
         summary = f"""
@@ -187,6 +190,7 @@ Total Failed Jobs: {len(self.failed_jobs)}
   - Timeouts: {timeout_count}
   - Crashes: {crash_count}
   - Worker Errors: {worker_error_count}
+  - Missing Outputs: {missing_outputs_count}
   - Unknown: {unknown_count}
 
 Failed jobs saved to: {self.failed_jobs_file}

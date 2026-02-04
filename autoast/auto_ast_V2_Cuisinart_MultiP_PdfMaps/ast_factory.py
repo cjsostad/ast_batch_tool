@@ -448,10 +448,30 @@ class AST_FACTORY:
                     
                     result = return_dict.get(job_index)
                     if result == 'Success':
-                        success_counter += 1
-                        self.add_job_result(job_index, 'COMPLETE')
-                        print(f"Batch Ast: Job {job_index} completed successfully.")
-                        self.logger.info(f"Batch Ast: Job {job_index} completed successfully. Success counter is {success_counter}")
+                        # Verify outputs before marking as COMPLETE
+                        output_directory = job_data.get('output_directory', '')
+                        is_valid, missing_items = verify_job_outputs(output_directory, self.logger)
+                        
+                        if is_valid:
+                            # All outputs verified - mark as COMPLETE
+                            success_counter += 1
+                            self.add_job_result(job_index, 'COMPLETE')
+                            print(f"Batch Ast: Job {job_index} completed successfully with verified outputs.")
+                            self.logger.info(f"Batch Ast: Job {job_index} completed successfully with verified outputs. Success counter is {success_counter}")
+                        else:
+                            # Worker succeeded but outputs are missing/invalid
+                            missing_str = ', '.join(missing_items)
+                            self.add_job_result(job_index, 'FAILED_OUTPUTS')
+                            worker_failed_counter += 1
+                            print(f"Batch Ast: Job {job_index} worker succeeded but outputs are invalid: {missing_str}")
+                            self.logger.error(f"Batch Ast: Job {job_index} worker succeeded but outputs are invalid: {missing_str}. Worker failed counter is {worker_failed_counter}")
+                            
+                            # Log to failed job tracker
+                            if self.failed_job_tracker:
+                                self.failed_job_tracker.log_failed_job(
+                                    spreadsheet_name, job_index, job_data,
+                                    'missing_outputs', f"Missing/invalid outputs: {missing_str}"
+                                )
                     
                     elif result == 'Failed':
                         # Job failed due to an exception in the worker
