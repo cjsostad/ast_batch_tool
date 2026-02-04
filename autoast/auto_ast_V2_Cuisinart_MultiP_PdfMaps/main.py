@@ -23,7 +23,7 @@ from toolbox_import import import_ast
 from ast_factory import AST_FACTORY
 # from multi_excel_setup import create_job_excel_files
 
-# snippet to run multiple terminal windows & "P:\corp\python_ast\python.exe" "W:\srm\nel\Local\Geomatics\Workarea\csostad\GitHubAutoAST\gss_authorizations\autoast\auto_ast_v3_Breville_folium_maps\main.py"
+# snippet to run multiple terminal windows & "P:\corp\python_ast\python.exe" \\spatialfiles.bcgov\work\srm\nel\Local\Geomatics\Workarea\csostad\GitHub_Repositories\ast_batch_tool\autoast\auto_ast_V2_Cuisinart_MultiP_PdfMaps\main.py"
 
 
 
@@ -40,7 +40,7 @@ print("Inside Main V2")
 
 # *** INPUT YOUR EXCEL FILE NAME HERE ***
 excel_files = [
-"jobs.xlsx"
+"gr_2026_147.xlsx"
 ]
 
 

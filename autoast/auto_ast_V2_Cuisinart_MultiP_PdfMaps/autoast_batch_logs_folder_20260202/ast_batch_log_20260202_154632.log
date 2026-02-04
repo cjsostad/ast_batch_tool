@@ -1,0 +1,530 @@
+2026-02-02 15:46:32,176 - logging_setup - INFO - Logging set up - Log file: \\GISWHSE.ENV.GOV.BC.CA\WHSE_NP\corp\script_whse\python\Utility_Misc\Ready\statusing_tools_arcpro\autoast\auto_ast_V2_Cuisinart_MultiP_PdfMaps\autoast_batch_logs_folder_20260202\ast_batch_log_20260202_154632.log
+2026-02-02 15:46:33,913 - logging_setup - INFO - AST Toolbox imported successfully.
+2026-02-02 15:46:33,924 - logging_setup - INFO - Secret file H:\secrets\bcgw.env found
+2026-02-02 15:46:33,924 - logging_setup - INFO - Database user csostad and password found
+2026-02-02 15:46:34,093 - root - INFO - Logger initialized
+2026-02-02 15:46:34,957 - root - ERROR - Failed to import tools
+Traceback (most recent call last):
+  File "P:\corp\central_clones\python_geopandas\lib\site-packages\XTools Pro\esri\toolboxes\XTools Pro.pyt", line 95, in <module>
+    from Tools.FeaturesToPointsTool import *
+  File "E:\sw_nt\XTools\XTools AGP\Python\Tools\FeaturesToPointsTool.py", line 1, in <module>
+    from Tools.BaseTool import BaseTool
+  File "E:\sw_nt\XTools\XTools AGP\Python\Tools\BaseTool.py", line 7, in <module>
+    from Scripts.Base.PythonCancelTracker import PythonCancelTracker
+  File "E:\sw_nt\XTools\XTools AGP\Python\Scripts\Base\PythonCancelTracker.py", line 20, in <module>
+    from XTools.XToolsAGP.Core import ICancelTracker
+ModuleNotFoundError: No module named 'XTools.XToolsAGP.Core'
+2026-02-02 15:46:34,965 - root - ERROR - No module named 'XTools.XToolsAGP.Core'
+Traceback (most recent call last):
+  File "P:\corp\central_clones\python_geopandas\lib\site-packages\XTools Pro\esri\toolboxes\XTools Pro.pyt", line 95, in <module>
+    from Tools.FeaturesToPointsTool import *
+  File "E:\sw_nt\XTools\XTools AGP\Python\Tools\FeaturesToPointsTool.py", line 1, in <module>
+    from Tools.BaseTool import BaseTool
+  File "E:\sw_nt\XTools\XTools AGP\Python\Tools\BaseTool.py", line 7, in <module>
+    from Scripts.Base.PythonCancelTracker import PythonCancelTracker
+  File "E:\sw_nt\XTools\XTools AGP\Python\Scripts\Base\PythonCancelTracker.py", line 20, in <module>
+    from XTools.XToolsAGP.Core import ICancelTracker
+ModuleNotFoundError: No module named 'XTools.XToolsAGP.Core'
+2026-02-02 15:46:52,549 - logging_setup - INFO - new db connection created
+2026-02-02 15:46:52,580 - logging_setup - INFO - workspace set to bcgw connection
+2026-02-02 15:46:52,582 - logging_setup - INFO - SDE Connection established at: \\GISWHSE.ENV.GOV.BC.CA\WHSE_NP\corp\script_whse\python\Utility_Misc\Ready\statusing_tools_arcpro\autoast\auto_ast_V2_Cuisinart_MultiP_PdfMaps\connection\bcgw.sde
+2026-02-02 15:46:52,582 - logging_setup - INFO - Main: Creating queuefile path for gr_2026_147.xlsx
+2026-02-02 15:46:52,583 - logging_setup - INFO - Main: Loading jobs from gr_2026_147.xlsx
+2026-02-02 15:46:52,584 - logging_setup - INFO - ##########################################################################################################################
+2026-02-02 15:46:52,584 - logging_setup - INFO - #
+2026-02-02 15:46:52,584 - logging_setup - INFO - Loading Jobs...
+2026-02-02 15:46:52,585 - logging_setup - INFO - #
+2026-02-02 15:46:52,585 - logging_setup - INFO - ##########################################################################################################################
+2026-02-02 15:46:52,616 - logging_setup - INFO - 
+
+2026-02-02 15:46:52,617 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-02 15:46:52,617 - logging_setup - INFO - -                        Load Jobs: Start of Job 0                               -
+2026-02-02 15:46:52,618 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-02 15:46:52,618 - logging_setup - INFO - 
+
+2026-02-02 15:46:52,618 - logging_setup - INFO - Load Jobs - Creating empty dictionary
+2026-02-02 15:46:52,619 - logging_setup - INFO - Load Jobs - (Queued assigned to Job (0) is (Queued)
+2026-02-02 15:46:52,619 - logging_setup - INFO - 
+
+2026-02-02 15:46:52,620 - logging_setup - INFO - ##########################################################################################################################
+2026-02-02 15:46:52,620 - logging_setup - INFO - #
+2026-02-02 15:46:52,621 - logging_setup - INFO - Running Add Job Results from Load Jobs Function
+2026-02-02 15:46:52,621 - logging_setup - INFO - #
+2026-02-02 15:46:52,622 - logging_setup - INFO - ##########################################################################################################################
+2026-02-02 15:46:52,622 - logging_setup - INFO - 
+
+2026-02-02 15:46:52,641 - logging_setup - INFO - Add Job Result - Workbook loaded
+2026-02-02 15:46:52,641 - logging_setup - INFO - Add Job Result - 'ast_condition' column found in the spreadsheet.
+2026-02-02 15:46:52,643 - logging_setup - INFO - Add Job Result - Calculated Excel row index as 2 for job index 0
+2026-02-02 15:46:52,644 - logging_setup - INFO - Add Job Result - Updated Job 0 with condition 'Queued'.
+2026-02-02 15:46:52,680 - logging_setup - INFO - Add Job Result - Saving Workbook with updated condition
+2026-02-02 15:46:52,680 - logging_setup - INFO - Load Jobs - Added job condition 'Queued' for job 0 to jobs list
+2026-02-02 15:46:52,681 - logging_setup - INFO - Classifying input type for job 0
+2026-02-02 15:46:52,681 - logging_setup - INFO - Classifying Input Type - Feature layer found: \\spatialfiles.bcgov\srm\gss\projects\gr_2026_147_wha_statuses\shapefiles\kootenay_boundary_rocky_mtn\main_rockymtn_core.shp
+2026-02-02 15:46:52,682 - logging_setup - INFO - Classifying Input Type - Processing feature layer: \\spatialfiles.bcgov\srm\gss\projects\gr_2026_147_wha_statuses\shapefiles\kootenay_boundary_rocky_mtn\main_rockymtn_core.shp
+2026-02-02 15:46:52,682 - logging_setup - INFO - Classifying Input Type - No FW File Number provided, using original shapefile path
+2026-02-02 15:46:52,683 - logging_setup - INFO - Load Jobs - Job Condition is not Complete (Queued), adding job: 0 to jobs list
+2026-02-02 15:46:52,683 - logging_setup - INFO - 
+
+2026-02-02 15:46:52,683 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-02 15:46:52,684 - logging_setup - INFO - -                        End of Job 0                                -
+2026-02-02 15:46:52,684 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-02 15:46:52,685 - logging_setup - INFO - 
+
+2026-02-02 15:46:52,685 - logging_setup - INFO - 
+
+2026-02-02 15:46:52,686 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-02 15:46:52,686 - logging_setup - INFO - -                        Load Jobs: Start of Job 1                               -
+2026-02-02 15:46:52,687 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-02 15:46:52,687 - logging_setup - INFO - 
+
+2026-02-02 15:46:52,687 - logging_setup - INFO - Load Jobs - Creating empty dictionary
+2026-02-02 15:46:52,688 - logging_setup - INFO - Load Jobs - (Queued assigned to Job (1) is (Queued)
+2026-02-02 15:46:52,689 - logging_setup - INFO - 
+
+2026-02-02 15:46:52,689 - logging_setup - INFO - ##########################################################################################################################
+2026-02-02 15:46:52,689 - logging_setup - INFO - #
+2026-02-02 15:46:52,690 - logging_setup - INFO - Running Add Job Results from Load Jobs Function
+2026-02-02 15:46:52,690 - logging_setup - INFO - #
+2026-02-02 15:46:52,690 - logging_setup - INFO - ##########################################################################################################################
+2026-02-02 15:46:52,691 - logging_setup - INFO - 
+
+2026-02-02 15:46:52,711 - logging_setup - INFO - Add Job Result - Workbook loaded
+2026-02-02 15:46:52,712 - logging_setup - INFO - Add Job Result - 'ast_condition' column found in the spreadsheet.
+2026-02-02 15:46:52,712 - logging_setup - INFO - Add Job Result - Calculated Excel row index as 3 for job index 1
+2026-02-02 15:46:52,713 - logging_setup - INFO - Add Job Result - Updated Job 1 with condition 'Queued'.
+2026-02-02 15:46:52,743 - logging_setup - INFO - Add Job Result - Saving Workbook with updated condition
+2026-02-02 15:46:52,743 - logging_setup - INFO - Load Jobs - Added job condition 'Queued' for job 1 to jobs list
+2026-02-02 15:46:52,744 - logging_setup - INFO - Classifying input type for job 1
+2026-02-02 15:46:52,744 - logging_setup - INFO - Classifying Input Type - Feature layer found: \\spatialfiles.bcgov\srm\gss\projects\gr_2026_147_wha_statuses\shapefiles\kootenay_boundary_selkirk\main_selkirk_core.shp
+2026-02-02 15:46:52,745 - logging_setup - INFO - Classifying Input Type - Processing feature layer: \\spatialfiles.bcgov\srm\gss\projects\gr_2026_147_wha_statuses\shapefiles\kootenay_boundary_selkirk\main_selkirk_core.shp
+2026-02-02 15:46:52,745 - logging_setup - INFO - Classifying Input Type - No FW File Number provided, using original shapefile path
+2026-02-02 15:46:52,745 - logging_setup - INFO - Load Jobs - Job Condition is not Complete (Queued), adding job: 1 to jobs list
+2026-02-02 15:46:52,746 - logging_setup - INFO - 
+
+2026-02-02 15:46:52,746 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-02 15:46:52,746 - logging_setup - INFO - -                        End of Job 1                                -
+2026-02-02 15:46:52,747 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-02 15:46:52,747 - logging_setup - INFO - 
+
+2026-02-02 15:46:52,748 - logging_setup - INFO - 
+
+2026-02-02 15:46:52,748 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-02 15:46:52,748 - logging_setup - INFO - -                        Load Jobs: Start of Job 2                               -
+2026-02-02 15:46:52,749 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-02 15:46:52,749 - logging_setup - INFO - 
+
+2026-02-02 15:46:52,750 - logging_setup - INFO - Load Jobs - Creating empty dictionary
+2026-02-02 15:46:52,750 - logging_setup - INFO - Load Jobs - (Queued assigned to Job (2) is (Queued)
+2026-02-02 15:46:52,751 - logging_setup - INFO - 
+
+2026-02-02 15:46:52,751 - logging_setup - INFO - ##########################################################################################################################
+2026-02-02 15:46:52,751 - logging_setup - INFO - #
+2026-02-02 15:46:52,752 - logging_setup - INFO - Running Add Job Results from Load Jobs Function
+2026-02-02 15:46:52,753 - logging_setup - INFO - #
+2026-02-02 15:46:52,753 - logging_setup - INFO - ##########################################################################################################################
+2026-02-02 15:46:52,753 - logging_setup - INFO - 
+
+2026-02-02 15:46:52,770 - logging_setup - INFO - Add Job Result - Workbook loaded
+2026-02-02 15:46:52,771 - logging_setup - INFO - Add Job Result - 'ast_condition' column found in the spreadsheet.
+2026-02-02 15:46:52,771 - logging_setup - INFO - Add Job Result - Calculated Excel row index as 4 for job index 2
+2026-02-02 15:46:52,772 - logging_setup - INFO - Add Job Result - Updated Job 2 with condition 'Queued'.
+2026-02-02 15:46:52,797 - logging_setup - INFO - Add Job Result - Saving Workbook with updated condition
+2026-02-02 15:46:52,798 - logging_setup - INFO - Load Jobs - Added job condition 'Queued' for job 2 to jobs list
+2026-02-02 15:46:52,798 - logging_setup - INFO - Classifying input type for job 2
+2026-02-02 15:46:52,799 - logging_setup - INFO - Classifying Input Type - Feature layer found: \\spatialfiles.bcgov\srm\gss\projects\gr_2026_147_wha_statuses\shapefiles\Omineca_main_prince_george_core\main_princegeorge_core.shp
+2026-02-02 15:46:52,799 - logging_setup - INFO - Classifying Input Type - Processing feature layer: \\spatialfiles.bcgov\srm\gss\projects\gr_2026_147_wha_statuses\shapefiles\Omineca_main_prince_george_core\main_princegeorge_core.shp
+2026-02-02 15:46:52,800 - logging_setup - INFO - Classifying Input Type - No FW File Number provided, using original shapefile path
+2026-02-02 15:46:52,800 - logging_setup - INFO - Load Jobs - Job Condition is not Complete (Queued), adding job: 2 to jobs list
+2026-02-02 15:46:52,801 - logging_setup - INFO - 
+
+2026-02-02 15:46:52,801 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-02 15:46:52,801 - logging_setup - INFO - -                        End of Job 2                                -
+2026-02-02 15:46:52,802 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-02 15:46:52,802 - logging_setup - INFO - 
+
+2026-02-02 15:46:52,802 - logging_setup - INFO - 
+
+2026-02-02 15:46:52,802 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-02 15:46:52,803 - logging_setup - INFO - -                        Load Jobs: Start of Job 3                               -
+2026-02-02 15:46:52,803 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-02 15:46:52,804 - logging_setup - INFO - 
+
+2026-02-02 15:46:52,804 - logging_setup - INFO - Load Jobs - Creating empty dictionary
+2026-02-02 15:46:52,804 - logging_setup - INFO - Load Jobs - (Queued assigned to Job (3) is (Queued)
+2026-02-02 15:46:52,805 - logging_setup - INFO - 
+
+2026-02-02 15:46:52,806 - logging_setup - INFO - ##########################################################################################################################
+2026-02-02 15:46:52,806 - logging_setup - INFO - #
+2026-02-02 15:46:52,807 - logging_setup - INFO - Running Add Job Results from Load Jobs Function
+2026-02-02 15:46:52,807 - logging_setup - INFO - #
+2026-02-02 15:46:52,808 - logging_setup - INFO - ##########################################################################################################################
+2026-02-02 15:46:52,808 - logging_setup - INFO - 
+
+2026-02-02 15:46:52,824 - logging_setup - INFO - Add Job Result - Workbook loaded
+2026-02-02 15:46:52,825 - logging_setup - INFO - Add Job Result - 'ast_condition' column found in the spreadsheet.
+2026-02-02 15:46:52,826 - logging_setup - INFO - Add Job Result - Calculated Excel row index as 5 for job index 3
+2026-02-02 15:46:52,826 - logging_setup - INFO - Add Job Result - Updated Job 3 with condition 'Queued'.
+2026-02-02 15:46:52,856 - logging_setup - INFO - Add Job Result - Saving Workbook with updated condition
+2026-02-02 15:46:52,856 - logging_setup - INFO - Load Jobs - Added job condition 'Queued' for job 3 to jobs list
+2026-02-02 15:46:52,857 - logging_setup - INFO - Classifying input type for job 3
+2026-02-02 15:46:52,857 - logging_setup - INFO - Classifying Input Type - Feature layer found: \\spatialfiles.bcgov\srm\gss\projects\gr_2026_147_wha_statuses\shapefiles\thompson_okanagan_okanagan\main_okanagan_core.shp
+2026-02-02 15:46:52,858 - logging_setup - INFO - Classifying Input Type - Processing feature layer: \\spatialfiles.bcgov\srm\gss\projects\gr_2026_147_wha_statuses\shapefiles\thompson_okanagan_okanagan\main_okanagan_core.shp
+2026-02-02 15:46:52,858 - logging_setup - INFO - Classifying Input Type - No FW File Number provided, using original shapefile path
+2026-02-02 15:46:52,858 - logging_setup - INFO - Load Jobs - Job Condition is not Complete (Queued), adding job: 3 to jobs list
+2026-02-02 15:46:52,859 - logging_setup - INFO - 
+
+2026-02-02 15:46:52,859 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-02 15:46:52,859 - logging_setup - INFO - -                        End of Job 3                                -
+2026-02-02 15:46:52,860 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-02 15:46:52,860 - logging_setup - INFO - 
+
+2026-02-02 15:46:52,860 - logging_setup - INFO - 
+
+2026-02-02 15:46:52,861 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-02 15:46:52,861 - logging_setup - INFO - -                        Load Jobs: Start of Job 4                               -
+2026-02-02 15:46:52,862 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-02 15:46:52,862 - logging_setup - INFO - 
+
+2026-02-02 15:46:52,863 - logging_setup - INFO - Load Jobs - Creating empty dictionary
+2026-02-02 15:46:52,863 - logging_setup - INFO - Load Jobs - (Queued assigned to Job (4) is (Queued)
+2026-02-02 15:46:52,864 - logging_setup - INFO - 
+
+2026-02-02 15:46:52,864 - logging_setup - INFO - ##########################################################################################################################
+2026-02-02 15:46:52,864 - logging_setup - INFO - #
+2026-02-02 15:46:52,866 - logging_setup - INFO - Running Add Job Results from Load Jobs Function
+2026-02-02 15:46:52,866 - logging_setup - INFO - #
+2026-02-02 15:46:52,867 - logging_setup - INFO - ##########################################################################################################################
+2026-02-02 15:46:52,867 - logging_setup - INFO - 
+
+2026-02-02 15:46:52,884 - logging_setup - INFO - Add Job Result - Workbook loaded
+2026-02-02 15:46:52,885 - logging_setup - INFO - Add Job Result - 'ast_condition' column found in the spreadsheet.
+2026-02-02 15:46:52,885 - logging_setup - INFO - Add Job Result - Calculated Excel row index as 6 for job index 4
+2026-02-02 15:46:52,886 - logging_setup - INFO - Add Job Result - Updated Job 4 with condition 'Queued'.
+2026-02-02 15:46:52,916 - logging_setup - INFO - Add Job Result - Saving Workbook with updated condition
+2026-02-02 15:46:52,916 - logging_setup - INFO - Load Jobs - Added job condition 'Queued' for job 4 to jobs list
+2026-02-02 15:46:52,917 - logging_setup - INFO - Classifying input type for job 4
+2026-02-02 15:46:52,917 - logging_setup - INFO - Classifying Input Type - Feature layer found: \\spatialfiles.bcgov\srm\gss\projects\gr_2026_147_wha_statuses\shapefiles\thompson_okanagan_thompson\main_thompson_core.shp
+2026-02-02 15:46:52,918 - logging_setup - INFO - Classifying Input Type - Processing feature layer: \\spatialfiles.bcgov\srm\gss\projects\gr_2026_147_wha_statuses\shapefiles\thompson_okanagan_thompson\main_thompson_core.shp
+2026-02-02 15:46:52,918 - logging_setup - INFO - Classifying Input Type - No FW File Number provided, using original shapefile path
+2026-02-02 15:46:52,919 - logging_setup - INFO - Load Jobs - Job Condition is not Complete (Queued), adding job: 4 to jobs list
+2026-02-02 15:46:52,919 - logging_setup - INFO - 
+
+2026-02-02 15:46:52,920 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-02 15:46:52,920 - logging_setup - INFO - -                        End of Job 4                                -
+2026-02-02 15:46:52,921 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-02 15:46:52,921 - logging_setup - INFO - 
+
+2026-02-02 15:46:52,922 - logging_setup - INFO - Main: Batching jobs for gr_2026_147.xlsx
+2026-02-02 15:46:52,922 - logging_setup - INFO - 
+
+2026-02-02 15:46:52,922 - logging_setup - INFO - ##########################################################################################################################
+2026-02-02 15:46:52,923 - logging_setup - INFO - #
+2026-02-02 15:46:52,923 - logging_setup - INFO - Batch AST: Batching Jobs with Multiprocessing...
+2026-02-02 15:46:52,924 - logging_setup - INFO - #
+2026-02-02 15:46:52,924 - logging_setup - INFO - ##########################################################################################################################
+2026-02-02 15:46:52,924 - logging_setup - INFO - 
+
+2026-02-02 15:46:52,925 - logging_setup - INFO - Batch Ast: Job Timeout set to 21600 seconds (6 hours)
+2026-02-02 15:46:52,926 - logging_setup - INFO - Batch Ast: Process health checks enabled (every 60s)
+2026-02-02 15:47:12,857 - logging_setup - INFO - Batch Ast: Starting job 0
+2026-02-02 15:47:13,559 - logging_setup - INFO - Batch Ast: Queued Job 0.....Multiproccessing started......
+2026-02-02 15:47:13,560 - logging_setup - INFO - Batch Ast: Starting job 1
+2026-02-02 15:47:14,043 - logging_setup - INFO - Batch Ast: Queued Job 1.....Multiproccessing started......
+2026-02-02 15:47:14,043 - logging_setup - INFO - Batch Ast: Starting job 2
+2026-02-02 15:47:14,558 - logging_setup - INFO - Batch Ast: Queued Job 2.....Multiproccessing started......
+2026-02-02 15:47:14,559 - logging_setup - INFO - Batch Ast: Starting job 3
+2026-02-02 15:47:15,096 - logging_setup - INFO - Batch Ast: Queued Job 3.....Multiproccessing started......
+2026-02-02 15:47:15,097 - logging_setup - INFO - Batch Ast: Starting job 4
+2026-02-02 15:47:15,663 - logging_setup - INFO - Batch Ast: Queued Job 4.....Multiproccessing started......
+2026-02-02 15:47:15,664 - logging_setup - INFO - Batch Ast: Monitoring 5 jobs with 6-hour timeout and health checks
+2026-02-02 16:24:48,302 - logging_setup - INFO - 
+
+2026-02-02 16:24:48,302 - logging_setup - INFO - ##########################################################################################################################
+2026-02-02 16:24:48,303 - logging_setup - INFO - #
+2026-02-02 16:24:48,303 - logging_setup - INFO - Running Add Job Results from Load Jobs Function
+2026-02-02 16:24:48,303 - logging_setup - INFO - #
+2026-02-02 16:24:48,304 - logging_setup - INFO - ##########################################################################################################################
+2026-02-02 16:24:48,304 - logging_setup - INFO - 
+
+2026-02-02 16:24:48,320 - logging_setup - INFO - Add Job Result - Workbook loaded
+2026-02-02 16:24:48,320 - logging_setup - INFO - Add Job Result - 'ast_condition' column found in the spreadsheet.
+2026-02-02 16:24:48,320 - logging_setup - INFO - Add Job Result - Calculated Excel row index as 2 for job index 0
+2026-02-02 16:24:48,321 - logging_setup - INFO - Add Job Result - Updated Job 0 with condition 'COMPLETE'.
+2026-02-02 16:24:48,345 - logging_setup - INFO - Add Job Result - Saving Workbook with updated condition
+2026-02-02 16:24:48,346 - logging_setup - INFO - Batch Ast: Job 0 completed successfully. Success counter is 1
+2026-02-02 16:25:50,362 - logging_setup - INFO - 
+
+2026-02-02 16:25:50,362 - logging_setup - INFO - ##########################################################################################################################
+2026-02-02 16:25:50,363 - logging_setup - INFO - #
+2026-02-02 16:25:50,363 - logging_setup - INFO - Running Add Job Results from Load Jobs Function
+2026-02-02 16:25:50,364 - logging_setup - INFO - #
+2026-02-02 16:25:50,364 - logging_setup - INFO - ##########################################################################################################################
+2026-02-02 16:25:50,364 - logging_setup - INFO - 
+
+2026-02-02 16:25:50,380 - logging_setup - INFO - Add Job Result - Workbook loaded
+2026-02-02 16:25:50,380 - logging_setup - INFO - Add Job Result - 'ast_condition' column found in the spreadsheet.
+2026-02-02 16:25:50,381 - logging_setup - INFO - Add Job Result - Calculated Excel row index as 4 for job index 2
+2026-02-02 16:25:50,381 - logging_setup - INFO - Add Job Result - Updated Job 2 with condition 'COMPLETE'.
+2026-02-02 16:25:50,403 - logging_setup - INFO - Add Job Result - Saving Workbook with updated condition
+2026-02-02 16:25:50,404 - logging_setup - INFO - Batch Ast: Job 2 completed successfully. Success counter is 2
+2026-02-02 16:38:02,594 - logging_setup - INFO - 
+
+2026-02-02 16:38:02,594 - logging_setup - INFO - ##########################################################################################################################
+2026-02-02 16:38:02,595 - logging_setup - INFO - #
+2026-02-02 16:38:02,595 - logging_setup - INFO - Running Add Job Results from Load Jobs Function
+2026-02-02 16:38:02,595 - logging_setup - INFO - #
+2026-02-02 16:38:02,596 - logging_setup - INFO - ##########################################################################################################################
+2026-02-02 16:38:02,596 - logging_setup - INFO - 
+
+2026-02-02 16:38:02,611 - logging_setup - INFO - Add Job Result - Workbook loaded
+2026-02-02 16:38:02,611 - logging_setup - INFO - Add Job Result - 'ast_condition' column found in the spreadsheet.
+2026-02-02 16:38:02,611 - logging_setup - INFO - Add Job Result - Calculated Excel row index as 5 for job index 3
+2026-02-02 16:38:02,612 - logging_setup - INFO - Add Job Result - Updated Job 3 with condition 'COMPLETE'.
+2026-02-02 16:38:02,636 - logging_setup - INFO - Add Job Result - Saving Workbook with updated condition
+2026-02-02 16:38:02,637 - logging_setup - INFO - Batch Ast: Job 3 completed successfully. Success counter is 3
+2026-02-02 16:38:24,643 - logging_setup - INFO - 
+
+2026-02-02 16:38:24,643 - logging_setup - INFO - ##########################################################################################################################
+2026-02-02 16:38:24,644 - logging_setup - INFO - #
+2026-02-02 16:38:24,644 - logging_setup - INFO - Running Add Job Results from Load Jobs Function
+2026-02-02 16:38:24,645 - logging_setup - INFO - #
+2026-02-02 16:38:24,645 - logging_setup - INFO - ##########################################################################################################################
+2026-02-02 16:38:24,645 - logging_setup - INFO - 
+
+2026-02-02 16:38:24,660 - logging_setup - INFO - Add Job Result - Workbook loaded
+2026-02-02 16:38:24,661 - logging_setup - INFO - Add Job Result - 'ast_condition' column found in the spreadsheet.
+2026-02-02 16:38:24,662 - logging_setup - INFO - Add Job Result - Calculated Excel row index as 6 for job index 4
+2026-02-02 16:38:24,662 - logging_setup - INFO - Add Job Result - Updated Job 4 with condition 'COMPLETE'.
+2026-02-02 16:38:24,686 - logging_setup - INFO - Add Job Result - Saving Workbook with updated condition
+2026-02-02 16:38:24,687 - logging_setup - INFO - Batch Ast: Job 4 completed successfully. Success counter is 4
+2026-02-02 19:39:11,505 - logging_setup - INFO - 
+
+2026-02-02 19:39:11,506 - logging_setup - INFO - ##########################################################################################################################
+2026-02-02 19:39:11,506 - logging_setup - INFO - #
+2026-02-02 19:39:11,506 - logging_setup - INFO - Running Add Job Results from Load Jobs Function
+2026-02-02 19:39:11,506 - logging_setup - INFO - #
+2026-02-02 19:39:11,507 - logging_setup - INFO - ##########################################################################################################################
+2026-02-02 19:39:11,507 - logging_setup - INFO - 
+
+2026-02-02 19:39:11,522 - logging_setup - INFO - Add Job Result - Workbook loaded
+2026-02-02 19:39:11,522 - logging_setup - INFO - Add Job Result - 'ast_condition' column found in the spreadsheet.
+2026-02-02 19:39:11,522 - logging_setup - INFO - Add Job Result - Calculated Excel row index as 3 for job index 1
+2026-02-02 19:39:11,523 - logging_setup - INFO - Add Job Result - Updated Job 1 with condition 'COMPLETE'.
+2026-02-02 19:39:11,544 - logging_setup - INFO - Add Job Result - Saving Workbook with updated condition
+2026-02-02 19:39:11,544 - logging_setup - INFO - Batch Ast: Job 1 completed successfully. Success counter is 5
+2026-02-02 19:39:11,565 - logging_setup - INFO - Batch Ast: Summary - Success: 5, Worker Failed: 0, Timeout Failed: 0, Crashed: 0
+2026-02-02 19:39:11,566 - logging_setup - INFO - 
+
+2026-02-02 19:39:11,566 - logging_setup - INFO - Batch Ast Complete - Check separate worker log file for more details
+2026-02-02 19:39:12,621 - logging_setup - INFO - Main: Reloading failed jobs for gr_2026_147.xlsx
+2026-02-02 19:39:12,622 - logging_setup - INFO - 
+
+2026-02-02 19:39:12,622 - logging_setup - INFO - ##########################################################################################################################
+2026-02-02 19:39:12,622 - logging_setup - INFO - #
+2026-02-02 19:39:12,623 - logging_setup - INFO - Re loading Failed Jobs V2.....
+2026-02-02 19:39:12,623 - logging_setup - INFO - #
+2026-02-02 19:39:12,623 - logging_setup - INFO - ##########################################################################################################################
+2026-02-02 19:39:12,624 - logging_setup - INFO - 
+
+2026-02-02 19:39:12,640 - logging_setup - INFO - Re load Failed Jobs: Workbook loaded is <openpyxl.workbook.workbook.Workbook object at 0x000001F130AAAE10>
+2026-02-02 19:39:12,641 - logging_setup - INFO - Re load Failed Jobs: Reading all data rows and building data list
+2026-02-02 19:39:12,642 - logging_setup - INFO - Re load Failed Jobs: Iterating over each row of data
+2026-02-02 19:39:12,642 - logging_setup - INFO - 
+
+2026-02-02 19:39:12,642 - logging_setup - INFO - ------------------------------------------------------------------------------------
+2026-02-02 19:39:12,643 - logging_setup - INFO - -                        Re Load Failed Jobs: Start of Job 0                               -
+2026-02-02 19:39:12,643 - logging_setup - INFO - ------------------------------------------------------------------------------------
+2026-02-02 19:39:12,643 - logging_setup - INFO - 
+
+2026-02-02 19:39:12,643 - logging_setup - INFO - Re load Jobs - Creating empty dictionary
+2026-02-02 19:39:12,645 - logging_setup - INFO - Re Load Failed Jobs: Adding Complete to dictionary Skipping job 0 as it is marked COMPLETE.
+2026-02-02 19:39:12,645 - logging_setup - INFO - Re Load Failed Jobs: Job 0's ast condition has been updated as 'COMPLETE'
+2026-02-02 19:39:12,645 - logging_setup - INFO - 
+
+2026-02-02 19:39:12,646 - logging_setup - INFO - ##########################################################################################################################
+2026-02-02 19:39:12,646 - logging_setup - INFO - #
+2026-02-02 19:39:12,646 - logging_setup - INFO - Running Add Job Results from Load Jobs Function
+2026-02-02 19:39:12,646 - logging_setup - INFO - #
+2026-02-02 19:39:12,647 - logging_setup - INFO - ##########################################################################################################################
+2026-02-02 19:39:12,647 - logging_setup - INFO - 
+
+2026-02-02 19:39:12,664 - logging_setup - INFO - Add Job Result - Workbook loaded
+2026-02-02 19:39:12,665 - logging_setup - INFO - Add Job Result - 'ast_condition' column found in the spreadsheet.
+2026-02-02 19:39:12,665 - logging_setup - INFO - Add Job Result - Calculated Excel row index as 2 for job index 0
+2026-02-02 19:39:12,665 - logging_setup - INFO - Add Job Result - Updated Job 0 with condition 'COMPLETE'.
+2026-02-02 19:39:12,687 - logging_setup - INFO - Add Job Result - Saving Workbook with updated condition
+2026-02-02 19:39:12,687 - logging_setup - INFO - Re load Jobs - Added job condition 'COMPLETE' for job 0 to jobs list
+2026-02-02 19:39:12,687 - logging_setup - INFO - Reload Failed Jobs - Saving Job Index (0) with new condition.
+2026-02-02 19:39:12,708 - logging_setup - INFO - Re load Jobs - Job Condition is not Complete (COMPLETE), adding job: 0 to jobs list
+2026-02-02 19:39:12,708 - logging_setup - INFO - 
+
+2026-02-02 19:39:12,709 - logging_setup - INFO - ------------------------------------------------------------------------------------
+2026-02-02 19:39:12,709 - logging_setup - INFO -  Job list is {'region': 'kootenay_boundary', 'feature_layer': '\\\\spatialfiles.bcgov\\srm\\gss\\projects\\gr_2026_147_wha_statuses\\shapefiles\\kootenay_boundary_rocky_mtn\\main_rockymtn_core.shp', 'crown_file_number': '', 'disposition_number': '', 'parcel_number': '', 'output_directory': '', 'output_directory_same_as_input': True, 'dont_overwrite_outputs': False, 'skip_conflicts_and_constraints': False, 'suppress_map_creation': False, 'add_maps_to_current': False, 'run_as_fcbc': True, 'ast_condition': 'COMPLETE', 'file_number': ''}
+2026-02-02 19:39:12,709 - logging_setup - INFO - ------------------------------------------------------------------------------------
+2026-02-02 19:39:12,709 - logging_setup - INFO - 
+
+2026-02-02 19:39:12,710 - logging_setup - INFO - Re load Jobs - Job 0 dictionary is {'region': 'kootenay_boundary', 'feature_layer': '\\\\spatialfiles.bcgov\\srm\\gss\\projects\\gr_2026_147_wha_statuses\\shapefiles\\kootenay_boundary_rocky_mtn\\main_rockymtn_core.shp', 'crown_file_number': '', 'disposition_number': '', 'parcel_number': '', 'output_directory': '', 'output_directory_same_as_input': True, 'dont_overwrite_outputs': False, 'skip_conflicts_and_constraints': False, 'suppress_map_creation': False, 'add_maps_to_current': False, 'run_as_fcbc': True, 'ast_condition': 'COMPLETE', 'file_number': ''}
+2026-02-02 19:39:12,710 - logging_setup - INFO - 
+
+2026-02-02 19:39:12,710 - logging_setup - INFO - ------------------------------------------------------------------------------------
+2026-02-02 19:39:12,711 - logging_setup - INFO - -                        Re Load Failed Jobs: Start of Job 1                               -
+2026-02-02 19:39:12,711 - logging_setup - INFO - ------------------------------------------------------------------------------------
+2026-02-02 19:39:12,711 - logging_setup - INFO - 
+
+2026-02-02 19:39:12,711 - logging_setup - INFO - Re load Jobs - Creating empty dictionary
+2026-02-02 19:39:12,713 - logging_setup - INFO - Re Load Failed Jobs: Adding Complete to dictionary Skipping job 1 as it is marked COMPLETE.
+2026-02-02 19:39:12,713 - logging_setup - INFO - Re Load Failed Jobs: Job 1's ast condition has been updated as 'COMPLETE'
+2026-02-02 19:39:12,713 - logging_setup - INFO - 
+
+2026-02-02 19:39:12,714 - logging_setup - INFO - ##########################################################################################################################
+2026-02-02 19:39:12,714 - logging_setup - INFO - #
+2026-02-02 19:39:12,714 - logging_setup - INFO - Running Add Job Results from Load Jobs Function
+2026-02-02 19:39:12,715 - logging_setup - INFO - #
+2026-02-02 19:39:12,715 - logging_setup - INFO - ##########################################################################################################################
+2026-02-02 19:39:12,715 - logging_setup - INFO - 
+
+2026-02-02 19:39:12,730 - logging_setup - INFO - Add Job Result - Workbook loaded
+2026-02-02 19:39:12,731 - logging_setup - INFO - Add Job Result - 'ast_condition' column found in the spreadsheet.
+2026-02-02 19:39:12,731 - logging_setup - INFO - Add Job Result - Calculated Excel row index as 3 for job index 1
+2026-02-02 19:39:12,731 - logging_setup - INFO - Add Job Result - Updated Job 1 with condition 'COMPLETE'.
+2026-02-02 19:39:12,754 - logging_setup - INFO - Add Job Result - Saving Workbook with updated condition
+2026-02-02 19:39:12,754 - logging_setup - INFO - Re load Jobs - Added job condition 'COMPLETE' for job 1 to jobs list
+2026-02-02 19:39:12,754 - logging_setup - INFO - Reload Failed Jobs - Saving Job Index (1) with new condition.
+2026-02-02 19:39:12,774 - logging_setup - INFO - Re load Jobs - Job Condition is not Complete (COMPLETE), adding job: 1 to jobs list
+2026-02-02 19:39:12,775 - logging_setup - INFO - 
+
+2026-02-02 19:39:12,775 - logging_setup - INFO - ------------------------------------------------------------------------------------
+2026-02-02 19:39:12,775 - logging_setup - INFO -  Job list is {'region': 'kootenay_boundary', 'feature_layer': '\\\\spatialfiles.bcgov\\srm\\gss\\projects\\gr_2026_147_wha_statuses\\shapefiles\\kootenay_boundary_selkirk\\main_selkirk_core.shp', 'crown_file_number': '', 'disposition_number': '', 'parcel_number': '', 'output_directory': '', 'output_directory_same_as_input': True, 'dont_overwrite_outputs': False, 'skip_conflicts_and_constraints': False, 'suppress_map_creation': False, 'add_maps_to_current': False, 'run_as_fcbc': True, 'ast_condition': 'COMPLETE', 'file_number': ''}
+2026-02-02 19:39:12,775 - logging_setup - INFO - ------------------------------------------------------------------------------------
+2026-02-02 19:39:12,776 - logging_setup - INFO - 
+
+2026-02-02 19:39:12,776 - logging_setup - INFO - Re load Jobs - Job 1 dictionary is {'region': 'kootenay_boundary', 'feature_layer': '\\\\spatialfiles.bcgov\\srm\\gss\\projects\\gr_2026_147_wha_statuses\\shapefiles\\kootenay_boundary_selkirk\\main_selkirk_core.shp', 'crown_file_number': '', 'disposition_number': '', 'parcel_number': '', 'output_directory': '', 'output_directory_same_as_input': True, 'dont_overwrite_outputs': False, 'skip_conflicts_and_constraints': False, 'suppress_map_creation': False, 'add_maps_to_current': False, 'run_as_fcbc': True, 'ast_condition': 'COMPLETE', 'file_number': ''}
+2026-02-02 19:39:12,776 - logging_setup - INFO - 
+
+2026-02-02 19:39:12,777 - logging_setup - INFO - ------------------------------------------------------------------------------------
+2026-02-02 19:39:12,777 - logging_setup - INFO - -                        Re Load Failed Jobs: Start of Job 2                               -
+2026-02-02 19:39:12,777 - logging_setup - INFO - ------------------------------------------------------------------------------------
+2026-02-02 19:39:12,778 - logging_setup - INFO - 
+
+2026-02-02 19:39:12,778 - logging_setup - INFO - Re load Jobs - Creating empty dictionary
+2026-02-02 19:39:12,779 - logging_setup - INFO - Re Load Failed Jobs: Adding Complete to dictionary Skipping job 2 as it is marked COMPLETE.
+2026-02-02 19:39:12,780 - logging_setup - INFO - Re Load Failed Jobs: Job 2's ast condition has been updated as 'COMPLETE'
+2026-02-02 19:39:12,780 - logging_setup - INFO - 
+
+2026-02-02 19:39:12,780 - logging_setup - INFO - ##########################################################################################################################
+2026-02-02 19:39:12,781 - logging_setup - INFO - #
+2026-02-02 19:39:12,781 - logging_setup - INFO - Running Add Job Results from Load Jobs Function
+2026-02-02 19:39:12,781 - logging_setup - INFO - #
+2026-02-02 19:39:12,781 - logging_setup - INFO - ##########################################################################################################################
+2026-02-02 19:39:12,782 - logging_setup - INFO - 
+
+2026-02-02 19:39:12,797 - logging_setup - INFO - Add Job Result - Workbook loaded
+2026-02-02 19:39:12,797 - logging_setup - INFO - Add Job Result - 'ast_condition' column found in the spreadsheet.
+2026-02-02 19:39:12,798 - logging_setup - INFO - Add Job Result - Calculated Excel row index as 4 for job index 2
+2026-02-02 19:39:12,798 - logging_setup - INFO - Add Job Result - Updated Job 2 with condition 'COMPLETE'.
+2026-02-02 19:39:12,819 - logging_setup - INFO - Add Job Result - Saving Workbook with updated condition
+2026-02-02 19:39:12,819 - logging_setup - INFO - Re load Jobs - Added job condition 'COMPLETE' for job 2 to jobs list
+2026-02-02 19:39:12,820 - logging_setup - INFO - Reload Failed Jobs - Saving Job Index (2) with new condition.
+2026-02-02 19:39:12,841 - logging_setup - INFO - Re load Jobs - Job Condition is not Complete (COMPLETE), adding job: 2 to jobs list
+2026-02-02 19:39:12,842 - logging_setup - INFO - 
+
+2026-02-02 19:39:12,842 - logging_setup - INFO - ------------------------------------------------------------------------------------
+2026-02-02 19:39:12,842 - logging_setup - INFO -  Job list is {'region': 'Omineca', 'feature_layer': '\\\\spatialfiles.bcgov\\srm\\gss\\projects\\gr_2026_147_wha_statuses\\shapefiles\\Omineca_main_prince_george_core\\main_princegeorge_core.shp', 'crown_file_number': '', 'disposition_number': '', 'parcel_number': '', 'output_directory': '', 'output_directory_same_as_input': True, 'dont_overwrite_outputs': False, 'skip_conflicts_and_constraints': False, 'suppress_map_creation': False, 'add_maps_to_current': False, 'run_as_fcbc': True, 'ast_condition': 'COMPLETE', 'file_number': ''}
+2026-02-02 19:39:12,843 - logging_setup - INFO - ------------------------------------------------------------------------------------
+2026-02-02 19:39:12,843 - logging_setup - INFO - 
+
+2026-02-02 19:39:12,843 - logging_setup - INFO - Re load Jobs - Job 2 dictionary is {'region': 'Omineca', 'feature_layer': '\\\\spatialfiles.bcgov\\srm\\gss\\projects\\gr_2026_147_wha_statuses\\shapefiles\\Omineca_main_prince_george_core\\main_princegeorge_core.shp', 'crown_file_number': '', 'disposition_number': '', 'parcel_number': '', 'output_directory': '', 'output_directory_same_as_input': True, 'dont_overwrite_outputs': False, 'skip_conflicts_and_constraints': False, 'suppress_map_creation': False, 'add_maps_to_current': False, 'run_as_fcbc': True, 'ast_condition': 'COMPLETE', 'file_number': ''}
+2026-02-02 19:39:12,844 - logging_setup - INFO - 
+
+2026-02-02 19:39:12,844 - logging_setup - INFO - ------------------------------------------------------------------------------------
+2026-02-02 19:39:12,844 - logging_setup - INFO - -                        Re Load Failed Jobs: Start of Job 3                               -
+2026-02-02 19:39:12,844 - logging_setup - INFO - ------------------------------------------------------------------------------------
+2026-02-02 19:39:12,845 - logging_setup - INFO - 
+
+2026-02-02 19:39:12,845 - logging_setup - INFO - Re load Jobs - Creating empty dictionary
+2026-02-02 19:39:12,846 - logging_setup - INFO - Re Load Failed Jobs: Adding Complete to dictionary Skipping job 3 as it is marked COMPLETE.
+2026-02-02 19:39:12,846 - logging_setup - INFO - Re Load Failed Jobs: Job 3's ast condition has been updated as 'COMPLETE'
+2026-02-02 19:39:12,847 - logging_setup - INFO - 
+
+2026-02-02 19:39:12,847 - logging_setup - INFO - ##########################################################################################################################
+2026-02-02 19:39:12,848 - logging_setup - INFO - #
+2026-02-02 19:39:12,848 - logging_setup - INFO - Running Add Job Results from Load Jobs Function
+2026-02-02 19:39:12,848 - logging_setup - INFO - #
+2026-02-02 19:39:12,848 - logging_setup - INFO - ##########################################################################################################################
+2026-02-02 19:39:12,849 - logging_setup - INFO - 
+
+2026-02-02 19:39:12,863 - logging_setup - INFO - Add Job Result - Workbook loaded
+2026-02-02 19:39:12,864 - logging_setup - INFO - Add Job Result - 'ast_condition' column found in the spreadsheet.
+2026-02-02 19:39:12,864 - logging_setup - INFO - Add Job Result - Calculated Excel row index as 5 for job index 3
+2026-02-02 19:39:12,865 - logging_setup - INFO - Add Job Result - Updated Job 3 with condition 'COMPLETE'.
+2026-02-02 19:39:12,886 - logging_setup - INFO - Add Job Result - Saving Workbook with updated condition
+2026-02-02 19:39:12,887 - logging_setup - INFO - Re load Jobs - Added job condition 'COMPLETE' for job 3 to jobs list
+2026-02-02 19:39:12,887 - logging_setup - INFO - Reload Failed Jobs - Saving Job Index (3) with new condition.
+2026-02-02 19:39:12,909 - logging_setup - INFO - Re load Jobs - Job Condition is not Complete (COMPLETE), adding job: 3 to jobs list
+2026-02-02 19:39:12,910 - logging_setup - INFO - 
+
+2026-02-02 19:39:12,910 - logging_setup - INFO - ------------------------------------------------------------------------------------
+2026-02-02 19:39:12,910 - logging_setup - INFO -  Job list is {'region': 'thompson_okanagan', 'feature_layer': '\\\\spatialfiles.bcgov\\srm\\gss\\projects\\gr_2026_147_wha_statuses\\shapefiles\\thompson_okanagan_okanagan\\main_okanagan_core.shp', 'crown_file_number': '', 'disposition_number': '', 'parcel_number': '', 'output_directory': '', 'output_directory_same_as_input': True, 'dont_overwrite_outputs': False, 'skip_conflicts_and_constraints': False, 'suppress_map_creation': False, 'add_maps_to_current': False, 'run_as_fcbc': True, 'ast_condition': 'COMPLETE', 'file_number': ''}
+2026-02-02 19:39:12,910 - logging_setup - INFO - ------------------------------------------------------------------------------------
+2026-02-02 19:39:12,911 - logging_setup - INFO - 
+
+2026-02-02 19:39:12,911 - logging_setup - INFO - Re load Jobs - Job 3 dictionary is {'region': 'thompson_okanagan', 'feature_layer': '\\\\spatialfiles.bcgov\\srm\\gss\\projects\\gr_2026_147_wha_statuses\\shapefiles\\thompson_okanagan_okanagan\\main_okanagan_core.shp', 'crown_file_number': '', 'disposition_number': '', 'parcel_number': '', 'output_directory': '', 'output_directory_same_as_input': True, 'dont_overwrite_outputs': False, 'skip_conflicts_and_constraints': False, 'suppress_map_creation': False, 'add_maps_to_current': False, 'run_as_fcbc': True, 'ast_condition': 'COMPLETE', 'file_number': ''}
+2026-02-02 19:39:12,911 - logging_setup - INFO - 
+
+2026-02-02 19:39:12,912 - logging_setup - INFO - ------------------------------------------------------------------------------------
+2026-02-02 19:39:12,912 - logging_setup - INFO - -                        Re Load Failed Jobs: Start of Job 4                               -
+2026-02-02 19:39:12,912 - logging_setup - INFO - ------------------------------------------------------------------------------------
+2026-02-02 19:39:12,913 - logging_setup - INFO - 
+
+2026-02-02 19:39:12,913 - logging_setup - INFO - Re load Jobs - Creating empty dictionary
+2026-02-02 19:39:12,914 - logging_setup - INFO - Re Load Failed Jobs: Adding Complete to dictionary Skipping job 4 as it is marked COMPLETE.
+2026-02-02 19:39:12,915 - logging_setup - INFO - Re Load Failed Jobs: Job 4's ast condition has been updated as 'COMPLETE'
+2026-02-02 19:39:12,915 - logging_setup - INFO - 
+
+2026-02-02 19:39:12,915 - logging_setup - INFO - ##########################################################################################################################
+2026-02-02 19:39:12,916 - logging_setup - INFO - #
+2026-02-02 19:39:12,916 - logging_setup - INFO - Running Add Job Results from Load Jobs Function
+2026-02-02 19:39:12,916 - logging_setup - INFO - #
+2026-02-02 19:39:12,916 - logging_setup - INFO - ##########################################################################################################################
+2026-02-02 19:39:12,917 - logging_setup - INFO - 
+
+2026-02-02 19:39:12,932 - logging_setup - INFO - Add Job Result - Workbook loaded
+2026-02-02 19:39:12,933 - logging_setup - INFO - Add Job Result - 'ast_condition' column found in the spreadsheet.
+2026-02-02 19:39:12,933 - logging_setup - INFO - Add Job Result - Calculated Excel row index as 6 for job index 4
+2026-02-02 19:39:12,933 - logging_setup - INFO - Add Job Result - Updated Job 4 with condition 'COMPLETE'.
+2026-02-02 19:39:12,955 - logging_setup - INFO - Add Job Result - Saving Workbook with updated condition
+2026-02-02 19:39:12,955 - logging_setup - INFO - Re load Jobs - Added job condition 'COMPLETE' for job 4 to jobs list
+2026-02-02 19:39:12,956 - logging_setup - INFO - Reload Failed Jobs - Saving Job Index (4) with new condition.
+2026-02-02 19:39:12,976 - logging_setup - INFO - Re load Jobs - Job Condition is not Complete (COMPLETE), adding job: 4 to jobs list
+2026-02-02 19:39:12,977 - logging_setup - INFO - 
+
+2026-02-02 19:39:12,977 - logging_setup - INFO - ------------------------------------------------------------------------------------
+2026-02-02 19:39:12,977 - logging_setup - INFO -  Job list is {'region': 'thompson_okanagan', 'feature_layer': '\\\\spatialfiles.bcgov\\srm\\gss\\projects\\gr_2026_147_wha_statuses\\shapefiles\\thompson_okanagan_thompson\\main_thompson_core.shp', 'crown_file_number': '', 'disposition_number': '', 'parcel_number': '', 'output_directory': '', 'output_directory_same_as_input': True, 'dont_overwrite_outputs': False, 'skip_conflicts_and_constraints': False, 'suppress_map_creation': False, 'add_maps_to_current': False, 'run_as_fcbc': True, 'ast_condition': 'COMPLETE', 'file_number': ''}
+2026-02-02 19:39:12,978 - logging_setup - INFO - ------------------------------------------------------------------------------------
+2026-02-02 19:39:12,978 - logging_setup - INFO - 
+
+2026-02-02 19:39:12,978 - logging_setup - INFO - Re load Jobs - Job 4 dictionary is {'region': 'thompson_okanagan', 'feature_layer': '\\\\spatialfiles.bcgov\\srm\\gss\\projects\\gr_2026_147_wha_statuses\\shapefiles\\thompson_okanagan_thompson\\main_thompson_core.shp', 'crown_file_number': '', 'disposition_number': '', 'parcel_number': '', 'output_directory': '', 'output_directory_same_as_input': True, 'dont_overwrite_outputs': False, 'skip_conflicts_and_constraints': False, 'suppress_map_creation': False, 'add_maps_to_current': False, 'run_as_fcbc': True, 'ast_condition': 'COMPLETE', 'file_number': ''}
+2026-02-02 19:39:12,979 - logging_setup - INFO - Main: Re-batching failed jobs for gr_2026_147.xlsx
+2026-02-02 19:39:12,979 - logging_setup - INFO - 
+
+2026-02-02 19:39:12,979 - logging_setup - INFO - ##########################################################################################################################
+2026-02-02 19:39:12,980 - logging_setup - INFO - #
+2026-02-02 19:39:12,980 - logging_setup - INFO - Batch AST: Batching Jobs with Multiprocessing...
+2026-02-02 19:39:12,980 - logging_setup - INFO - #
+2026-02-02 19:39:12,980 - logging_setup - INFO - ##########################################################################################################################
+2026-02-02 19:39:12,981 - logging_setup - INFO - 
+
+2026-02-02 19:39:12,981 - logging_setup - INFO - Batch Ast: Job Timeout set to 21600 seconds (6 hours)
+2026-02-02 19:39:12,981 - logging_setup - INFO - Batch Ast: Process health checks enabled (every 60s)
+2026-02-02 19:39:28,776 - logging_setup - INFO - Batch Ast: Starting job 0
+2026-02-02 19:39:28,777 - logging_setup - INFO - Batch Ast: Starting job 1
+2026-02-02 19:39:28,778 - logging_setup - INFO - Batch Ast: Starting job 2
+2026-02-02 19:39:28,778 - logging_setup - INFO - Batch Ast: Starting job 3
+2026-02-02 19:39:28,779 - logging_setup - INFO - Batch Ast: Starting job 4
+2026-02-02 19:39:28,779 - logging_setup - INFO - Batch Ast: Monitoring 0 jobs with 6-hour timeout and health checks
+2026-02-02 19:39:28,800 - logging_setup - INFO - Batch Ast: Summary - Success: 0, Worker Failed: 0, Timeout Failed: 0, Crashed: 0
+2026-02-02 19:39:28,801 - logging_setup - INFO - 
+
+2026-02-02 19:39:28,801 - logging_setup - INFO - Batch Ast Complete - Check separate worker log file for more details
+2026-02-02 19:39:29,858 - logging_setup - INFO - Main: AST Factory for gr_2026_147.xlsx COMPLETE

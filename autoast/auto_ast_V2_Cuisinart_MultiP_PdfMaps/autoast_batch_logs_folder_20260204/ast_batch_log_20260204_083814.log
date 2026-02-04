@@ -1,0 +1,844 @@
+2026-02-04 08:38:14,588 - logging_setup - INFO - Logging set up - Log file: \\spatialfiles.bcgov\work\srm\nel\Local\Geomatics\Workarea\csostad\GitHub_Repositories\ast_batch_tool\autoast\auto_ast_V2_Cuisinart_MultiP_PdfMaps\autoast_batch_logs_folder_20260204\ast_batch_log_20260204_083814.log
+2026-02-04 08:38:16,312 - logging_setup - INFO - AST Toolbox imported successfully.
+2026-02-04 08:38:16,353 - logging_setup - INFO - Secret file H:\secrets\bcgw.env found
+2026-02-04 08:38:16,354 - logging_setup - INFO - Database user csostad and password found
+2026-02-04 08:38:16,565 - root - INFO - Logger initialized
+2026-02-04 08:38:17,476 - root - ERROR - Failed to import tools
+Traceback (most recent call last):
+  File "P:\corp\central_clones\python_geopandas\lib\site-packages\XTools Pro\esri\toolboxes\XTools Pro.pyt", line 95, in <module>
+    from Tools.FeaturesToPointsTool import *
+  File "E:\sw_nt\XTools\XTools AGP\Python\Tools\FeaturesToPointsTool.py", line 1, in <module>
+    from Tools.BaseTool import BaseTool
+  File "E:\sw_nt\XTools\XTools AGP\Python\Tools\BaseTool.py", line 7, in <module>
+    from Scripts.Base.PythonCancelTracker import PythonCancelTracker
+  File "E:\sw_nt\XTools\XTools AGP\Python\Scripts\Base\PythonCancelTracker.py", line 20, in <module>
+    from XTools.XToolsAGP.Core import ICancelTracker
+ModuleNotFoundError: No module named 'XTools.XToolsAGP.Core'
+2026-02-04 08:38:17,485 - root - ERROR - No module named 'XTools.XToolsAGP.Core'
+Traceback (most recent call last):
+  File "P:\corp\central_clones\python_geopandas\lib\site-packages\XTools Pro\esri\toolboxes\XTools Pro.pyt", line 95, in <module>
+    from Tools.FeaturesToPointsTool import *
+  File "E:\sw_nt\XTools\XTools AGP\Python\Tools\FeaturesToPointsTool.py", line 1, in <module>
+    from Tools.BaseTool import BaseTool
+  File "E:\sw_nt\XTools\XTools AGP\Python\Tools\BaseTool.py", line 7, in <module>
+    from Scripts.Base.PythonCancelTracker import PythonCancelTracker
+  File "E:\sw_nt\XTools\XTools AGP\Python\Scripts\Base\PythonCancelTracker.py", line 20, in <module>
+    from XTools.XToolsAGP.Core import ICancelTracker
+ModuleNotFoundError: No module named 'XTools.XToolsAGP.Core'
+2026-02-04 08:38:41,327 - logging_setup - INFO - new db connection created
+2026-02-04 08:38:41,365 - logging_setup - INFO - workspace set to bcgw connection
+2026-02-04 08:38:41,366 - logging_setup - INFO - SDE Connection established at: \\spatialfiles.bcgov\work\srm\nel\Local\Geomatics\Workarea\csostad\GitHub_Repositories\ast_batch_tool\autoast\auto_ast_V2_Cuisinart_MultiP_PdfMaps\connection\bcgw.sde
+2026-02-04 08:38:41,367 - logging_setup - INFO - Main: Failed Job Tracker initialized
+2026-02-04 08:38:41,368 - logging_setup - INFO - Main: Excel files directory: \\spatialfiles.bcgov\srm\gss\sandbox\csostad\Skeena 2026-2028 Shapefiles\shapefile\outputs
+2026-02-04 08:38:41,368 - logging_setup - INFO - Main: Scanning for jobs_*.xlsx files...
+2026-02-04 08:38:41,372 - logging_setup - INFO - Main: Found 25 Excel files: jobs_1.xlsx, jobs_2.xlsx, jobs_3.xlsx, jobs_4.xlsx, jobs_5.xlsx, jobs_6.xlsx, jobs_7.xlsx, jobs_8.xlsx, jobs_9.xlsx, jobs_10.xlsx, jobs_11.xlsx, jobs_12.xlsx, jobs_13.xlsx, jobs_14.xlsx, jobs_15.xlsx, jobs_16.xlsx, jobs_17.xlsx, jobs_18.xlsx, jobs_19.xlsx, jobs_20.xlsx, jobs_21.xlsx, jobs_22.xlsx, jobs_23.xlsx, jobs_24.xlsx, jobs_25.xlsx
+2026-02-04 08:38:41,379 - logging_setup - INFO - 
+====================================================================================================
+2026-02-04 08:38:41,379 - logging_setup - INFO - ====================================================================================================
+2026-02-04 08:38:41,380 - logging_setup - INFO -   >>> PROCESSING SPREADSHEET: jobs_1.xlsx <<<
+2026-02-04 08:38:41,380 - logging_setup - INFO - ====================================================================================================
+2026-02-04 08:38:41,381 - logging_setup - INFO - ====================================================================================================
+
+2026-02-04 08:38:41,516 - logging_setup - WARNING - Main: [jobs_1.xlsx] Job 1 marked COMPLETE but missing outputs: one_status_tabs_1_and_2_datasets_aoi.gdb (missing), one_status_common_dataset_aoi.xlsx (missing)
+2026-02-04 08:38:41,543 - logging_setup - INFO - Failed Job Tracker: Created spreadsheet at \\spatialfiles.bcgov\srm\gss\sandbox\csostad\Skeena 2026-2028 Shapefiles\shapefile\outputs\failed_jobs_20260204_083841.xlsx
+2026-02-04 08:38:41,574 - logging_setup - ERROR - Failed Job Tracker: Logged failure - jobs_1.xlsx job 1 (missing_outputs): Missing/invalid outputs: one_status_tabs_1_and_2_datasets_aoi.gdb (missing), one_status_common_dataset_aoi.xlsx (missing)
+2026-02-04 08:38:41,664 - logging_setup - WARNING - Main: [jobs_1.xlsx] Job 2 marked COMPLETE but missing outputs: one_status_tabs_1_and_2_datasets_aoi.gdb (missing), one_status_common_dataset_aoi.xlsx (missing)
+2026-02-04 08:38:41,692 - logging_setup - ERROR - Failed Job Tracker: Logged failure - jobs_1.xlsx job 2 (missing_outputs): Missing/invalid outputs: one_status_tabs_1_and_2_datasets_aoi.gdb (missing), one_status_common_dataset_aoi.xlsx (missing)
+2026-02-04 08:38:41,781 - logging_setup - WARNING - Main: [jobs_1.xlsx] Job 3 marked COMPLETE but missing outputs: one_status_tabs_1_and_2_datasets_aoi.gdb (missing), one_status_common_dataset_aoi.xlsx (missing)
+2026-02-04 08:38:41,811 - logging_setup - ERROR - Failed Job Tracker: Logged failure - jobs_1.xlsx job 3 (missing_outputs): Missing/invalid outputs: one_status_tabs_1_and_2_datasets_aoi.gdb (missing), one_status_common_dataset_aoi.xlsx (missing)
+2026-02-04 08:38:41,908 - logging_setup - WARNING - Main: [jobs_1.xlsx] Job 4 marked COMPLETE but missing outputs: one_status_tabs_1_and_2_datasets_aoi.gdb (missing), one_status_common_dataset_aoi.xlsx (missing)
+2026-02-04 08:38:41,939 - logging_setup - ERROR - Failed Job Tracker: Logged failure - jobs_1.xlsx job 4 (missing_outputs): Missing/invalid outputs: one_status_tabs_1_and_2_datasets_aoi.gdb (missing), one_status_common_dataset_aoi.xlsx (missing)
+2026-02-04 08:38:42,046 - logging_setup - WARNING - Main: [jobs_1.xlsx] Job 5 marked COMPLETE but missing outputs: one_status_tabs_1_and_2_datasets_aoi.gdb (missing), one_status_common_dataset_aoi.xlsx (missing)
+2026-02-04 08:38:42,078 - logging_setup - ERROR - Failed Job Tracker: Logged failure - jobs_1.xlsx job 5 (missing_outputs): Missing/invalid outputs: one_status_tabs_1_and_2_datasets_aoi.gdb (missing), one_status_common_dataset_aoi.xlsx (missing)
+2026-02-04 08:38:42,184 - logging_setup - WARNING - Main: [jobs_1.xlsx] Job 6 marked COMPLETE but missing outputs: one_status_tabs_1_and_2_datasets_aoi.gdb (missing), one_status_common_dataset_aoi.xlsx (missing)
+2026-02-04 08:38:42,214 - logging_setup - ERROR - Failed Job Tracker: Logged failure - jobs_1.xlsx job 6 (missing_outputs): Missing/invalid outputs: one_status_tabs_1_and_2_datasets_aoi.gdb (missing), one_status_common_dataset_aoi.xlsx (missing)
+2026-02-04 08:38:42,321 - logging_setup - WARNING - Main: [jobs_1.xlsx] Job 7 marked COMPLETE but missing outputs: one_status_tabs_1_and_2_datasets_aoi.gdb (missing), one_status_common_dataset_aoi.xlsx (missing)
+2026-02-04 08:38:42,353 - logging_setup - ERROR - Failed Job Tracker: Logged failure - jobs_1.xlsx job 7 (missing_outputs): Missing/invalid outputs: one_status_tabs_1_and_2_datasets_aoi.gdb (missing), one_status_common_dataset_aoi.xlsx (missing)
+2026-02-04 08:38:42,445 - logging_setup - WARNING - Main: [jobs_1.xlsx] Job 8 marked COMPLETE but missing outputs: one_status_tabs_1_and_2_datasets_aoi.gdb (missing), one_status_common_dataset_aoi.xlsx (missing)
+2026-02-04 08:38:42,478 - logging_setup - ERROR - Failed Job Tracker: Logged failure - jobs_1.xlsx job 8 (missing_outputs): Missing/invalid outputs: one_status_tabs_1_and_2_datasets_aoi.gdb (missing), one_status_common_dataset_aoi.xlsx (missing)
+2026-02-04 08:38:42,480 - logging_setup - INFO - Main: [jobs_1.xlsx] Found 8 incomplete jobs out of 8 total
+2026-02-04 08:38:42,526 - logging_setup - WARNING - Main: [jobs_1.xlsx] Job 1 marked COMPLETE but missing outputs: one_status_tabs_1_and_2_datasets_aoi.gdb (missing), one_status_common_dataset_aoi.xlsx (missing)
+2026-02-04 08:38:42,555 - logging_setup - WARNING - Main: [jobs_1.xlsx] Job 2 marked COMPLETE but missing outputs: one_status_tabs_1_and_2_datasets_aoi.gdb (missing), one_status_common_dataset_aoi.xlsx (missing)
+2026-02-04 08:38:42,586 - logging_setup - WARNING - Main: [jobs_1.xlsx] Job 3 marked COMPLETE but missing outputs: one_status_tabs_1_and_2_datasets_aoi.gdb (missing), one_status_common_dataset_aoi.xlsx (missing)
+2026-02-04 08:38:42,619 - logging_setup - WARNING - Main: [jobs_1.xlsx] Job 4 marked COMPLETE but missing outputs: one_status_tabs_1_and_2_datasets_aoi.gdb (missing), one_status_common_dataset_aoi.xlsx (missing)
+2026-02-04 08:38:42,648 - logging_setup - WARNING - Main: [jobs_1.xlsx] Job 5 marked COMPLETE but missing outputs: one_status_tabs_1_and_2_datasets_aoi.gdb (missing), one_status_common_dataset_aoi.xlsx (missing)
+2026-02-04 08:38:42,676 - logging_setup - WARNING - Main: [jobs_1.xlsx] Job 6 marked COMPLETE but missing outputs: one_status_tabs_1_and_2_datasets_aoi.gdb (missing), one_status_common_dataset_aoi.xlsx (missing)
+2026-02-04 08:38:42,703 - logging_setup - WARNING - Main: [jobs_1.xlsx] Job 7 marked COMPLETE but missing outputs: one_status_tabs_1_and_2_datasets_aoi.gdb (missing), one_status_common_dataset_aoi.xlsx (missing)
+2026-02-04 08:38:42,731 - logging_setup - WARNING - Main: [jobs_1.xlsx] Job 8 marked COMPLETE but missing outputs: one_status_tabs_1_and_2_datasets_aoi.gdb (missing), one_status_common_dataset_aoi.xlsx (missing)
+2026-02-04 08:38:42,731 - logging_setup - INFO - Main: [jobs_1.xlsx] Found 8 incomplete jobs out of 8 total
+2026-02-04 08:38:42,732 - logging_setup - INFO - Main: [jobs_1.xlsx] Creating queuefile path for \\spatialfiles.bcgov\srm\gss\sandbox\csostad\Skeena 2026-2028 Shapefiles\shapefile\outputs\jobs_1.xlsx
+2026-02-04 08:38:42,734 - logging_setup - INFO - Main: [jobs_1.xlsx] Loading jobs from \\spatialfiles.bcgov\srm\gss\sandbox\csostad\Skeena 2026-2028 Shapefiles\shapefile\outputs\jobs_1.xlsx
+2026-02-04 08:38:42,734 - logging_setup - INFO - ##########################################################################################################################
+2026-02-04 08:38:42,734 - logging_setup - INFO - #
+2026-02-04 08:38:42,735 - logging_setup - INFO - Loading Jobs...
+2026-02-04 08:38:42,735 - logging_setup - INFO - #
+2026-02-04 08:38:42,736 - logging_setup - INFO - ##########################################################################################################################
+2026-02-04 08:38:42,752 - logging_setup - INFO - 
+
+2026-02-04 08:38:42,752 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:38:42,753 - logging_setup - INFO - -                        Load Jobs: Start of Job 0                               -
+2026-02-04 08:38:42,753 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:38:42,754 - logging_setup - INFO - 
+
+2026-02-04 08:38:42,754 - logging_setup - INFO - Load Jobs - Creating empty dictionary
+2026-02-04 08:38:42,755 - logging_setup - INFO - Load Jobs - Skipping job 0 as it is marked COMPLETE.
+2026-02-04 08:38:42,755 - logging_setup - INFO - Load Jobs - Job Condition is not Complete (COMPLETE), adding job: 0 to jobs list
+2026-02-04 08:38:42,756 - logging_setup - INFO - 
+
+2026-02-04 08:38:42,756 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:38:42,756 - logging_setup - INFO - -                        End of Job 0                                -
+2026-02-04 08:38:42,757 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:38:42,757 - logging_setup - INFO - 
+
+2026-02-04 08:38:42,758 - logging_setup - INFO - 
+
+2026-02-04 08:38:42,758 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:38:42,758 - logging_setup - INFO - -                        Load Jobs: Start of Job 1                               -
+2026-02-04 08:38:42,759 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:38:42,759 - logging_setup - INFO - 
+
+2026-02-04 08:38:42,760 - logging_setup - INFO - Load Jobs - Creating empty dictionary
+2026-02-04 08:38:42,761 - logging_setup - INFO - Load Jobs - Skipping job 1 as it is marked COMPLETE.
+2026-02-04 08:38:42,762 - logging_setup - INFO - Load Jobs - Job Condition is not Complete (COMPLETE), adding job: 1 to jobs list
+2026-02-04 08:38:42,762 - logging_setup - INFO - 
+
+2026-02-04 08:38:42,763 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:38:42,763 - logging_setup - INFO - -                        End of Job 1                                -
+2026-02-04 08:38:42,763 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:38:42,764 - logging_setup - INFO - 
+
+2026-02-04 08:38:42,764 - logging_setup - INFO - 
+
+2026-02-04 08:38:42,765 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:38:42,765 - logging_setup - INFO - -                        Load Jobs: Start of Job 2                               -
+2026-02-04 08:38:42,765 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:38:42,766 - logging_setup - INFO - 
+
+2026-02-04 08:38:42,766 - logging_setup - INFO - Load Jobs - Creating empty dictionary
+2026-02-04 08:38:42,767 - logging_setup - INFO - Load Jobs - Skipping job 2 as it is marked COMPLETE.
+2026-02-04 08:38:42,767 - logging_setup - INFO - Load Jobs - Job Condition is not Complete (COMPLETE), adding job: 2 to jobs list
+2026-02-04 08:38:42,768 - logging_setup - INFO - 
+
+2026-02-04 08:38:42,768 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:38:42,768 - logging_setup - INFO - -                        End of Job 2                                -
+2026-02-04 08:38:42,769 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:38:42,769 - logging_setup - INFO - 
+
+2026-02-04 08:38:42,769 - logging_setup - INFO - 
+
+2026-02-04 08:38:42,770 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:38:42,770 - logging_setup - INFO - -                        Load Jobs: Start of Job 3                               -
+2026-02-04 08:38:42,770 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:38:42,771 - logging_setup - INFO - 
+
+2026-02-04 08:38:42,771 - logging_setup - INFO - Load Jobs - Creating empty dictionary
+2026-02-04 08:38:42,771 - logging_setup - INFO - Load Jobs - Skipping job 3 as it is marked COMPLETE.
+2026-02-04 08:38:42,772 - logging_setup - INFO - Load Jobs - Job Condition is not Complete (COMPLETE), adding job: 3 to jobs list
+2026-02-04 08:38:42,772 - logging_setup - INFO - 
+
+2026-02-04 08:38:42,773 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:38:42,773 - logging_setup - INFO - -                        End of Job 3                                -
+2026-02-04 08:38:42,774 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:38:42,774 - logging_setup - INFO - 
+
+2026-02-04 08:38:42,775 - logging_setup - INFO - 
+
+2026-02-04 08:38:42,775 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:38:42,775 - logging_setup - INFO - -                        Load Jobs: Start of Job 4                               -
+2026-02-04 08:38:42,776 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:38:42,776 - logging_setup - INFO - 
+
+2026-02-04 08:38:42,777 - logging_setup - INFO - Load Jobs - Creating empty dictionary
+2026-02-04 08:38:42,777 - logging_setup - INFO - Load Jobs - Skipping job 4 as it is marked COMPLETE.
+2026-02-04 08:38:42,778 - logging_setup - INFO - Load Jobs - Job Condition is not Complete (COMPLETE), adding job: 4 to jobs list
+2026-02-04 08:38:42,778 - logging_setup - INFO - 
+
+2026-02-04 08:38:42,779 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:38:42,779 - logging_setup - INFO - -                        End of Job 4                                -
+2026-02-04 08:38:42,779 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:38:42,780 - logging_setup - INFO - 
+
+2026-02-04 08:38:42,780 - logging_setup - INFO - 
+
+2026-02-04 08:38:42,780 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:38:42,781 - logging_setup - INFO - -                        Load Jobs: Start of Job 5                               -
+2026-02-04 08:38:42,781 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:38:42,781 - logging_setup - INFO - 
+
+2026-02-04 08:38:42,782 - logging_setup - INFO - Load Jobs - Creating empty dictionary
+2026-02-04 08:38:42,782 - logging_setup - INFO - Load Jobs - Skipping job 5 as it is marked COMPLETE.
+2026-02-04 08:38:42,783 - logging_setup - INFO - Load Jobs - Job Condition is not Complete (COMPLETE), adding job: 5 to jobs list
+2026-02-04 08:38:42,783 - logging_setup - INFO - 
+
+2026-02-04 08:38:42,784 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:38:42,784 - logging_setup - INFO - -                        End of Job 5                                -
+2026-02-04 08:38:42,784 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:38:42,785 - logging_setup - INFO - 
+
+2026-02-04 08:38:42,785 - logging_setup - INFO - 
+
+2026-02-04 08:38:42,785 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:38:42,786 - logging_setup - INFO - -                        Load Jobs: Start of Job 6                               -
+2026-02-04 08:38:42,786 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:38:42,787 - logging_setup - INFO - 
+
+2026-02-04 08:38:42,787 - logging_setup - INFO - Load Jobs - Creating empty dictionary
+2026-02-04 08:38:42,787 - logging_setup - INFO - Load Jobs - Skipping job 6 as it is marked COMPLETE.
+2026-02-04 08:38:42,789 - logging_setup - INFO - Load Jobs - Job Condition is not Complete (COMPLETE), adding job: 6 to jobs list
+2026-02-04 08:38:42,790 - logging_setup - INFO - 
+
+2026-02-04 08:38:42,790 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:38:42,791 - logging_setup - INFO - -                        End of Job 6                                -
+2026-02-04 08:38:42,791 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:38:42,791 - logging_setup - INFO - 
+
+2026-02-04 08:38:42,792 - logging_setup - INFO - 
+
+2026-02-04 08:38:42,792 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:38:42,792 - logging_setup - INFO - -                        Load Jobs: Start of Job 7                               -
+2026-02-04 08:38:42,793 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:38:42,793 - logging_setup - INFO - 
+
+2026-02-04 08:38:42,793 - logging_setup - INFO - Load Jobs - Creating empty dictionary
+2026-02-04 08:38:42,794 - logging_setup - INFO - Load Jobs - Skipping job 7 as it is marked COMPLETE.
+2026-02-04 08:38:42,794 - logging_setup - INFO - Load Jobs - Job Condition is not Complete (COMPLETE), adding job: 7 to jobs list
+2026-02-04 08:38:42,795 - logging_setup - INFO - 
+
+2026-02-04 08:38:42,795 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:38:42,796 - logging_setup - INFO - -                        End of Job 7                                -
+2026-02-04 08:38:42,796 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:38:42,797 - logging_setup - INFO - 
+
+2026-02-04 08:38:42,797 - logging_setup - INFO - Main: [jobs_1.xlsx] Batching jobs for \\spatialfiles.bcgov\srm\gss\sandbox\csostad\Skeena 2026-2028 Shapefiles\shapefile\outputs\jobs_1.xlsx (initial attempt)
+2026-02-04 08:38:42,797 - logging_setup - INFO - 
+
+2026-02-04 08:38:42,798 - logging_setup - INFO - ##########################################################################################################################
+2026-02-04 08:38:42,798 - logging_setup - INFO - #
+2026-02-04 08:38:42,799 - logging_setup - INFO - Batch AST: Batching Jobs with Multiprocessing...
+2026-02-04 08:38:42,799 - logging_setup - INFO - #
+2026-02-04 08:38:42,800 - logging_setup - INFO - ##########################################################################################################################
+2026-02-04 08:38:42,800 - logging_setup - INFO - 
+
+2026-02-04 08:38:42,800 - logging_setup - INFO - Batch Ast: Job Timeout set to 21600 seconds (6 hours)
+2026-02-04 08:38:42,801 - logging_setup - INFO - Batch Ast: Process health checks enabled (every 60s)
+2026-02-04 08:39:06,469 - logging_setup - INFO - Batch Ast: Starting job 0
+2026-02-04 08:39:06,470 - logging_setup - INFO - Batch Ast: Starting job 1
+2026-02-04 08:39:06,470 - logging_setup - INFO - Batch Ast: Starting job 2
+2026-02-04 08:39:06,471 - logging_setup - INFO - Batch Ast: Starting job 3
+2026-02-04 08:39:06,472 - logging_setup - INFO - Batch Ast: Starting job 4
+2026-02-04 08:39:06,473 - logging_setup - INFO - Batch Ast: Starting job 5
+2026-02-04 08:39:06,474 - logging_setup - INFO - Batch Ast: Starting job 6
+2026-02-04 08:39:06,474 - logging_setup - INFO - Batch Ast: Starting job 7
+2026-02-04 08:39:06,475 - logging_setup - INFO - Batch Ast: Monitoring 0 jobs with 6-hour timeout and health checks
+2026-02-04 08:39:06,476 - logging_setup - INFO - Batch Ast: Summary - Success: 0, Worker Failed: 0, Timeout Failed: 0, Crashed: 0
+2026-02-04 08:39:06,476 - logging_setup - INFO - 
+
+2026-02-04 08:39:06,476 - logging_setup - INFO - Batch Ast Complete - Check separate worker log file for more details
+2026-02-04 08:39:07,524 - logging_setup - INFO - Main: [jobs_1.xlsx] Initial batch processing complete
+2026-02-04 08:39:07,529 - logging_setup - INFO - 
+====================================================================================================
+2026-02-04 08:39:07,530 - logging_setup - INFO -   >>> COMPLETED SPREADSHEET: jobs_1.xlsx <<<
+2026-02-04 08:39:07,530 - logging_setup - INFO - ====================================================================================================
+
+2026-02-04 08:39:07,532 - logging_setup - INFO - 
+====================================================================================================
+2026-02-04 08:39:07,533 - logging_setup - INFO - ====================================================================================================
+2026-02-04 08:39:07,533 - logging_setup - INFO -   >>> PROCESSING SPREADSHEET: jobs_2.xlsx <<<
+2026-02-04 08:39:07,534 - logging_setup - INFO - ====================================================================================================
+2026-02-04 08:39:07,534 - logging_setup - INFO - ====================================================================================================
+
+2026-02-04 08:39:07,702 - logging_setup - WARNING - Main: [jobs_2.xlsx] Job 1 marked COMPLETE but missing outputs: one_status_tabs_1_and_2_datasets_aoi.gdb (missing), one_status_common_dataset_aoi.xlsx (missing)
+2026-02-04 08:39:07,733 - logging_setup - ERROR - Failed Job Tracker: Logged failure - jobs_2.xlsx job 1 (missing_outputs): Missing/invalid outputs: one_status_tabs_1_and_2_datasets_aoi.gdb (missing), one_status_common_dataset_aoi.xlsx (missing)
+2026-02-04 08:39:07,880 - logging_setup - WARNING - Main: [jobs_2.xlsx] Job 2 marked COMPLETE but missing outputs: one_status_tabs_1_and_2_datasets_aoi.gdb (missing), one_status_common_dataset_aoi.xlsx (missing)
+2026-02-04 08:39:07,910 - logging_setup - ERROR - Failed Job Tracker: Logged failure - jobs_2.xlsx job 2 (missing_outputs): Missing/invalid outputs: one_status_tabs_1_and_2_datasets_aoi.gdb (missing), one_status_common_dataset_aoi.xlsx (missing)
+2026-02-04 08:39:08,060 - logging_setup - WARNING - Main: [jobs_2.xlsx] Job 3 marked COMPLETE but missing outputs: one_status_tabs_1_and_2_datasets_aoi.gdb (missing), one_status_common_dataset_aoi.xlsx (missing)
+2026-02-04 08:39:08,090 - logging_setup - ERROR - Failed Job Tracker: Logged failure - jobs_2.xlsx job 3 (missing_outputs): Missing/invalid outputs: one_status_tabs_1_and_2_datasets_aoi.gdb (missing), one_status_common_dataset_aoi.xlsx (missing)
+2026-02-04 08:39:08,198 - logging_setup - WARNING - Main: [jobs_2.xlsx] Job 4 marked COMPLETE but missing outputs: one_status_tabs_1_and_2_datasets_aoi.gdb (missing), one_status_common_dataset_aoi.xlsx (missing)
+2026-02-04 08:39:08,233 - logging_setup - ERROR - Failed Job Tracker: Logged failure - jobs_2.xlsx job 4 (missing_outputs): Missing/invalid outputs: one_status_tabs_1_and_2_datasets_aoi.gdb (missing), one_status_common_dataset_aoi.xlsx (missing)
+2026-02-04 08:39:08,396 - logging_setup - WARNING - Main: [jobs_2.xlsx] Job 5 marked COMPLETE but missing outputs: one_status_tabs_1_and_2_datasets_aoi.gdb (missing), one_status_common_dataset_aoi.xlsx (missing)
+2026-02-04 08:39:08,428 - logging_setup - ERROR - Failed Job Tracker: Logged failure - jobs_2.xlsx job 5 (missing_outputs): Missing/invalid outputs: one_status_tabs_1_and_2_datasets_aoi.gdb (missing), one_status_common_dataset_aoi.xlsx (missing)
+2026-02-04 08:39:08,583 - logging_setup - WARNING - Main: [jobs_2.xlsx] Job 6 marked COMPLETE but missing outputs: one_status_tabs_1_and_2_datasets_aoi.gdb (missing), one_status_common_dataset_aoi.xlsx (missing)
+2026-02-04 08:39:08,615 - logging_setup - ERROR - Failed Job Tracker: Logged failure - jobs_2.xlsx job 6 (missing_outputs): Missing/invalid outputs: one_status_tabs_1_and_2_datasets_aoi.gdb (missing), one_status_common_dataset_aoi.xlsx (missing)
+2026-02-04 08:39:08,767 - logging_setup - WARNING - Main: [jobs_2.xlsx] Job 7 marked COMPLETE but missing outputs: one_status_tabs_1_and_2_datasets_aoi.gdb (missing), one_status_common_dataset_aoi.xlsx (missing)
+2026-02-04 08:39:08,799 - logging_setup - ERROR - Failed Job Tracker: Logged failure - jobs_2.xlsx job 7 (missing_outputs): Missing/invalid outputs: one_status_tabs_1_and_2_datasets_aoi.gdb (missing), one_status_common_dataset_aoi.xlsx (missing)
+2026-02-04 08:39:08,917 - logging_setup - WARNING - Main: [jobs_2.xlsx] Job 8 marked COMPLETE but missing outputs: one_status_tabs_1_and_2_datasets_aoi.gdb (missing), one_status_common_dataset_aoi.xlsx (missing)
+2026-02-04 08:39:08,949 - logging_setup - ERROR - Failed Job Tracker: Logged failure - jobs_2.xlsx job 8 (missing_outputs): Missing/invalid outputs: one_status_tabs_1_and_2_datasets_aoi.gdb (missing), one_status_common_dataset_aoi.xlsx (missing)
+2026-02-04 08:39:08,950 - logging_setup - INFO - Main: [jobs_2.xlsx] Found 8 incomplete jobs out of 8 total
+2026-02-04 08:39:08,986 - logging_setup - WARNING - Main: [jobs_2.xlsx] Job 1 marked COMPLETE but missing outputs: one_status_tabs_1_and_2_datasets_aoi.gdb (missing), one_status_common_dataset_aoi.xlsx (missing)
+2026-02-04 08:39:09,014 - logging_setup - WARNING - Main: [jobs_2.xlsx] Job 2 marked COMPLETE but missing outputs: one_status_tabs_1_and_2_datasets_aoi.gdb (missing), one_status_common_dataset_aoi.xlsx (missing)
+2026-02-04 08:39:09,039 - logging_setup - WARNING - Main: [jobs_2.xlsx] Job 3 marked COMPLETE but missing outputs: one_status_tabs_1_and_2_datasets_aoi.gdb (missing), one_status_common_dataset_aoi.xlsx (missing)
+2026-02-04 08:39:09,064 - logging_setup - WARNING - Main: [jobs_2.xlsx] Job 4 marked COMPLETE but missing outputs: one_status_tabs_1_and_2_datasets_aoi.gdb (missing), one_status_common_dataset_aoi.xlsx (missing)
+2026-02-04 08:39:09,089 - logging_setup - WARNING - Main: [jobs_2.xlsx] Job 5 marked COMPLETE but missing outputs: one_status_tabs_1_and_2_datasets_aoi.gdb (missing), one_status_common_dataset_aoi.xlsx (missing)
+2026-02-04 08:39:09,114 - logging_setup - WARNING - Main: [jobs_2.xlsx] Job 6 marked COMPLETE but missing outputs: one_status_tabs_1_and_2_datasets_aoi.gdb (missing), one_status_common_dataset_aoi.xlsx (missing)
+2026-02-04 08:39:09,139 - logging_setup - WARNING - Main: [jobs_2.xlsx] Job 7 marked COMPLETE but missing outputs: one_status_tabs_1_and_2_datasets_aoi.gdb (missing), one_status_common_dataset_aoi.xlsx (missing)
+2026-02-04 08:39:09,163 - logging_setup - WARNING - Main: [jobs_2.xlsx] Job 8 marked COMPLETE but missing outputs: one_status_tabs_1_and_2_datasets_aoi.gdb (missing), one_status_common_dataset_aoi.xlsx (missing)
+2026-02-04 08:39:09,164 - logging_setup - INFO - Main: [jobs_2.xlsx] Found 8 incomplete jobs out of 8 total
+2026-02-04 08:39:09,164 - logging_setup - INFO - Main: [jobs_2.xlsx] Creating queuefile path for \\spatialfiles.bcgov\srm\gss\sandbox\csostad\Skeena 2026-2028 Shapefiles\shapefile\outputs\jobs_2.xlsx
+2026-02-04 08:39:09,165 - logging_setup - INFO - Main: [jobs_2.xlsx] Loading jobs from \\spatialfiles.bcgov\srm\gss\sandbox\csostad\Skeena 2026-2028 Shapefiles\shapefile\outputs\jobs_2.xlsx
+2026-02-04 08:39:09,166 - logging_setup - INFO - ##########################################################################################################################
+2026-02-04 08:39:09,166 - logging_setup - INFO - #
+2026-02-04 08:39:09,166 - logging_setup - INFO - Loading Jobs...
+2026-02-04 08:39:09,167 - logging_setup - INFO - #
+2026-02-04 08:39:09,167 - logging_setup - INFO - ##########################################################################################################################
+2026-02-04 08:39:09,182 - logging_setup - INFO - 
+
+2026-02-04 08:39:09,182 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:39:09,183 - logging_setup - INFO - -                        Load Jobs: Start of Job 0                               -
+2026-02-04 08:39:09,183 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:39:09,184 - logging_setup - INFO - 
+
+2026-02-04 08:39:09,184 - logging_setup - INFO - Load Jobs - Creating empty dictionary
+2026-02-04 08:39:09,185 - logging_setup - INFO - Load Jobs - Skipping job 0 as it is marked COMPLETE.
+2026-02-04 08:39:09,187 - logging_setup - INFO - Load Jobs - Job Condition is not Complete (COMPLETE), adding job: 0 to jobs list
+2026-02-04 08:39:09,187 - logging_setup - INFO - 
+
+2026-02-04 08:39:09,188 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:39:09,188 - logging_setup - INFO - -                        End of Job 0                                -
+2026-02-04 08:39:09,188 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:39:09,189 - logging_setup - INFO - 
+
+2026-02-04 08:39:09,189 - logging_setup - INFO - 
+
+2026-02-04 08:39:09,190 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:39:09,190 - logging_setup - INFO - -                        Load Jobs: Start of Job 1                               -
+2026-02-04 08:39:09,190 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:39:09,191 - logging_setup - INFO - 
+
+2026-02-04 08:39:09,191 - logging_setup - INFO - Load Jobs - Creating empty dictionary
+2026-02-04 08:39:09,192 - logging_setup - INFO - Load Jobs - Skipping job 1 as it is marked COMPLETE.
+2026-02-04 08:39:09,192 - logging_setup - INFO - Load Jobs - Job Condition is not Complete (COMPLETE), adding job: 1 to jobs list
+2026-02-04 08:39:09,192 - logging_setup - INFO - 
+
+2026-02-04 08:39:09,193 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:39:09,193 - logging_setup - INFO - -                        End of Job 1                                -
+2026-02-04 08:39:09,194 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:39:09,194 - logging_setup - INFO - 
+
+2026-02-04 08:39:09,194 - logging_setup - INFO - 
+
+2026-02-04 08:39:09,195 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:39:09,195 - logging_setup - INFO - -                        Load Jobs: Start of Job 2                               -
+2026-02-04 08:39:09,195 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:39:09,196 - logging_setup - INFO - 
+
+2026-02-04 08:39:09,196 - logging_setup - INFO - Load Jobs - Creating empty dictionary
+2026-02-04 08:39:09,197 - logging_setup - INFO - Load Jobs - Skipping job 2 as it is marked COMPLETE.
+2026-02-04 08:39:09,197 - logging_setup - INFO - Load Jobs - Job Condition is not Complete (COMPLETE), adding job: 2 to jobs list
+2026-02-04 08:39:09,197 - logging_setup - INFO - 
+
+2026-02-04 08:39:09,198 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:39:09,198 - logging_setup - INFO - -                        End of Job 2                                -
+2026-02-04 08:39:09,199 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:39:09,199 - logging_setup - INFO - 
+
+2026-02-04 08:39:09,199 - logging_setup - INFO - 
+
+2026-02-04 08:39:09,200 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:39:09,201 - logging_setup - INFO - -                        Load Jobs: Start of Job 3                               -
+2026-02-04 08:39:09,201 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:39:09,202 - logging_setup - INFO - 
+
+2026-02-04 08:39:09,202 - logging_setup - INFO - Load Jobs - Creating empty dictionary
+2026-02-04 08:39:09,203 - logging_setup - INFO - Load Jobs - Skipping job 3 as it is marked COMPLETE.
+2026-02-04 08:39:09,203 - logging_setup - INFO - Load Jobs - Job Condition is not Complete (COMPLETE), adding job: 3 to jobs list
+2026-02-04 08:39:09,204 - logging_setup - INFO - 
+
+2026-02-04 08:39:09,204 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:39:09,204 - logging_setup - INFO - -                        End of Job 3                                -
+2026-02-04 08:39:09,205 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:39:09,205 - logging_setup - INFO - 
+
+2026-02-04 08:39:09,206 - logging_setup - INFO - 
+
+2026-02-04 08:39:09,206 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:39:09,207 - logging_setup - INFO - -                        Load Jobs: Start of Job 4                               -
+2026-02-04 08:39:09,207 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:39:09,207 - logging_setup - INFO - 
+
+2026-02-04 08:39:09,208 - logging_setup - INFO - Load Jobs - Creating empty dictionary
+2026-02-04 08:39:09,208 - logging_setup - INFO - Load Jobs - Skipping job 4 as it is marked COMPLETE.
+2026-02-04 08:39:09,209 - logging_setup - INFO - Load Jobs - Job Condition is not Complete (COMPLETE), adding job: 4 to jobs list
+2026-02-04 08:39:09,209 - logging_setup - INFO - 
+
+2026-02-04 08:39:09,210 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:39:09,210 - logging_setup - INFO - -                        End of Job 4                                -
+2026-02-04 08:39:09,211 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:39:09,211 - logging_setup - INFO - 
+
+2026-02-04 08:39:09,212 - logging_setup - INFO - 
+
+2026-02-04 08:39:09,212 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:39:09,212 - logging_setup - INFO - -                        Load Jobs: Start of Job 5                               -
+2026-02-04 08:39:09,213 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:39:09,213 - logging_setup - INFO - 
+
+2026-02-04 08:39:09,214 - logging_setup - INFO - Load Jobs - Creating empty dictionary
+2026-02-04 08:39:09,214 - logging_setup - INFO - Load Jobs - Skipping job 5 as it is marked COMPLETE.
+2026-02-04 08:39:09,215 - logging_setup - INFO - Load Jobs - Job Condition is not Complete (COMPLETE), adding job: 5 to jobs list
+2026-02-04 08:39:09,216 - logging_setup - INFO - 
+
+2026-02-04 08:39:09,216 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:39:09,217 - logging_setup - INFO - -                        End of Job 5                                -
+2026-02-04 08:39:09,217 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:39:09,218 - logging_setup - INFO - 
+
+2026-02-04 08:39:09,218 - logging_setup - INFO - 
+
+2026-02-04 08:39:09,218 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:39:09,219 - logging_setup - INFO - -                        Load Jobs: Start of Job 6                               -
+2026-02-04 08:39:09,219 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:39:09,220 - logging_setup - INFO - 
+
+2026-02-04 08:39:09,220 - logging_setup - INFO - Load Jobs - Creating empty dictionary
+2026-02-04 08:39:09,221 - logging_setup - INFO - Load Jobs - Skipping job 6 as it is marked COMPLETE.
+2026-02-04 08:39:09,221 - logging_setup - INFO - Load Jobs - Job Condition is not Complete (COMPLETE), adding job: 6 to jobs list
+2026-02-04 08:39:09,222 - logging_setup - INFO - 
+
+2026-02-04 08:39:09,222 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:39:09,223 - logging_setup - INFO - -                        End of Job 6                                -
+2026-02-04 08:39:09,223 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:39:09,223 - logging_setup - INFO - 
+
+2026-02-04 08:39:09,224 - logging_setup - INFO - 
+
+2026-02-04 08:39:09,224 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:39:09,224 - logging_setup - INFO - -                        Load Jobs: Start of Job 7                               -
+2026-02-04 08:39:09,225 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:39:09,225 - logging_setup - INFO - 
+
+2026-02-04 08:39:09,226 - logging_setup - INFO - Load Jobs - Creating empty dictionary
+2026-02-04 08:39:09,226 - logging_setup - INFO - Load Jobs - Skipping job 7 as it is marked COMPLETE.
+2026-02-04 08:39:09,226 - logging_setup - INFO - Load Jobs - Job Condition is not Complete (COMPLETE), adding job: 7 to jobs list
+2026-02-04 08:39:09,227 - logging_setup - INFO - 
+
+2026-02-04 08:39:09,227 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:39:09,227 - logging_setup - INFO - -                        End of Job 7                                -
+2026-02-04 08:39:09,228 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:39:09,228 - logging_setup - INFO - 
+
+2026-02-04 08:39:09,229 - logging_setup - INFO - Main: [jobs_2.xlsx] Batching jobs for \\spatialfiles.bcgov\srm\gss\sandbox\csostad\Skeena 2026-2028 Shapefiles\shapefile\outputs\jobs_2.xlsx (initial attempt)
+2026-02-04 08:39:09,229 - logging_setup - INFO - 
+
+2026-02-04 08:39:09,230 - logging_setup - INFO - ##########################################################################################################################
+2026-02-04 08:39:09,230 - logging_setup - INFO - #
+2026-02-04 08:39:09,230 - logging_setup - INFO - Batch AST: Batching Jobs with Multiprocessing...
+2026-02-04 08:39:09,231 - logging_setup - INFO - #
+2026-02-04 08:39:09,231 - logging_setup - INFO - ##########################################################################################################################
+2026-02-04 08:39:09,231 - logging_setup - INFO - 
+
+2026-02-04 08:39:09,232 - logging_setup - INFO - Batch Ast: Job Timeout set to 21600 seconds (6 hours)
+2026-02-04 08:39:09,233 - logging_setup - INFO - Batch Ast: Process health checks enabled (every 60s)
+2026-02-04 08:39:34,971 - logging_setup - INFO - Batch Ast: Starting job 0
+2026-02-04 08:39:34,972 - logging_setup - INFO - Batch Ast: Starting job 1
+2026-02-04 08:39:34,973 - logging_setup - INFO - Batch Ast: Starting job 2
+2026-02-04 08:39:34,973 - logging_setup - INFO - Batch Ast: Starting job 3
+2026-02-04 08:39:34,974 - logging_setup - INFO - Batch Ast: Starting job 4
+2026-02-04 08:39:34,975 - logging_setup - INFO - Batch Ast: Starting job 5
+2026-02-04 08:39:34,975 - logging_setup - INFO - Batch Ast: Starting job 6
+2026-02-04 08:39:34,976 - logging_setup - INFO - Batch Ast: Starting job 7
+2026-02-04 08:39:34,977 - logging_setup - INFO - Batch Ast: Monitoring 0 jobs with 6-hour timeout and health checks
+2026-02-04 08:39:34,977 - logging_setup - INFO - Batch Ast: Summary - Success: 0, Worker Failed: 0, Timeout Failed: 0, Crashed: 0
+2026-02-04 08:39:34,978 - logging_setup - INFO - 
+
+2026-02-04 08:39:34,978 - logging_setup - INFO - Batch Ast Complete - Check separate worker log file for more details
+2026-02-04 08:39:36,032 - logging_setup - INFO - Main: [jobs_2.xlsx] Initial batch processing complete
+2026-02-04 08:39:36,034 - logging_setup - INFO - 
+====================================================================================================
+2026-02-04 08:39:36,035 - logging_setup - INFO -   >>> COMPLETED SPREADSHEET: jobs_2.xlsx <<<
+2026-02-04 08:39:36,035 - logging_setup - INFO - ====================================================================================================
+
+2026-02-04 08:39:36,037 - logging_setup - INFO - 
+====================================================================================================
+2026-02-04 08:39:36,038 - logging_setup - INFO - ====================================================================================================
+2026-02-04 08:39:36,038 - logging_setup - INFO -   >>> PROCESSING SPREADSHEET: jobs_3.xlsx <<<
+2026-02-04 08:39:36,039 - logging_setup - INFO - ====================================================================================================
+2026-02-04 08:39:36,039 - logging_setup - INFO - ====================================================================================================
+
+2026-02-04 08:39:36,165 - logging_setup - WARNING - Main: [jobs_3.xlsx] Job 1 marked COMPLETE but missing outputs: one_status_tabs_1_and_2_datasets_aoi.gdb (missing), one_status_common_dataset_aoi.xlsx (missing)
+2026-02-04 08:39:36,200 - logging_setup - ERROR - Failed Job Tracker: Logged failure - jobs_3.xlsx job 1 (missing_outputs): Missing/invalid outputs: one_status_tabs_1_and_2_datasets_aoi.gdb (missing), one_status_common_dataset_aoi.xlsx (missing)
+2026-02-04 08:39:36,290 - logging_setup - WARNING - Main: [jobs_3.xlsx] Job 2 marked COMPLETE but missing outputs: one_status_tabs_1_and_2_datasets_aoi.gdb (missing), one_status_common_dataset_aoi.xlsx (missing)
+2026-02-04 08:39:36,323 - logging_setup - ERROR - Failed Job Tracker: Logged failure - jobs_3.xlsx job 2 (missing_outputs): Missing/invalid outputs: one_status_tabs_1_and_2_datasets_aoi.gdb (missing), one_status_common_dataset_aoi.xlsx (missing)
+2026-02-04 08:39:36,425 - logging_setup - WARNING - Main: [jobs_3.xlsx] Job 3 marked COMPLETE but missing outputs: one_status_tabs_1_and_2_datasets_aoi.gdb (missing), one_status_common_dataset_aoi.xlsx (missing)
+2026-02-04 08:39:36,459 - logging_setup - ERROR - Failed Job Tracker: Logged failure - jobs_3.xlsx job 3 (missing_outputs): Missing/invalid outputs: one_status_tabs_1_and_2_datasets_aoi.gdb (missing), one_status_common_dataset_aoi.xlsx (missing)
+2026-02-04 08:39:36,564 - logging_setup - WARNING - Main: [jobs_3.xlsx] Job 4 marked COMPLETE but missing outputs: one_status_tabs_1_and_2_datasets_aoi.gdb (missing), one_status_common_dataset_aoi.xlsx (missing)
+2026-02-04 08:39:36,599 - logging_setup - ERROR - Failed Job Tracker: Logged failure - jobs_3.xlsx job 4 (missing_outputs): Missing/invalid outputs: one_status_tabs_1_and_2_datasets_aoi.gdb (missing), one_status_common_dataset_aoi.xlsx (missing)
+2026-02-04 08:39:36,703 - logging_setup - WARNING - Main: [jobs_3.xlsx] Job 5 marked COMPLETE but missing outputs: one_status_tabs_1_and_2_datasets_aoi.gdb (missing), one_status_common_dataset_aoi.xlsx (missing)
+2026-02-04 08:39:36,738 - logging_setup - ERROR - Failed Job Tracker: Logged failure - jobs_3.xlsx job 5 (missing_outputs): Missing/invalid outputs: one_status_tabs_1_and_2_datasets_aoi.gdb (missing), one_status_common_dataset_aoi.xlsx (missing)
+2026-02-04 08:39:36,823 - logging_setup - WARNING - Main: [jobs_3.xlsx] Job 6 marked COMPLETE but missing outputs: one_status_tabs_1_and_2_datasets_aoi.gdb (missing), one_status_common_dataset_aoi.xlsx (missing)
+2026-02-04 08:39:36,860 - logging_setup - ERROR - Failed Job Tracker: Logged failure - jobs_3.xlsx job 6 (missing_outputs): Missing/invalid outputs: one_status_tabs_1_and_2_datasets_aoi.gdb (missing), one_status_common_dataset_aoi.xlsx (missing)
+2026-02-04 08:39:36,969 - logging_setup - WARNING - Main: [jobs_3.xlsx] Job 7 marked COMPLETE but missing outputs: one_status_tabs_1_and_2_datasets_aoi.gdb (missing), one_status_common_dataset_aoi.xlsx (missing)
+2026-02-04 08:39:37,006 - logging_setup - ERROR - Failed Job Tracker: Logged failure - jobs_3.xlsx job 7 (missing_outputs): Missing/invalid outputs: one_status_tabs_1_and_2_datasets_aoi.gdb (missing), one_status_common_dataset_aoi.xlsx (missing)
+2026-02-04 08:39:37,105 - logging_setup - WARNING - Main: [jobs_3.xlsx] Job 8 marked COMPLETE but missing outputs: one_status_tabs_1_and_2_datasets_aoi.gdb (missing), one_status_common_dataset_aoi.xlsx (missing)
+2026-02-04 08:39:37,139 - logging_setup - ERROR - Failed Job Tracker: Logged failure - jobs_3.xlsx job 8 (missing_outputs): Missing/invalid outputs: one_status_tabs_1_and_2_datasets_aoi.gdb (missing), one_status_common_dataset_aoi.xlsx (missing)
+2026-02-04 08:39:37,140 - logging_setup - INFO - Main: [jobs_3.xlsx] Found 8 incomplete jobs out of 8 total
+2026-02-04 08:39:37,177 - logging_setup - WARNING - Main: [jobs_3.xlsx] Job 1 marked COMPLETE but missing outputs: one_status_tabs_1_and_2_datasets_aoi.gdb (missing), one_status_common_dataset_aoi.xlsx (missing)
+2026-02-04 08:39:37,201 - logging_setup - WARNING - Main: [jobs_3.xlsx] Job 2 marked COMPLETE but missing outputs: one_status_tabs_1_and_2_datasets_aoi.gdb (missing), one_status_common_dataset_aoi.xlsx (missing)
+2026-02-04 08:39:37,227 - logging_setup - WARNING - Main: [jobs_3.xlsx] Job 3 marked COMPLETE but missing outputs: one_status_tabs_1_and_2_datasets_aoi.gdb (missing), one_status_common_dataset_aoi.xlsx (missing)
+2026-02-04 08:39:37,256 - logging_setup - WARNING - Main: [jobs_3.xlsx] Job 4 marked COMPLETE but missing outputs: one_status_tabs_1_and_2_datasets_aoi.gdb (missing), one_status_common_dataset_aoi.xlsx (missing)
+2026-02-04 08:39:37,281 - logging_setup - WARNING - Main: [jobs_3.xlsx] Job 5 marked COMPLETE but missing outputs: one_status_tabs_1_and_2_datasets_aoi.gdb (missing), one_status_common_dataset_aoi.xlsx (missing)
+2026-02-04 08:39:37,305 - logging_setup - WARNING - Main: [jobs_3.xlsx] Job 6 marked COMPLETE but missing outputs: one_status_tabs_1_and_2_datasets_aoi.gdb (missing), one_status_common_dataset_aoi.xlsx (missing)
+2026-02-04 08:39:37,331 - logging_setup - WARNING - Main: [jobs_3.xlsx] Job 7 marked COMPLETE but missing outputs: one_status_tabs_1_and_2_datasets_aoi.gdb (missing), one_status_common_dataset_aoi.xlsx (missing)
+2026-02-04 08:39:37,357 - logging_setup - WARNING - Main: [jobs_3.xlsx] Job 8 marked COMPLETE but missing outputs: one_status_tabs_1_and_2_datasets_aoi.gdb (missing), one_status_common_dataset_aoi.xlsx (missing)
+2026-02-04 08:39:37,358 - logging_setup - INFO - Main: [jobs_3.xlsx] Found 8 incomplete jobs out of 8 total
+2026-02-04 08:39:37,358 - logging_setup - INFO - Main: [jobs_3.xlsx] Creating queuefile path for \\spatialfiles.bcgov\srm\gss\sandbox\csostad\Skeena 2026-2028 Shapefiles\shapefile\outputs\jobs_3.xlsx
+2026-02-04 08:39:37,359 - logging_setup - INFO - Main: [jobs_3.xlsx] Loading jobs from \\spatialfiles.bcgov\srm\gss\sandbox\csostad\Skeena 2026-2028 Shapefiles\shapefile\outputs\jobs_3.xlsx
+2026-02-04 08:39:37,360 - logging_setup - INFO - ##########################################################################################################################
+2026-02-04 08:39:37,360 - logging_setup - INFO - #
+2026-02-04 08:39:37,360 - logging_setup - INFO - Loading Jobs...
+2026-02-04 08:39:37,360 - logging_setup - INFO - #
+2026-02-04 08:39:37,361 - logging_setup - INFO - ##########################################################################################################################
+2026-02-04 08:39:37,373 - logging_setup - INFO - 
+
+2026-02-04 08:39:37,373 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:39:37,374 - logging_setup - INFO - -                        Load Jobs: Start of Job 0                               -
+2026-02-04 08:39:37,374 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:39:37,375 - logging_setup - INFO - 
+
+2026-02-04 08:39:37,375 - logging_setup - INFO - Load Jobs - Creating empty dictionary
+2026-02-04 08:39:37,376 - logging_setup - INFO - Load Jobs - Skipping job 0 as it is marked COMPLETE.
+2026-02-04 08:39:37,378 - logging_setup - INFO - Load Jobs - Job Condition is not Complete (COMPLETE), adding job: 0 to jobs list
+2026-02-04 08:39:37,378 - logging_setup - INFO - 
+
+2026-02-04 08:39:37,378 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:39:37,379 - logging_setup - INFO - -                        End of Job 0                                -
+2026-02-04 08:39:37,379 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:39:37,379 - logging_setup - INFO - 
+
+2026-02-04 08:39:37,380 - logging_setup - INFO - 
+
+2026-02-04 08:39:37,380 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:39:37,380 - logging_setup - INFO - -                        Load Jobs: Start of Job 1                               -
+2026-02-04 08:39:37,381 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:39:37,381 - logging_setup - INFO - 
+
+2026-02-04 08:39:37,382 - logging_setup - INFO - Load Jobs - Creating empty dictionary
+2026-02-04 08:39:37,382 - logging_setup - INFO - Load Jobs - Skipping job 1 as it is marked COMPLETE.
+2026-02-04 08:39:37,383 - logging_setup - INFO - Load Jobs - Job Condition is not Complete (COMPLETE), adding job: 1 to jobs list
+2026-02-04 08:39:37,383 - logging_setup - INFO - 
+
+2026-02-04 08:39:37,383 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:39:37,384 - logging_setup - INFO - -                        End of Job 1                                -
+2026-02-04 08:39:37,384 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:39:37,384 - logging_setup - INFO - 
+
+2026-02-04 08:39:37,385 - logging_setup - INFO - 
+
+2026-02-04 08:39:37,385 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:39:37,386 - logging_setup - INFO - -                        Load Jobs: Start of Job 2                               -
+2026-02-04 08:39:37,386 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:39:37,386 - logging_setup - INFO - 
+
+2026-02-04 08:39:37,387 - logging_setup - INFO - Load Jobs - Creating empty dictionary
+2026-02-04 08:39:37,387 - logging_setup - INFO - Load Jobs - Skipping job 2 as it is marked COMPLETE.
+2026-02-04 08:39:37,388 - logging_setup - INFO - Load Jobs - Job Condition is not Complete (COMPLETE), adding job: 2 to jobs list
+2026-02-04 08:39:37,388 - logging_setup - INFO - 
+
+2026-02-04 08:39:37,388 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:39:37,389 - logging_setup - INFO - -                        End of Job 2                                -
+2026-02-04 08:39:37,389 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:39:37,389 - logging_setup - INFO - 
+
+2026-02-04 08:39:37,389 - logging_setup - INFO - 
+
+2026-02-04 08:39:37,390 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:39:37,390 - logging_setup - INFO - -                        Load Jobs: Start of Job 3                               -
+2026-02-04 08:39:37,390 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:39:37,391 - logging_setup - INFO - 
+
+2026-02-04 08:39:37,391 - logging_setup - INFO - Load Jobs - Creating empty dictionary
+2026-02-04 08:39:37,391 - logging_setup - INFO - Load Jobs - Skipping job 3 as it is marked COMPLETE.
+2026-02-04 08:39:37,392 - logging_setup - INFO - Load Jobs - Job Condition is not Complete (COMPLETE), adding job: 3 to jobs list
+2026-02-04 08:39:37,392 - logging_setup - INFO - 
+
+2026-02-04 08:39:37,392 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:39:37,393 - logging_setup - INFO - -                        End of Job 3                                -
+2026-02-04 08:39:37,393 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:39:37,394 - logging_setup - INFO - 
+
+2026-02-04 08:39:37,394 - logging_setup - INFO - 
+
+2026-02-04 08:39:37,394 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:39:37,395 - logging_setup - INFO - -                        Load Jobs: Start of Job 4                               -
+2026-02-04 08:39:37,395 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:39:37,395 - logging_setup - INFO - 
+
+2026-02-04 08:39:37,395 - logging_setup - INFO - Load Jobs - Creating empty dictionary
+2026-02-04 08:39:37,396 - logging_setup - INFO - Load Jobs - Skipping job 4 as it is marked COMPLETE.
+2026-02-04 08:39:37,396 - logging_setup - INFO - Load Jobs - Job Condition is not Complete (COMPLETE), adding job: 4 to jobs list
+2026-02-04 08:39:37,397 - logging_setup - INFO - 
+
+2026-02-04 08:39:37,397 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:39:37,397 - logging_setup - INFO - -                        End of Job 4                                -
+2026-02-04 08:39:37,398 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:39:37,398 - logging_setup - INFO - 
+
+2026-02-04 08:39:37,398 - logging_setup - INFO - 
+
+2026-02-04 08:39:37,398 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:39:37,399 - logging_setup - INFO - -                        Load Jobs: Start of Job 5                               -
+2026-02-04 08:39:37,399 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:39:37,399 - logging_setup - INFO - 
+
+2026-02-04 08:39:37,400 - logging_setup - INFO - Load Jobs - Creating empty dictionary
+2026-02-04 08:39:37,400 - logging_setup - INFO - Load Jobs - Skipping job 5 as it is marked COMPLETE.
+2026-02-04 08:39:37,400 - logging_setup - INFO - Load Jobs - Job Condition is not Complete (COMPLETE), adding job: 5 to jobs list
+2026-02-04 08:39:37,401 - logging_setup - INFO - 
+
+2026-02-04 08:39:37,401 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:39:37,401 - logging_setup - INFO - -                        End of Job 5                                -
+2026-02-04 08:39:37,402 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:39:37,402 - logging_setup - INFO - 
+
+2026-02-04 08:39:37,402 - logging_setup - INFO - 
+
+2026-02-04 08:39:37,403 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:39:37,403 - logging_setup - INFO - -                        Load Jobs: Start of Job 6                               -
+2026-02-04 08:39:37,404 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:39:37,404 - logging_setup - INFO - 
+
+2026-02-04 08:39:37,404 - logging_setup - INFO - Load Jobs - Creating empty dictionary
+2026-02-04 08:39:37,405 - logging_setup - INFO - Load Jobs - Skipping job 6 as it is marked COMPLETE.
+2026-02-04 08:39:37,405 - logging_setup - INFO - Load Jobs - Job Condition is not Complete (COMPLETE), adding job: 6 to jobs list
+2026-02-04 08:39:37,406 - logging_setup - INFO - 
+
+2026-02-04 08:39:37,406 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:39:37,406 - logging_setup - INFO - -                        End of Job 6                                -
+2026-02-04 08:39:37,407 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:39:37,407 - logging_setup - INFO - 
+
+2026-02-04 08:39:37,408 - logging_setup - INFO - 
+
+2026-02-04 08:39:37,408 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:39:37,409 - logging_setup - INFO - -                        Load Jobs: Start of Job 7                               -
+2026-02-04 08:39:37,409 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:39:37,409 - logging_setup - INFO - 
+
+2026-02-04 08:39:37,410 - logging_setup - INFO - Load Jobs - Creating empty dictionary
+2026-02-04 08:39:37,410 - logging_setup - INFO - Load Jobs - Skipping job 7 as it is marked COMPLETE.
+2026-02-04 08:39:37,411 - logging_setup - INFO - Load Jobs - Job Condition is not Complete (COMPLETE), adding job: 7 to jobs list
+2026-02-04 08:39:37,411 - logging_setup - INFO - 
+
+2026-02-04 08:39:37,412 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:39:37,412 - logging_setup - INFO - -                        End of Job 7                                -
+2026-02-04 08:39:37,413 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:39:37,413 - logging_setup - INFO - 
+
+2026-02-04 08:39:37,413 - logging_setup - INFO - Main: [jobs_3.xlsx] Batching jobs for \\spatialfiles.bcgov\srm\gss\sandbox\csostad\Skeena 2026-2028 Shapefiles\shapefile\outputs\jobs_3.xlsx (initial attempt)
+2026-02-04 08:39:37,414 - logging_setup - INFO - 
+
+2026-02-04 08:39:37,414 - logging_setup - INFO - ##########################################################################################################################
+2026-02-04 08:39:37,415 - logging_setup - INFO - #
+2026-02-04 08:39:37,415 - logging_setup - INFO - Batch AST: Batching Jobs with Multiprocessing...
+2026-02-04 08:39:37,416 - logging_setup - INFO - #
+2026-02-04 08:39:37,416 - logging_setup - INFO - ##########################################################################################################################
+2026-02-04 08:39:37,416 - logging_setup - INFO - 
+
+2026-02-04 08:39:37,417 - logging_setup - INFO - Batch Ast: Job Timeout set to 21600 seconds (6 hours)
+2026-02-04 08:39:37,418 - logging_setup - INFO - Batch Ast: Process health checks enabled (every 60s)
+2026-02-04 08:39:58,921 - logging_setup - INFO - Batch Ast: Starting job 0
+2026-02-04 08:39:58,922 - logging_setup - INFO - Batch Ast: Starting job 1
+2026-02-04 08:39:58,922 - logging_setup - INFO - Batch Ast: Starting job 2
+2026-02-04 08:39:58,923 - logging_setup - INFO - Batch Ast: Starting job 3
+2026-02-04 08:39:58,923 - logging_setup - INFO - Batch Ast: Starting job 4
+2026-02-04 08:39:58,924 - logging_setup - INFO - Batch Ast: Starting job 5
+2026-02-04 08:39:58,924 - logging_setup - INFO - Batch Ast: Starting job 6
+2026-02-04 08:39:58,925 - logging_setup - INFO - Batch Ast: Starting job 7
+2026-02-04 08:39:58,925 - logging_setup - INFO - Batch Ast: Monitoring 0 jobs with 6-hour timeout and health checks
+2026-02-04 08:39:58,926 - logging_setup - INFO - Batch Ast: Summary - Success: 0, Worker Failed: 0, Timeout Failed: 0, Crashed: 0
+2026-02-04 08:39:58,926 - logging_setup - INFO - 
+
+2026-02-04 08:39:58,927 - logging_setup - INFO - Batch Ast Complete - Check separate worker log file for more details
+2026-02-04 08:39:59,971 - logging_setup - INFO - Main: [jobs_3.xlsx] Initial batch processing complete
+2026-02-04 08:39:59,972 - logging_setup - INFO - 
+====================================================================================================
+2026-02-04 08:39:59,973 - logging_setup - INFO -   >>> COMPLETED SPREADSHEET: jobs_3.xlsx <<<
+2026-02-04 08:39:59,973 - logging_setup - INFO - ====================================================================================================
+
+2026-02-04 08:39:59,975 - logging_setup - INFO - 
+====================================================================================================
+2026-02-04 08:39:59,975 - logging_setup - INFO - ====================================================================================================
+2026-02-04 08:39:59,976 - logging_setup - INFO -   >>> PROCESSING SPREADSHEET: jobs_4.xlsx <<<
+2026-02-04 08:39:59,976 - logging_setup - INFO - ====================================================================================================
+2026-02-04 08:39:59,976 - logging_setup - INFO - ====================================================================================================
+
+2026-02-04 08:40:00,078 - logging_setup - WARNING - Main: [jobs_4.xlsx] Job 1 marked COMPLETE but missing outputs: one_status_tabs_1_and_2_datasets_aoi.gdb (missing), one_status_common_dataset_aoi.xlsx (missing)
+2026-02-04 08:40:00,113 - logging_setup - ERROR - Failed Job Tracker: Logged failure - jobs_4.xlsx job 1 (missing_outputs): Missing/invalid outputs: one_status_tabs_1_and_2_datasets_aoi.gdb (missing), one_status_common_dataset_aoi.xlsx (missing)
+2026-02-04 08:40:00,197 - logging_setup - WARNING - Main: [jobs_4.xlsx] Job 2 marked COMPLETE but missing outputs: one_status_tabs_1_and_2_datasets_aoi.gdb (missing), one_status_common_dataset_aoi.xlsx (missing)
+2026-02-04 08:40:00,231 - logging_setup - ERROR - Failed Job Tracker: Logged failure - jobs_4.xlsx job 2 (missing_outputs): Missing/invalid outputs: one_status_tabs_1_and_2_datasets_aoi.gdb (missing), one_status_common_dataset_aoi.xlsx (missing)
+2026-02-04 08:40:00,324 - logging_setup - WARNING - Main: [jobs_4.xlsx] Job 3 marked COMPLETE but missing outputs: one_status_tabs_1_and_2_datasets_aoi.gdb (missing), one_status_common_dataset_aoi.xlsx (missing)
+2026-02-04 08:40:00,360 - logging_setup - ERROR - Failed Job Tracker: Logged failure - jobs_4.xlsx job 3 (missing_outputs): Missing/invalid outputs: one_status_tabs_1_and_2_datasets_aoi.gdb (missing), one_status_common_dataset_aoi.xlsx (missing)
+2026-02-04 08:40:00,442 - logging_setup - WARNING - Main: [jobs_4.xlsx] Job 4 marked COMPLETE but missing outputs: one_status_tabs_1_and_2_datasets_aoi.gdb (missing), one_status_common_dataset_aoi.xlsx (missing)
+2026-02-04 08:40:00,477 - logging_setup - ERROR - Failed Job Tracker: Logged failure - jobs_4.xlsx job 4 (missing_outputs): Missing/invalid outputs: one_status_tabs_1_and_2_datasets_aoi.gdb (missing), one_status_common_dataset_aoi.xlsx (missing)
+2026-02-04 08:40:00,564 - logging_setup - WARNING - Main: [jobs_4.xlsx] Job 5 marked COMPLETE but missing outputs: one_status_tabs_1_and_2_datasets_aoi.gdb (missing), one_status_common_dataset_aoi.xlsx (missing)
+2026-02-04 08:40:00,601 - logging_setup - ERROR - Failed Job Tracker: Logged failure - jobs_4.xlsx job 5 (missing_outputs): Missing/invalid outputs: one_status_tabs_1_and_2_datasets_aoi.gdb (missing), one_status_common_dataset_aoi.xlsx (missing)
+2026-02-04 08:40:00,694 - logging_setup - WARNING - Main: [jobs_4.xlsx] Job 6 marked COMPLETE but missing outputs: one_status_tabs_1_and_2_datasets_aoi.gdb (missing), one_status_common_dataset_aoi.xlsx (missing)
+2026-02-04 08:40:00,730 - logging_setup - ERROR - Failed Job Tracker: Logged failure - jobs_4.xlsx job 6 (missing_outputs): Missing/invalid outputs: one_status_tabs_1_and_2_datasets_aoi.gdb (missing), one_status_common_dataset_aoi.xlsx (missing)
+2026-02-04 08:40:00,826 - logging_setup - WARNING - Main: [jobs_4.xlsx] Job 7 marked COMPLETE but missing outputs: one_status_tabs_1_and_2_datasets_aoi.gdb (missing), one_status_common_dataset_aoi.xlsx (missing)
+2026-02-04 08:40:00,871 - logging_setup - ERROR - Failed Job Tracker: Logged failure - jobs_4.xlsx job 7 (missing_outputs): Missing/invalid outputs: one_status_tabs_1_and_2_datasets_aoi.gdb (missing), one_status_common_dataset_aoi.xlsx (missing)
+2026-02-04 08:40:00,957 - logging_setup - WARNING - Main: [jobs_4.xlsx] Job 8 marked COMPLETE but missing outputs: one_status_tabs_1_and_2_datasets_aoi.gdb (missing), one_status_common_dataset_aoi.xlsx (missing)
+2026-02-04 08:40:00,995 - logging_setup - ERROR - Failed Job Tracker: Logged failure - jobs_4.xlsx job 8 (missing_outputs): Missing/invalid outputs: one_status_tabs_1_and_2_datasets_aoi.gdb (missing), one_status_common_dataset_aoi.xlsx (missing)
+2026-02-04 08:40:00,996 - logging_setup - INFO - Main: [jobs_4.xlsx] Found 8 incomplete jobs out of 8 total
+2026-02-04 08:40:01,034 - logging_setup - WARNING - Main: [jobs_4.xlsx] Job 1 marked COMPLETE but missing outputs: one_status_tabs_1_and_2_datasets_aoi.gdb (missing), one_status_common_dataset_aoi.xlsx (missing)
+2026-02-04 08:40:01,058 - logging_setup - WARNING - Main: [jobs_4.xlsx] Job 2 marked COMPLETE but missing outputs: one_status_tabs_1_and_2_datasets_aoi.gdb (missing), one_status_common_dataset_aoi.xlsx (missing)
+2026-02-04 08:40:01,084 - logging_setup - WARNING - Main: [jobs_4.xlsx] Job 3 marked COMPLETE but missing outputs: one_status_tabs_1_and_2_datasets_aoi.gdb (missing), one_status_common_dataset_aoi.xlsx (missing)
+2026-02-04 08:40:01,108 - logging_setup - WARNING - Main: [jobs_4.xlsx] Job 4 marked COMPLETE but missing outputs: one_status_tabs_1_and_2_datasets_aoi.gdb (missing), one_status_common_dataset_aoi.xlsx (missing)
+2026-02-04 08:40:01,133 - logging_setup - WARNING - Main: [jobs_4.xlsx] Job 5 marked COMPLETE but missing outputs: one_status_tabs_1_and_2_datasets_aoi.gdb (missing), one_status_common_dataset_aoi.xlsx (missing)
+2026-02-04 08:40:01,159 - logging_setup - WARNING - Main: [jobs_4.xlsx] Job 6 marked COMPLETE but missing outputs: one_status_tabs_1_and_2_datasets_aoi.gdb (missing), one_status_common_dataset_aoi.xlsx (missing)
+2026-02-04 08:40:01,183 - logging_setup - WARNING - Main: [jobs_4.xlsx] Job 7 marked COMPLETE but missing outputs: one_status_tabs_1_and_2_datasets_aoi.gdb (missing), one_status_common_dataset_aoi.xlsx (missing)
+2026-02-04 08:40:01,207 - logging_setup - WARNING - Main: [jobs_4.xlsx] Job 8 marked COMPLETE but missing outputs: one_status_tabs_1_and_2_datasets_aoi.gdb (missing), one_status_common_dataset_aoi.xlsx (missing)
+2026-02-04 08:40:01,208 - logging_setup - INFO - Main: [jobs_4.xlsx] Found 8 incomplete jobs out of 8 total
+2026-02-04 08:40:01,208 - logging_setup - INFO - Main: [jobs_4.xlsx] Creating queuefile path for \\spatialfiles.bcgov\srm\gss\sandbox\csostad\Skeena 2026-2028 Shapefiles\shapefile\outputs\jobs_4.xlsx
+2026-02-04 08:40:01,210 - logging_setup - INFO - Main: [jobs_4.xlsx] Loading jobs from \\spatialfiles.bcgov\srm\gss\sandbox\csostad\Skeena 2026-2028 Shapefiles\shapefile\outputs\jobs_4.xlsx
+2026-02-04 08:40:01,210 - logging_setup - INFO - ##########################################################################################################################
+2026-02-04 08:40:01,210 - logging_setup - INFO - #
+2026-02-04 08:40:01,211 - logging_setup - INFO - Loading Jobs...
+2026-02-04 08:40:01,211 - logging_setup - INFO - #
+2026-02-04 08:40:01,211 - logging_setup - INFO - ##########################################################################################################################
+2026-02-04 08:40:01,225 - logging_setup - INFO - 
+
+2026-02-04 08:40:01,225 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:40:01,225 - logging_setup - INFO - -                        Load Jobs: Start of Job 0                               -
+2026-02-04 08:40:01,226 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:40:01,226 - logging_setup - INFO - 
+
+2026-02-04 08:40:01,226 - logging_setup - INFO - Load Jobs - Creating empty dictionary
+2026-02-04 08:40:01,227 - logging_setup - INFO - Load Jobs - Skipping job 0 as it is marked COMPLETE.
+2026-02-04 08:40:01,227 - logging_setup - INFO - Load Jobs - Job Condition is not Complete (COMPLETE), adding job: 0 to jobs list
+2026-02-04 08:40:01,227 - logging_setup - INFO - 
+
+2026-02-04 08:40:01,228 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:40:01,228 - logging_setup - INFO - -                        End of Job 0                                -
+2026-02-04 08:40:01,228 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:40:01,229 - logging_setup - INFO - 
+
+2026-02-04 08:40:01,229 - logging_setup - INFO - 
+
+2026-02-04 08:40:01,230 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:40:01,230 - logging_setup - INFO - -                        Load Jobs: Start of Job 1                               -
+2026-02-04 08:40:01,230 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:40:01,230 - logging_setup - INFO - 
+
+2026-02-04 08:40:01,231 - logging_setup - INFO - Load Jobs - Creating empty dictionary
+2026-02-04 08:40:01,231 - logging_setup - INFO - Load Jobs - Skipping job 1 as it is marked COMPLETE.
+2026-02-04 08:40:01,231 - logging_setup - INFO - Load Jobs - Job Condition is not Complete (COMPLETE), adding job: 1 to jobs list
+2026-02-04 08:40:01,232 - logging_setup - INFO - 
+
+2026-02-04 08:40:01,232 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:40:01,232 - logging_setup - INFO - -                        End of Job 1                                -
+2026-02-04 08:40:01,233 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:40:01,233 - logging_setup - INFO - 
+
+2026-02-04 08:40:01,234 - logging_setup - INFO - 
+
+2026-02-04 08:40:01,234 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:40:01,234 - logging_setup - INFO - -                        Load Jobs: Start of Job 2                               -
+2026-02-04 08:40:01,234 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:40:01,235 - logging_setup - INFO - 
+
+2026-02-04 08:40:01,235 - logging_setup - INFO - Load Jobs - Creating empty dictionary
+2026-02-04 08:40:01,236 - logging_setup - INFO - Load Jobs - Skipping job 2 as it is marked COMPLETE.
+2026-02-04 08:40:01,236 - logging_setup - INFO - Load Jobs - Job Condition is not Complete (COMPLETE), adding job: 2 to jobs list
+2026-02-04 08:40:01,236 - logging_setup - INFO - 
+
+2026-02-04 08:40:01,237 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:40:01,237 - logging_setup - INFO - -                        End of Job 2                                -
+2026-02-04 08:40:01,237 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:40:01,237 - logging_setup - INFO - 
+
+2026-02-04 08:40:01,238 - logging_setup - INFO - 
+
+2026-02-04 08:40:01,238 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:40:01,238 - logging_setup - INFO - -                        Load Jobs: Start of Job 3                               -
+2026-02-04 08:40:01,239 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:40:01,239 - logging_setup - INFO - 
+
+2026-02-04 08:40:01,239 - logging_setup - INFO - Load Jobs - Creating empty dictionary
+2026-02-04 08:40:01,239 - logging_setup - INFO - Load Jobs - Skipping job 3 as it is marked COMPLETE.
+2026-02-04 08:40:01,240 - logging_setup - INFO - Load Jobs - Job Condition is not Complete (COMPLETE), adding job: 3 to jobs list
+2026-02-04 08:40:01,240 - logging_setup - INFO - 
+
+2026-02-04 08:40:01,240 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:40:01,241 - logging_setup - INFO - -                        End of Job 3                                -
+2026-02-04 08:40:01,241 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:40:01,241 - logging_setup - INFO - 
+
+2026-02-04 08:40:01,242 - logging_setup - INFO - 
+
+2026-02-04 08:40:01,242 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:40:01,242 - logging_setup - INFO - -                        Load Jobs: Start of Job 4                               -
+2026-02-04 08:40:01,243 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:40:01,243 - logging_setup - INFO - 
+
+2026-02-04 08:40:01,244 - logging_setup - INFO - Load Jobs - Creating empty dictionary
+2026-02-04 08:40:01,244 - logging_setup - INFO - Load Jobs - Skipping job 4 as it is marked COMPLETE.
+2026-02-04 08:40:01,244 - logging_setup - INFO - Load Jobs - Job Condition is not Complete (COMPLETE), adding job: 4 to jobs list
+2026-02-04 08:40:01,245 - logging_setup - INFO - 
+
+2026-02-04 08:40:01,245 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:40:01,245 - logging_setup - INFO - -                        End of Job 4                                -
+2026-02-04 08:40:01,246 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:40:01,246 - logging_setup - INFO - 
+
+2026-02-04 08:40:01,246 - logging_setup - INFO - 
+
+2026-02-04 08:40:01,246 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:40:01,247 - logging_setup - INFO - -                        Load Jobs: Start of Job 5                               -
+2026-02-04 08:40:01,247 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:40:01,247 - logging_setup - INFO - 
+
+2026-02-04 08:40:01,248 - logging_setup - INFO - Load Jobs - Creating empty dictionary
+2026-02-04 08:40:01,248 - logging_setup - INFO - Load Jobs - Skipping job 5 as it is marked COMPLETE.
+2026-02-04 08:40:01,248 - logging_setup - INFO - Load Jobs - Job Condition is not Complete (COMPLETE), adding job: 5 to jobs list
+2026-02-04 08:40:01,249 - logging_setup - INFO - 
+
+2026-02-04 08:40:01,249 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:40:01,249 - logging_setup - INFO - -                        End of Job 5                                -
+2026-02-04 08:40:01,250 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:40:01,250 - logging_setup - INFO - 
+
+2026-02-04 08:40:01,250 - logging_setup - INFO - 
+
+2026-02-04 08:40:01,251 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:40:01,251 - logging_setup - INFO - -                        Load Jobs: Start of Job 6                               -
+2026-02-04 08:40:01,251 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:40:01,252 - logging_setup - INFO - 
+
+2026-02-04 08:40:01,252 - logging_setup - INFO - Load Jobs - Creating empty dictionary
+2026-02-04 08:40:01,252 - logging_setup - INFO - Load Jobs - Skipping job 6 as it is marked COMPLETE.
+2026-02-04 08:40:01,253 - logging_setup - INFO - Load Jobs - Job Condition is not Complete (COMPLETE), adding job: 6 to jobs list
+2026-02-04 08:40:01,253 - logging_setup - INFO - 
+
+2026-02-04 08:40:01,253 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:40:01,254 - logging_setup - INFO - -                        End of Job 6                                -
+2026-02-04 08:40:01,254 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:40:01,255 - logging_setup - INFO - 
+
+2026-02-04 08:40:01,255 - logging_setup - INFO - 
+
+2026-02-04 08:40:01,255 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:40:01,256 - logging_setup - INFO - -                        Load Jobs: Start of Job 7                               -
+2026-02-04 08:40:01,256 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:40:01,256 - logging_setup - INFO - 
+
+2026-02-04 08:40:01,256 - logging_setup - INFO - Load Jobs - Creating empty dictionary
+2026-02-04 08:40:01,257 - logging_setup - INFO - Load Jobs - Skipping job 7 as it is marked COMPLETE.
+2026-02-04 08:40:01,257 - logging_setup - INFO - Load Jobs - Job Condition is not Complete (COMPLETE), adding job: 7 to jobs list
+2026-02-04 08:40:01,257 - logging_setup - INFO - 
+
+2026-02-04 08:40:01,258 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:40:01,258 - logging_setup - INFO - -                        End of Job 7                                -
+2026-02-04 08:40:01,258 - logging_setup - INFO - -------------------------------------------------------------------------------
+2026-02-04 08:40:01,258 - logging_setup - INFO - 
+
+2026-02-04 08:40:01,259 - logging_setup - INFO - Main: [jobs_4.xlsx] Batching jobs for \\spatialfiles.bcgov\srm\gss\sandbox\csostad\Skeena 2026-2028 Shapefiles\shapefile\outputs\jobs_4.xlsx (initial attempt)
+2026-02-04 08:40:01,259 - logging_setup - INFO - 
+
+2026-02-04 08:40:01,260 - logging_setup - INFO - ##########################################################################################################################
+2026-02-04 08:40:01,260 - logging_setup - INFO - #
+2026-02-04 08:40:01,260 - logging_setup - INFO - Batch AST: Batching Jobs with Multiprocessing...
+2026-02-04 08:40:01,260 - logging_setup - INFO - #
+2026-02-04 08:40:01,261 - logging_setup - INFO - ##########################################################################################################################
+2026-02-04 08:40:01,261 - logging_setup - INFO - 
+
+2026-02-04 08:40:01,261 - logging_setup - INFO - Batch Ast: Job Timeout set to 21600 seconds (6 hours)
+2026-02-04 08:40:01,262 - logging_setup - INFO - Batch Ast: Process health checks enabled (every 60s)

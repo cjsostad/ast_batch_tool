@@ -1,0 +1,57 @@
+2026-02-03 15:07:02,646 - Process Job Mp: worker_3 - INFO - Process Job Mp: AST Toolbox imported successfully in worker.
+2026-02-03 15:07:02,648 - Process Job Mp: worker_3 - DEBUG - Process Job Mp: Job Parameters: ['Skeena', '\\\\spatialfiles.bcgov\\srm\\gss\\sandbox\\csostad\\Skeena 2026-2028 Shapefiles\\shapefile\\6408441\\6408441.shp', '', '', '', '\\\\spatialfiles.bcgov\\srm\\gss\\sandbox\\csostad\\Skeena 2026-2028 Shapefiles\\shapefile\\outputs\\6408441', False, False, False, False, False, True]
+2026-02-03 15:07:02,649 - Process Job Mp: worker_3 - INFO - Process Job Mp: Running MakeAutomatedStatusSpreadsheet_ast...
+2026-02-03 15:07:04,600 - root - INFO - Logger initialized
+2026-02-03 15:07:05,833 - root - ERROR - Failed to import tools
+Traceback (most recent call last):
+  File "P:\corp\central_clones\python_geopandas\lib\site-packages\XTools Pro\esri\toolboxes\XTools Pro.pyt", line 95, in <module>
+    from Tools.FeaturesToPointsTool import *
+  File "E:\sw_nt\XTools\XTools AGP\Python\Tools\FeaturesToPointsTool.py", line 1, in <module>
+    from Tools.BaseTool import BaseTool
+  File "E:\sw_nt\XTools\XTools AGP\Python\Tools\BaseTool.py", line 7, in <module>
+    from Scripts.Base.PythonCancelTracker import PythonCancelTracker
+  File "E:\sw_nt\XTools\XTools AGP\Python\Scripts\Base\PythonCancelTracker.py", line 20, in <module>
+    from XTools.XToolsAGP.Core import ICancelTracker
+ModuleNotFoundError: No module named 'XTools.XToolsAGP.Core'
+2026-02-03 15:07:05,839 - root - ERROR - No module named 'XTools.XToolsAGP.Core'
+Traceback (most recent call last):
+  File "P:\corp\central_clones\python_geopandas\lib\site-packages\XTools Pro\esri\toolboxes\XTools Pro.pyt", line 95, in <module>
+    from Tools.FeaturesToPointsTool import *
+  File "E:\sw_nt\XTools\XTools AGP\Python\Tools\FeaturesToPointsTool.py", line 1, in <module>
+    from Tools.BaseTool import BaseTool
+  File "E:\sw_nt\XTools\XTools AGP\Python\Tools\BaseTool.py", line 7, in <module>
+    from Scripts.Base.PythonCancelTracker import PythonCancelTracker
+  File "E:\sw_nt\XTools\XTools AGP\Python\Scripts\Base\PythonCancelTracker.py", line 20, in <module>
+    from XTools.XToolsAGP.Core import ICancelTracker
+ModuleNotFoundError: No module named 'XTools.XToolsAGP.Core'
+2026-02-03 15:48:16,621 - Process Job Mp: worker_3 - ERROR - Process Job Mp: Job 3 failed with error: Error executing SQL query via SDE: Object: Connection error Underlying DBMS error [ORA-02391: exceeded simultaneous SESSIONS_PER_USER limit::No extended error.]
+Failed to execute (MakeAutomatedStatusSpreadsheet).
+
+2026-02-03 15:48:16,684 - Process Job Mp: worker_3 - DEBUG - Traceback (most recent call last):
+  File "p:\corp\script_whse\python\Utility_Misc\Ready\statusing_tools_arcpro\autoast\auto_ast_V2_Cuisinart_MultiP_PdfMaps\mp_worker.py", line 124, in process_job_mp
+    arcpy.alphaast.MakeAutomatedStatusSpreadsheet(*params)
+  File "P:\corp\script_whse\python\Utility_Misc\Ready\statusing_tools_arcpro\autoast\auto_ast_V2_Cuisinart_MultiP_PdfMaps\ast.atbx", line 59, in MakeAutomatedStatusSpreadsheet
+  File "P:\corp\script_whse\python\Utility_Misc\Ready\statusing_tools_arcpro\autoast\auto_ast_V2_Cuisinart_MultiP_PdfMaps\ast.atbx", line 56, in MakeAutomatedStatusSpreadsheet
+  File "E:\sw_nt\ArcGIS\Pro\Resources\ArcPy\arcpy\geoprocessing\_base.py", line 532, in <lambda>
+    return lambda *args: val(*gp_fixargs(args, True))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+arcgisscripting.ExecuteError: Error executing SQL query via SDE: Object: Connection error Underlying DBMS error [ORA-02391: exceeded simultaneous SESSIONS_PER_USER limit::No extended error.]
+Failed to execute (MakeAutomatedStatusSpreadsheet).
+
+
+2026-02-03 15:48:16,686 - Process Job Mp: worker_3 - ERROR - Process Job Mp: Job 3 failed with error: Error executing SQL query via SDE: Object: Connection error Underlying DBMS error [ORA-02391: exceeded simultaneous SESSIONS_PER_USER limit::No extended error.]
+Failed to execute (MakeAutomatedStatusSpreadsheet).
+
+2026-02-03 15:48:16,686 - Process Job Mp: worker_3 - ERROR - Process Job Mp: Traceback:
+Traceback (most recent call last):
+  File "p:\corp\script_whse\python\Utility_Misc\Ready\statusing_tools_arcpro\autoast\auto_ast_V2_Cuisinart_MultiP_PdfMaps\mp_worker.py", line 124, in process_job_mp
+    arcpy.alphaast.MakeAutomatedStatusSpreadsheet(*params)
+  File "P:\corp\script_whse\python\Utility_Misc\Ready\statusing_tools_arcpro\autoast\auto_ast_V2_Cuisinart_MultiP_PdfMaps\ast.atbx", line 59, in MakeAutomatedStatusSpreadsheet
+  File "P:\corp\script_whse\python\Utility_Misc\Ready\statusing_tools_arcpro\autoast\auto_ast_V2_Cuisinart_MultiP_PdfMaps\ast.atbx", line 56, in MakeAutomatedStatusSpreadsheet
+  File "E:\sw_nt\ArcGIS\Pro\Resources\ArcPy\arcpy\geoprocessing\_base.py", line 532, in <lambda>
+    return lambda *args: val(*gp_fixargs(args, True))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+arcgisscripting.ExecuteError: Error executing SQL query via SDE: Object: Connection error Underlying DBMS error [ORA-02391: exceeded simultaneous SESSIONS_PER_USER limit::No extended error.]
+Failed to execute (MakeAutomatedStatusSpreadsheet).
+
+

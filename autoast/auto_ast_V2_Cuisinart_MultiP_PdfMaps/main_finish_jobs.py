@@ -25,10 +25,69 @@ from openpyxl import load_workbook
 from failed_job_tracker import FailedJobTracker
 
 
-# Jan 27, 2026: Helper function to check if workbook has any incomplete jobs
-def has_incomplete_jobs(excel_file_path, logger):
+# Feb 4, 2026: Helper function to verify job outputs exist and are not empty
+def verify_job_outputs(output_directory, logger):
     '''
-    Checks if the Excel workbook has any jobs that are not marked as COMPLETE.
+    Verifies that all required output files and folders exist and are not empty.
+    
+    Args:
+        output_directory: Path to the job's output directory
+        logger: Logger instance
+    
+    Returns:
+        (is_valid, missing_items) where is_valid is True if all outputs exist and are valid,
+        and missing_items is a list of missing/invalid items
+    '''
+    required_items = {
+        'aoi_boundary.gdb': 'folder',
+        'maps': 'folder',
+        'mapx_files': 'folder',
+        'one_status_common_datasets_aoi.gdb': 'folder',
+        'one_status_tabs_1_and_2_datasets.gdb': 'folder',
+        'automated_status_sheet.xlsx': 'file',
+        'one_status_common_datasets_aoi.xlsx': 'file',
+        'one_status_tabs_1_and_2.xlsx': 'file'
+    }
+    
+    missing_items = []
+    
+    # Check if output directory exists
+    if not os.path.exists(output_directory):
+        return (False, ['output_directory'])
+    
+    # Check each required item
+    for item_name, item_type in required_items.items():
+        item_path = os.path.join(output_directory, item_name)
+        
+        if not os.path.exists(item_path):
+            missing_items.append(f"{item_name} (missing)")
+            continue
+        
+        if item_type == 'folder':
+            # Check if folder is not empty
+            try:
+                if not os.listdir(item_path):
+                    missing_items.append(f"{item_name} (empty folder)")
+            except Exception as e:
+                missing_items.append(f"{item_name} (error: {e})")
+        
+        elif item_type == 'file':
+            # Check if file is not empty (size > 0)
+            try:
+                if os.path.getsize(item_path) == 0:
+                    missing_items.append(f"{item_name} (empty file)")
+            except Exception as e:
+                missing_items.append(f"{item_name} (error: {e})")
+    
+    return (len(missing_items) == 0, missing_items)
+
+
+# Jan 27, 2026: Helper function to check if workbook has any incomplete jobs
+# Feb 4, 2026: Enhanced to also verify output files exist and are valid
+def has_incomplete_jobs(excel_file_path, logger, failed_job_tracker=None):
+    '''
+    Checks if the Excel workbook has any jobs that are not marked as COMPLETE
+    AND verifies that all output files/folders exist and are not empty.
     Returns (has_incomplete, total_jobs, incomplete_count)
     '''
     try:
@@ -36,17 +95,22 @@ def has_incomplete_jobs(excel_file_path, logger):
             return (True, 0, 0)  # File doesn't exist, treat as incomplete
         
         wb = load_workbook(filename=excel_file_path, read_only=True)
-        ws = wb['Sheet1']  # Assuming standard sheet name
+        ws = wb['ast_config']  # Standard sheet name for AST batch files
         
         # Get headers from first row
         headers = [cell.value for cell in ws[1]]
         
-        # Find the ast_condition column index
+        # Find required column indices
         if 'ast_condition' not in headers:
             wb.close()
             return (True, 0, 0)  # No condition column, needs processing
         
+        if 'output_directory' not in headers:
+            wb.close()
+            return (True, 0, 0)  # No output_directory column, needs processing
+        
         condition_col_idx = headers.index('ast_condition') + 1  # 1-indexed
+        output_dir_col_idx = headers.index('output_directory') + 1  # 1-indexed
         
         total_jobs = 0
         incomplete_jobs = 0
@@ -62,8 +126,36 @@ def has_incomplete_jobs(excel_file_path, logger):
                 
             total_jobs += 1
             condition = row[condition_col_idx - 1]  # 0-indexed for tuple
+            output_directory = row[output_dir_col_idx - 1]  # 0-indexed for tuple
             
+            job_incomplete = False
+            
+            # Check spreadsheet status
             if condition != 'COMPLETE':
+                job_incomplete = True
+            else:
+                # If marked COMPLETE, verify outputs actually exist
+                is_valid, missing_items = verify_job_outputs(output_directory, logger)
+                if not is_valid:
+                    job_incomplete = True
+                    excel_file_name = os.path.basename(excel_file_path)
+                    missing_str = ', '.join(missing_items)
+                    print(f"Main: [{excel_file_name}] Job {row_idx - 1} marked COMPLETE but missing outputs: {missing_str}")
+                    logger.warning(f"Main: [{excel_file_name}] Job {row_idx - 1} marked COMPLETE but missing outputs: {missing_str}")
+                    
+                    # Log to failed_job_tracker if provided
+                    if failed_job_tracker:
+                        # Build job_data dictionary from row
+                        job_data = {header: value for header, value in zip(headers, row)}
+                        failed_job_tracker.log_failed_job(
+                            spreadsheet_name=excel_file_name,
+                            job_index=row_idx - 1,  # 0-indexed job number
+                            job_data=job_data,
+                            failure_type='missing_outputs',
+                            notes=f"Missing/invalid outputs: {missing_str}"
+                        )
+            
+            if job_incomplete:
                 incomplete_jobs += 1
         
         wb.close()
@@ -73,8 +165,8 @@ def has_incomplete_jobs(excel_file_path, logger):
             print(f"Main: [{excel_file_name}] Found {incomplete_jobs} incomplete jobs out of {total_jobs} total")
             logger.info(f"Main: [{excel_file_name}] Found {incomplete_jobs} incomplete jobs out of {total_jobs} total")
         else:
-            print(f"Main: [{excel_file_name}] All {total_jobs} jobs already COMPLETE - skipping")
-            logger.info(f"Main: [{excel_file_name}] All {total_jobs} jobs already COMPLETE - skipping")
+            print(f"Main: [{excel_file_name}] All {total_jobs} jobs COMPLETE with verified outputs - skipping")
+            logger.info(f"Main: [{excel_file_name}] All {total_jobs} jobs COMPLETE with verified outputs - skipping")
         
         return (incomplete_jobs > 0, total_jobs, incomplete_jobs)
         
@@ -261,7 +353,7 @@ if __name__ == '__main__':
         logger.info(f"{'='*100}\n")
         
         # Check if file needs processing before creating AST instance
-        has_incomplete, total, incomplete = has_incomplete_jobs(excel_file_path, logger)
+        has_incomplete, total, incomplete = has_incomplete_jobs(excel_file_path, logger, failed_job_tracker)
         
         if has_incomplete:
             process_excel_file(excel_file_path, secrets, logger, current_path, failed_job_tracker)
