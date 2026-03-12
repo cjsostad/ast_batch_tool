@@ -180,7 +180,7 @@ def convert_kml_to_shapefiles(source_folder):
 
 if __name__ == "__main__":
     # Folder containing KML files
-    source_folder = r"\\spatialfiles.bcgov\srm\gss\projects\gr_2026_xx_skeena_replacements\source_data\Skeena 2026-2028 Shapefiles"
+    source_folder = r"\\spatialfiles.bcgov\srm\gss\sandbox\csostad\Skeena 2026-2028 Shapefiles\shapefile\New folder\6409398"
     
     print("=" * 70)
     print("KML to Shapefile Converter")
