@@ -123,7 +123,7 @@ def process_job_mp(ast_instance, job, job_index, current_path, sde_path, return_
         logger.info("Process Job Mp: Running MakeAutomatedStatusSpreadsheet_ast...")
         arcpy.alphaast.MakeAutomatedStatusSpreadsheet(*params)
         logger.info("Process Job Mp: MakeAutomatedStatusSpreadsheet_ast completed successfully.")
-        ast_instance.add_job_result(job_index, 'COMPLETE')
+        # NOTE: Do not update Excel here - main process handles it after output validation
 
         # Capture and log arcpy messages
         logger.info("Process Job Mp: Capturing arcpy messages...")
@@ -142,11 +142,16 @@ def process_job_mp(ast_instance, job, job_index, current_path, sde_path, return_
         return_dict[job_index] = 'Success'  
 
     except Exception as e:
-        # Indicate failure
-        return_dict[job_index] = 'Failed'
+        # Log the error first (before attempting Manager communication)
         logger.error(f"Process Job Mp: Job {job_index} failed with error: {e}")
         logger.debug(traceback.format_exc())
         exc_type, exc_value, exc_traceback = sys.exc_info()
         traceback_str = ''.join(traceback.format_exception(exc_type, exc_value, exc_traceback))
-        logger.error(f"Process Job Mp: Job {job_index} failed with error: {e}")
         logger.error(f"Process Job Mp: Traceback:\n{traceback_str}")
+        
+        # Try to indicate failure via return_dict, but don't crash if Manager is dead
+        try:
+            return_dict[job_index] = 'Failed'
+        except Exception as manager_error:
+            logger.error(f"Process Job Mp: Failed to update return_dict (Manager connection may be dead): {manager_error}")
+            logger.error(f"Process Job Mp: Original error that caused job failure was: {e}")

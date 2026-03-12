@@ -9,6 +9,7 @@ from mp_worker import process_job_mp
 from aoi_utilities import build_aoi_from_shp
 from aoi_utilities import build_aoi_from_kml
 from failed_job_tracker import FailedJobTracker
+from output_validator import verify_job_outputs
 
 
 class AST_FACTORY:
@@ -514,6 +515,13 @@ class AST_FACTORY:
         
         print(f"Batch Ast: All jobs completed. Success: {success_counter}, Worker Failed: {worker_failed_counter}, Timeout Failed: {timeout_failed_counter}, Crashed: {crash_failed_counter}")
         self.logger.info(f"Batch Ast: Summary - Success: {success_counter}, Worker Failed: {worker_failed_counter}, Timeout Failed: {timeout_failed_counter}, Crashed: {crash_failed_counter}")
+        
+        # Clean up the multiprocessing Manager to prevent connection timeouts
+        try:
+            manager.shutdown()
+            self.logger.info("Batch Ast: Manager shutdown successfully")
+        except Exception as e:
+            self.logger.warning(f"Batch Ast: Error shutting down manager: {e}")
          
         self.logger.info('\n')    
         self.logger.info("Batch Ast Complete - Check separate worker log file for more details")
