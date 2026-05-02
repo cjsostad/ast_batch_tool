@@ -21,6 +21,7 @@ from logging_setup import setup_logging
 from database_connection import setup_bcgw
 from toolbox_import import import_ast
 from ast_factory import AST_FACTORY
+from failed_job_tracker import FailedJobTracker  # Added: constructs a summary spreadsheet of all failed jobs across all workbooks
 # from multi_excel_setup import create_job_excel_files
 
 # snippet to run multiple terminal windows & "P:\corp\python_ast\python.exe" \\spatialfiles.bcgov\work\srm\nel\Local\Geomatics\Workarea\csostad\GitHub_Repositories\ast_batch_tool\autoast\auto_ast_V2_Cuisinart_MultiP_PdfMaps\main.py"
@@ -45,12 +46,12 @@ excel_files = [
 
 
 # Mandatory function that feeds the list of excel files into the Toaster
-def process_excel_file(excel_file, secrets, logger, current_path):
+def process_excel_file(excel_file, secrets, logger, current_path, failed_job_tracker):
     '''
     This function takes a list of excel files and iterates over that list, applying the Batch AST Class (and hence the ast tool)
     to each row in each excel file. This is a workaround for multiprocessing issue with the BCGW sees too many db connections
-    in batches of 8 
-    
+    in batches of 8.
+    failed_job_tracker: FailedJobTracker instance passed through to AST_FACTORY so all failures are recorded in the summary spreadsheet.
     '''
     try:
         print(f"Main: Creating queuefile path for {excel_file}")
@@ -59,7 +60,8 @@ def process_excel_file(excel_file, secrets, logger, current_path):
         qf = os.path.join(current_path, excel_file)
 
         # Create an instance of the AST_FACTORY class
-        ast = AST_FACTORY(qf, secrets[0], secrets[1], logger, current_path)
+        # Pass failed_job_tracker so AST_FACTORY logs failures to the summary spreadsheet
+        ast = AST_FACTORY(qf, secrets[0], secrets[1], logger, current_path, failed_job_tracker)
 
         if not os.path.exists(qf):
             print(f"Main: Queuefile for {excel_file} not found, creating new queuefile")
@@ -109,6 +111,8 @@ if __name__ == '__main__':
     
     current_path = os.path.dirname(os.path.realpath(__file__))
     print(f"Main: Current path is {current_path}")
+    # Initialize the failed job tracker; writes a timestamped summary spreadsheet to the script's directory
+    failed_job_tracker = FailedJobTracker(current_path, logger)
     # Call the setup_bcgw function to set up the database connection
     # secrets = setup_bcgw(logger)
     secrets, sde_connection, sde_path = setup_bcgw(logger)
@@ -132,6 +136,7 @@ if __name__ == '__main__':
     
     # Process each  of the  Excel files listed at the top of this scrip
     for excel_file in excel_files:
-        process_excel_file(excel_file, secrets, logger, current_path)
+        # Pass failed_job_tracker so failures in each workbook are captured in the summary spreadsheet
+        process_excel_file(excel_file, secrets, logger, current_path, failed_job_tracker)
     
     

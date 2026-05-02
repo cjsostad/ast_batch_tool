@@ -18,8 +18,7 @@ def import_ast(logger):
     try:
         # print(arcpy.ListTools("*"))
         arcpy.ImportToolbox(ast_toolbox, ast_tool_alias)
- 
- 
+
         logger.info(f"AST Toolbox imported successfully.")
     except Exception as e:
         print(f"Error importing toolbox: {e}")

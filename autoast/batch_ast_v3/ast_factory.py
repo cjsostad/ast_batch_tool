@@ -15,6 +15,23 @@ from output_validator import verify_job_outputs
 class AST_FACTORY:
     ''' AST_FACTORY creates and manages status tool runs '''
     XLSX_SHEET_NAME = 'ast_config'
+    # version2 - old AST_PARAMETERS for ast.atbx / alphaast toolbox (MakeAutomatedStatusSpreadsheet)
+    # AST_PARAMETERS = {
+    #     0: 'region',
+    #     1: 'feature_layer',
+    #     2: 'crown_file_number',
+    #     3: 'disposition_number',
+    #     4: 'parcel_number',
+    #     5: 'output_directory',
+    #     6: 'output_directory_same_as_input',
+    #     7: 'dont_overwrite_outputs',
+    #     8: 'skip_conflicts_and_constraints',
+    #     9: 'suppress_map_creation',
+    #     10: 'add_maps_to_current',
+    #     11: 'run_as_fcbc',
+    # }
+
+    # Updated parameter names to match fcbc_auto_status_tool.pyt (AutomatedStatusTool) parameter index map
     AST_PARAMETERS = {
         0: 'region',
         1: 'feature_layer',
@@ -22,12 +39,12 @@ class AST_FACTORY:
         3: 'disposition_number',
         4: 'parcel_number',
         5: 'output_directory',
-        6: 'output_directory_same_as_input',
+        6: 'output_dir_same_as_input',               # renamed from output_directory_same_as_input
         7: 'dont_overwrite_outputs',
-        8: 'skip_conflicts_and_constraints',
-        9: 'suppress_map_creation',
-        10: 'add_maps_to_current',
-        11: 'run_as_fcbc',
+        8: 'dont_run_conflicts_and_constraints_tab3', # renamed from skip_conflicts_and_constraints
+        9: 'suppress_map_creation_tab3',              # renamed from suppress_map_creation
+        10: 'open_output_directory',                  # replaces add_maps_to_current; set False in batch
+        11: 'full_path_hyperlinks',                   # replaces run_as_fcbc; False = relative hyperlinks
 
     }
     

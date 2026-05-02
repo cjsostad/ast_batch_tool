@@ -12,7 +12,7 @@ applyTo: '**'
 
 AutoAST is a Python batch processing framework that orchestrates the **Automated Status Tool (AST)** for Crown land applications in British Columbia. It spawns worker subprocesses; each worker imports `ast.atbx` and calls the `MakeAutomatedStatusSpreadsheet` tool inside it.
 
-- The active version is `auto_ast_V2_Cuisinart_MultiP_PdfMaps/`
+- The active version is `batch_ast_v3/`
 - The developer owns the **orchestration and batch code only**
 - `ast.atbx` is maintained by a separate team — it is a hard external boundary
 - The next development phase is adapting this script to call a new updated version of the AST tool

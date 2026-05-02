@@ -24,10 +24,9 @@ def process_job_mp(ast_instance, job, job_index, current_path, sde_path, return_
 
     print(f"Process Job Mp: Processing job {job_index}: {job}")
     arcpy.AddMessage("Inside Process Job MP")
-    #EDIT This is where the SDE path is set.
-    # Set arcpy workspace to existing SDE path directly passed in. This is to avoid multiple connections to the SDE. SDE connections
-    # have been removed from the AST Tool
-    arcpy.env.workspace = sde_path
+    # version2 - old: injected shared SDE into arcpy workspace so workers could reach BCGW
+    # The new fcbc_auto_status_tool manages its own per-job SDE connection internally
+    # arcpy.env.workspace = sde_path
     
     # Set up logging folder in the worker process
     logger.info(f"Process Job Mp: Worker process {mp.current_process().pid} started for job {job_index}")
@@ -119,10 +118,11 @@ def process_job_mp(ast_instance, job, job_index, current_path, sde_path, return_
         # Log the parameters being used
         logger.debug(f"Process Job Mp: Job Parameters: {params}")
 
-        # Run the ast tool
-        logger.info("Process Job Mp: Running MakeAutomatedStatusSpreadsheet_ast...")
-        arcpy.alphaast.MakeAutomatedStatusSpreadsheet(*params)
-        logger.info("Process Job Mp: MakeAutomatedStatusSpreadsheet_ast completed successfully.")
+        # version2 - old tool call: arcpy.alphaast.MakeAutomatedStatusSpreadsheet(*params)
+        # Run the new fcbc_auto_status_tool (AutomatedStatusTool) with the same positional params list
+        logger.info("Process Job Mp: Running AutomatedStatusTool (fcbc_auto_status_tool)...")
+        arcpy.fcbc_auto_status_tool.AutomatedStatusTool(*params)
+        logger.info("Process Job Mp: AutomatedStatusTool completed successfully.")
         # NOTE: Do not update Excel here - main process handles it after output validation
 
         # Capture and log arcpy messages

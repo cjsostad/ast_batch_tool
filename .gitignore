@@ -22,3 +22,6 @@ ENV/
 # Database connection files
 *.sde
 connection/*.sde
+
+ignorefolder/
+Supporting Scripts/
