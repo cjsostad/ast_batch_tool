@@ -637,9 +637,16 @@ class AST_FACTORY:
                     elif ast_condition.upper() == 'FAILED':
                         self.logger.info(f"Re Load Failed Jobs: Requeuing {job_index} as it is marked Failed.")
                         ast_condition = 'Requeued'
-                    
+
+                    # Treat FAILED_OUTPUTS as a retryable failure — tool ran but outputs were not produced
+                    # Set dont_overwrite_outputs=True so the runner writes into the existing run directory
+                    elif ast_condition.upper() == 'FAILED_OUTPUTS':
+                        self.logger.info(f"Re Load Failed Jobs: Requeuing job {job_index} marked FAILED_OUTPUTS. Setting dont_overwrite_outputs=True.")
+                        ast_condition = 'Requeued'
+                        job[self.DONT_OVERWRITE_OUTPUTS] = True  # Passed as bool True via raw dict to runner
+
                     else:
-                        self.logger.warning(f"Re Load Failed Jobs: Job {job_index} is not marked as Complete or Failed. Please check the workbook. Skipping this job.")
+                        self.logger.warning(f"Re Load Failed Jobs: Job {job_index} is not marked as Complete, Failed, or FAILED_OUTPUTS. Please check the workbook. Skipping this job.")
                         # continue
                         ast_condition = 'ERROR'
                     

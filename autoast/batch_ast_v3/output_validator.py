@@ -31,15 +31,37 @@ def verify_job_outputs(output_directory, logger=None):
     }
     
     missing_items = []
-    
+
     # Check if output directory exists
     if not os.path.exists(output_directory):
         return (False, ['output_directory'])
-    
-    # Check each required item
+
+    # The new runner (auto_status) creates a Status_<name>_<run_id> subdirectory inside
+    # the job's output_directory. Detect that subdirectory and validate inside it instead.
+    check_directory = output_directory
+    try:
+        subdirs = [
+            d for d in os.listdir(output_directory)
+            if os.path.isdir(os.path.join(output_directory, d))
+            and d.startswith('Status_')
+        ]
+        if subdirs:
+            # Use the most recently modified Status_ subfolder
+            subdirs.sort(
+                key=lambda d: os.path.getmtime(os.path.join(output_directory, d)),
+                reverse=True
+            )
+            check_directory = os.path.join(output_directory, subdirs[0])
+            if logger:
+                logger.info(f"Output Validator: Resolved run directory to {check_directory}")
+    except Exception as e:
+        if logger:
+            logger.warning(f"Output Validator: Could not scan for Status_ subdir: {e}")
+
+    # Check each required item inside the resolved directory
     for item_name, item_type in required_items.items():
-        item_path = os.path.join(output_directory, item_name)
-        
+        item_path = os.path.join(check_directory, item_name)  # Validate inside resolved run dir
+
         if not os.path.exists(item_path):
             missing_items.append(f"{item_name} (missing)")
             continue

@@ -105,11 +105,21 @@ def create_job_excel_files():
     ws = wb.active
     ws.title = "ast_config"
 
+    # version2 - old column names for ast.atbx / alphaast toolbox
+    # headers = [
+    #     "region", "feature_layer", "crown_file_number", "disposition_number",
+    #     "parcel_number", "output_directory", "output_directory_same_as_input",
+    #     "dont_overwrite_outputs", "skip_conflicts_and_constraints",
+    #     "suppress_map_creation", "add_maps_to_current", "run_as_fcbc",
+    #     "ast_condition", "file_number"
+    # ]
+
+    # Updated column names to match fcbc_auto_status_tool.pyt (AutomatedStatusTool) parameter index map
     headers = [
-        "region", "feature_layer", "crown_file_number", "disposition_number", 
-        "parcel_number", "output_directory", "output_directory_same_as_input", 
-        "dont_overwrite_outputs", "skip_conflicts_and_constraints", 
-        "suppress_map_creation", "add_maps_to_current", "run_as_fcbc", 
+        "region", "feature_layer", "crown_file_number", "disposition_number",
+        "parcel_number", "output_directory", "output_dir_same_as_input",
+        "dont_overwrite_outputs", "dont_run_conflicts_and_constraints_tab3",
+        "suppress_map_creation_tab3", "open_output_directory", "full_path_hyperlinks",
         "ast_condition", "file_number"
     ]
     ws.append(headers)
@@ -173,7 +183,7 @@ def create_job_excel_files():
                     wb = Workbook()
                     ws = wb.active
                     ws.title = "ast_config"
-                    ws.append(headers)
+                    ws.append(headers)  # headers already updated to new column names above
                     print("New workbook created.")
             else:
                 print(f"No shapefile found in: {subfolder_path}")
