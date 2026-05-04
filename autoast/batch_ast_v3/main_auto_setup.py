@@ -119,6 +119,9 @@ if __name__ == '__main__':
     # Call the setup_bcgw function to set up the database connection
     # secrets = setup_bcgw(logger)
     secrets, sde_connection, sde_path = setup_bcgw(logger)
+    # NOTE: If "Detect automatically" was selected in the GUI, setup_bcgw() was already called
+    # inside create_job_excel_files() to support region detection before the log file existed.
+    # Calling it again here is harmless — it simply recreates the same bcgw.sde connection file.
     # username, password = secrets[0], secrets[1]
     
     # Set the SDE path environment variable for easy access by workers

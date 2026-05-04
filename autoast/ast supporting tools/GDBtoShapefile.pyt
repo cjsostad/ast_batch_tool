@@ -119,10 +119,12 @@ class UnifiedProcessor(object):
                 if result_count == 0:
                     arcpy.AddWarning(f"⚠️ Skipping {shp_name}: no region found")
                     skipped_count += 1
+                    arcpy.management.Delete(to_posix(temp_join))  # Clean up temp join before skipping
                     continue
 
                 with arcpy.da.SearchCursor(to_posix(temp_join), [REGION_FIELD]) as cursor:
                     region = next(cursor)[0]
+                arcpy.management.Delete(to_posix(temp_join))  # Clean up temp join after reading region
 
                 output_subfolder = outputs_root / shp_name
                 output_subfolder.mkdir(parents=True, exist_ok=True)
