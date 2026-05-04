@@ -13,6 +13,7 @@ def process_job_mp(ast_instance, job, job_index, current_path, sde_path, return_
     import logging
     import multiprocessing as mp
     import traceback
+    from pathlib import Path  # Added: used to pass sde_path as a Path object to the runner
 
     logger = logging.getLogger(f"Process Job Mp: worker_{job_index}")
 
@@ -50,25 +51,52 @@ def process_job_mp(ast_instance, job, job_index, current_path, sde_path, return_
     )
 
     try:
-        # Re-import the toolbox in each process
-        ast_toolbox = os.getenv('TOOLBOX')  # Get the toolbox path from environment variables
-        ast_toolbox_alias = os.getenv('TOOLBOXALIAS')  # Get the toolbox alias from environment variables
-        if ast_toolbox:
-            arcpy.ImportToolbox(ast_toolbox, ast_toolbox_alias)
-            print(f"Process Job Mp: AST Toolbox imported successfully in worker.")
-            logger.info(f"Process Job Mp: AST Toolbox imported successfully in worker.")
-        else:
-            raise ImportError("Process Job Mp: AST Toolbox path not found. Ensure TOOLBOX path is set correctly in environment variables.")
+        # version2 - ImportToolbox + positional params list (replaced by runner approach below)
+        # ast_toolbox = os.getenv('TOOLBOX')
+        # ast_toolbox_alias = os.getenv('TOOLBOXALIAS')
+        # if ast_toolbox:
+        #     arcpy.ImportToolbox(ast_toolbox, ast_toolbox_alias)
+        # else:
+        #     raise ImportError("Process Job Mp: AST Toolbox path not found.")
+        # params = []
+        # for param in ast_instance.AST_PARAMETERS.values():
+        #     value = job.get(param)
+        #     if isinstance(value, str) and value.lower() in ['true', 'false']:
+        #         value = True if value.lower() == 'true' else False
+        #     params.append(value)
 
-        # Prepare parameters
-        params = []
+        # Derive the auto_status package root from the TOOLBOX path in .env
+        # TOOLBOX = ...\Tools\src\auto_status\tools\fcbc_auto_status_tool.pyt
+        # parents[2] resolves to ...\Tools\src\ which contains the auto_status package
+        ast_toolbox_path = os.getenv('TOOLBOX')
+        if not ast_toolbox_path:
+            raise ImportError("Process Job Mp: TOOLBOX path not set in environment variables.")
+        auto_status_src = str(Path(ast_toolbox_path.strip()).parents[2])
+        if auto_status_src not in sys.path:
+            sys.path.insert(0, auto_status_src)
+        logger.info(f"Process Job Mp: auto_status package root resolved to: {auto_status_src}")
 
-        # Convert 'true'/'false' strings to booleans
-        for param in ast_instance.AST_PARAMETERS.values():
-            value = job.get(param)
-            if isinstance(value, str) and value.lower() in ['true', 'false']:
-                value = True if value.lower() == 'true' else False
-            params.append(value)
+        # Import runner directly so the pre-made SDE can be passed in (avoids per-worker keyring lookups)
+        # auto_status is resolved at runtime via sys.path.insert above; type: ignore suppresses Pylance static analysis warning
+        from auto_status.analysis_tool import run as run_auto_status  # type: ignore
+
+        # Build raw params dict matching AnalysisToolParams.from_mapping() keys
+        raw = {
+            'region':                                   job.get('region'),
+            'feature_layer':                            job.get('feature_layer'),
+            'crown_file_number':                        job.get('crown_file_number'),
+            'disposition_number':                       job.get('disposition_number'),
+            'parcel_number':                            job.get('parcel_number'),
+            'output_directory':                         job.get('output_directory'),
+            'output_dir_same_as_input':                 job.get('output_dir_same_as_input'),
+            'dont_overwrite_outputs':                   job.get('dont_overwrite_outputs'),
+            'dont_run_conflicts_and_constraints_tab3':  job.get('dont_run_conflicts_and_constraints_tab3'),
+            'suppress_map_creation_tab3':               job.get('suppress_map_creation_tab3'),
+            'open_output_directory':                    False,  # Batch workers cannot open Explorer windows
+            'full_path_hyperlinks':                     job.get('full_path_hyperlinks'),
+            'fcbc_spreadsheet_formatting':              True,   # AST always True
+            'debug':                                    False,  # No shortened debug spreadsheets in batch
+        }
         
         #NOTE: This is where the output directory is set
         # Get the output directory from the job
@@ -115,28 +143,22 @@ def process_job_mp(ast_instance, job, job_index, current_path, sde_path, return_
         if not job.get('region'):
             raise ValueError("Process Job Mp: Region is required and was not provided. Job Failed")
 
-        # Log the parameters being used
-        logger.debug(f"Process Job Mp: Job Parameters: {params}")
+        # version2 - logger.debug params list (replaced by raw dict logging below)
+        # logger.debug(f"Process Job Mp: Job Parameters: {params}")
+        logger.debug(f"Process Job Mp: Job raw params: {raw}")
 
-        # version2 - old tool call: arcpy.alphaast.MakeAutomatedStatusSpreadsheet(*params)
-        # Run the new fcbc_auto_status_tool (AutomatedStatusTool) with the same positional params list
-        logger.info("Process Job Mp: Running AutomatedStatusTool (fcbc_auto_status_tool)...")
-        arcpy.fcbc_auto_status_tool.AutomatedStatusTool(*params)
-        logger.info("Process Job Mp: AutomatedStatusTool completed successfully.")
+        # version2 - arcpy GP tool calls (replaced by direct runner call below)
+        # arcpy.alphaast.MakeAutomatedStatusSpreadsheet(*params)
+        # arcpy.fcbc_auto_status_tool.AutomatedStatusTool(*params)
+
+        # Call runner directly with the pre-made shared SDE — connection resolved once in main process
         # NOTE: Do not update Excel here - main process handles it after output validation
+        logger.info(f"Process Job Mp: Calling auto_status runner with SDE: {sde_path}")
+        run_auto_status(raw, sde=Path(sde_path))
+        logger.info("Process Job Mp: auto_status runner completed successfully.")
 
-        # Capture and log arcpy messages
-        logger.info("Process Job Mp: Capturing arcpy messages...")
-        arcpy_messages = arcpy.GetMessages(0)
-        arcpy_warnings = arcpy.GetMessages(1)
-        arcpy_errors = arcpy.GetMessages(2)
-
-        if arcpy_messages:
-            logger.info(f'arcpy messages: {arcpy_messages}')
-        if arcpy_warnings:
-            logger.warning(f'arcpy warnings: {arcpy_warnings}')
-        if arcpy_errors:
-            logger.error(f'arcpy errors: {arcpy_errors}')
+        # version2 - arcpy GP message capture (not applicable when calling runner directly)
+        # arcpy_messages = arcpy.GetMessages(0) ...
         
         # Indicate success
         return_dict[job_index] = 'Success'  
