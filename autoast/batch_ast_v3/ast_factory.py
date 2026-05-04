@@ -639,11 +639,33 @@ class AST_FACTORY:
                         ast_condition = 'Requeued'
 
                     # Treat FAILED_OUTPUTS as a retryable failure — tool ran but outputs were not produced
-                    # Set dont_overwrite_outputs=True so the runner writes into the existing run directory
+                    # version2: scan output_directory for the existing YYYYMMDD-Status-* subdir created by
+                    # the runner on the first attempt. Update job['output_directory'] to point at it so that
+                    # when dont_overwrite_outputs=True, runner sets run_dir=base_dir=the existing Status_
+                    # subdir and picks up where it left off, rather than writing to the parent directory.
                     elif ast_condition.upper() == 'FAILED_OUTPUTS':
+                        output_dir = job.get(self.OUTPUT_DIRECTORY, '')
+                        if output_dir and os.path.isdir(output_dir):
+                            # Find the most recently modified YYYYMMDD-Status-* or YYYYMMDD-DEBUG-* subdir
+                            status_subdirs = [
+                                d for d in os.listdir(output_dir)
+                                if os.path.isdir(os.path.join(output_dir, d))
+                                and ('-Status-' in d or '-DEBUG-' in d)
+                            ]
+                            if status_subdirs:
+                                # Use the most recently modified one
+                                status_subdirs.sort(
+                                    key=lambda d: os.path.getmtime(os.path.join(output_dir, d)),
+                                    reverse=True
+                                )
+                                resolved_run_dir = os.path.join(output_dir, status_subdirs[0])
+                                job[self.OUTPUT_DIRECTORY] = resolved_run_dir  # Point runner at existing run dir
+                                self.logger.info(f"Re Load Failed Jobs: Resolved existing run directory to {resolved_run_dir} for job {job_index}.")
+                            else:
+                                self.logger.warning(f"Re Load Failed Jobs: No Status_ subdir found in {output_dir} for job {job_index}. Retrying without dont_overwrite_outputs.")
                         self.logger.info(f"Re Load Failed Jobs: Requeuing job {job_index} marked FAILED_OUTPUTS. Setting dont_overwrite_outputs=True.")
                         ast_condition = 'Requeued'
-                        job[self.DONT_OVERWRITE_OUTPUTS] = True  # Passed as bool True via raw dict to runner
+                        job[self.DONT_OVERWRITE_OUTPUTS] = True  # Tells runner to reuse existing run directory
 
                     else:
                         self.logger.warning(f"Re Load Failed Jobs: Job {job_index} is not marked as Complete, Failed, or FAILED_OUTPUTS. Please check the workbook. Skipping this job.")

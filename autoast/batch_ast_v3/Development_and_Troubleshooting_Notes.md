@@ -4,6 +4,99 @@
 
 ---
 
+## May 4, 2026 — Integration of New `auto_status` Runner (v3 Alpha Branch)
+
+### Overview
+Began adapting the batch tool to call the new developer-maintained AST tool (`fcbc_auto_status_tool.pyt` / `auto_status` package) instead of the old `ast.atbx`. This replaces the ArcPy `ImportToolbox` / `arcpy.fcbc_auto_status_tool.AutomatedStatusTool` call pattern with a direct Python function call to `auto_status.analysis_tool.run(raw, sde=Path(sde_path))`.
+
+### Branch
+`ast_alpha_runner_version`
+
+### New AST Tool Location
+`\\giswhse.env.gov.bc.ca\whse_np\corp\script_whse\python\Utility_Misc\Ready\statusing_tools_arcpro\Tools\src\auto_status\tools\fcbc_auto_status_tool.pyt`
+
+A read-only local reference copy of the `auto_status` package lives in `autoast/ignorefolder/` (excluded from git via `.gitignore`).
+
+### Architecture: Runner Direct-Call with Shared SDE
+The new tool's entry point is `auto_status.analysis_tool.run(raw_params, *, sde=None)` in `runner.py`. If `sde` is supplied as a `Path` to a pre-made `.sde` file, the runner skips its internal BCGW connection entirely. This fits cleanly with the existing shared-SDE architecture:
+- `database_connection.setup_bcgw()` creates `connection/bcgw.sde` once in the main process
+- Path is set via `os.environ["SDE_FILE_PATH"]`
+- Each worker receives `sde_path` as a function argument and passes `Path(sde_path)` to `run_auto_status(raw, sde=Path(sde_path))`
+
+The old `arcpy.ImportToolbox` approach and `params[]` list-building code were commented out (marked `# version2`) rather than deleted.
+
+### `sys.path` Injection for `auto_status` Package
+`mp_worker.py` derives the package root from the `TOOLBOX` env var path:
+```python
+auto_status_src = str(Path(ast_toolbox_path.strip()).parents[2])  # resolves to .../Tools/src/
+sys.path.insert(0, auto_status_src)
+from auto_status.analysis_tool import run as run_auto_status  # type: ignore
+```
+The `# type: ignore` suppresses Pylance's `reportMissingImports` — the import is dynamic and cannot be statically resolved.
+
+### Parameter Changes (Old → New)
+The new tool uses renamed parameters. Old `AST_PARAMETERS` dict commented out; new dict and Excel column headers updated:
+
+| Index | Old name | New name |
+|-------|----------|----------|
+| 6 | `output_directory_same_as_input` | `output_dir_same_as_input` |
+| 7 | `dont_overwrite_outputs` | `dont_overwrite_outputs` (same) |
+| 8 | `skip_conflicts_and_constraints` | `dont_run_conflicts_and_constraints_tab3` |
+| 9 | `suppress_map_creation` | `suppress_map_creation_tab3` |
+| 10 | `add_maps_to_current` | `open_output_directory` (must be `False` in batch) |
+| 11 | `run_as_fcbc` | `full_path_hyperlinks` |
+
+Three parameters are hardcoded in `mp_worker.py` (not from Excel): `open_output_directory=False`, `fcbc_spreadsheet_formatting=True`, `debug=False`.
+
+### New Output Directory Structure
+The new runner's `prepare_run_paths()` creates a `YYYYMMDD-Status-{suffix}` subdirectory **inside** the job's `output_directory`:
+- `output_directory = ...\outputs\632\`
+- Actual outputs written to: `...\outputs\632\20260504-Status-632\`
+
+The suffix is derived from `crown_file_number` if provided, otherwise from the AOI shapefile stem (e.g., `632` from `632.shp`).
+
+### New Output File/Folder Names
+The new runner produces (inside the `YYYYMMDD-Status-*` subdir):
+- `aoi_boundary.gdb`
+- `maps/` (HTML map files)
+- `one_status_common_datasets_aoi.gdb`
+- `one_status_tabs_1_and_2_datasets.gdb`
+- `{run_folder_name}.xlsx` — single merged Excel (e.g., `20260504-Status-632.xlsx`)
+- `auto_status.log`
+- `input_list.json`
+
+The old tool's `mapx_files/`, `automated_status_sheet.xlsx`, `one_status_common_datasets_aoi.xlsx`, `one_status_tabs_1_and_2.xlsx` are **not produced** by the new tool.
+
+### First Test Run — 4 Jobs (10:57 AM)
+Ran `main_auto_setup.py` with `jobs_1.xlsx` (jobs 632, 634, 635, 636). All 4 workers returned `'Success'` and ran for ~15 minutes. However, all 4 were marked `FAILED_OUTPUTS` because `output_validator.py` was looking in `output_directory` directly (e.g., `632\`) instead of inside the `20260504-Status-632\` subdirectory.
+
+`re_load_failed_jobs_V2` immediately requeued all 4 jobs with `dont_overwrite_outputs=True`. The retry (11:14 AM) also failed because `dont_overwrite_outputs=True` causes `prepare_run_paths()` to set `run_dir = base_dir` (no subdir created), so the runner wrote a **second set of outputs** directly to `632\` root. This created the double-output situation visible in the file explorer screenshots.
+
+### Fixes Applied
+Three issues identified and fixed:
+
+**1. `output_validator.py` — wrong subdirectory detection pattern**
+My initial fix used `d.startswith('Status_')` but the actual folder starts with the date (`20260504-Status-632`). Corrected to `'-Status-' in d or '-DEBUG-' in d`.
+
+**2. `output_validator.py` — `required_items` wrong for new tool**
+Removed `mapx_files`, `automated_status_sheet.xlsx`, `one_status_common_datasets_aoi.xlsx`, `one_status_tabs_1_and_2.xlsx`. Added a scan for any non-empty `.xlsx` file in the run directory instead of a fixed filename.
+
+**3. `ast_factory.py` `re_load_failed_jobs_V2` — `FAILED_OUTPUTS` retry needed `output_directory` update**
+When retrying a `FAILED_OUTPUTS` job with `dont_overwrite_outputs=True`, `prepare_run_paths()` sets `run_dir = base_dir = output_directory`. For the runner to land inside the correct existing `YYYYMMDD-Status-*` dir, `output_directory` must be updated to point at that subdir before the retry. The fix scans for the most recently modified `YYYYMMDD-Status-*` subdir and updates `job['output_directory']` to it before setting `dont_overwrite_outputs=True`.
+
+### `multi_excel_setup.py` Column Headers Updated
+Old column header names replaced with new parameter names to match the new tool. Existing `jobs_1.xlsx` files created before this change still have old column names — must be regenerated or manually renamed before re-running.
+
+### `main.py` and `main_auto_setup.py` — `FailedJobTracker` Added
+Both entry points updated to initialize `FailedJobTracker` and pass it through to `process_excel_file()`. This was a carry-over from the February work, completed at the start of this session.
+
+### Known State Before Next Test Run
+- `jobs_1.xlsx` on disk has `dont_overwrite_outputs: True` for all 4 rows (written during the failed retry). Must be reset to `false` before re-running.
+- The `20260504-Status-*` subdirectories from run 1 exist and contain partial outputs.
+- The second set of outputs at `632\` root (from the incorrect retry) also exists.
+
+---
+
 ## February 4, 2026 — Skeena 2026-2028 Production Batch Run
 
 - Ran `main_finish_jobs.py` on Skeena 2026-2028 batch using V2 with the new timeout and failed job tracking features

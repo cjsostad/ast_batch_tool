@@ -23,6 +23,7 @@ AutoAST is a Python batch processing framework that orchestrates the **Automated
 
 - Make **surgical changes only** — the minimum code necessary to achieve the stated goal
 - Never refactor, rename, reorganize, or "improve" anything not directly related to the task — ask first
+- Actively look for opportunities to add fallback logic, defensive code, error handling, and robustness improvements — flag them to the user and propose implementing, but always ask first before adding any
 - **Comment every new line or block of code** added, explaining what it does and why
 - If a second issue is spotted while working, annotate it with `# BUG` and flag it — do not fix it silently
 - One concern per change — stop and report before moving on
