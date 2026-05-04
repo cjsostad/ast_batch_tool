@@ -84,7 +84,6 @@ def has_incomplete_jobs(excel_file_path, logger, failed_job_tracker=None):
                     job_incomplete = True
                     excel_file_name = os.path.basename(excel_file_path)
                     missing_str = ', '.join(missing_items)
-                    print(f"Main: [{excel_file_name}] Job {row_idx - 1} marked COMPLETE but missing outputs: {missing_str}")
                     logger.warning(f"Main: [{excel_file_name}] Job {row_idx - 1} marked COMPLETE but missing outputs: {missing_str}")
                     
                     # Log to failed_job_tracker if provided
@@ -106,17 +105,14 @@ def has_incomplete_jobs(excel_file_path, logger, failed_job_tracker=None):
         
         excel_file_name = os.path.basename(excel_file_path)
         if incomplete_jobs > 0:
-            print(f"Main: [{excel_file_name}] Found {incomplete_jobs} incomplete jobs out of {total_jobs} total")
             logger.info(f"Main: [{excel_file_name}] Found {incomplete_jobs} incomplete jobs out of {total_jobs} total")
         else:
-            print(f"Main: [{excel_file_name}] All {total_jobs} jobs COMPLETE with verified outputs - skipping")
             logger.info(f"Main: [{excel_file_name}] All {total_jobs} jobs COMPLETE with verified outputs - skipping")
         
         return (incomplete_jobs > 0, total_jobs, incomplete_jobs)
         
     except Exception as e:
         excel_file_name = os.path.basename(excel_file_path)
-        print(f"Main: [{excel_file_name}] Error checking job status: {e} - will process anyway")
         logger.warning(f"Main: [{excel_file_name}] Error checking job status: {e} - will process anyway")
         return (True, 0, 0)  # Error checking, process to be safe
 
@@ -153,61 +149,46 @@ def process_excel_file(excel_file_path, secrets, logger, current_path, failed_jo
         has_incomplete, total_jobs, incomplete_count = has_incomplete_jobs(excel_file_path, logger)
         
         if not has_incomplete:
-            print(f"Main: [{excel_file_name}] Skipping - all jobs complete")
             logger.info(f"Main: [{excel_file_name}] Skipping - all jobs complete")
             return
         
-        print(f"Main: [{excel_file_name}] Creating queuefile path for {excel_file_path}")
         logger.info(f"Main: [{excel_file_name}] Creating queuefile path for {excel_file_path}")
 
         # Create an instance of the AST_FACTORY class with failed job tracker
         ast = AST_FACTORY(excel_file_path, secrets[0], secrets[1], logger, current_path, failed_job_tracker)
 
         if not os.path.exists(excel_file_path):
-            print(f"Main: [{excel_file_name}] ERROR - Queuefile {excel_file_path} not found!")
             logger.error(f"Main: [{excel_file_name}] ERROR - Queuefile {excel_file_path} not found!")
             return
 
         # Load jobs from the Excel file
-        print(f"Main: [{excel_file_name}] Loading jobs from {excel_file_path}")
         logger.info(f"Main: [{excel_file_name}] Loading jobs from {excel_file_path}")
         jobs = ast.load_jobs()
 
         # Batch jobs (initial attempt)
-        print(f"Main: [{excel_file_name}] Batching jobs for {excel_file_path} (initial attempt)")
         logger.info(f"Main: [{excel_file_name}] Batching jobs for {excel_file_path} (initial attempt)")
         ast.batch_ast()
-        print(f"Main: [{excel_file_name}] Initial batch processing complete")
         logger.info(f"Main: [{excel_file_name}] Initial batch processing complete")
 
         # Jan 27, 2026: Retry failed jobs up to max_retry_attempts times
         for retry_num in range(1, max_retry_attempts + 1):
-            print(f"Main: [{excel_file_name}] Checking for failed jobs (retry attempt {retry_num}/{max_retry_attempts})")
             logger.info(f"Main: [{excel_file_name}] Checking for failed jobs (retry attempt {retry_num}/{max_retry_attempts})")
             
             # Reload failed jobs
-            print(f"Main: [{excel_file_name}] Reloading failed jobs for {excel_file_path}")
             logger.info(f"Main: [{excel_file_name}] Reloading failed jobs for {excel_file_path}")
             ast.re_load_failed_jobs_V2()
-            print(f"Main: [{excel_file_name}] Failed jobs reload complete")
             logger.info(f"Main: [{excel_file_name}] Failed jobs reload complete")
 
             # Check if there are any failed jobs to retry
             if not ast.jobs or len(ast.jobs) == 0:
-                print(f"Main: [{excel_file_name}] No failed jobs found - all complete!")
                 logger.info(f"Main: [{excel_file_name}] No failed jobs found - all complete!")
                 break
             
             # Re-batch failed jobs
-            print(f"Main: [{excel_file_name}] Re-batching {len(ast.jobs)} failed jobs (attempt {retry_num})")
             logger.info(f"Main: [{excel_file_name}] Re-batching {len(ast.jobs)} failed jobs (attempt {retry_num})")
             ast.batch_ast()
-            print(f"Main: [{excel_file_name}] Retry attempt {retry_num} complete")
             logger.info(f"Main: [{excel_file_name}] Retry attempt {retry_num} complete")
 
-        print(f"\n{'='*100}")
-        print(f"  >>> COMPLETED SPREADSHEET: {excel_file_name} <<<")
-        print(f"{'='*100}\n")
         logger.info(f"\n{'='*100}")
         logger.info(f"  >>> COMPLETED SPREADSHEET: {excel_file_name} <<<")
         logger.info(f"{'='*100}\n")
@@ -215,7 +196,6 @@ def process_excel_file(excel_file_path, secrets, logger, current_path, failed_jo
     
     except Exception as e:
         excel_file_name = os.path.basename(excel_file_path)
-        print(f"Main: [{excel_file_name}] ERROR processing {excel_file_path}: {e}")
         logger.error(f"Main: [{excel_file_name}] ERROR processing {excel_file_path}: {e}")
 
 #################################################################################################################################################################################
@@ -232,17 +212,16 @@ if __name__ == '__main__':
 
     # Load the default environment
     load_dotenv()
-    print("Main: Environment loaded")
+    logger.info("Main: Environment loaded")
     
     # Call the import_ast function to import the AST toolbox
     template = import_ast(logger)
     
     current_path = os.path.dirname(os.path.realpath(__file__))
-    print(f"Main: Current path is {current_path}")
+    logger.info(f"Main: Current path is {current_path}")
     
     # Call the setup_bcgw function to set up the database connection
     secrets, sde_connection, sde_path = setup_bcgw(logger)
-    print("Main: BCGW Connection established")
     
     # Set the SDE path environment variable for easy access by workers
     os.environ["SDE_FILE_PATH"] = sde_path
@@ -254,15 +233,12 @@ if __name__ == '__main__':
     
     # Feb 2, 2026: Initialize Failed Job Tracker
     failed_job_tracker = FailedJobTracker(excel_directory, logger)
-    print(f"Main: Failed Job Tracker initialized")
     logger.info(f"Main: Failed Job Tracker initialized")
     
     # Feb 2, 2026: Dynamically discover all jobs_*.xlsx files in the directory
     # This replaces the hardcoded list to be more flexible
-    print(f"Main: Excel files directory: {excel_directory}")
     logger.info(f"Main: Excel files directory: {excel_directory}")
     
-    print(f"Main: Scanning for jobs_*.xlsx files...")
     logger.info(f"Main: Scanning for jobs_*.xlsx files...")
     
     all_files = os.listdir(excel_directory)
@@ -275,7 +251,6 @@ if __name__ == '__main__':
     # Sort the files numerically (jobs_9.xlsx, jobs_10.xlsx, etc.)
     excel_files.sort(key=lambda x: int(x.replace('jobs_', '').replace('.xlsx', '')))
     
-    print(f"Main: Found {len(excel_files)} Excel files: {', '.join(excel_files)}")
     logger.info(f"Main: Found {len(excel_files)} Excel files: {', '.join(excel_files)}")
     
     # Jan 27, 2026: Track processing statistics
@@ -285,11 +260,6 @@ if __name__ == '__main__':
     # Process each Excel file
     for excel_file in excel_files:
         excel_file_path = os.path.join(excel_directory, excel_file)
-        print(f"\n{'='*100}")
-        print(f"{'='*100}")
-        print(f"  >>> PROCESSING SPREADSHEET: {excel_file} <<<")
-        print(f"{'='*100}")
-        print(f"{'='*100}\n")
         logger.info(f"\n{'='*100}")
         logger.info(f"{'='*100}")
         logger.info(f"  >>> PROCESSING SPREADSHEET: {excel_file} <<<")
@@ -310,8 +280,4 @@ if __name__ == '__main__':
     failed_job_tracker.print_summary()
     print("="*80)
     
-    print("\n" + "="*80)
-    print(f"Main: All remaining jobs processing COMPLETE")
-    print(f"Main: Processed {processed_count} workbooks, Skipped {skipped_count} complete workbooks")
-    print("="*80)
     logger.info(f"Main: All remaining jobs processing COMPLETE - Processed {processed_count}, Skipped {skipped_count}")

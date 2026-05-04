@@ -59,6 +59,13 @@ def setup_logging(custom_log_path=None):
                         level=logging.DEBUG, 
                         format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 
+    # Add a StreamHandler so all logger calls also print to the console,
+    # removing the need for separate print() calls in the main scripts.
+    console_handler = logging.StreamHandler()
+    console_handler.setLevel(logging.DEBUG)
+    console_handler.setFormatter(logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s'))
+    logging.getLogger().addHandler(console_handler)
+
     # Create the logger object and set to the current file name
     logger = logging.getLogger(__name__)
 
