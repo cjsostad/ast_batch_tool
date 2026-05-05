@@ -17,6 +17,8 @@
 
 
 import os
+import sys
+from pathlib import Path
 from dotenv import load_dotenv
 from logging_setup import setup_logging
 from database_connection import setup_bcgw
@@ -97,14 +99,17 @@ if __name__ == '__main__':
     # First, run the Tkinter dialog to get excel files and log path from user
     # This must happen BEFORE setting up logging so the user can choose where logs go
     print("Main: Running 'Create job excel files'")
-    excel_files, custom_log_path = create_job_excel_files()
+    excel_files, custom_log_path, delete_transitory, outputs_dir = create_job_excel_files()
     print(f"List of excel file paths is: {excel_files}")
     print(f"Custom log path: {custom_log_path if custom_log_path else 'Default location'}")
+    print(f"Delete Transitory Data on Completion: {delete_transitory}")
     
     # Now set up logging with the custom path provided by the user
     logger = setup_logging(custom_log_path)
     logger.info(f"List of excel file paths is: {excel_files}")
     logger.info(f"Custom log path: {custom_log_path if custom_log_path else 'Default location'}")
+    # Log the user's cleanup preference so it appears in the batch log for auditability
+    logger.info(f"Delete Transitory Data on Completion: {delete_transitory}")
 
     # Load the default environment
     load_dotenv()
@@ -156,3 +161,14 @@ if __name__ == '__main__':
         
         print("\nAll Excel files processed successfully!")
         logger.info("All Excel files processed successfully!")
+
+        # If the user checked "Delete Transitory Data on Completion", walk outputs_dir
+        # and remove every transitory file/folder defined in delete_transitory_data.py.
+        # The import is lazy (inside the if block) so users who skip cleanup don't need
+        # the module resolvable, and because it lives outside batch_ast_v3/ it requires
+        # a temporary sys.path insertion.
+        if delete_transitory and outputs_dir:
+            sys.path.insert(0, str(Path(__file__).parents[1] / "ast supporting tools"))
+            from delete_transitory_data import delete_transitory_data_from_output_folder  # noqa: PLC0415
+            logger.info(f"Delete Transitory Data: Starting recursive cleanup of {outputs_dir}")
+            delete_transitory_data_from_output_folder(outputs_dir, logger)

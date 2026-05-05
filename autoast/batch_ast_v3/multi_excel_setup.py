@@ -22,7 +22,7 @@ import os
 import logging
 from pathlib import Path
 from openpyxl import Workbook
-from tkinter import Tk, filedialog, Label, Button, StringVar, OptionMenu, Entry, Frame
+from tkinter import Tk, filedialog, Label, Button, StringVar, OptionMenu, Entry, Frame, BooleanVar, Checkbutton
 from dotenv import load_dotenv
 
 
@@ -98,9 +98,11 @@ def create_job_excel_files():
     connection limit). Each row contains the full set of parameters for one AST batch job.
 
     Returns:
-        tuple (list[str], str)
+        tuple (list[str], str, bool, str)
             - List of absolute paths to the created Excel files (fed directly to main_auto_setup.py)
             - Custom log directory path string (empty string = use default)
+            - True if the user checked "Delete Transitory Data on Completion"
+            - Absolute path to the outputs/ directory (empty string if nothing was created)
     """
     print("Running Create Job Excel Files")
 
@@ -123,7 +125,7 @@ def create_job_excel_files():
     # ------------------------------------------------------------------ #
     root.deiconify()
     root.title("AutoAST Batch Setup")
-    root.geometry("650x380")
+    root.geometry("650x420")
 
     region_var = StringVar(root)
     region_var.set("Northeast")  # Default selection
@@ -156,6 +158,15 @@ def create_job_excel_files():
 
     Button(log_frame, text="Browse...", command=browse_log_path).pack(side="left")
 
+    # Checkbox: when checked, transitory data is deleted after all jobs complete.
+    # Value is read after mainloop() exits and returned to main_auto_setup.py.
+    delete_var = BooleanVar(root)
+    Checkbutton(
+        root,
+        text="Delete Transitory Data on Completion",
+        variable=delete_var
+    ).pack(pady=5)
+
     def confirm_selection():
         root.quit()
         root.destroy()
@@ -165,8 +176,11 @@ def create_job_excel_files():
 
     selected_region = region_var.get()
     log_path = log_path_var.get()
+    # Read checkbox state after mainloop exits (widget is already destroyed)
+    delete_transitory = delete_var.get()
     print(f"Selected region: {selected_region}")
     print(f"Log path: {log_path if log_path else 'Default location'}")
+    print(f"Delete Transitory Data on Completion: {delete_transitory}")
 
     # ------------------------------------------------------------------ #
     # Collect shapefiles (both flat-folder and subfolder scenarios)        #
@@ -182,7 +196,7 @@ def create_job_excel_files():
         print("\nWARNING: No shapefiles found in subfolders OR main directory!")
         print("  1. Ensure the directory contains .shp files (in subfolders or directly)")
         print(f"  2. Selected directory was: {main_dir}")
-        return [], log_path
+        return [], log_path, False, ""
 
     # ------------------------------------------------------------------ #
     # Region detection — auto-detect via BCGW, or use manual selection    #
@@ -284,9 +298,11 @@ def create_job_excel_files():
     print(f"\nTotal shapefiles processed: {len(jobs)}")
     print(f"Total Excel files created: {len(excel_files)}")
 
-    return excel_files, log_path
+    return excel_files, log_path, delete_transitory, str(output_dir)
 
 if __name__ == "__main__":
-    excel_files, log_path = create_job_excel_files()
+    excel_files, log_path, delete_transitory, outputs_dir = create_job_excel_files()
     print(f"List of excel file paths is: {excel_files}")
     print(f"Log path: {log_path if log_path else 'Default location'}")
+    print(f"Delete Transitory Data on Completion: {delete_transitory}")
+    print(f"Outputs directory: {outputs_dir}")
