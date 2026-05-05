@@ -111,3 +111,14 @@ Worker logs are the primary diagnostic tool for ArcPy-level failures.
 ## 11. No Silent Defaults
 
 If a required `.env` key or configuration value is missing, raise a clear and descriptive error immediately. Never substitute a fallback value, default path, or silent workaround — missing config must be visible and explicit.
+
+---
+
+## 12. Two Entry Points — Keep main.py and main_auto_setup.py in Sync
+
+`batch_ast_v3/` has two entry points that must stay in sync:
+
+- **`main_auto_setup.py`** — used when the batch tool creates spreadsheets from a folder of shapefiles (GUI-driven via `create_job_excel_files()`). Excel filenames, `delete_transitory`, and the custom log path all come from the GUI dialog.
+- **`main.py`** — used when the client has already filled out their own spreadsheet(s). `excel_files` (list) and `delete_transitory` (bool) are hardcoded as module-level config variables at the top of the file. `setup_logging()` is called with no argument.
+
+**Rule:** All changes to shared orchestration logic — `process_excel_file()`, `AST_FACTORY` instantiation, the `__main__` startup sequence, per-spreadsheet banners, error guards, etc. — **must be applied to both files**. The only intentional differences are those listed above. When editing one entry point, always check whether the same change is needed in the other.

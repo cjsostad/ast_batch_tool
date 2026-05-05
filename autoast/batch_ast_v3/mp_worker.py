@@ -77,8 +77,8 @@ def process_job_mp(ast_instance, job, job_index, current_path, sde_path, return_
         logger.info(f"Process Job Mp: auto_status package root resolved to: {auto_status_src}")
 
         # Import runner directly so the pre-made SDE can be passed in (avoids per-worker keyring lookups)
-        # auto_status is resolved at runtime via sys.path.insert above; type: ignore suppresses Pylance static analysis warning
-        from auto_status.analysis_tool import run as run_auto_status  # type: ignore
+        # auto_status is resolved at runtime via sys.path.insert above
+        from auto_status.analysis_tool import run as run_auto_status 
 
         # Build raw params dict matching AnalysisToolParams.from_mapping() keys
         raw = {

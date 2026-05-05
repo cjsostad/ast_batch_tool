@@ -21,37 +21,36 @@ from logging_setup import setup_logging
 from database_connection import setup_bcgw
 from toolbox_import import import_ast
 from ast_factory import AST_FACTORY
-from failed_job_tracker import FailedJobTracker  # Added: constructs a summary spreadsheet of all failed jobs across all workbooks
-# from multi_excel_setup import create_job_excel_files
+from failed_job_tracker import FailedJobTracker  # Added: creates a summary spreadsheet of all failed jobs across all workbooks
 
-# snippet to run multiple terminal windows & "P:\corp\python_ast\python.exe" \\spatialfiles.bcgov\work\srm\nel\Local\Geomatics\Workarea\csostad\GitHub_Repositories\ast_batch_tool\autoast\auto_ast_V2_Cuisinart_MultiP_PdfMaps\main.py"
-
-
-
-###################################################################################
-#
-#
-# This MAIN is for running through muiltiple excel files in a batch process
-#
-#
-###################################################################################
-
-print("Inside Main V2")
+# This script is the entry point when the client has already filled out their own spreadsheet(s).
+# For the auto-setup path (spreadsheet created from a folder of shapefiles), use main_auto_setup.py instead.
+# Both scripts share identical orchestration logic - any changes to shared logic must be mirrored in both files.
+# The only intentional differences are:
+#   - excel_files and delete_transitory are configured here as module-level variables (no GUI)
+#   - setup_logging() is called with no argument (no custom log path dialog)
 
 
-# *** INPUT YOUR EXCEL FILE NAME HERE ***
+# *** INPUT YOUR EXCEL FILE NAME(S) HERE ***
+# List each pre-filled client spreadsheet by filename (must be in the same directory as this script).
 excel_files = [
-"gr_2026_147.xlsx"
+    "gr_2026_147.xlsx"
 ]
+
+# Set to True to delete transitory GDB/log files immediately after each job is verified COMPLETE.
+# Failed/FAILED_OUTPUTS jobs are never cleaned -- their GDBs are required for restart analysis.
+delete_transitory = False
 
 
 # Mandatory function that feeds the list of excel files into the Toaster
-def process_excel_file(excel_file, secrets, logger, current_path, failed_job_tracker):
+def process_excel_file(excel_file, secrets, logger, current_path, failed_job_tracker, delete_transitory=False):
     '''
     This function takes a list of excel files and iterates over that list, applying the Batch AST Class (and hence the ast tool)
     to each row in each excel file. This is a workaround for multiprocessing issue with the BCGW sees too many db connections
     in batches of 8.
     failed_job_tracker: FailedJobTracker instance passed through to AST_FACTORY so all failures are recorded in the summary spreadsheet.
+    delete_transitory: if True, transitory GDB/log files are deleted immediately after each job is verified COMPLETE (not in a
+    bulk sweep at the end). Failed/FAILED_OUTPUTS jobs are never cleaned so their GDBs remain available for restart analysis.
     '''
     try:
         print(f"Main: Creating queuefile path for {excel_file}")
@@ -61,7 +60,8 @@ def process_excel_file(excel_file, secrets, logger, current_path, failed_job_tra
 
         # Create an instance of the AST_FACTORY class
         # Pass failed_job_tracker so AST_FACTORY logs failures to the summary spreadsheet
-        ast = AST_FACTORY(qf, secrets[0], secrets[1], logger, current_path, failed_job_tracker)
+        # Pass delete_transitory so per-job cleanup is triggered only after verified COMPLETE
+        ast = AST_FACTORY(qf, secrets[0], secrets[1], logger, current_path, failed_job_tracker, delete_transitory)
 
         if not os.path.exists(qf):
             print(f"Main: Queuefile for {excel_file} not found, creating new queuefile")
@@ -88,55 +88,75 @@ def process_excel_file(excel_file, secrets, logger, current_path, failed_job_tra
         logger.info(f"Main: Re-batching failed jobs for {excel_file}")
         ast.batch_ast()
 
-        print(f"Main: AST Factory for {excel_file} COMPLETE")
-        logger.info(f"Main: AST Factory for {excel_file} COMPLETE")
-    
-    
+        print(f"\n{'='*100}")
+        print(f"  >>> COMPLETED SPREADSHEET: {excel_file} <<<")
+        print(f"{'='*100}\n")
+        logger.info(f"\n{'='*100}")
+        logger.info(f"  >>> COMPLETED SPREADSHEET: {excel_file} <<<")
+        logger.info(f"{'='*100}\n")
+
+
     except Exception as e:
         print(f"Error processing {excel_file}: {e}")
         logger.error(f"Error processing {excel_file}: {e}")
 
 #################################################################################################################################################################################
 if __name__ == '__main__':
-    
-    print("Main: Starting AutoAST V2 Main Processor")
-    # Call the setup_logging function to log the messages
+
+    print("Main: Starting AutoAST Batch Processor")
+
+    # Set up logging -- no custom path dialog here; uses the default log location
     logger = setup_logging()
+    logger.info(f"Excel files to process: {excel_files}")
+    # Log the cleanup preference so it appears in the batch log for auditability
+    logger.info(f"Delete Transitory Data on Completion: {delete_transitory}")
 
     # Load the default environment
     load_dotenv()
-    print("Main: Environment loaded")
+
     # Call the import_ast function to import the AST toolbox
     template = import_ast(logger)
-    
+
     current_path = os.path.dirname(os.path.realpath(__file__))
-    print(f"Main: Current path is {current_path}")
     # Initialize the failed job tracker; writes a timestamped summary spreadsheet to the script's directory
     failed_job_tracker = FailedJobTracker(current_path, logger)
+
     # Call the setup_bcgw function to set up the database connection
-    # secrets = setup_bcgw(logger)
     secrets, sde_connection, sde_path = setup_bcgw(logger)
-    # username, password = secrets[0], secrets[1]
-    print("Main: BCGW Connection established")
+
     # Set the SDE path environment variable for easy access by workers
     os.environ["SDE_FILE_PATH"] = sde_path
     logger.info(f"SDE Connection established at: {sde_path}")
-    
-    
-    
-    
-    # Uncomment the following lines to create job excel files if needed
-    
-    
-    # print("Main: Running 'Create job excel files'")
-    # excel_files = create_job_excel_files()
-    # print(f"List of excel file paths is: {excel_files}")
-    # logger.info(f"List of excel file paths is: {excel_files}")          
-    
-    
-    # Process each  of the  Excel files listed at the top of this scrip
-    for excel_file in excel_files:
-        # Pass failed_job_tracker so failures in each workbook are captured in the summary spreadsheet
-        process_excel_file(excel_file, secrets, logger, current_path, failed_job_tracker)
-    
+
+    # Process each Excel file listed at the top of this script
+    if not excel_files or len(excel_files) == 0:
+        error_msg = "No Excel files are listed. Add at least one filename to the excel_files list at the top of this script."
+        print(f"ERROR: {error_msg}")
+        logger.error(error_msg)
+        print("\nScript completed with no files to process.")
+    else:
+        print(f"\nProcessing {len(excel_files)} Excel file(s)...")
+        logger.info(f"Processing {len(excel_files)} Excel file(s)...")
+
+        for excel_file in excel_files:
+            print(f"\n{'='*100}")
+            print(f"{'='*100}")
+            print(f"  >>> PROCESSING SPREADSHEET: {excel_file} <<<")
+            print(f"{'='*100}")
+            print(f"{'='*100}\n")
+            logger.info(f"\n{'='*100}")
+            logger.info(f"{'='*100}")
+            logger.info(f"  >>> PROCESSING SPREADSHEET: {excel_file} <<<")
+            logger.info(f"{'='*100}")
+            logger.info(f"{'='*100}\n")
+            # Pass failed_job_tracker so failures in each workbook are captured in the summary spreadsheet
+            # Pass delete_transitory so AST_FACTORY can clean up each job immediately after COMPLETE verification.
+            # Failed/FAILED_OUTPUTS jobs are never cleaned -- their GDBs are required for restart analysis.
+            process_excel_file(excel_file, secrets, logger, current_path, failed_job_tracker, delete_transitory)
+
+        print("\nAll Excel files processed successfully!")
+        logger.info("All Excel files processed successfully!")
+        # NOTE: Transitory data deletion is handled per-job inside AST_FACTORY.batch_ast(),
+        # immediately after each job is verified COMPLETE. Failed/FAILED_OUTPUTS jobs are
+        # never cleaned -- their GDBs are required for restart analysis on retries.
     

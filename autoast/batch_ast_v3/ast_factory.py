@@ -10,6 +10,7 @@ from aoi_utilities import build_aoi_from_shp
 from aoi_utilities import build_aoi_from_kml
 from failed_job_tracker import FailedJobTracker
 from output_validator import verify_job_outputs
+from delete_transitory_data import delete_transitory_data_from_output_folder  # Moved into batch_ast_v3 alongside core scripts
 
 
 class AST_FACTORY:
@@ -55,10 +56,11 @@ class AST_FACTORY:
     
     AST_CONDITION_COLUMN = 'ast_condition'
     DONT_OVERWRITE_OUTPUTS = 'dont_overwrite_outputs'
+    OUTPUT_DIRECTORY = 'output_directory'  # Key used to look up and update the output path in the job dict
     AST_SCRIPT = ''
     job_index = None  # Initialize job_index as a global variable
     
-    def __init__(self, queuefile, db_user, db_pass, logger=None, current_path=None, failed_job_tracker=None) -> None:
+    def __init__(self, queuefile, db_user, db_pass, logger=None, current_path=None, failed_job_tracker=None, delete_transitory=False) -> None:
             self.user = db_user
             self.user_cred = db_pass
             self.queuefile = queuefile
@@ -66,6 +68,7 @@ class AST_FACTORY:
             self.logger = logger or logging.getLogger(__name__)
             self.current_path = current_path
             self.failed_job_tracker = failed_job_tracker  # Store the failed job tracker instance
+            self.delete_transitory = delete_transitory  # If True, delete transitory GDB/log files immediately after each job is verified COMPLETE
 #LOAD JOBS
     def load_jobs(self):
         '''
@@ -476,6 +479,15 @@ class AST_FACTORY:
                             self.add_job_result(job_index, 'COMPLETE')
                             print(f"Batch Ast: Job {job_index} completed successfully with verified outputs.")
                             self.logger.info(f"Batch Ast: Job {job_index} completed successfully with verified outputs. Success counter is {success_counter}")
+
+                            # Delete transitory GDB/log files for this job immediately after verification.
+                            # This is done per-job (not in a bulk end-of-run sweep) so that:
+                            #   - Failed/FAILED_OUTPUTS jobs keep their GDBs for restart analysis
+                            #   - A re-run of a mixed folder cannot clean up still-in-progress jobs
+                            # Transitory deletion is skipped for any job that is not COMPLETE.
+                            if self.delete_transitory and output_directory:
+                                self.logger.info(f"Batch Ast: Deleting transitory data for completed job {job_index} in {output_directory}")
+                                delete_transitory_data_from_output_folder(output_directory, self.logger)
                         else:
                             # Worker succeeded but outputs are missing/invalid
                             missing_str = ', '.join(missing_items)
@@ -633,9 +645,35 @@ class AST_FACTORY:
                         # continue  
                         ast_condition = 'COMPLETE'    
                     
-                    # Change ast condition to requeued if the job is failed
+                    # Change ast condition to requeued if the job is failed.
+                    # Also resolve the existing YYYYMMDD-Status-* subfolder and set dont_overwrite_outputs=True
+                    # in the in-memory job dict so the runner reuses the partial GDB work from the first attempt.
+                    # Without this the worker dict retains the original 'False' value even though add_job_result
+                    # will later write 'True' to the Excel file, causing a fresh run that discards the partial GDB.
                     elif ast_condition.upper() == 'FAILED':
                         self.logger.info(f"Re Load Failed Jobs: Requeuing {job_index} as it is marked Failed.")
+                        output_dir = job.get(self.OUTPUT_DIRECTORY, '')
+                        if output_dir and os.path.isdir(output_dir):
+                            # Scan for the YYYYMMDD-Status-* subfolder created during the failed run
+                            status_subdirs = [
+                                d for d in os.listdir(output_dir)
+                                if os.path.isdir(os.path.join(output_dir, d))
+                                and ('-Status-' in d or '-DEBUG-' in d)
+                            ]
+                            if status_subdirs:
+                                # Use the most recently modified Status subfolder so the runner targets
+                                # the right directory and dont_overwrite_outputs picks up partial GDB work
+                                status_subdirs.sort(
+                                    key=lambda d: os.path.getmtime(os.path.join(output_dir, d)),
+                                    reverse=True
+                                )
+                                resolved_run_dir = os.path.join(output_dir, status_subdirs[0])
+                                job[self.OUTPUT_DIRECTORY] = resolved_run_dir  # Point runner at existing run dir
+                                self.logger.info(f"Re Load Failed Jobs: Resolved existing run directory to {resolved_run_dir} for job {job_index}.")
+                            else:
+                                # No partial Status subfolder found — runner will start from scratch
+                                self.logger.warning(f"Re Load Failed Jobs: No Status_ subdir found in {output_dir} for job {job_index}. Retrying without dont_overwrite_outputs.")
+                        job[self.DONT_OVERWRITE_OUTPUTS] = True  # Tells runner to reuse existing run directory; mirrors FAILED_OUTPUTS logic
                         ast_condition = 'Requeued'
 
                     # Treat FAILED_OUTPUTS as a retryable failure — tool ran but outputs were not produced

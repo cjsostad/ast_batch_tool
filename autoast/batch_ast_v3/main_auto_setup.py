@@ -17,8 +17,6 @@
 
 
 import os
-import sys
-from pathlib import Path
 from dotenv import load_dotenv
 from logging_setup import setup_logging
 from database_connection import setup_bcgw
@@ -39,12 +37,14 @@ from failed_job_tracker import FailedJobTracker  # Added: creates a summary spre
 
 
 # Mandatory function that feeds the list of excel files into the Toaster
-def process_excel_file(excel_file, secrets, logger, current_path, failed_job_tracker):
+def process_excel_file(excel_file, secrets, logger, current_path, failed_job_tracker, delete_transitory=False):
     '''
     This function takes a list of excel files and iterates over that list, applying the Batch AST Class (and hence the ast tool)
     too each row in each excel file. This is a workaround for multiprocessing issue with the BCGW sees too many db connections
     in batches of 8.
     failed_job_tracker: FailedJobTracker instance passed through to AST_FACTORY so all failures are recorded in the summary spreadsheet.
+    delete_transitory: if True, transitory GDB/log files are deleted immediately after each job is verified COMPLETE (not in a
+    bulk sweep at the end). Failed/FAILED_OUTPUTS jobs are never cleaned so their GDBs remain available for restart analysis.
     '''
     try:
         print(f"Main: Creating queuefile path for {excel_file}")
@@ -54,7 +54,8 @@ def process_excel_file(excel_file, secrets, logger, current_path, failed_job_tra
 
         # Create an instance of the AST_FACTORY class
         # Pass failed_job_tracker so AST_FACTORY logs failures to the summary spreadsheet
-        ast = AST_FACTORY(qf, secrets[0], secrets[1], logger, current_path, failed_job_tracker)
+        # Pass delete_transitory so per-job cleanup is triggered only after verified COMPLETE
+        ast = AST_FACTORY(qf, secrets[0], secrets[1], logger, current_path, failed_job_tracker, delete_transitory)
 
         if not os.path.exists(qf):
             print(f"Main: Queuefile for {excel_file} not found, creating new queuefile")
@@ -157,18 +158,13 @@ if __name__ == '__main__':
             logger.info(f"{'='*100}")
             logger.info(f"{'='*100}\n")
             # Pass failed_job_tracker so failures in each workbook are captured in the summary spreadsheet
-            process_excel_file(excel_file, secrets, logger, current_path, failed_job_tracker)
+            # Pass delete_transitory so AST_FACTORY can clean up each job immediately after COMPLETE verification.
+            # Failed/FAILED_OUTPUTS jobs are never cleaned — their GDBs are required for restart analysis.
+            process_excel_file(excel_file, secrets, logger, current_path, failed_job_tracker, delete_transitory)
         
         print("\nAll Excel files processed successfully!")
         logger.info("All Excel files processed successfully!")
-
-        # If the user checked "Delete Transitory Data on Completion", walk outputs_dir
-        # and remove every transitory file/folder defined in delete_transitory_data.py.
-        # The import is lazy (inside the if block) so users who skip cleanup don't need
-        # the module resolvable, and because it lives outside batch_ast_v3/ it requires
-        # a temporary sys.path insertion.
-        if delete_transitory and outputs_dir:
-            sys.path.insert(0, str(Path(__file__).parents[1] / "ast supporting tools"))
-            from delete_transitory_data import delete_transitory_data_from_output_folder  # noqa: PLC0415
-            logger.info(f"Delete Transitory Data: Starting recursive cleanup of {outputs_dir}")
-            delete_transitory_data_from_output_folder(outputs_dir, logger)
+        # NOTE: Transitory data deletion is now handled per-job inside AST_FACTORY.batch_ast(),
+        # immediately after each job is verified COMPLETE. The previous bulk end-of-run sweep
+        # was removed because it could not distinguish COMPLETE jobs from Failed jobs, which
+        # would have deleted GDBs that the AST tool needs for restart analysis on retries.
