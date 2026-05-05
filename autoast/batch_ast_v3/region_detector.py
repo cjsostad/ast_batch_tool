@@ -23,9 +23,24 @@ except ImportError:
 # BCGW layer containing NR Region boundaries
 NR_REGION_LAYER = "WHSE_ADMIN_BOUNDARIES.ADM_NR_REGIONS_SPG"
 
-# Field in NR_REGION_LAYER that holds the human-readable region name written to Excel.
-# VERIFY this field name against the BCGW layer before the first test run.
+# Field in NR_REGION_LAYER that holds the human-readable region name.
 NR_REGION_FIELD = "REGION_NAME"
+
+# Maps the full BCGW REGION_NAME values to the short names the AST tool expects.
+# The AST tool constructs its region-specific input spreadsheet filename from this
+# value (e.g. "West_Coast" -> one_status_west_coast_specific.xlsx).
+# If the BCGW returns a full name not in this map, the raw value is passed through
+# and a warning is logged so the mismatch is visible.
+REGION_NAME_MAP = {
+    "Skeena Natural Resource Region":            "Skeena",
+    "Northeast Natural Resource Region":         "Northeast",
+    "Thompson-Okanagan Natural Resource Region": "Thompson_Okanagan",
+    "Cariboo Natural Resource Region":           "Cariboo",
+    "West Coast Natural Resource Region":        "West_Coast",
+    "South Coast Natural Resource Region":       "South_Coast",
+    "Omineca Natural Resource Region":           "Omineca",
+    "Kootenay-Boundary Natural Resource Region": "Kootenay_Boundary",
+}
 
 
 def detect_regions(shp_paths, sde_path, logger):
@@ -132,7 +147,7 @@ def detect_regions(shp_paths, sde_path, logger):
                 region_map[i] = ""
                 continue
 
-            best_region = region_counts.most_common(1)[0][0]
+            best_region_raw = region_counts.most_common(1)[0][0]
 
             # Straddle check: Join_Count > 1 means at least one feature overlapped multiple regions
             max_join_count = max((r[1] for r in rows), default=1)
@@ -141,11 +156,24 @@ def detect_regions(shp_paths, sde_path, logger):
                 all_regions = ", ".join(sorted(region_counts.keys()))
                 logger.warning(
                     f"Region Detector: '{shp_path.name}' straddles multiple NR regions "
-                    f"({all_regions}) — largest overlap region '{best_region}' was used."
+                    f"({all_regions}) — largest overlap region '{best_region_raw}' was used."
+                )
+
+            # Translate the full BCGW name to the short name the AST tool expects.
+            # e.g. "West Coast Natural Resource Region" -> "West_Coast"
+            if best_region_raw in REGION_NAME_MAP:
+                best_region = REGION_NAME_MAP[best_region_raw]
+            else:
+                # Unknown BCGW value — pass raw through and warn so the mismatch is visible
+                best_region = best_region_raw
+                logger.warning(
+                    f"Region Detector: '{shp_path.name}' — BCGW region name '{best_region_raw}' "
+                    f"is not in REGION_NAME_MAP. Passing raw value through; AST tool may fail. "
+                    f"Update REGION_NAME_MAP in region_detector.py if this is a new region."
                 )
 
             region_map[i] = best_region
-            logger.info(f"Region Detector: '{shp_path.name}' -> '{best_region}'")
+            logger.info(f"Region Detector: '{shp_path.name}' -> '{best_region}' (BCGW: '{best_region_raw}')")
 
         return region_map
 
