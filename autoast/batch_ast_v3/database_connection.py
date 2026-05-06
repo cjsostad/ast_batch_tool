@@ -36,15 +36,19 @@ def setup_bcgw(logger):
     # Define current path of the executing script
     current_path = os.path.dirname(os.path.realpath(__file__))
 
-    # Create the connection folder
-    connection_folder = 'connection'
-    connection_folder = os.path.join(current_path, connection_folder)
+    # SDE_CONNECTION_DIR can be injected by Jenkins as a build environment variable to
+    # redirect bcgw.sde to a path writable by the service account (e.g., the objectstore).
+    # When running from VSCode, SDE_CONNECTION_DIR is not set so os.getenv() returns None
+    # and the 'or' falls back to the original connection/ folder next to this script —
+    # no change in behaviour for interactive runs.
+    connection_folder = os.getenv('SDE_CONNECTION_DIR') or os.path.join(current_path, 'connection')
 
     # Check for the existance of the connection folder and if it doesn't exist, print an error and create a new connection folder
     if not os.path.exists(connection_folder):
         print("Connection folder not found, creating new connection folder")
         logger.info("Connection folder not found, creating new connection folder")
-        os.mkdir(connection_folder)
+        # makedirs handles nested paths (e.g., a new subdirectory on the objectstore)
+        os.makedirs(connection_folder, exist_ok=True)
 
     # Check for an existing bcgw connection, if there is one, remove it
     if os.path.exists(os.path.join(connection_folder, 'bcgw.sde')):

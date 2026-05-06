@@ -74,10 +74,15 @@ def detect_regions(shp_paths, sde_path, logger):
     if arcpy is None:
         raise RuntimeError("arcpy is not available — region detection requires ArcGIS Pro.")
 
-    # Define temp FC names up front so the finally block can always reference them
+    # Define temp FC names up front so the finally block can always reference them.
+    # Use scratchGDB (a local file GDB ArcPy manages automatically) instead of in_memory:
+    # on Jenkins, CopyFeatures from a .shp source to in_memory appended '.shp' to the output
+    # name, producing 'in_memory\\ast_region_temp_0.shp' which in_memory rejects (ERROR 000354).
+    # File GDB feature classes have no extension, so the issue cannot recur.
+    scratch_gdb = arcpy.env.scratchGDB
     temp_fcs = []
-    merged_fc = "in_memory/ast_region_merged"
-    join_fc = "in_memory/ast_region_join"
+    merged_fc = os.path.join(scratch_gdb, "ast_region_merged")
+    join_fc = os.path.join(scratch_gdb, "ast_region_join")
     region_map = {}
 
     try:
@@ -85,7 +90,8 @@ def detect_regions(shp_paths, sde_path, logger):
         # The SRC_IDX field lets us map join results back to the originating shapefile
         # after the merge collapses all features into a single FC.
         for i, shp_path in enumerate(shp_paths):
-            temp_fc = f"in_memory/ast_region_temp_{i}"
+            # Write to scratchGDB — see comment above merged_fc/join_fc for rationale.
+            temp_fc = os.path.join(scratch_gdb, f"ast_region_temp_{i}")
             arcpy.management.CopyFeatures(str(shp_path), temp_fc)
             arcpy.management.AddField(temp_fc, "SRC_IDX", "LONG")
             arcpy.management.CalculateField(temp_fc, "SRC_IDX", str(i), "PYTHON3")
@@ -178,7 +184,7 @@ def detect_regions(shp_paths, sde_path, logger):
         return region_map
 
     finally:
-        # Best-effort cleanup of all in_memory feature classes created during detection.
+        # Best-effort cleanup of all scratchGDB feature classes created during detection.
         # Using a finally block ensures cleanup runs even if an exception is raised above.
         for fc in temp_fcs + [merged_fc, join_fc]:
             try:

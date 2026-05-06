@@ -7,6 +7,22 @@ openpyxl
 arcpy  
 automated status tool
 
+## .env Configuration Keys
+
+All credentials and paths are read from a `.env` file in the script directory (never hardcoded).
+
+| Key | Required by | Description |
+|-----|-------------|-------------|
+| `BCGW_USER` | all entry points | BCGW Oracle database username |
+| `BCGW_PASS` | all entry points | BCGW Oracle database password |
+| `TOOLBOX` | all entry points | Absolute path to the AST toolbox file |
+| `TOOLBOXALIAS` | all entry points | Toolbox alias used by arcpy |
+| `TEMPLATE` | all entry points | Path to the Excel template file |
+| `SECRET_FILE` | all entry points | Path to a secondary credentials file (optional) |
+| `SDE_FILE_PATH` | workers | Set at runtime by the main process; do not set manually |
+| `WATCH_DIR` | `main_auto_setup_jenkins.py` | Root folder on the objectstore where users deposit shapefile submissions for automated nightly processing (e.g., `\\objectstore2.nrs.bcgov\GSS_Share\authorizations\batch_ast_tool`) |
+| `WORKER_LOG_DIR` | `mp_worker.py` | Directory where per-job ArcPy worker logs are written. When set, overrides the default (next to the script) so Jenkins runs write logs to a user-visible location (e.g., `\\objectstore2.nrs.bcgov\GSS_Share\authorizations\batch_ast_tool\worker_log_files`). Optional — omit to keep logs next to the script. |
+
 You need a test excel spreadsheet. 
 If file_number is filled out, the script will run the FW Setup tool on the feature layer. Enter the file number of the permit and it
 will create shapefiles and .kml files in the appropriate directory the way the old FW Setup did. 

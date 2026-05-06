@@ -29,11 +29,15 @@ def process_job_mp(ast_instance, job, job_index, current_path, sde_path, return_
     # The new fcbc_auto_status_tool manages its own per-job SDE connection internally
     # arcpy.env.workspace = sde_path
     
-    # Set up logging folder in the worker process
+    # Set up logging folder in the worker process.
+    # WORKER_LOG_DIR from .env overrides the default (next to the script) so that
+    # Jenkins runs on the objectstore can write worker logs to a user-visible location.
+    # If WORKER_LOG_DIR is not set, fall back to the original behaviour (current_path).
     logger.info(f"Process Job Mp: Worker process {mp.current_process().pid} started for job {job_index}")
-    log_folder = os.path.join(current_path, f'autoast_worker_logs_{datetime.datetime.now().strftime("%Y%m%d")}')
+    worker_log_base = os.getenv("WORKER_LOG_DIR") or current_path
+    log_folder = os.path.join(worker_log_base, f'autoast_worker_logs_{datetime.datetime.now().strftime("%Y%m%d")}')
     if not os.path.exists(log_folder):
-        os.mkdir(log_folder)
+        os.makedirs(log_folder, exist_ok=True)   # makedirs handles nested paths on objectstore
         logger.info(f"Process Job Mp: Created log folder {log_folder}")
 
     # Generate a unique log file name per process
